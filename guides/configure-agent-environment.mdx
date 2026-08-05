@@ -1,0 +1,47 @@
+---
+title: Agent 생성 시 환경 변수 설정
+description: 새 Agent에 필요한 비민감 실행 설정을 environment configuration으로 전달하는 방법입니다.
+---
+
+# Agent 생성 시 환경 변수 설정
+
+환경 변수는 새 Agent 생성 configuration으로 전달하는 이름-값 설정입니다. 현재 생성 흐름은 사용자 환경 변수를 ConfigMap에도 넣으므로, 비민감한 외부 서비스 URL, 프로젝트 식별자, 기능 플래그에만 사용합니다. 화면의 **<!-- ui-label: reviewDialog.secretsConfiguration -->시크릿 설정<!-- /ui-label -->** 안에 있지만 범용 Secret 보관 경로가 아닙니다.
+
+## 언제 사용하나요
+
+- 서비스 endpoint, 프로젝트 ID, 기능 플래그처럼 Agent 실행 환경이 읽어야 하는 값
+- Local LLM 서버처럼 생성 흐름에서 연결을 확인한 endpoint
+
+AI provider API key와 조직 공용 credential은 먼저 [Credential 관리하기](/guides/manage-credentials)에서 관리하세요. 같은 값을 여러 Agent에 복사해서 환경 변수로 넣으면 교체와 감사가 어려워집니다.
+
+## 새 Agent에 추가하기
+
+1. **<!-- ui-label: nav.agents -->에이전트<!-- /ui-label --> → <!-- ui-label: pages.agents.createAgent -->새 팀원 추가<!-- /ui-label -->**에서 기본 정보와 model을 설정합니다.
+2. **<!-- ui-label: reviewDialog.secretsConfiguration -->시크릿 설정<!-- /ui-label -->**을 엽니다.
+3. 추가 환경 변수 영역에서 행을 추가합니다.
+4. 변수 이름과 값을 입력한 뒤 생성 검토를 완료합니다.
+
+이름은 대문자 영문자 또는 `_`로 시작하고, 이후에는 대문자 영문자·숫자·`_`만 사용하세요. 예: `ACME_PROJECT_ID`, `INTERNAL_API_URL`. 값은 공백만으로 둘 수 없습니다.
+
+생성 흐름은 입력된 사용자 환경 변수를 Agent configuration에 전달합니다. 플랫폼이 소유하는 `AGENT_ID`, 조직 식별자, gateway token, 내부 API URL 같은 예약 키는 사용자가 덮어쓸 수 없습니다. Local LLM을 선택한 경우에는 `OLLAMA_HOST`가 선택한 연결 정보로 설정됩니다.
+
+## 생성 후 확인하기
+
+1. Agent를 만든 뒤 작은 테스트 요청을 실행합니다.
+2. 필요한 값이 실제로 읽혔는지, 외부 서비스 연결이 성공했는지 확인합니다.
+3. 이 문서는 기존 Agent의 환경 변수 변경 절차를 제공하지 않습니다.
+
+생성 화면에 입력한 값은 새 Agent configuration으로 전달됩니다. 값을 잊었거나 기존 Agent에 새 설정이 필요해도, Portal에 노출되지 않은 관리 API를 직접 호출하거나 secret을 전달해 우회하지 마세요.
+
+## 넣지 말아야 할 값
+
+- 비밀번호, API key, access token, MFA code, recovery code
+- 고객 대화 원문 또는 개인정보 대량 데이터
+- 여러 Agent가 공유해야 하는 provider credential
+- `SOUL.md`, `AGENTS.md`, Chat, task comment에 이미 쓴 secret의 복사본
+
+환경 변수는 Agent의 동작 설정이고, 지시문을 대체하지 않습니다. 역할과 행동 규칙은 [SOUL.md](/workspace-files/soul-md), 도구 사용 규칙은 [TOOLS.md](/workspace-files/tools-md)에 작성하세요.
+
+<Warning>
+이 문서는 Portal의 새 Agent 생성 흐름을 다룹니다. 기존 Agent의 환경 변수를 Portal 화면에서 추가·편집하는 기능은 현재 노출되어 있지 않습니다. 기존 Agent에 새 설정이 필요하면 승인된 생성·운영 절차로 Agent 구성을 갱신하세요.
+</Warning>

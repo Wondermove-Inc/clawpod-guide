@@ -1,0 +1,41 @@
+---
+title: Agent 실행 capability matrix
+description: clawpod-agent source와 Cloud wrapper를 대조한 작업별 기능, 사전조건, Cloud 제공 상태입니다.
+---
+
+# Agent 실행 capability matrix
+
+이 표는 Agent에게 무엇을 요청할 수 있는지 판단하는 기준입니다. **패키징됨**은 Cloud image 정의에 포함된다는 뜻이고, **Cloud self-service**는 고객 Portal에서 설정·운영 경로가 확인됐다는 뜻입니다. 둘은 다릅니다.
+
+| 작업 | Agent software / wrapper 상태 | 사전조건 | Cloud self-service 상태 | 사용 문서 |
+| --- | --- | --- | --- | --- |
+| Workspace 파일 읽기·쓰기 | filesystem MCP root는 `/workspace`; 실행 도구는 `/root`, `/tmp`도 접근 가능한 구성일 수 있음 | Agent 권한, 허용 경로, 운영상 변경 승인 | `/workspace` 파일의 Portal 탐색·다운로드 경로는 미확인 | [Browser와 CLI 요청](/guides/use-browser-and-cli) |
+| Chat 파일 미리보기·다운로드 | Portal attachment viewer 확인 | Room 접근 권한, 지원 MIME type | 확인됨 | [파일 관리](/guides/manage-workspace-documents) |
+| 일반 web fetch·search | upstream tool 목록에는 언급될 수 있으나 Cloud wrapper MCP 등록은 확인되지 않음 | 지원되는 Agent tool binding 필요 | consumer provider 연결·binding 경로 없음 | [Browser와 웹 작업](/capabilities/browser-and-web) |
+| Browser automation | Playwright MCP wrapper 구성, full image는 Chromium 포함 | MCP 기동, browser runtime·network, login·제출 승인 | Portal self-service browser 설정 미확인 | [Browser와 CLI 요청](/guides/use-browser-and-cli) |
+| GUI Desktop automation | full image에 XFCE/Xvfb/VNC/noVNC, xdotool·AT-SPI와 Desktop Skill 패키징 | full image, running Agent, Desktop 접속, GUI 변경 승인 | Desktop 접속은 확인됨 | [Agent Desktop](/guides/use-agent-desktop) |
+| CLI·개발 작업 | full image에 CLI 도구, `cli-anything` Skill packaging | Skill ready, binary, command·network 운영 규칙, 허용 경로 | 직접 terminal 관리 화면은 미확인 | [Browser와 CLI 요청](/guides/use-browser-and-cli) |
+| Memory search·get·remember | memory MCP와 Agent memory 기능 존재 | writable workspace/storage, memory policy | 기본 memory 사용은 runtime 조건 | [Memory와 설정](/capabilities/memory-and-configuration) |
+| Task·Milestone 작업 | Tasks Skill 및 Cloud Task board 존재 | Agent runtime service 인증, 조직·Task 권한 | board는 직접 사용 가능, Agent가 Task를 자동 실행하게 만드는 Portal 설정은 없음 | [Tasks와 Milestone](/guides/use-tasks-and-milestones) |
+| Cron·예약 실행 | upstream runtime에 예약 기능이 있을 수 있음 | Cloud scheduler lifecycle과 delivery 연결은 미확인 | 고객 Portal scheduler 경로와 task record 연결 미확인 | [자동화 상태](/capabilities/automation-and-webhooks) |
+| Webhook 실행 | Portal source·rule·playbook·event 확인 | webhook 권한, signing secret, rule target, Agent runtime | 확인됨 | [Webhook에서 Agent 호출](/guides/send-webhook-to-agent) |
+| Image·audio·video·music 처리 | Agent software에 media understanding/generation 기능 존재; full image는 ffmpeg 포함 | provider model·credential, 비용, input/output 보존 정책 | image/Whisper는 OpenAI key 조건, 그 외는 미확인 | [연동 기능](/capabilities/integrations) |
+| Canvas·camera·screen·location | Agent software에 paired node capability 존재 | paired node, device owner 승인, capability scope | customer device lifecycle 미확인 | [Runtime 활성화 상태](/capabilities/runtime-availability) |
+| External channel | Agent software channel adapter 존재 | channel account/token, plugin, allowlist, tenant·조직 운영 | Cloud setup 경로 미확인 | [Channels와 media](/capabilities/channels-and-media) |
+| Plugin·custom provider | Agent software plugin registry 존재 | compatible package, restart, credential/config, 최소 권한 | Cloud installation lifecycle 미확인 | [Runtime 활성화 상태](/capabilities/runtime-availability) |
+
+## Full과 lite를 먼저 구분하세요
+
+full image는 GUI Desktop, Chromium, ffmpeg, GUI automation prerequisites를 포함합니다. lite image는 이 구성요소를 제거하므로 Desktop automation, GUI browser, media 처리 기능을 기대하면 안 됩니다. 두 image 모두에서 “source에 있는 기능”이 실제 ready인지는 Agent 시작 상태와 runtime test로 확인해야 합니다.
+
+## 안전한 요청 기본형
+
+모든 capability에 공통으로 다음 순서를 권장합니다.
+
+1. Agent에게 selected image, ready Skill/MCP, workspace·network·credential 범위를 묻습니다.
+2. 읽기 전용·비민감 test 요청으로 작동을 확인합니다.
+3. 파일 변경, browser submit, download/upload, command, 외부 전송은 요청에서 개별적으로 허용합니다.
+4. 결과물 경로, 실제 변경, 검증 결과, 실패·미실행 항목을 받습니다.
+5. 필요 없어진 credential, Skill, 파일, browser download는 보존 정책에 따라 회수·정리합니다.
+
+이 matrix의 승인·허용 경로는 안전한 운영 규칙입니다. 현재 wrapper 기본값 자체가 사용자별 실행 승인을 강제하는 것은 아닙니다. 조직은 SOUL/AGENTS 지침과 배포 정책으로 별도 제한해야 합니다. self-service가 미확인인 항목은 Agent에게 설정 파일을 직접 고치거나 secret을 제공해 우회시키는 방식으로 활성화하지 마세요.

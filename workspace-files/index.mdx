@@ -1,0 +1,26 @@
+---
+title: Agent 설정 파일 안내
+description: SOUL.md, AGENTS.md, TOOLS.md, MEMORY.md 등 workspace 파일을 목적에 맞게 작성하는 방법입니다.
+---
+
+# Agent 설정 파일 안내
+
+Agent workspace 파일은 runtime이 첫 boot에 만들거나 복사할 수 있는 운영 문서입니다. session마다 어떤 파일이 prompt context에 들어가는지는 OpenClaw runtime 동작이며 Cloud Portal이 설정하거나 보장하는 기능은 아닙니다. 필요한 파일을 Agent 지침에서 읽도록 정하면 변경 영향도 검토하기 쉽습니다.
+
+| 파일 | 주된 목적 | 먼저 읽을 페이지 |
+| --- | --- | --- |
+| `SOUL.md` | 역할, 말투, 경계, 결과 기준 | [SOUL.md 작성하기](/workspace-files/soul-md) |
+| `AGENTS.md` | 반복 업무의 운영 지침과 안전 규칙 | [AGENTS.md 운영 지침](/workspace-files/agents-md) |
+| `TOOLS.md` | tool별 사용 메모와 local convention | [TOOLS.md tool 사용 규칙](/workspace-files/tools-md) |
+| `MEMORY.md` | 오래 유지할 결정·선호·교훈 | [MEMORY.md와 memory 폴더](/workspace-files/memory-md) |
+| `BOOTSTRAP.md` | 새 workspace에서 한 번만 하는 초기 설정 | [BOOTSTRAP.md와 identity 파일](/workspace-files/bootstrap-and-identity) |
+
+## 공통 작성 원칙
+
+1. **한 파일에 한 책임**: persona는 `SOUL.md`, 실행 규칙은 `AGENTS.md`, tool 세부 사용법은 `TOOLS.md`에 둡니다.
+2. **짧고 검증 가능하게**: “잘 처리한다”보다 “외부 변경 전 대상·영향·승인을 확인한다”처럼 행동을 씁니다.
+3. **최소 권한·최소 데이터**: secret, password, token, 고객 원문은 어떤 workspace 파일에도 넣지 않습니다.
+4. **자동 실행으로 오해하지 않기**: 파일에 적은 지침은 tool 실행을 자동으로 만들지 않습니다. 실제 실행 범위는 runtime과 조직 운영 규칙에 따릅니다.
+5. **중요한 변경은 test Room에서 검증**: 한 파일 변경이 model, tool, channel 권한을 우회하지는 않습니다.
+
+현재 ClawPod Portal은 `SOUL.md` 편집을 제공합니다. `AGENTS.md`와 `TOOLS.md`는 생성 시 기본값이 제공되고 첫 boot에 workspace로 복사되지만, 현재 Portal에는 직접 편집 UI가 확인되지 않았습니다.

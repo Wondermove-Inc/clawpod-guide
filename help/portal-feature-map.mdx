@@ -1,0 +1,37 @@
+---
+title: Portal 기능 접근 지도
+description: Portal의 최상위 기능을 소비자 문서와 역할 경계에 대응시키는 빠른 찾기 표입니다.
+---
+
+# Portal 기능 접근 지도
+
+이 지도는 Portal 메뉴와 관련 가이드를 연결하는 빠른 찾기입니다. 메뉴가 보이지 않으면 먼저 역할, Policy, 테넌트·조직 범위, 요금제·한도를 확인하세요.
+
+| Portal 기능 | 목적 | 문서 |
+| --- | --- | --- |
+| Dashboard · Agents | Agent 상태를 보고 생성·운영 | [Agent 생성](/guides/create-agent), [Agent 운영](/guides/manage-agent) |
+| Chat · Chat Archive · AI Chat | Agent와 Room에서 대화·첨부·mention | [Chat Room](/guides/use-chat-room) |
+| Documents · Tasks · 회의록 | legacy 공유 문서 텍스트 탐색·업로드, 조직 작업 보드, 회의 전사·요약 | [Documents](/guides/manage-workspace-documents), [파일 형식과 artifact](/guides/file-formats-and-artifacts), [Tasks와 Milestone](/guides/use-tasks-and-milestones), [회의록](/guides/use-meeting-minutes) |
+| Skills | Skill 탐색·업로드·다운로드와 Agent별 설치·제거 요청 | [Skill Marketplace](/guides/manage-skills) |
+| Credential · AI Key Management | Agent용 credential 연결·교체 | [Credential](/guides/manage-credentials) |
+| Agent model 설정 | provider별 main·sub·fallback·heartbeat model 선택 | [Provider와 model 선택](/guides/select-models) |
+| Webhooks | source·rule·playbook·event 관리 | [Webhook에서 Agent 호출](/guides/send-webhook-to-agent) |
+| Legacy Workflow route | sidebar에 없는 지원되지 않는 legacy surface | [Legacy Workflow route 안내](/admin/workflows) |
+| Organizations · Users · IAM | 조직, 멤버, 직접 Policy 관리 | [조직 관리](/guides/manage-organization), [IAM](/guides/manage-iam) |
+| Analytics · Costs | Agent·대화·사용량·비용 분석 | [Analytics](/guides/use-analytics), [Dashboard와 Costs](/guides/use-dashboard-and-costs) |
+| AI Chat · Chat Archive | 개인 AI Chat 세션과 접근 가능한 Room 기록 | [AI Chat](/guides/use-ai-chat), [Chat Archive](/guides/use-chat-archive) |
+| Billing · Plans | 구독, plan, quota 확인 | [Billing](/guides/manage-billing), [Workspace와 System 상태](/guides/check-workspace-and-system) |
+| Audit Log | 권한·관리 작업 기록 확인 | [Audit log](/guides/use-audit-log) |
+| Notifications | 개인 in-app·browser push 선호 | [알림 설정](/guides/manage-notifications) |
+| Settings | Profile, appearance, workspace, system, legal 등 | [가입·로그인](/guides/start-account), [계정·조직 설정](/guides/manage-account-and-organization), [보안 설정](/guides/secure-your-account), [Legal 문서](/guides/manage-legal-documents) |
+| Tenants · Registrations · Invite Codes | tenant와 가입·초대 관리 | [Tenant 관리](/guides/manage-tenants), [가입 요청](/admin/registration-requests), [초대 코드](/admin/invite-codes) |
+| Announcements | 로그인 후 공지 발행 | [공지 관리](/admin/announcements) |
+| Model Pricing · Agent Presets | 분석용 model 가격과 Agent 생성 템플릿 | [Model pricing](/admin/model-pricing), [Agent preset](/admin/agent-presets) |
+| Menu Visibility · Language Settings | 전역 sidebar 노출과 Portal 언어 | [메뉴 노출](/admin/menu-visibility), [언어 설정](/admin/language-settings) |
+
+## 별도 확인이 필요한 항목
+
+- **API Keys settings**는 현재 소비자용 API key 발급 화면이 아닙니다. [catalog의 retired 항목](/capabilities/catalog)을 참고하세요.
+- tenant, global language, menu visibility, model pricing, Agent preset 같은 항목은 일반 조직 운영 기능이 아니라 Platform 관리자 경계입니다. **Legacy Workflow route**는 권한·tenant 경계가 소비자 기능으로 확인되지 않아 사용 경로로 안내하지 않습니다.
+- runtime source에만 있는 channel, device, voice, plugin 기능은 현재 Cloud 소비자 기능이 아닙니다. Portal 연결·회수 경로가 없으므로 설정을 시도하지 말고 [숨겨진 Agent 기능의 소비자 제공 상태](/capabilities/consumer-availability)를 따르세요.
+- Agent의 browser control·CLI 작업은 [Browser와 CLI 작업 요청](/guides/use-browser-and-cli)에서 실행 조건과 승인 범위를 확인하세요.

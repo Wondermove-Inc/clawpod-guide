@@ -1,0 +1,25 @@
+---
+title: 관리형 runtime 기능
+description: Agent image와 runtime에 있지만 현재 Cloud 소비자 제공 경로가 있는 기능과 없는 기능을 구분합니다.
+---
+
+# 관리형 runtime 기능
+
+다음은 Agent runtime source와 Cloud image에서 확인한 범위입니다. 이 페이지의 runtime 항목은 모두가 Portal 설정 기능이라는 뜻이 아닙니다. 소비자별 설정 경로는 [숨겨진 Agent 기능의 소비자 제공 상태](/capabilities/consumer-availability)를 기준으로 봅니다.
+
+| 기능 | Agent가 할 수 있는 일 | 활성화 또는 제한 |
+| --- | --- | --- |
+| Workspace와 기본 지침 | Agent별 작업 공간에서 역할, 지침, identity, 사용자 정보를 사용합니다. | `SOUL.md`만 Portal에서 편집합니다. 다른 workspace 파일은 Agent에게 작업을 요청하는 범위입니다. |
+| 파일·코딩 도구 | 허용된 workspace에서 파일을 읽고, 수정하고, 명령을 실행할 수 있습니다. | Portal terminal은 없으며, Agent에게 요청해 실행합니다. |
+| Memory | 장기 memory와 일별 memory를 검색하고 필요한 부분을 읽습니다. | Portal에서 memory lifecycle·search provider를 설정하지 않습니다. |
+| Browser automation | Playwright MCP가 준비되면 탐색·입력·화면 캡처를 수행합니다. | browser profile과 policy를 Portal에서 관리하지 않으며, full image와 실제 runtime 확인이 필요합니다. 일반 web fetch·search는 Cloud wrapper가 등록하지 않습니다. |
+| Skills | image에 포함된 bundled Skill을 로드해 추가 작업을 수행할 수 있습니다. | Marketplace는 설치·제거 요청을 기록하지만 실제 package lifecycle은 source에서 확인되지 않았습니다. |
+| 예약 작업과 background task | upstream runtime에는 관련 구현이 있을 수 있습니다. | 현재 Cloud에서는 소비자가 schedule을 생성·조회·중지하는 경로가 없습니다. |
+| Agent 간 협업 | 같은 조직의 Agent가 Room 기반 협업을 수행할 수 있습니다. | Agent 대상 allowlist·delegation depth를 Portal에서 설정하지 않습니다. |
+| Desktop과 CLI 도구 | Full image Agent는 desktop, CLI-Anything, Tasks 관련 기능을 포함합니다. Lite image는 GUI 없이 CLI 중심입니다. | Desktop viewer는 Portal에 있고, CLI 실행은 Agent 요청으로만 수행합니다. |
+
+## 중요한 제한
+
+명령 실행, browser 로그인, 외부 전송, 다른 Agent 또는 workspace 접근은 고위험 기능입니다. Agent에게 이 기능을 요청하기 전에는 대상, 데이터 범위, 사용자 확인, 실행 승인 정책을 확인해야 합니다.
+
+이 페이지의 항목은 runtime 존재 근거를 기록합니다. 소비자가 실제로 할 수 있는 클릭과 요청은 [사용 가이드](/guides/use-browser-and-cli)와 [소비자 제공 상태](/capabilities/consumer-availability)에서 확인합니다.

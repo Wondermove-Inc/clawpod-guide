@@ -1,0 +1,25 @@
+---
+title: Chat Archive 사용하기
+description: 접근 가능한 Chat Room 기록을 찾고 읽고, 내가 소유한 Room을 정리하는 방법입니다.
+---
+
+# Chat Archive 사용하기
+
+Chat Archive는 별도 export 저장소가 아니라 접근 가능한 Chat Room의 기록을 찾고 읽는 화면입니다. Chat Room 목록은 `core:chat:List` 권한과 tenant·organization·internal visibility 규칙으로 제한됩니다.
+
+## 기록 찾기와 읽기
+
+1. Portal에서 **Chat Archive**를 엽니다.
+2. 검색창에 Room 이름을 입력해 목록을 좁힙니다.
+3. Room을 선택하면 메시지 기록을 엽니다.
+4. 이전 메시지는 위로 스크롤해 더 불러옵니다. 새 메시지는 WebSocket으로 반영됩니다. 연결이 끊겼을 때의 즉시 갱신 주기는 이 화면의 보장 기능이 아닙니다.
+
+Archive에서 Room을 열면 읽음 상태가 갱신됩니다. 목록 범위는 `core:chat:List` 권한에 따라 달라집니다. 현재 source만으로 Room ID 조회의 tenant·organization·participant read 경계를 보장하지 않으므로, 다른 Room ID를 추측하거나 공유하지 마세요.
+
+## Room 만들기와 삭제
+
+오른쪽 위 **+**로 direct 또는 group Room을 만들 수 있습니다. 기존 Room은 **Select**를 눌러 여러 개를 선택하고 삭제할 수 있습니다.
+
+삭제 권한이 Room 소유자로 제한된다는 source 보장은 현재 확인되지 않았습니다. 삭제 전에 필요한 대화와 artifact를 열어 내려받으세요. Chat Archive에는 대화 전체를 export하는 기능이 없습니다.
+
+새 메시지를 보내거나 participant를 바꾸려면 [Chat Room 가이드](/guides/use-chat-room)를 사용하세요.

@@ -1,0 +1,32 @@
+---
+title: 로그인 후 공지 관리
+description: tenant·조직 범위와 표시 기간을 검토하여 Portal 로그인 후 공지를 안전하게 운영하는 방법입니다.
+---
+
+# 로그인 후 공지 관리
+
+**<!-- ui-label: announcements.title -->공지 관리<!-- /ui-label -->**는 Portal 로그인 후 표시되는 공지를 만들고, 수정하고, 삭제하는 관리 화면입니다. 플랫폼 최고 관리자와 테넌트 관리자가 사용할 수 있으며, 테넌트 관리자는 자기 tenant의 로그인 후 공지만 관리합니다. 공지는 활성 여부와 시작·종료 시각에 따라 active, scheduled, expired, inactive 상태로 표시됩니다.
+
+## 공지 만들기
+
+1. **<!-- ui-label: nav.announcements -->공지 관리<!-- /ui-label --> → <!-- ui-label: announcements.create -->공지 생성<!-- /ui-label -->**을 엽니다.
+2. 제목, 본문, 시작·종료 시각을 입력합니다. 종료 시각은 시작 시각보다 뒤여야 합니다.
+3. 플랫폼 최고 관리자는 **<!-- ui-label: announcements.form.targetTenants -->대상 테넌트<!-- /ui-label -->**에서 **<!-- ui-label: announcements.form.allTenants -->전체 테넌트<!-- /ui-label -->** 또는 **<!-- ui-label: announcements.form.selectTenants -->특정 테넌트 선택<!-- /ui-label -->**을 선택합니다. 특정 조직만 보낼 경우 **<!-- ui-label: announcements.form.targetOrganizations -->대상 조직<!-- /ui-label --> → <!-- ui-label: announcements.form.selectOrgs -->특정 조직 선택<!-- /ui-label -->**에서 대상 조직을 선택합니다. 테넌트 관리자는 자기 tenant 범위의 로그인 후 공지만 만들 수 있습니다.
+4. 대상 SQL을 쓴다면 입력 뒤 **<!-- ui-label: announcements.form.previewSql -->SQL 결과 미리보기<!-- /ui-label -->**를 선택해 결과 창의 대상 목록과 오류를 확인합니다.
+5. 선택 사항인 link URL, 표시 순서, access-blocking 여부를 검토합니다.
+6. 활성화 상태를 확인하고 **<!-- ui-label: announcements.create -->공지 생성<!-- /ui-label -->**을 선택합니다.
+
+기본 범위가 전체일 수 있으므로, 고객별 안내는 대상 tenant와 organization을 명시적으로 선택하는 편이 안전합니다. 링크는 신뢰하는 `https://` 목적지 또는 `/portal/...` 내부 경로만 사용하고, 공지 본문에 secret, access code, 개인 정보를 넣지 마세요.
+
+## 접근 차단 공지와 대상 SQL
+
+플랫폼 최고 관리자는 공지를 access-blocking으로 표시하거나, 고급 대상 SQL을 입력할 수 있습니다. 이 두 기능은 단순 공지보다 영향 범위가 큽니다.
+
+- access-blocking은 대상 사용자의 Portal 접근을 방해할 수 있으므로, 장애 공지·점검 종료 시각·rollback 담당자를 먼저 확인합니다.
+- 대상 SQL은 제공되는 preview로 대상 결과를 반드시 검토한 뒤 사용합니다. 코드나 추측한 조건을 그대로 실행하지 말고, 필요한 최소 대상만 선택하세요.
+
+## 수정·삭제
+
+공지 내용, 기간, 대상, 활성 상태를 수정할 수 있습니다. 더 이상 필요 없는 공지는 삭제 전에 같은 안내가 다른 공지나 고객 지원 채널에 남아 있는지 확인하세요. 삭제는 soft-delete 처리이며, 현재 Portal에는 복원 동작이 노출되지 않으므로 삭제 전 내용·기간·대상을 확인하세요.
+
+저장 후에는 대상 범위의 일반 사용자 계정으로 실제 표시와 링크를 검토하세요.

@@ -1,0 +1,67 @@
+---
+title: IAM, Policy, Role 관리
+description: ClawPod의 사용자·조직 멤버십·직접 Policy와 현재 Portal의 IAM 관리 경계를 안전하게 사용하는 방법입니다.
+---
+
+# IAM, Policy, Role 관리
+
+IAM은 Agent, credential, Chat Room, webhook, 조직 데이터에 누가 어떤 작업을 할 수 있는지 정하는 관리 기능입니다. 작은 권한 추가도 tenant와 조직 전체에 영향을 줄 수 있으므로, 필요한 최소 권한만 부여하세요.
+
+## 현재 Portal에서 관리하는 범위
+
+IAM 메뉴는 Policy 조회 권한이 있어야 열립니다. 현재 Portal의 사용자 관리 화면에서는 다음을 확인하거나 관리할 수 있습니다.
+
+- 사용자 프로필, 상태, 마지막 로그인
+- 사용자별 조직 멤버십과 Agent 할당 정보
+- 사용자에게 직접 연결된 Policy와 유효 권한
+- 사용자 생성·초대, 수정, 삭제
+- 비밀번호 재설정 이메일 발송 또는 MFA 재설정(대상 사용자와 관리자 역할에 따라 제한)
+
+사용자 생성·삭제와 Policy 연결·해제는 별도 action 권한이 필요합니다. 화면이 보인다고 변경 권한까지 있는 것은 아닙니다.
+
+## Role과 조직 멤버십을 구분하기
+
+ClawPod에는 서로 다른 범위의 역할 정보가 있습니다.
+
+| 구분 | 적용 범위 | 운영 원칙 |
+| --- | --- | --- |
+| 플랫폼 역할 | 플랫폼 또는 테넌트 운영 권한 | 플랫폼 최고 관리자와 테넌트 관리자 같은 시스템 역할은 직접 Policy 편집 대상이 아닐 수 있습니다. |
+| Organization membership role | 특정 조직 안의 멤버십 | 조직별로 admin 또는 member 같은 역할로 접근 범위를 관리합니다. |
+| Direct Policy | 특정 사용자에게 연결되는 세밀한 권한 | 필요한 action과 resource만 포함하도록 설계합니다. |
+
+현재 Portal의 Policy 상세 화면은 **사용자 직접 연결**을 관리하는 흐름입니다. Group 또는 reusable Role API 구현이 저장소에 있더라도, 현재 Portal에서는 고객이 사용하는 관리 흐름으로 노출·검증되지 않았습니다. 따라서 공개 사용 절차로 안내하거나 내부 API를 직접 호출하지 마세요.
+
+## 사용자에게 Policy 연결하기
+
+1. **IAM → Users**에서 대상 사용자의 행에 있는 보기 동작을 선택합니다.
+2. **Direct Policies → Attach Policy**를 선택합니다.
+3. Policy를 하나 이상 체크한 뒤 **Attach Policy (N)**를 선택합니다.
+4. 같은 화면의 **Effective Permissions**에서 새 권한이 표시되는지 검토합니다.
+5. 대상 계정으로 최소 권한 업무를 한 번 테스트합니다.
+
+더 이상 필요하지 않은 권한은 같은 화면에서 분리합니다. 분리 전에는 해당 사용자가 수행하던 webhook 관리, Agent 운영, export, credential 교체가 중단되지 않는지 확인하세요.
+
+## Custom Policy 만들기
+
+현재 Portal에서 사용자 지정 Policy 생성과 삭제는 플랫폼 최고 관리자 경계입니다. 생성 화면은 이름·설명·Policy 문서를 받고, 시각 편집과 JSON 편집을 제공합니다.
+
+권장 절차:
+
+1. **IAM → Policies → Create Policy**를 선택하고 이름을 입력합니다.
+2. Quick Start template을 고르거나 **Visual editor**에서 필요한 action을 하나 이상 선택합니다.
+3. resource 범위를 해당 tenant와 조직으로 제한합니다. JSON editor를 쓴다면 유효한 JSON과 각 statement의 action을 확인합니다.
+4. **Create Policy**를 선택합니다.
+5. 테스트 사용자 한 명에게만 연결해 **Effective Permissions**와 실제 동작을 확인합니다.
+6. 영향과 되돌리기 담당자를 기록한 뒤 필요한 사용자에게만 확대합니다.
+
+System Policy는 수정·삭제할 수 없을 수 있습니다. Policy를 삭제하면 연결된 사용자의 접근이 즉시 달라질 수 있으므로, 먼저 attachment와 Effective Permissions를 확인하세요.
+
+## 권한 문제 진단
+
+1. 사용자에게 어떤 organization membership이 있는지 확인합니다.
+2. platform role과 직접 연결된 Policy를 확인합니다.
+3. Effective Permissions에서 permission의 출처를 확인합니다.
+4. tenant scope, organization scope, plan·quota 제약을 각각 확인합니다.
+5. 권한을 넓히기 전에 대상 resource와 필요한 action을 명확히 합니다.
+
+권한 오류를 해결하려고 플랫폼 최고 관리자 권한을 임시로 부여하는 방식은 피하세요. 테스트용 계정과 최소 Policy로 재현하는 편이 안전합니다.

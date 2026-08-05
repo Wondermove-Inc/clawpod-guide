@@ -1,0 +1,39 @@
+---
+title: Memory와 Agent 설정
+description: Agent의 기억, identity, workspace, system prompt, subagent와 실행 정책을 이해하고 설정하는 방법입니다.
+---
+
+# Memory와 Agent 설정
+
+이 페이지의 Memory·session·subagent 항목은 현재 Agent runtime source에서 확인한 동작입니다. 소비자가 Portal에서 직접 편집할 수 있는 workspace 파일은 현재 `SOUL.md`뿐이며, Memory·`AGENTS.md`·`TOOLS.md`를 켜고 끄거나 직접 편집하는 Portal 화면은 제공하지 않습니다. Portal에서 수행할 수 있는 설정과 요청 방법은 [Agent workspace 파일](/guides/configure-agent-workspace-files)을 따릅니다.
+
+## Memory
+
+| 기능 | Agent가 할 수 있는 일 | 설정과 주의 사항 |
+| --- | --- | --- |
+| Memory 검색 | 과거의 관련 기록을 의미와 키워드로 찾아봅니다. | Agent runtime의 memory tool과 workspace policy가 허용할 때만 수행됩니다. |
+| Memory 읽기 | 검색한 memory 파일의 필요한 부분을 읽습니다. | Agent는 먼저 검색하고 필요한 범위만 읽어야 합니다. |
+| Memory 저장 | 장기 선호, 결정, 업무 맥락을 memory로 남깁니다. | 민감한 Secret은 일반 memory에 저장하면 안 됩니다. |
+| Session 요약 저장 | 새 session 또는 reset 시 최근 맥락을 일별 memory로 남길 수 있습니다. | Portal에서 별도 설정하거나 실행하는 기능이 아닙니다. |
+
+Memory는 “숨겨진 모델 상태”가 아니라 관리되는 Agent workspace의 정보입니다. Agent에게 기억을 남기게 할 때는 보존할 내용과 삭제가 필요한 내용을 함께 알려 주세요. Secret은 memory에 저장하지 말고 [Secret과 민감한 값 다루기](/guides/handle-secrets)의 전용 경로를 사용하세요.
+
+## Identity, workspace, system prompt
+
+| 설정 | 영향 | 주의 사항 |
+| --- | --- | --- |
+| Identity | Agent 이름, avatar, 기본 소개를 정합니다. | 조직에서 허용한 identity 정책을 따릅니다. |
+| Workspace | Agent가 파일과 지침을 사용하는 작업 공간입니다. | 다른 Agent 또는 tenant의 workspace와 섞이면 안 됩니다. |
+| Bootstrap 문서 | 기본 지침, persona, 사용자 정보 등을 처음 시작할 때 제공합니다. | 내용이 길면 context 제한에 따라 잘릴 수 있습니다. |
+| System prompt | Agent의 기본 동작과 경계를 정합니다. | 전체 override는 기존 안전 지침을 대체할 수 있으므로 관리자 검토가 필요합니다. |
+| Timezone과 형식 | 시간 관련 응답의 기본 표현을 조정합니다. | 사용자·조직 기준 시간대를 명확히 합니다. |
+
+`SOUL.md`, `AGENTS.md`, `TOOLS.md`, `MEMORY.md`가 각각 언제 주입되고 어디에서 관리되는지는 [Agent workspace 파일 가이드](/guides/configure-agent-workspace-files)를 참고하세요. Portal에서 바로 편집할 수 있는 파일과 runtime이 첫 boot에 준비하는 파일은 다릅니다.
+
+## Session과 subagent
+
+Agent runtime은 별도 session을 만들고 subagent를 실행할 수 있습니다. 동시 실행 수, 깊이, model, timeout, 결과 알림은 runtime 정책이 결정하며 Portal에서 사용자별로 변경하는 화면은 없습니다. 다른 Agent의 session을 보거나 메시지를 보내는 기능도 일반 Chat Room과 별개의 self-service 설정으로 제공되지 않습니다.
+
+## 고위험 도구 정책
+
+현재 wrapper 기본값은 넓은 tool profile과 shell 실행을 구성하며, 사용자별 실행 승인을 자동으로 강제하지 않습니다. 파일 수정, shell command, host 또는 node 실행의 제한은 조직이 SOUL/AGENTS 지침과 배포 정책으로 별도 정의해야 합니다. 공유 channel에서는 elevated 실행을 열지 않는 것을 운영 원칙으로 삼고, Agent에게 명령을 요청할 때 대상·변경 내용·허용 경로·외부 영향을 명시하세요.

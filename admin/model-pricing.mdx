@@ -1,0 +1,23 @@
+---
+title: Model pricing 관리
+description: 비용 분석에 사용하는 model 가격 정보를 Platform 권한으로 관리하는 방법입니다.
+---
+
+# Model pricing 관리
+
+**Model Pricing**은 Portal의 cost analytics에 쓰는 model 가격 정보를 관리하는 화면입니다. create·edit·delete·sync는 서버에서 **플랫폼 최고 관리자**만 허용합니다. `platform:plan:Update`는 Portal의 버튼 노출에 쓰일 수 있지만, 서버 권한을 대체하지 않습니다.
+
+## 관리할 수 있는 값
+
+model별 input, output, cache 관련 가격과 context 정보, 활성 상태를 관리할 수 있습니다. 지원되는 경우 **Sync**로 OpenRouter 가격 정보를 가져오는 흐름도 제공합니다.
+
+가격 설정은 분석·표시 기준입니다. 공급자 청구서, 고객 계약 가격, 실제 결제 금액이 자동으로 일치한다고 가정하지 말고, billing 계약 및 provider invoice와 별도로 검증하세요.
+
+## 변경 절차
+
+1. 수정 전 현재 가격과 적용 대상 model을 기록합니다.
+2. 새 가격을 입력하거나 Sync 결과를 검토합니다.
+3. 단가와 통화·단위, 활성 상태를 확인합니다.
+4. 저장 후 cost analytics에서 표본 Agent 또는 기간을 확인합니다.
+
+잘못된 가격은 비용 분석을 왜곡할 수 있습니다. 변경 전후 값을 기록하고, 대량 비활성화나 삭제는 영향을 검토한 뒤 진행하세요.

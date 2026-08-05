@@ -1,0 +1,111 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "ClawPod",
+  "description": "ClawPod에서 AI Agent를 만들고, 팀과 함께 안전하게 사용하는 방법을 안내합니다.",
+  "theme": "mint",
+  "navigation": {
+    "groups": [
+      {
+        "group": "시작하기",
+        "pages": ["index", "guides/start-account", "guides/complete-onboarding", "start/first-agent"]
+      },
+      {
+        "group": "핵심 개념",
+        "pages": ["concepts/agent"]
+      },
+      {
+        "group": "Agent 기능",
+        "pages": [
+          "capabilities/index",
+          "capabilities/catalog",
+          "capabilities/portal-features",
+          "capabilities/consumer-availability",
+          "capabilities/memory-and-configuration",
+          "capabilities/automation-and-webhooks",
+          "capabilities/dreaming-and-memory-automation",
+          "capabilities/governance-and-settings",
+          "capabilities/managed-runtime",
+          "capabilities/runtime-availability",
+          "capabilities/agent-image-and-runtime",
+          "capabilities/agent-image-tool-inventory",
+          "capabilities/agent-execution-matrix",
+          "capabilities/integrations",
+          "capabilities/skills-and-tools",
+          "capabilities/browser-and-web",
+          "capabilities/channels-and-media",
+          "capabilities/chat-and-collaboration",
+          "capabilities/credentials-and-models",
+          "capabilities/enablement",
+          "CAPABILITY-COVERAGE"
+        ]
+      },
+      {
+        "group": "사용 가이드",
+        "pages": [
+          "guides/manage-agent",
+          "guides/configure-agent-environment",
+          "guides/use-chat-room",
+          "guides/use-chat-archive",
+          "guides/use-ai-chat",
+          "guides/manage-skills",
+          "guides/manage-credentials",
+          "guides/handle-secrets",
+          "guides/select-models",
+          "guides/manage-account-and-organization",
+          "guides/manage-notifications",
+          "guides/manage-iam",
+          "guides/use-audit-log",
+          "guides/check-workspace-and-system",
+          "guides/manage-workspace-documents",
+          "guides/file-formats-and-artifacts",
+          "guides/use-browser-and-cli",
+          "guides/use-tasks-and-milestones",
+          "guides/use-meeting-minutes",
+          "guides/manage-billing",
+          "guides/use-agent-templates",
+          "guides/use-analytics",
+          "guides/use-dashboard-and-costs",
+          "guides/secure-your-account",
+          "guides/manage-organization",
+          "guides/accept-organization-invite",
+          "guides/create-agent",
+          "guides/manage-tenants",
+          "guides/use-agent-desktop",
+          "guides/manage-legal-documents",
+          "guides/configure-agent-workspace-files",
+          "guides/configure-heartbeat",
+          "guides/send-webhook-to-agent"
+        ]
+      },
+      {
+        "group": "Agent 설정 파일",
+        "pages": [
+          "workspace-files/index",
+          "workspace-files/soul-md",
+          "workspace-files/agents-md",
+          "workspace-files/tools-md",
+          "workspace-files/memory-md",
+          "workspace-files/bootstrap-and-identity"
+        ]
+      },
+      {
+        "group": "Platform 관리자",
+        "pages": [
+          "admin/registration-requests",
+          "admin/invite-codes",
+          "admin/language-settings",
+          "admin/menu-visibility",
+          "admin/model-pricing",
+          "admin/agent-presets",
+          "admin/announcements",
+          "admin/manage-plans",
+          "admin/workflows"
+        ]
+      },
+      {
+        "group": "도움말",
+        "pages": ["help/index", "help/portal-feature-map"]
+      }
+    ]
+  }
+}

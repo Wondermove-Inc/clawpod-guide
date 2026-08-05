@@ -1,0 +1,46 @@
+---
+title: BOOTSTRAP.md, IDENTITY.md, USER.md, HEARTBEAT.md
+description: 새 Agent workspace를 준비하는 일회성 bootstrap 파일과 identity·사용자·heartbeat 파일의 역할을 설명합니다.
+---
+
+# BOOTSTRAP.md, IDENTITY.md, USER.md, HEARTBEAT.md
+
+이 파일들은 Agent가 첫 workspace를 이해하고 꾸준히 협업하도록 돕는 보조 bootstrap 파일입니다. 역할과 운영 지침의 중심은 `SOUL.md`와 `AGENTS.md`에 둡니다.
+
+## BOOTSTRAP.md: 한 번만 하는 시작 절차
+
+새 workspace에서는 `BOOTSTRAP.md`가 만들어질 수 있습니다. 이 파일은 Agent에게 `SOUL.md`와 `AGENTS.md`를 읽고, `USER.md`와 memory를 준비하며, 초기 소개를 하도록 안내합니다.
+
+초기 설정을 마친 Agent는 이 파일을 삭제하도록 안내받습니다. 완료 뒤 삭제된 `BOOTSTRAP.md`는 restart마다 다시 나타나는 지속 설정 파일로 사용하면 안 됩니다.
+
+## IDENTITY.md: 이름과 identity
+
+`IDENTITY.md`는 Agent 이름, 역할(theme), identity 표현을 담는 파일입니다. ClawPod runtime은 Agent 생성 시 identity 내용을 준비할 수 있습니다. persona·업무 규칙은 여기에 길게 쓰지 말고 `SOUL.md`에 둡니다.
+
+## USER.md: 함께 일하는 사람의 선호
+
+`USER.md`는 관리자·팀의 호칭, 시간대, 협업 선호처럼 비교적 안정적인 맥락을 두는 파일입니다.
+
+```markdown
+# User Profile
+
+- Preferred language: Korean
+- Preferred report format: summary, evidence, next actions
+- Timezone: Asia/Seoul
+```
+
+개인식별정보, 연락처, 인증 정보, 고객 데이터는 넣지 마세요. user preference가 장기 결정이 됐다면 `MEMORY.md`에도 짧게 정리할 수 있습니다.
+
+## HEARTBEAT.md: 짧은 정기 점검
+
+`HEARTBEAT.md`는 heartbeat가 설정된 Agent가 점검할 짧은 checklist입니다.
+
+```markdown
+# Heartbeat Checklist
+
+- [ ] pending message가 있는지 확인한다.
+- [ ] 실패한 task 또는 webhook event가 있는지 확인한다.
+- [ ] 기록할 만한 확정 결정이 있는지 확인한다.
+```
+
+heartbeat는 장시간 작업을 강제하거나 반복 메시지를 보내는 기능으로 사용하면 안 됩니다. 짧고 저비용인 확인만 두고, 실제 실행 권한과 schedule 제공 여부는 runtime·조직 정책을 확인하세요.

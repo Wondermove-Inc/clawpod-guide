@@ -1,0 +1,22 @@
+---
+title: Legacy Workflow route 안내
+description: sidebar에 노출되지 않는 Legacy Workflow route와 현재 소비자 사용 경계를 설명합니다.
+---
+
+# Legacy Workflow route 안내
+
+Workflow는 현재 sidebar에 없는 legacy route입니다. Portal source에는 제거 예정으로 표시되어 있으며, 일반 조직의 자동화 기능이나 Webhook Playbook의 대체 기능이 아닙니다. 일반적인 이벤트 자동화는 [Webhook에서 Agent 호출](/guides/send-webhook-to-agent)을 사용하세요.
+
+Portal URL은 플랫폼 최고 관리자 layout으로 제한되고 legacy workflow service는 tenant scope를 사용합니다. 그러나 sidebar 없는 제거 예정 legacy surface이며, 새 고객 자동화 계약이나 tenant self-service 기능으로 사용하지 마세요.
+
+## 현재 소비자 사용 범위
+
+이 route에는 목록, 상태 변경, 생성 화면, 실행 기록 화면이 남아 있습니다. 그러나 현재 Portal에는 지원되는 메뉴·권한·tenant 경계·consumer editor 계약이 없습니다. 다음 동작을 소비자 사용 절차로 제공하지 않습니다.
+
+새 Workflow 생성, 상태 변경, definition JSON 편집, 내부 API 호출로 이 route를 우회 사용하지 마세요. trigger type이나 활성 상태를 선택해도 target Agent·Webhook payload·credential을 구성하는 지원되는 consumer editor는 없습니다.
+
+## 정리
+
+- 새 이벤트 기반 작업은 [Webhook Source, Rule, Playbook](/guides/send-webhook-to-agent)으로 만듭니다.
+- 이 route를 업무 자동화·실행 기록·삭제 관리의 공식 경로로 사용하지 마세요.
+- 지원되는 Workflow product contract가 제공되기 전에는 기존 legacy 데이터를 수정하지 마세요.

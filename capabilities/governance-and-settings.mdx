@@ -1,0 +1,37 @@
+---
+title: 관리와 System 설정
+description: 조직, 권한, 개인 설정, 알림, 분석, 감사, 요금제와 tenant 관리 기능을 설명합니다.
+---
+
+# 관리와 System 설정
+
+ClawPod의 메뉴는 화면에 보인다고 해서 누구나 사용할 수 있는 것이 아닙니다. 역할, action 권한, sidebar visibility, tenant scope, plan과 quota가 함께 적용됩니다.
+
+## 조직과 멤버
+
+조직은 tenant 안에서 사용자와 Agent를 함께 관리하는 범위입니다. 권한이 있는 사용자는 조직을 만들고, 멤버 또는 Agent를 추가·수정·제거할 수 있습니다. 조직 생성은 quota에 의해 제한될 수 있으며, 멤버 제거 후에는 해당 조직의 목록과 기능 접근이 사라집니다.
+
+## 개인 설정
+
+| 기능 | 할 수 있는 일 | 영향 |
+| --- | --- | --- |
+| Profile | 프로필, 비밀번호, MFA 관련 설정을 관리합니다. | 계정 보안에 직접 영향을 줍니다. |
+| Appearance | Light, Dark, System theme를 선택합니다. | 현재 사용자의 화면 표현만 바뀝니다. |
+| Notifications | 알림 종류와 전달 선호를 설정하고 알림 목록을 확인합니다. | 설정을 꺼도 기존 알림 기록은 남을 수 있습니다. |
+| Tenant withdrawal | 권한 있는 테넌트 관리자는 tenant 탈퇴를 요청할 수 있습니다. | 관련 Agent가 중지되고 멤버가 로그아웃될 수 있으므로 되돌리기 가능 기간을 확인해야 합니다. |
+
+## IAM, audit, system
+
+IAM에서는 사용자, policy, permission reference를 관리합니다. Audit log는 권한이 있는 사용자가 변경 기록을 조회하거나 내보내는 기능입니다. System health는 NATS messaging, API server, database, Kubernetes cluster·namespace 상태를 보여 줄 수 있으며, 실제 노출은 settings와 role gate에 따릅니다.
+
+실행 절차는 [IAM, Policy, Role 관리](/guides/manage-iam)와 [Audit Log 확인과 내보내기](/guides/use-audit-log)를 참고하세요. 현재 Portal의 정책 연결은 사용자 직접 연결 흐름이며, API source에만 남아 있는 Group·reusable Role은 소비자 self-service 기능으로 안내하지 않습니다.
+
+## Analytics와 billing
+
+Analytics에서는 접근 가능한 Agent의 활동, 대화, 비용, 조직별 지표와 이상 징후를 확인할 수 있습니다. 일부 performance monitoring은 최고 관리자 전용입니다.
+
+Billing에서는 plan, subscription, upgrade, cancel, resume 상태를 관리합니다. plan과 seat·organization·Agent quota는 기능 접근과 생성 가능 여부에 영향을 줄 수 있으므로, 제한에 도달하면 권한 문제가 아니라 plan 또는 quota 상태도 확인하세요.
+
+## 최고 관리자 전용 기능
+
+테넌트 생성·삭제·복원, 요금제 목록과 가격 관리, 플랫폼 언어 설정처럼 전체 플랫폼에 영향을 주는 기능은 플랫폼 최고 관리자 전용입니다. 이런 기능은 일반 조직 사용자의 사용 가이드에 섞지 않고, 영향·복구·감사 요건을 포함한 별도 관리자 가이드로 유지합니다.

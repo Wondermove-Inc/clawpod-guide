@@ -1,0 +1,48 @@
+---
+title: Workspace 사용량과 System 상태 확인
+description: 현재 plan·quota 사용량을 확인하고, Portal의 system health로 운영 장애를 구분하는 방법입니다.
+---
+
+# Workspace 사용량과 System 상태 확인
+
+Agent를 새로 만들 수 없거나 Portal 기능이 정상 동작하지 않을 때는 권한 문제만 보지 말고 workspace quota와 system health를 함께 확인하세요.
+
+## Workspace 사용량 확인
+
+Settings의 **Workspace**에서 현재 tenant의 다음 정보를 확인할 수 있습니다.
+
+- 현재 plan
+- 사용자 수와 한도
+- 조직 수와 한도
+- Agent 사용량과 한도
+- 이용 가능한 plan 개요
+
+한도에 도달하면 Agent 또는 조직 생성이 거부될 수 있습니다. 이 경우 IAM 권한을 넓히지 말고, 사용하지 않는 resource 정리 여부와 plan 변경 필요성을 먼저 검토하세요.
+
+## Plan 변경 요청
+
+현재 Workspace 화면의 다른 plan은 즉시 self-service 전환하는 흐름이 아니라 영업 또는 관리자 연락 절차를 안내합니다. plan 변경을 요청할 때는 필요한 사용자·조직·Agent 수, 예상 시작일, 필요한 기능을 함께 전달하세요.
+
+현재 plan을 낮추거나 resource를 줄이기 전에는 quota를 초과한 상태에서 어떤 Agent와 조직이 영향을 받는지 확인해야 합니다.
+
+## System health 확인
+
+Settings의 **System**은 다음 service layer의 상태를 보여 줄 수 있습니다.
+
+- NATS messaging
+- API server와 version·uptime
+- Database
+- Kubernetes cluster 및 namespace
+
+페이지는 주기적으로 상태를 갱신하며, 필요할 때 새로고침할 수 있습니다. 상태가 unhealthy 또는 unknown이면 사용자 설정을 반복 변경하지 말고, 발생 시간·영향받는 Agent·Room·event와 함께 운영 담당자에게 전달하세요.
+
+## 빠른 구분법
+
+| 증상 | 먼저 확인할 곳 |
+| --- | --- |
+| 새 Agent·조직 생성 실패 | Workspace quota, 해당 action 권한 |
+| 특정 사용자만 메뉴 또는 작업을 못 함 | IAM의 Effective Permissions, 조직 멤버십 |
+| webhook event가 Room에 도착하지 않음 | Event 기록, target Agent/Room, system health |
+| 여러 Agent가 동시에 응답하지 않음 | System health, Agent 상태, 운영 공지 |
+
+System health는 장애의 단서를 제공하지만 자동 복구나 원인 확정을 대신하지 않습니다. 재시작·배포·infrastructure 변경은 권한 있는 운영 담당자의 절차를 따르세요.

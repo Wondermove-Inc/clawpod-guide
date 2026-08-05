@@ -1,0 +1,64 @@
+---
+title: Provider와 model 선택
+description: ClawPod Agent의 main·sub·fallback·heartbeat model을 credential과 runtime 조건에 맞게 선택하는 방법입니다.
+---
+
+# Provider와 model 선택
+
+Agent는 하나의 model만 쓰도록 고정할 필요가 없습니다. Portal의 Agent 생성·설정 흐름은 **main**, **sub**, **fallback**, **heartbeat** 역할별 model을 선택할 수 있습니다. 이 선택은 Agent가 실제로 호출할 provider credential, model catalog, runtime release와 함께 맞아야 합니다.
+
+## Cloud에서 관리하는 provider
+
+| provider | Credential 형태 | Portal에서의 model 선택 방식 |
+| --- | --- | --- |
+| Anthropic | API key 또는 setup token | 일반 selector의 provider. Agent binding은 API key만 허용됩니다. |
+| OpenAI | API key | 일반 selector의 provider |
+| OpenAI Codex | `auth.json` | 일반 selector의 provider. subscription 기반 candidate는 catalog 상태에 따라 표시됩니다. |
+| Google Gemini | API key | 일반 selector의 provider |
+| OpenRouter | API key | 일반 selector에서 catalog의 model을 통합해 표시할 수 있습니다. |
+| Local LLM (Ollama) | server URL, 선택 model | local server 연결·test 뒤 선택 model을 역할에 자동 배정할 수 있습니다. API key는 지원하지 않습니다. |
+| OpenAI-compatible | server URL, 선택 model, 필요 시 API key | local server 연결·test 뒤 선택 model을 역할에 자동 배정할 수 있습니다. |
+
+Portal의 credential dialog는 Anthropic, OpenAI, OpenAI Codex, Google, OpenRouter, Local LLM의 여섯 service 선택지를 제공합니다. Local LLM 안에서 Ollama와 OpenAI-compatible server를 구분하므로, runtime provider identifier는 표처럼 일곱 가지가 됩니다. Portal의 hosted provider selector는 앞의 다섯 hosted provider를 기준으로 동작합니다.
+
+API key 발급 위치와 Codex CLI로 `auth.json`을 만드는 절차는 [AI Key와 Credential 관리](/guides/manage-credentials#provider-api-key-발급하기)를 따르세요. `auth.json`은 OpenAI API key의 대체 문자열이 아니라 Codex 로그인으로 생기는 별도 JSON credential입니다.
+
+다른 provider adapter가 Agent repository에 존재하더라도 Cloud Credential·Portal 연결이 확인되지 않은 경우, 고객이 사용할 수 있다고 안내하지 않습니다.
+
+## model 목록은 왜 고정 표가 아닌가요?
+
+Portal의 selectable model 목록은 Platform의 전역 활성 model pricing catalog에서 읽습니다. provider의 catalog와 model 활성 상태가 달라질 수 있으므로 문서에 고정된 “지원 model 전체 목록”을 두면 곧바로 오래된 정보가 됩니다.
+
+이 목록은 tenant별 backend allowlist가 아니며, 목록에 없다는 사실만으로 API 호출이 거절된다고 단정할 수 없습니다. 소비자는 Portal selector에 표시된 model만 선택하고, model ID를 Chat, `SOUL.md`, `AGENTS.md`에 직접 적어 우회하지 마세요. model을 추가·비활성화하는 Platform catalog 작업은 [Model pricing 관리](/admin/model-pricing)의 관리자 범위입니다.
+
+## 역할별 선택 원칙
+
+| 역할 | 용도 | 선택 원칙 |
+| --- | --- | --- |
+| main | 최종 판단과 주요 응답 | 업무 품질·tool compatibility·비용을 함께 검토합니다. |
+| sub | 조사, 초안, 보조 작업 | main보다 가벼운 model을 쓸 수 있지만 민감 판단을 위임하지 않습니다. |
+| fallback | main 호출 실패 시 대체 | main과 다른 provider를 쓰면 그 provider credential도 연결해야 합니다. |
+| heartbeat | 정기 점검 turn | 짧은 점검에 맞는 model을 선택하고, heartbeat 자체가 Cloud self-service scheduler라는 뜻은 아닙니다. |
+
+fallback은 “항상 더 싼 model”이 아니라 **실제로 인증·호출 가능한 대체 경로**여야 합니다. main과 fallback이 서로 다른 provider라면, 두 credential을 모두 연결하고 test Room에서 각각 작동을 확인하세요.
+
+## 설정 절차
+
+1. 필요한 provider Credential을 [AI Key와 Credential 관리](/guides/manage-credentials)에서 준비합니다.
+2. Agent 생성 또는 설정에서 main model을 선택합니다.
+3. 필요할 때 sub, fallback, heartbeat model을 각각 선택합니다.
+4. 모든 선택 model에 필요한 credential이 같은 tenant에 연결됐는지 확인합니다.
+5. 비민감 test Room에서 main 응답, fallback 조건, tool 사용 가능 여부를 작은 요청으로 확인합니다.
+6. 비용·오류·latency는 [Analytics](/guides/use-analytics)에서 추적하고, 문제가 생기면 한 번에 여러 역할을 바꾸지 않습니다.
+
+## Local LLM 사용 시 전제조건
+
+Local LLM은 Ollama 또는 OpenAI-compatible server를 등록하고 연결 test를 통과해야 합니다. 선택 model의 parameter size 정보가 있으면 Portal은 큰 model을 main, 작은 model을 heartbeat처럼 역할에 자동 배정할 수 있습니다. 자동 배정 결과도 그대로 승인하지 말고, server 접근 범위·성능·privacy·fallback을 확인하세요.
+
+연결 test 성공은 Agent Pod에서의 실제 model 호출까지 보장하지 않습니다. Agent runtime network, 해당 server의 allowlist, 선택 model의 실제 설치 상태를 test Room에서 추가로 검증해야 합니다.
+
+## Agent repository의 더 넓은 provider 범위
+
+`clawpod-agent` source에는 Amazon Bedrock, Azure OpenAI, GitHub Copilot, DeepSeek, Groq, Mistral, xAI, Z.ai, MiniMax, Qwen, Voyage, Cerebras, OpenAI-compatible proxy와 plugin 기반 custom provider 같은 폭넓은 provider·catalog가 존재합니다. 이는 Agent software가 확장 가능하다는 사실일 뿐, ClawPod Cloud가 해당 provider의 credential, billing, support, release를 제공한다는 뜻은 아닙니다.
+
+현재 소비자가 Portal에서 연결해 사용할 수 있는 provider는 이 문서의 표에 있는 Anthropic, OpenAI, OpenAI Codex, Google Gemini, OpenRouter, Local LLM(Ollama·OpenAI-compatible)입니다. 그 밖의 adapter는 Portal 연결·credential lifecycle이 제공되지 않으므로, credential을 Agent에 직접 넣거나 설정 파일을 고쳐 사용하지 마세요.

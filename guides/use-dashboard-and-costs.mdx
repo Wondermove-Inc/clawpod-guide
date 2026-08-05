@@ -1,0 +1,29 @@
+---
+title: Dashboard와 Costs 사용하기
+description: 운영 현황, quota, 사용량, 비용을 기간별로 읽고 개인 Dashboard layout을 조정하는 방법입니다.
+---
+
+# Dashboard와 Costs 사용하기
+
+Dashboard는 `analytics:dashboard:View` 권한이 필요합니다. 비용 화면은 **Costs**를 열면 Analytics의 Costs 화면으로 이동하며, analytics 조회 권한 범위에서 데이터를 표시합니다.
+
+## Dashboard
+
+1. Portal에서 **<!-- ui-label: nav.dashboard -->대시보드<!-- /ui-label -->**를 엽니다.
+2. Period selector에서 `24h`, `7d`, `30d`, `90d` 중 볼 기간을 선택합니다.
+3. Agent insights, top agents status, recent activity, tenant quota 네 위젯으로 상태와 사용량을 읽습니다.
+4. **<!-- ui-label: analyticsToolbar.editLayout -->레이아웃 편집<!-- /ui-label -->**을 선택하면 위젯을 끌어 옮기고 오른쪽 아래 handle로 크기를 조절할 수 있습니다.
+5. 편집을 마치면 **<!-- ui-label: analyticsToolbar.lockLayout -->레이아웃 잠금<!-- /ui-label -->**으로 돌아갑니다. layout은 현재 브라우저의 local storage에 저장됩니다.
+6. **<!-- ui-label: analyticsToolbar.reset -->초기화<!-- /ui-label -->**는 이 브라우저의 layout을 기본 배치로 되돌립니다.
+
+layout 변경은 표시 방식만 바꾸며 Agent, quota, 비용 데이터를 바꾸지 않습니다.
+
+## Costs
+
+1. Portal에서 **Costs**를 엽니다.
+2. Period selector로 같은 기간 단위를 선택합니다.
+3. 상단에서 total cost, 가장 비용이 큰 model, input/output token 합계, 요청당 평균 비용을 읽습니다.
+4. 아래에서 cost-over-time, hourly average, organization별·model별 비용, 비용 상위 10개 Agent를 비교합니다.
+5. concentration alert가 보이면 해당 기간과 상위 Agent를 좁혀 보고, [Agent 상태 관리](/guides/manage-agent)에서 Agent 설정·실행 기록을 확인합니다.
+
+Costs 화면은 현재 비용 데이터를 보는 기능입니다. 예산 한도 설정, 비용 export, 결제 수단 변경은 이 화면에서 수행하지 않습니다. 구독과 plan 변경은 [Billing 가이드](/guides/manage-billing)에서 관리합니다.

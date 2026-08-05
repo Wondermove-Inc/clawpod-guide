@@ -1,0 +1,29 @@
+---
+title: Portal 기능
+description: 현재 ClawPod Portal에서 조직 구성원이 권한과 설정에 따라 사용할 수 있는 기능입니다.
+---
+
+# Portal 기능
+
+이 페이지는 현재 Portal source에서 확인한 기능을 정리합니다. 실제 메뉴와 선택지는 조직 역할, tenant 설정, quota, 요금제에 따라 달라질 수 있습니다.
+
+| 기능 | 할 수 있는 일 | 필요한 조건 |
+| --- | --- | --- |
+| Agent 관리 | Agent 목록을 보고 검색하며, 권한과 quota 범위에서 Agent를 생성·관리합니다. | Agent 관련 권한과 사용 가능한 quota |
+| Chat Room | Agent와 실시간 메시지를 주고받고, 방을 만들며, 첨부·멘션·읽음 상태와 회의 기능을 사용합니다. | Chat 접근 권한과 같은 조직 범위 |
+| Credential | 저장된 credential을 확인하고, 권한에 따라 생성·교체하며 local LLM 연결을 시험합니다. | Credential 사용 또는 관리 권한. 값 자체는 공유하지 않습니다. |
+| Skill Store | 공개 Skill과 조직 Skill을 찾고, 권한에 따라 업로드·다운로드·Agent별 설치/제거 요청을 합니다. | Skill별 설치·다운로드·관리 권한. 실제 package lifecycle은 확인되지 않았습니다. |
+| Legacy Workflow route | legacy 화면이 남아 있습니다. | 인증·RBAC·tenant 경계가 소비자 기능으로 확인되지 않아 사용 경로로 안내하지 않습니다. |
+| Webhook | source, rule, playbook, event를 관리해 외부 이벤트 기반 흐름을 구성합니다. | Webhook 생성·수정·삭제 권한과 조직 설정 |
+| Tasks와 파일 | 조직 Task를 보고, 허용된 파일 형식과 크기 안에서 첨부 파일을 올리고 결과물을 관리합니다. | 대상 조직 접근 권한 |
+| Workspace documents | legacy 공유 문서 저장소의 텍스트 파일을 탐색·업로드합니다. Agent `/workspace`와는 별개입니다. | legacy 화면 |
+| 조직과 멤버 | 조직을 만들고 사용자·Agent 멤버십을 관리합니다. | 조직 관리자 역할, tenant quota |
+| Analytics와 billing | Agent 활동, 대화, 비용을 확인하고 plan·subscription 상태를 관리합니다. | 접근 가능한 Agent 범위와 plan 권한. 일부 monitoring 기능은 최고 관리자 전용입니다. |
+
+## 문서 작성 원칙
+
+각 기능의 상세 가이드는 단순히 메뉴 위치만 설명하지 않습니다. 누가 사용할 수 있는지, 어떤 설정이 선행되는지, 데이터가 어느 조직 범위에 적용되는지, 중지하거나 삭제할 때 어떤 영향이 있는지를 함께 설명합니다.
+
+## 문서에 포함하지 않는 항목
+
+Portal source에 남아 있어도 도달할 수 없는 화면, 테스트 전용 경로, 운영자만 사용하는 복구 절차는 소비자 기능으로 안내하지 않습니다. 현재 분리한 범위는 [숨겨진 Agent 기능의 소비자 제공 상태](/capabilities/consumer-availability)에서 확인할 수 있습니다.

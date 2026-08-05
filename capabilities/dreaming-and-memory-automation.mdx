@@ -1,0 +1,27 @@
+---
+title: Dreaming과 memory 자동화 상태
+description: 현재 Dreaming 기능의 지원 상태와 실제로 사용할 수 있는 memory 자동화 기능을 설명합니다.
+---
+
+# Dreaming과 memory 자동화 상태
+
+현재 ClawPod Agent runtime에는 소비자용 **Dreaming** 기능이 없습니다. 이전 Dreaming 화면, CLI, schedule, on/off 설정은 제거됐으므로 `/dreaming` 명령이나 frequency 설정을 현재 사용법으로 안내하면 안 됩니다.
+
+## 현재 사용할 수 있는 memory 기능
+
+| 기능 | 설명 |
+| --- | --- |
+| Markdown memory | `MEMORY.md`와 날짜별 memory 파일에 장기 맥락과 일별 기록을 보관합니다. |
+| Memory search·get | 관련 기록을 검색하고 필요한 범위만 읽습니다. |
+| Memory remember | 정책이 허용할 때 durable memory에 중요한 사실과 결정을 저장합니다. |
+| Compaction 전 flush | 현재 Cloud wrapper 기본값에서는 비활성화되어 있습니다. compaction을 memory 자동 보존 기능으로 안내하지 않습니다. |
+
+Memory는 Agent runtime이 사용하는 기능이며, Portal에서 memory plugin·보존 기간·검색 provider를 설정하는 화면은 없습니다. Memory Wiki도 Cloud image·Portal 제공 경로가 없어 소비자 기능이 아닙니다. 소비자는 [workspace 파일 설정](/guides/configure-agent-workspace-files)의 `SOUL.md` 지침과 Agent 요청으로 memory 사용 범위를 정합니다.
+
+## 권장 사용법
+
+Agent에게 “기억해”라고만 요청하기보다, 무엇을 얼마나 오래 보존해야 하는지와 제외할 민감 정보를 함께 알려 주세요.
+
+> 이 프로젝트의 의사결정과 담당자만 memory에 남기고, credential·access token·개인 식별 정보는 저장하지 마세요.
+
+Memory를 수정하거나 삭제하는 권한, 저장 위치, 보존 기간은 조직의 data policy에 맞게 운영해야 합니다.

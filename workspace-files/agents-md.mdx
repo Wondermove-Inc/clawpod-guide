@@ -1,0 +1,54 @@
+---
+title: AGENTS.md 운영 지침
+description: Agent의 반복 업무 흐름과 안전 규칙을 AGENTS.md로 관리하는 방법입니다.
+---
+
+# AGENTS.md 운영 지침
+
+`AGENTS.md`는 반복되는 업무 흐름, 안전 규칙, 협업 규칙을 두는 운영 매뉴얼입니다. runtime은 첫 boot에 이 파일을 workspace로 복사할 수 있으며, session마다 자동 주입되는지 여부는 Cloud Portal이 보장하지 않습니다. `SOUL.md`의 persona를 길게 다시 쓰기보다 “어떻게 일할지”를 적습니다.
+
+## 기본 제공 지침은 왜 유지해야 하나요?
+
+ClawPod는 Agent 생성 시 `AGENTS.md`가 비어 있으면 서버 기본 지침을 넣고, 첫 boot에 workspace로 복사합니다. 기본 지침에는 tool discipline, 반복 응답 방지, secret 보호·위험 작업 전 확인, group chat에서의 발언 판단이 포함됩니다.
+
+기본 지침을 통째로 교체하는 것은 권장하지 않습니다. 특히 다음을 약화하면 안 됩니다.
+
+- secret·credential을 공유하지 않는 원칙
+- 삭제·외부 변경·금융·법무·범위 밖 작업 전 확인
+- 불확실할 때 사실을 지어내지 않는 원칙
+- 같은 답변 또는 메시지를 반복하지 않는 원칙
+
+현재 Portal에는 `AGENTS.md`를 직접 편집하는 customer-facing UI가 확인되지 않았습니다. 따라서 일반 사용자가 Portal 설정 메뉴에서 이를 바꾸는 절차로 안내하지 않습니다. 조직의 승인된 workspace 관리 절차가 있는 경우에만, 기존 내용의 사본과 review를 거쳐 최소 변경을 적용하세요.
+
+첫 boot 이후에는 workspace 초기화 marker가 ConfigMap의 `AGENTS.md`를 다시 복사하지 않습니다. 즉 관리자가 server-side 설정을 바꾸더라도, 이미 실행된 Agent의 workspace 파일이 자동으로 같은 내용으로 덮어써진다고 가정하면 안 됩니다. 변경이 필요하면 기존 Agent에 적용되는 승인된 migration·검증 절차를 사용하세요.
+
+## 추천 구성
+
+```markdown
+# Session Startup
+
+1. 현재 요청의 대상 조직과 Agent를 확인한다.
+2. 필요한 정보가 없으면 추측하지 말고 질문한다.
+3. 관련된 `MEMORY.md` 또는 memory 검색이 필요한지 판단한다.
+
+# Working Rules
+
+- 외부 변경 전에는 대상, 영향, 승인 여부를 요약한다.
+- 같은 Room에 여러 Agent가 있으면 대상 Agent를 명확히 mention한다.
+- 완료 보고에는 변경 내용, 검증 결과, 남은 위험을 구분한다.
+
+# Red Lines
+
+- secret, token, password, 개인식별정보를 출력하거나 저장하지 않는다.
+- tenant·조직 경계를 넘는 데이터 요청은 거절하고 관리자에게 연결한다.
+- 승인 없는 삭제·배포·결제·권한 변경을 실행하지 않는다.
+```
+
+`Session Startup`과 `Red Lines`처럼 명확한 제목을 사용하고, Agent 지침에서 이 파일을 먼저 읽도록 정하면 중요한 운영 규칙을 일관되게 적용하기 쉽습니다.
+
+## 변경 전 checklist
+
+1. 기존 기본 지침을 사본으로 보관했나요?
+2. 추가할 규칙이 `SOUL.md`의 역할 설명이나 `TOOLS.md`의 tool 메모와 중복되지 않나요?
+3. 새 지침이 tenant·권한·secret 안전 규칙을 약화하지 않나요?
+4. 작은 test Room에서 Agent의 응답과 행동을 확인했나요?

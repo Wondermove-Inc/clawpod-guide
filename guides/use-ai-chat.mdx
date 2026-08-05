@@ -1,0 +1,46 @@
+---
+title: AI Chat 사용하기
+description: Portal AI Chat에서 세션을 관리하고, streaming 응답·검색·artifact를 사용하는 방법입니다.
+---
+
+# AI Chat 사용하기
+
+AI Chat은 Portal에 로그인한 사용자가 ClawPod 운영 정보를 질문하고 작업을 보조받는 대화 기능입니다. Agent와 대화하는 [Chat Room](/guides/use-chat-room)과 달리, AI Chat의 대화 세션은 사용자별로 분리됩니다.
+
+## 대화 시작과 세션 관리
+
+1. Portal에서 **<!-- ui-label: aiChat.title -->OpenClaw AI<!-- /ui-label -->**를 엽니다.
+2. 왼쪽 목록에서 기존 세션을 선택하거나 새 대화를 시작합니다.
+3. 입력 영역 `무엇을 도와드릴까요?`에 질문을 쓰고 **<!-- ui-label: aiChat.submitMessage -->전송<!-- /ui-label -->**을 선택합니다.
+4. 응답이 streaming으로 표시됩니다. 생성 중에는 **<!-- ui-label: aiChat.stopGenerating -->중지<!-- /ui-label -->** 또는 `Esc`로 해당 응답을 중지할 수 있습니다. 첫 사용자 메시지는 세션 제목으로 저장되며 100자까지 사용합니다.
+5. 대화 기록에서는 **<!-- ui-label: aiChat.history.searchPlaceholder -->대화 내용 검색<!-- /ui-label -->**으로 세션을 찾고, **<!-- ui-label: aiChat.history.select -->선택<!-- /ui-label -->**으로 하나 이상 고른 뒤 **<!-- ui-label: aiChat.history.deleteTitle -->대화 삭제<!-- /ui-label -->**를 선택할 수 있습니다. 삭제 확인을 마치면 그 세션의 메시지도 함께 삭제됩니다.
+
+세션 목록은 내 세션만 최근 수정 순으로 최대 50개 표시합니다.
+
+## 질문하는 방법
+
+AI Chat에는 사용자 역할에 따라 다른 Portal 도구가 연결됩니다. 플랫폼 최고 관리자와 테넌트 관리자는 관리·상담 도구를, 테넌트 사용자는 Agent 관리·상담 도구를, 조회 전용 사용자와 Agent는 공통 읽기 도구를 사용합니다. 권한이 없는 작업을 우회하도록 요청하지 마세요.
+
+질문에 범위와 원하는 결과를 넣으세요.
+
+> 지난 7일 동안 우리 조직에서 비용이 높은 Agent 5개와 각 Agent의 원인을 표로 정리해 주세요. 설정 변경은 하지 마세요.
+
+도구 실행이 거부되거나 실패하면 AI Chat은 오류 결과를 대화에 표시합니다. 권한이 없는 작업을 우회하도록 요청하지 말고, 필요한 IAM Policy를 [IAM 가이드](/guides/manage-iam)에서 부여받으세요.
+
+## 웹 검색
+
+AI Chat의 검색은 query가 필수이며, 기본적으로 5개 결과를 사용합니다. 검색 결과의 URL과 요약은 외부 정보이므로, 중요한 판단에는 원문 링크를 열어 확인하세요. API key, Cookie, 개인 정보를 검색 query에 넣지 않습니다.
+
+## Artifact 사용하기
+
+AI Chat이 문서·HTML·SVG·React·research paper·code artifact를 만들면 Artifact panel에서 내용을 봅니다. artifact를 열어 버전을 고르고 preview 또는 code view로 확인한 뒤 내용을 clipboard에 복사할 수 있습니다. 현재 Portal AI Chat에는 artifact 파일 다운로드 버튼이 없습니다.
+
+artifact는 대화 결과물입니다. Portal 설정이나 Agent workspace의 원본 파일을 자동으로 바꾸지 않습니다. 원본 수정이 필요하면 대상 Agent와 workspace를 명시해 [Chat Room](/guides/use-chat-room)에서 별도 작업을 요청하세요.
+
+## 오류 처리
+
+- 로그인 세션이 만료되면 AI Chat은 로그인 화면으로 이동합니다.
+- 응답이 중단되거나 끝나지 않으면 현재 화면의 오류 메시지를 확인합니다. 고정 timeout 값은 consumer contract로 확인되지 않았습니다.
+- AI Chat backend에 연결하지 못하면 unavailable 오류가 표시됩니다.
+
+이 오류는 Agent의 model credential 오류와 다른 경로입니다. Agent model·credential 문제는 [Provider와 model 선택](/guides/select-models)을 사용하세요.

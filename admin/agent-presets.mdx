@@ -1,0 +1,26 @@
+---
+title: Agent preset 관리
+description: Agent 생성에 재사용할 역할·프로필·모델·SOUL.md 기본값을 관리하는 플랫폼 최고 관리자 가이드입니다.
+---
+
+# Agent preset 관리
+
+**Agent Presets**는 Agent 생성 시 선택할 역할 템플릿을 만드는 플랫폼 최고 관리자 전용 관리 화면입니다. preset에는 역할 이름과 소개, 부서, 전문 분야, provider별 model 역할, `SOUL.md` 기본값을 담을 수 있습니다.
+
+## preset 만들기
+
+1. 산업 또는 분류를 만든 뒤 그 안에 역할 preset을 추가합니다.
+2. 사용자에게 보이는 이름·제목·설명과 전문 분야를 작성합니다.
+3. main, sub, fallback, heartbeat에 사용할 model 기본값을 검토합니다.
+4. `SOUL.md` 기본값에는 역할·말투·업무 범위만 넣고 secret이나 개인 정보를 넣지 않습니다.
+5. 필요하면 지원 언어별 설명·요약을 함께 관리합니다.
+
+## 사용과 변경 범위
+
+Agent 생성에서 preset을 선택하면 해당 preset의 기본값을 출발점으로 사용할 수 있습니다. preset 편집 화면에는 기존에 실행 중인 모든 Agent에 일괄 적용하는 흐름이 보이지 않으므로, 이미 만든 Agent의 설정·`SOUL.md`가 자동으로 바뀐다고 가정하지 마세요. 기존 Agent는 개별 설정과 재시작 영향을 별도로 검토합니다.
+
+## 삭제와 정리
+
+기본 제공 또는 보호된 preset은 삭제가 제한될 수 있습니다. 사용 중인 preset을 없애기 전에는 생성 화면과 운영 문서에서의 참조를 확인하고, 필요한 경우 새 preset으로 먼저 전환하세요.
+
+`SOUL.md`의 실제 runtime 주입과 업데이트 영향은 [SOUL.md 설정](/workspace-files/soul-md)을 참고하세요.

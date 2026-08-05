@@ -1,0 +1,37 @@
+---
+title: 자동화와 Webhook
+description: 예약 작업, Task 알림, Webhook source·rule·playbook과 workflow의 현재 기능 경계를 설명합니다.
+---
+
+# 자동화와 Webhook
+
+자동화는 Agent runtime의 예약 작업과 Cloud의 Webhook·Task·workflow 기능으로 나뉩니다. 각 기능은 테넌트, 권한, 외부 전달 범위를 확인한 뒤 사용해야 합니다.
+
+## 예약 작업과 background task
+
+upstream Agent runtime에 일회성 또는 반복 예약 기능이 있을 수 있습니다. 그러나 현재 Cloud에서 고객이 scheduler를 생성·조회·중지하는 경로와 task record 연결은 확인되지 않았습니다. 따라서 예약 job의 고객 사용 절차로 안내하지 않습니다.
+
+주기적인 main-session 점검과 `HEARTBEAT.md`의 실제 runtime 동작은 [HEARTBEAT.md와 주기 점검](/guides/configure-heartbeat)를 참고하세요. Heartbeat는 제거된 Dreaming 기능이나 자동 memory consolidation 기능이 아닙니다.
+
+## Webhook source, rule, playbook
+
+| 구성 | 역할 | 중요한 조건 |
+| --- | --- | --- |
+| Source | 외부 서비스가 이벤트를 보낼 출처를 정의합니다. | 생성 시 조직과 source type을 지정합니다. signing secret은 한 번만 표시될 수 있으므로 조직의 비밀값 보관 절차에 따라 보관합니다. |
+| Rule | 어떤 event를 어떤 Agent 또는 Room으로 보낼지 정합니다. | source와 대상은 같은 tenant여야 하며, 같은 유형의 대상을 여러 개 선택하면 전체 전달(broadcast) 또는 round-robin, 조건·cooldown·시간당 제한을 설정할 수 있습니다. |
+| Playbook | 수신한 event에 덧붙일 운영 지침 또는 처리 맥락입니다. | 권한이 있는 사용자가 관리하며, 삭제하면 복구 경로를 별도로 확보해야 합니다. |
+| Event | 수신·전달 상태를 확인하는 기록입니다. | 외부 payload에는 민감한 데이터가 포함될 수 있으므로 접근과 보존 기간을 검토합니다. |
+
+Webhook source 또는 rule을 끄면 새 이벤트 처리를 중지할 수 있습니다. 삭제는 되돌릴 수 없을 수 있으므로, 연결을 제거하기 전 설정과 필요한 복구 정보를 보관하세요.
+
+## 전달과 신뢰성
+
+Webhook 수신·서명 검증·대상 전달은 모두 배포된 runtime 연결이 있어야 동작합니다. source가 존재한다고 전달 성공이나 자동 재시도가 보장되지는 않습니다. 중요한 자동화는 테스트 event로 확인하고, 실패 시 event 기록과 대상 Room·Agent 상태를 함께 확인하세요.
+
+## Legacy Workflow route
+
+Legacy Workflow route는 sidebar에 노출되지 않으며, Portal source에서 제거 예정으로 표시됩니다. 현재 Cloud source에서는 이 route의 인증·RBAC·tenant 경계를 소비자 기능으로 확인할 수 없습니다. 따라서 고객 또는 플랫폼 최고 관리자 사용 경로로 안내하지 않습니다. 상세 경계는 [Legacy Workflow route 안내](/admin/workflows)를 참고하고, 현재 소비자 자동화는 [Webhook으로 Agent에게 이벤트 보내기](/guides/send-webhook-to-agent)를 사용하세요.
+
+## Task 알림과 escalation
+
+Task 변경, 댓글, 마감 임박 또는 escalation에 따라 알림을 만들 수 있는 Cloud code가 있습니다. 이 기능은 알림과 Room 전달 연결이 있어야 하며, 재시작 또는 여러 실행 인스턴스 상황에서 알림이 정확히 한 번만 전달된다고 보장하지 않습니다.

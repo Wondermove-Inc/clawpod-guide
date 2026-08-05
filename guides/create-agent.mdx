@@ -1,0 +1,46 @@
+---
+title: Agent 만들기와 생성 전 검토
+description: Persona, SOUL, resource, secret 설정을 검토해 목적에 맞는 Agent를 만드는 방법입니다.
+---
+
+# Agent 만들기와 생성 전 검토
+
+Agent 생성에는 `core:agent:Create` 권한과 사용 가능한 Agent quota가 필요합니다. 새 Agent는 단순한 대화창이 아니라 workspace, 기본 지침, model·credential, 실행 환경을 갖는 운영 resource입니다.
+
+## 1. Persona와 조직 선택
+
+1. Portal에서 **<!-- ui-label: nav.agents -->에이전트<!-- /ui-label --> → <!-- ui-label: pages.agents.createAgent -->새 팀원 추가<!-- /ui-label -->**를 엽니다.
+2. 산업과 Persona preset을 고르거나 blank Agent를 선택합니다.
+3. Agent 이름, 역할, 설명, 대상 조직을 확인합니다.
+4. 같은 역할의 Agent가 이미 있는지 확인합니다.
+
+역할 중복 경고가 나타나면 새 Agent가 필요한지, 기존 Agent를 개선할지 결정하세요. 목적이 같은 Agent를 여러 개 만들면 webhook target, 비용, 운영 책임이 분산될 수 있습니다.
+
+## 2. SOUL과 기본 지침
+
+SOUL configuration에는 Agent의 역할과 행동 지침을 넣습니다. 좋은 지침은 목표, 허용된 정보, 금지 행동, 불확실할 때의 처리, 결과 형식을 구체적으로 적습니다.
+
+secret, API key, 고객의 민감한 원문, 다른 사용자 계정의 정보를 SOUL에 넣지 마세요. Agent가 shell·파일·browser를 사용해야 한다면 자동 실행이 허용되는 범위와 사용자 승인이 필요한 범위를 명확히 적습니다.
+
+## 3. Resource와 secret 설정
+
+플랫폼 최고 관리자는 Resource configuration에서 resource와 container image를 선택합니다. CPU 2 core와 memory 4 Gi 이상을 선택하면 생성 화면은 `clawpod/agent` full image를 우선 선택하고, 그보다 작은 resource에는 `clawpod/agent-lite`를 우선 선택합니다. Browser control·Desktop automation·LibreOffice·media 처리가 필요한 Agent는 full image를 선택하세요. CLI 중심 업무는 lite image로 만들 수 있습니다.
+
+일반 사용자는 Resource configuration을 바꿀 수 없고 승인된 기본 image로 생성합니다. Browser·Desktop 작업이 필요하면 생성 전에 플랫폼 최고 관리자에게 full image가 필요한 이유를 요청하세요. resource를 크게 잡는다고 성능이 항상 좋아지는 것은 아니며 quota와 비용에 영향을 줄 수 있습니다.
+
+Secrets configuration에는 provider 또는 외부 서비스 연결에 필요한 값을 설정할 수 있습니다. [Secret과 민감한 값 다루기](/guides/handle-secrets)의 용도별 입력 경로만 사용하고, 생성 화면·Chat·Template·문서에 복사하지 마세요. 사용자 환경 변수를 함께 넣어야 한다면 [Agent 생성 시 환경 변수 설정](/guides/configure-agent-environment)을 따르세요.
+
+## 4. Review와 생성 후 확인
+
+1. 필수 설정을 마치면 페이지 하단의 **<!-- ui-label: agentCreateV2.hireExpert -->이 전문가 채용<!-- /ui-label -->**을 선택합니다.
+2. 검증 오류가 없으면 Review 대화상자가 열립니다. 조직, 역할, model, 지침, resource, 연결 설정을 다시 확인합니다.
+3. **<!-- ui-label: reviewDialog.confirmCreate -->확인 및 생성<!-- /ui-label -->**을 선택해 생성 요청을 제출합니다.
+4. 성공하면 Agent 상세로 이동합니다. 이동 자체를 생성 요청 접수의 첫 확인으로 사용하고, 이어서 다음을 점검하세요.
+
+   1. Agent 상태가 정상인지
+   2. 올바른 조직에 연결됐는지
+   3. 테스트 Room에서 제한된 요청에 응답하는지
+   4. 필요한 Skill·credential·webhook target이 준비됐는지
+   5. Logs와 Metrics에 오류가 없는지
+
+blank Agent의 avatar 생성은 보조 기능이며, avatar 생성 실패가 Agent 생성 성공을 보장하거나 막지는 않습니다.

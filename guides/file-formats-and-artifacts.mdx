@@ -1,0 +1,67 @@
+---
+title: 파일 형식과 Agent artifact
+description: Chat·Task 첨부의 허용 형식, 미리보기 제한, Agent가 만들 수 있는 결과물의 실제 경계를 설명합니다.
+---
+
+# 파일 형식과 Agent artifact
+
+“업로드할 수 있다”, “Portal에서 미리보기할 수 있다”, “Agent가 만들 수 있다”는 서로 다른 말입니다. 아래 표는 현재 source에서 확인한 Chat·Task 첨부 기준입니다.
+
+## Chat 첨부: 업로드 가능 형식
+
+Chat Room 첨부는 파일당 최대 **50 MB**입니다. Portal의 현재 upload UI에서 허용하는 MIME type은 다음과 같습니다.
+
+| 범주 | 허용 형식 | Portal 미리보기 |
+| --- | --- | --- |
+| 이미지 | JPEG, PNG, GIF, WebP, BMP | 이미지 preview 가능. 크거나 브라우저가 지원하지 않으면 download로 확인합니다. |
+| 문서 | PDF, DOCX, XLSX, PPTX | PDF만 최대 **10 MiB**에서 document preview. DOCX/XLSX/PPTX는 download로 확인합니다. |
+| 텍스트 | TXT, CSV, Markdown | text preview 가능. 1 MiB 초과 파일은 일부만 표시될 수 있습니다. |
+| 압축 파일 | ZIP | download 전용 |
+
+SVG, HTML, JavaScript MIME type은 보안상 Chat 첨부에서 차단됩니다. 파일 확장자가 맞아도 브라우저가 전달한 MIME type이 허용 목록과 다르면 업로드되지 않을 수 있습니다.
+
+## Task·Milestone 첨부
+
+Task와 Milestone 첨부도 같은 50 MB 및 backend MIME allowlist를 사용하므로 HWP/HWPX를 포함합니다. 반면 Chat Portal upload UI의 allowlist에는 HWP/HWPX가 없으므로 일반 Chat 첨부 지원 형식으로 안내하지 않습니다.
+
+## 미리보기와 다운로드의 경계
+
+- **text preview**: TXT, CSV, Markdown만 지원합니다. 큰 파일은 앞부분만 반환될 수 있습니다.
+- **PDF preview**: 10 MiB 이하만 지원합니다.
+- **image preview**: 허용된 image MIME type에 한합니다.
+- **그 밖의 허용 형식**: 저장·다운로드는 가능해도 Portal 내용 미리보기를 보장하지 않습니다.
+
+미리보기는 안전성 검사나 완전한 파일 검증이 아닙니다. 외부에서 받은 ZIP, Office 문서, 이미지에는 악성 내용이 포함될 수 있으므로, 실행하거나 외부 공유하기 전에 조직의 보안 절차를 따르세요.
+
+## Skill package 업로드
+
+조직 Skill을 업로드하는 관리 경로는 `.zip` 또는 `.tar.gz` package만 받고 최대 **100 MB**입니다. 서버는 확장자뿐 아니라 ZIP/GZIP magic bytes도 확인합니다. 일반 문서나 script 파일을 Skill package로 올리는 기능이 아닙니다.
+
+Skill 안의 `SKILL.md`, 실행 파일, dependency는 설치 후에도 runtime·permission·credential 조건을 따릅니다. package upload 성공은 Agent workspace에 설치되거나 실행 가능해졌다는 보장이 아닙니다.
+
+## Agent가 만들 수 있는 결과물
+
+| 결과물 | 현재 확인된 경로 | 주의점 |
+| --- | --- | --- |
+| Chat artifact | Markdown 또는 HTML download UI | Agent가 artifact 형태로 응답한 경우에만 제공합니다. |
+| Meeting 결과 | text 또는 Markdown download UI | 회의 기능과 artifact 생성 조건이 충족될 때만 제공합니다. |
+| Workspace 파일 | Agent의 file/CLI 도구가 실제 ready일 때 생성 가능 | 형식은 요청한 도구·image·policy에 따라 달라지며, 모든 확장자를 보장하지 않습니다. |
+| 생성 이미지 | OpenAI key와 image-generation runtime이 준비된 경우 | output MIME type·저장 위치·비용은 실행 결과에서 확인합니다. |
+
+PDF, DOCX, XLSX, PPTX, ZIP 같은 결과물을 Agent에게 요청할 수는 있지만, 해당 형식의 생성 도구가 selected image·Skill·runtime에 실제 있는지 먼저 확인해야 합니다. 단순히 Chat이 그 파일을 받아준다는 사실은 Agent가 만들 수 있다는 보장이 아닙니다.
+
+## Chat artifact 열기와 내려받기
+
+Chat message에 artifact card가 보이면 card를 눌러 Artifact panel을 엽니다. panel은 해당 artifact의 정확한 version을 불러오며, 여러 version이 있으면 원하는 version을 선택할 수 있습니다.
+
+- Markdown과 HTML 내용을 preview합니다.
+- Markdown 또는 일반 text를 clipboard에 복사합니다.
+- HTML artifact는 `.html`로, 그 밖의 artifact는 `.md`로 내려받습니다.
+
+artifact를 열 권한이 없으면 forbidden으로, 해당 version이 없으면 not found로 표시됩니다. artifact는 대화에서 생성된 versioned 결과물이며 Agent workspace 파일과 자동으로 동기화되지 않습니다.
+
+## Agent에게 요청하는 예시
+
+> `/workspace/reports`에 이번 주 요약을 `weekly-summary.md`와 `weekly-summary.csv`로 만들어 주세요. 먼저 두 파일을 만들 수 있는 tool과 경로 권한을 확인하고, 기존 파일을 덮어쓰거나 외부 전송하지 마세요. 완료 후 파일 경로와 검증 결과를 알려 주세요.
+
+이처럼 파일명·형식·경로·덮어쓰기·외부 전송 여부를 함께 지정하세요. 생성 capability 조건은 [Agent 실행 capability matrix](/capabilities/agent-execution-matrix), CLI 요청 방법은 [Browser와 CLI 작업 요청](/guides/use-browser-and-cli)을 참고하세요.

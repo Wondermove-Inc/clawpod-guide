@@ -1,0 +1,65 @@
+---
+title: Capability coverage
+description: ClawPod Agent의 설치형·설정형 기능까지 빠짐없이 문서화하기 위한 coverage 기준입니다.
+---
+
+# Capability coverage
+
+이 문서는 “메뉴에 보이는 기능”만 문서화하는 것을 막기 위한 공개 contributor 기준입니다. 각 capability는 Agent source, Cloud 연결, 실제 배포 release를 함께 확인한 뒤 사용자 문서로 추가합니다.
+
+## 현재 제품을 쓰는 문장 규칙
+
+현재 Portal과 현재 Agent release에 연결된 기능은 최신 구현을 제품 계약으로 쓰고, 사용자가 누르는 화면·필수 권한·필수 설정·완료 상태를 단계로 안내합니다. “지원되는지 관리자에게 확인하세요” 같은 문장은 현재 제공되는 기능의 사용 절차를 대신하지 않습니다.
+
+`source-only` 표기는 Cloud에서 사용자 설치·권한·runtime 연결 경로가 없는 Agent 내부 기능에만 사용합니다. 반대로 credential, service URL, Agent image, role처럼 실제로 사용자가 설정해야 하는 전제조건은 해당 화면과 정확한 설정 순서를 문서에 포함합니다.
+
+## 전수 조사 범위
+
+| 영역 | 반드시 찾을 항목 | 문서화 시 확인할 조건 |
+| --- | --- | --- |
+| Agent 기본 동작 | 역할, 기본 지침, workspace, session, 결과물 | 생성·수정·중지·삭제 권한과 데이터 영향 |
+| System과 개인 설정 | profile, language, appearance, notification, system setting | 설정 주체, 적용 범위, 해제·기본값 복구 |
+| Skills와 도구 | built-in tool, 설치형 Skill, capability package | 설치, version, 필요한 credential, 실행 승인 |
+| Model과 provider | model 선택, provider 연결, fallback | 지원 release, credential binding, 비용·제한 |
+| 채널과 연동 | chat channel, 외부 서비스, webhook | 연결 절차, OAuth 또는 credential, 메시지 범위 |
+| Browser와 research | browser, search, 외부 URL 접근 | 실행 승인, 외부 전송, 대상과 데이터 범위 |
+| Memory와 knowledge | 기억, 검색, knowledge source | 저장 위치, 보존·삭제, 사용자 확인 |
+| Automation | task, workflow, cron, webhook | trigger, retry, 중지, 실행 권한 |
+| 파일과 artifact | upload, 생성, 공유, download | 접근 권한, 보존, 삭제·복구 |
+| 음성·이미지·영상 | input/output media capability | provider 설정, 비용, 결과물 권리·보존 |
+| Device와 remote 작업 | pairing, node, desktop 또는 device control | 소유자 승인, 연결 해제, 원격 접근 범위 |
+| 조직 관리 | users, roles, policies, audit, billing | 관리자 역할, tenant 범위, 되돌리기 |
+| Plan과 quota | plan, subscription, seat, organization, Agent 사용량 제한 | 역할, 결제 상태, 제한 초과 시 동작 |
+| 보안과 감사 | IAM policy, access boundary, audit event, notification | 역할, tenant 범위, 민감 데이터와 변경 영향 |
+
+## capability별 완료 기준
+
+각 항목은 다음 질문에 모두 답할 때만 catalog에 넣습니다.
+
+1. 현재 ClawPod에서 고객이 실제로 사용할 수 있나요? 필요한 최소 Agent release는 무엇인가요?
+2. 기본 제공인가요, 아니면 설치·연결·관리자 활성화가 필요한가요?
+3. 어떤 역할, credential, device, plan 또는 외부 계정이 필요한가요?
+4. Agent가 자동으로 해도 되는 일과 사용자 확인이 필요한 일은 각각 무엇인가요?
+5. 어디까지 읽고, 쓰고, 외부로 전송할 수 있나요?
+6. 정상 동작은 어떻게 확인하며, 사용 중지·권한 회수·삭제는 어떻게 하나요?
+
+## source 확인 순서
+
+1. Agent의 tool, Skill, plugin, config schema와 설치 문서를 확인합니다.
+2. Cloud Portal의 메뉴, 역할 gate, credential binding, Agent 연결 흐름을 확인합니다.
+3. immutable Agent release와 실제 배포 image가 해당 기능을 포함하는지 확인합니다.
+4. customer-facing 지원 범위와 Preview 정책을 확인합니다.
+5. 위 결과가 일치할 때만 [capability template](/_templates/capability-guide)로 사용자 문서를 작성합니다.
+
+Cloud 화면에 provider나 plugin 항목이 보인다는 사실만으로 해당 runtime 기능을 지원한다고 쓰지 않습니다. 반대로 Agent source에 기능이 있어도 Cloud에서 설치·권한·연결 경로가 없으면 소비자 기능으로 공개하지 않습니다.
+
+## 공개 상태 분류
+
+| 분류 | 공개 문서 처리 |
+| --- | --- |
+| ClawPod에서 확인됨 | 기능별 사용 가이드와 조건을 공개합니다. |
+| 설치 또는 설정 필요 | 기능을 숨기지 않고, 활성화 주체와 설정 단계를 공개합니다. |
+| 역할 제한 | 필요한 역할과 요청 경로를 공개합니다. |
+| Preview | 제한, 대상 환경, 제거·rollback 영향을 함께 공개합니다. |
+| runtime source만 확인됨 | 기능 존재는 catalog 후보로 기록하되, Cloud에서 사용 가능하다고 안내하지 않습니다. |
+| test·개발·운영 전용 | 소비자 문서에는 넣지 않습니다. |

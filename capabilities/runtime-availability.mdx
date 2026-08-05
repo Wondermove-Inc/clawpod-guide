@@ -1,0 +1,69 @@
+---
+title: Runtime capability 활성화 상태
+description: 현재 Agent wrapper source에서 확인한 packaged, 조건부, Cloud 미확인 capability를 구분합니다.
+---
+
+# Runtime capability 활성화 상태
+
+이 페이지는 “source에 있으니 모든 고객에게 쓸 수 있다”는 오해를 막기 위한 상태표입니다. 소비자가 할 수 있는 Portal 조작·Agent 요청·비제공 항목의 최종 구분은 [숨겨진 Agent 기능의 소비자 제공 상태](/capabilities/consumer-availability)를 따릅니다.
+
+## Wrapper에 포함된 것으로 확인됨
+
+| capability | runtime에서 확인한 준비 | 사용 전 확인 |
+| --- | --- | --- |
+| MCP filesystem | `/workspace` 범위의 filesystem MCP | 파일 접근 정책과 대상 workspace |
+| Playwright MCP | Playwright MCP를 기동하도록 구성 | MCP가 실제 실행 준비됐는지, browser runtime·network·승인 |
+| Memory MCP | memory tool 구성 | workspace와 memory policy |
+| A2A MCP | Room 기반 Agent-to-Agent 통신 | 같은 조직·participant·NATS/Admin API 연결 |
+| Skill Store MCP | Admin API를 통한 Skill Store 연결 | tenant 권한·Skill 요청 상태. package runtime lifecycle은 별도 확인 필요 |
+| Desktop·Tasks Skill | full image에 bundled Skill이 포함되고 boot에서 workspace Skill로 복사·등록 | selected image, boot 완료, runtime·Skill 요구 사항 |
+| `cli-anything` Skill | image 안의 built-in Skill 디렉터리가 있을 때만 `/workspace/skills`로 복사·등록 | boot 완료, Skill loader 등록, command policy, 필요한 binary·network |
+
+A2A는 direct HTTP messaging이 아니라 Room을 통한 통신입니다. 기본 지침은 같은 조직의 Agent만 대상으로 하고, delegation depth를 제한합니다. 플랫폼 최고 관리자가 Inspector 역할을 Agent에 할당하면 그 Agent에는 조직 메시지 감사와 조직 관리자 이메일 알림 도구가 추가될 수 있습니다. 이 권한은 일반 Agent에 자동으로 주어지지 않습니다.
+
+## Browser와 CLI의 release 조건
+
+| 작업 | 확인된 구현 경로 | 소비자에게 확인할 것 |
+| --- | --- | --- |
+| browser automation | MCP config가 Playwright MCP를 `npx`로 등록 | 대상 image에서 MCP package가 실제로 기동했는지, browser runtime·network policy·승인이 있는지 |
+| GUI browser / Desktop | `clawpod/agent` full image는 desktop 작업 가능 image로 분류됨 | 선택된 image가 full인지, Agent가 실행 중인지, Desktop이 실제로 열리는지 |
+| script 기반 웹 접근 | `clawpod/agent-lite`는 browser GUI 없이 script 기반 인터넷 접근 image로 분류됨 | GUI browser control과 동등하게 취급하지 말고, 허용된 script·network 범위만 확인 |
+| `cli-anything` | boot에서 bundled directory를 발견할 때 workspace Skill로 복사 | Skill이 ready인지, 필요한 command가 image에 있는지, 실행 policy와 workspace 범위가 허용되는지 |
+
+이 표는 source에서 확인한 packaging 경로입니다. current Cloud 소비자에게 image를 직접 선택하는 메뉴는 없고, 실제 image·Skill 준비 상태는 대상 Agent의 실행 환경이 결정합니다.
+
+## API key가 있을 때만 준비되는 capability
+
+| capability | 필요한 조건 | 고객 문서 처리 |
+| --- | --- | --- |
+| image generation | `OPENAI_API_KEY`가 runtime에 제공됨 | 대상 Agent에 OpenAI Credential을 연결한 뒤 Agent에게 요청합니다. 전용 생성 화면은 없습니다. |
+| audio transcription | `OPENAI_API_KEY`가 runtime에 제공됨 | 입력 media 보존·비용·권한 확인 필요 |
+| Notion 연동 Skill | `NOTION_API_KEY`가 runtime에 제공됨 | Cloud self-service 연결 경로는 현재 미확인 |
+| Places Skill | `GOOGLE_PLACES_API_KEY`가 runtime에 제공됨 | 현재 Cloud 소비자가 key를 연결하거나 Skill을 운영하는 경로가 없습니다. |
+
+key가 없으면 이 Skill은 의도적으로 available 상태가 아닐 수 있습니다. Agent에게 key 값을 요청하거나 Chat에 붙여 넣는 방식으로 해결하면 안 됩니다.
+
+## source만으로 Cloud 제공을 말할 수 없는 capability
+
+| capability | 이유 |
+| --- | --- |
+| Telegram, Discord, Slack, WhatsApp 등 channel adapter | wrapper에 customer-facing channel lifecycle·Portal 설정 경로가 확인되지 않았습니다. |
+| arbitrary node/device control | device pairing source는 있으나 tenant별 승인·관리 경로가 확인되지 않았습니다. |
+| voice call·telephony | upstream plugin·provider 계정·운영 설정이 필요하며 Cloud 제공 계약이 확인되지 않았습니다. |
+| browser GUI desktop | full/lite image와 Desktop 준비 상태에 따라 다릅니다. [Agent image와 runtime](/capabilities/agent-image-and-runtime)을 확인하세요. |
+| plugin 설치와 upstream adapter | package·restart·credential·release 검증이 필요합니다. |
+| Tailscale 연결 | full·lite image가 client를 포함하고 boot에서 daemon을 시작할 수 있지만, Portal의 연결·회수 화면은 확인되지 않았습니다. 조직이 승인한 tailnet과 로그인 절차 없이는 사용하지 마세요. |
+| CIFS/NFS 원격 파일시스템 복원 | runtime은 기존 remote mount를 재시작 뒤 복원할 수 있으나, Portal의 설정·권한 경로는 확인되지 않았습니다. 고객 self-service 기능으로 사용하면 안 됩니다. |
+
+## Skill 요청 뒤의 확인
+
+Skill Store 요청이나 성공 알림만으로 실제 package 준비가 끝났다고 보지 마세요. 현재 source에는 package install·uninstall·완료 보고의 consumer lifecycle이 확인되지 않았으므로, Marketplace 요청만으로 runtime 사용 가능 여부를 판단하지 않습니다.
+
+## 소비자가 실제로 하는 순서
+
+1. [소비자 제공 상태](/capabilities/consumer-availability)에서 해당 기능이 Portal 직접 사용인지, Agent 요청인지, 비제공인지 먼저 구분합니다.
+2. 직접 사용 기능이면 해당 Portal 화면에서 Credential·Webhook을 연결하거나 Skill 요청을 제출합니다.
+3. Agent 요청 기능이면 대상 Agent·조직을 최소 범위로 정하고, 준비 상태를 먼저 물어봅니다.
+4. test Room에서 읽기 중심의 작은 요청을 실행합니다.
+5. 외부 전송·파일 변경·browser action은 요청에 승인 범위를 적은 뒤 수행합니다.
+6. 불필요해지면 Skill 연결 record, Credential binding 또는 Webhook rule을 정리합니다.

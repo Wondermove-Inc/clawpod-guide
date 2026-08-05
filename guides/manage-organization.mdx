@@ -1,0 +1,47 @@
+---
+title: 조직 만들기와 멤버·Agent 관리
+description: Portal에서 조직을 만들고, 사용자와 Agent를 적절한 멤버십으로 연결하며, 삭제 전 영향을 점검하는 방법입니다.
+---
+
+# 조직 만들기와 멤버·Agent 관리
+
+조직은 사용자, Agent, Room, Task, 비용·분석을 함께 관리하는 작업 범위입니다. 조직을 만들거나 멤버를 바꾸면 다른 사람과 Agent의 접근 범위가 달라질 수 있습니다.
+
+## 조직 만들기
+
+1. Portal에서 **<!-- ui-label: nav.organizations -->조직<!-- /ui-label -->**을 엽니다.
+2. **<!-- ui-label: pages.organizations.createOrganization -->조직 생성<!-- /ui-label -->**을 선택합니다.
+3. **<!-- ui-label: orgs.dialog.name -->이름<!-- /ui-label -->**을 입력하고, 필요하면 **<!-- ui-label: orgs.dialog.description -->설명<!-- /ui-label -->**을 입력합니다. 생성 전 tenant quota를 확인합니다.
+4. 대화상자의 **<!-- ui-label: common.create -->생성<!-- /ui-label -->**을 선택합니다.
+5. 새 조직 상세 화면으로 이동하면 상단 조직명과 Members 영역이 보이는지 확인합니다.
+
+조직 생성에는 `core:org:Create` 권한이 필요하며, quota에 도달하면 생성할 수 없습니다. 조직 이름만 바꾸어 기존 조직을 대체하는 방식보다, 실제 소유·데이터·멤버십 경계를 먼저 정하는 것이 안전합니다.
+
+## 사용자 추가와 역할
+
+1. **<!-- ui-label: nav.organizations -->조직<!-- /ui-label --> → 대상 조직 → 멤버**에서 **<!-- ui-label: orgs.members.addMember -->멤버 추가<!-- /ui-label -->** 아이콘을 선택합니다.
+2. **<!-- ui-label: orgs.members.tabAddUser -->사용자 추가<!-- /ui-label -->** 또는 **<!-- ui-label: orgs.members.tabAddAgent -->에이전트 추가<!-- /ui-label -->** 탭을 고르고 검색 결과에서 대상을 하나 이상 선택합니다.
+3. 사용자는 `admin` 또는 `member` 역할을 고른 뒤 추가하고, 에이전트는 선택 후 추가합니다.
+4. 성공 메시지 뒤 Members 표에 이름·유형·역할이 나타나는지 확인합니다.
+
+기존 멤버의 역할은 해당 행의 edit 동작에서 바꾸고 저장합니다. 제거는 해당 행의 **<!-- ui-label: orgs.members.removeTitle -->멤버 제거<!-- /ui-label -->**를 누른 뒤 확인 창에서 다시 제거를 선택해 완료합니다.
+
+이 Members 화면은 신규 계정 초대, pending, resend, cancel 흐름을 제공하지 않습니다. Inspector 역할은 플랫폼 최고 관리자만 할당 또는 변경할 수 있습니다.
+
+## Agent 연결
+
+조직 상세에서 Agent를 멤버로 연결할 수 있습니다. 아직 조직에 속하지 않은 Agent는 운영 경고로 나타날 수 있으므로, 생성 직후 목적에 맞는 조직으로 연결하세요.
+
+Agent를 옮기거나 제거하기 전에 다음을 확인합니다.
+
+- 이 Agent가 대상 Room과 webhook rule에서 계속 접근 가능한지
+- 기존 Task와 workspace document의 소유·접근 범위가 맞는지
+- 새 조직에 필요한 credential, Skill, 담당자가 준비됐는지
+
+## 조직 삭제
+
+1. **<!-- ui-label: nav.organizations -->조직<!-- /ui-label -->** 목록에서 대상 조직 카드의 삭제 동작을 선택합니다.
+2. 확인 창에서 **<!-- ui-label: orgs.detail.deleteOrg -->조직 삭제<!-- /ui-label -->**를 다시 선택합니다.
+3. 성공 알림과 목록에서 대상 조직이 사라졌는지 확인합니다.
+
+조직 삭제는 관련 사용자와 Agent의 데이터 접근에 영향을 주며, 이 화면에는 복원 절차가 없습니다. 삭제 전에는 멤버·Agent·Room·Task·webhook·workspace document를 점검하고 필요한 자료를 승인된 위치에 보관하세요. 권한이 없거나 영향 범위를 확신할 수 없으면 테넌트 관리자에게 요청하세요.

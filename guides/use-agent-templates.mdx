@@ -1,0 +1,39 @@
+---
+title: Agent Template 만들고 사용하기
+description: 반복되는 Agent 설정을 Template으로 관리하고, 새 Agent 생성에 안전하게 적용하는 방법입니다.
+---
+
+# Agent Template 만들고 사용하기
+
+Agent Template은 role, model, resource limit, SOUL/기본 지침 같은 설정을 재사용하기 위한 구성입니다. Template을 사용해도 credential, 조직 대상, 최종 설정 검토를 건너뛰면 안 됩니다.
+
+## Template 선택과 적용
+
+1. Portal에서 **<!-- ui-label: nav.agents -->에이전트<!-- /ui-label --> → 템플릿**을 엽니다.
+2. 카테고리로 Template을 찾고 설명과 포함 설정을 검토합니다.
+3. **<!-- ui-label: templateCard.useTemplate -->템플릿 사용<!-- /ui-label -->**을 선택합니다.
+4. Agent 생성 화면에서 미리 채워진 설정을 대상 조직과 업무에 맞게 검토합니다.
+5. credential, resource, 기본 지침을 확인한 뒤 Agent를 만듭니다.
+
+Template은 새 Agent 생성의 출발점입니다. 이미 실행 중인 Agent의 설정을 자동으로 바꾸지 않습니다.
+
+## Custom Template 관리
+
+Agent 수정 권한이 있으면 custom Template을 만들고 수정·삭제할 수 있습니다.
+
+1. **<!-- ui-label: nav.agents -->에이전트<!-- /ui-label --> → 템플릿**에서 **<!-- ui-label: agentTemplates.dialog.createTitle -->템플릿 생성<!-- /ui-label -->**을 선택합니다.
+2. 이름, 설명, 아이콘, 카테고리, role, model, CPU·memory limit, SOUL content를 입력합니다.
+3. **<!-- ui-label: common.save -->저장<!-- /ui-label -->**으로 만든 뒤 카드에서 포함 설정을 다시 확인합니다.
+4. 기존 custom Template은 카드의 edit 또는 delete 동작으로 관리합니다.
+
+Template에는 이름, 설명, 아이콘, 카테고리, role, model, CPU·memory limit, SOUL content를 둘 수 있습니다.
+
+SOUL 또는 기본 지침에는 secret, 개인 access token, 고객의 민감한 원문을 넣지 마세요. Template은 재사용되고 export될 수 있으므로, 조직 정책과 검토된 업무 지침만 포함하는 것이 안전합니다.
+
+## Import와 export
+
+Template card에서 **<!-- ui-label: templateCardAria.export -->내보내기<!-- /ui-label -->**를 선택하면 JSON 파일을 내려받을 수 있습니다. 가져오려면 **<!-- ui-label: agentTemplates.dialog.createTitle -->템플릿 생성<!-- /ui-label -->**을 열고 JSON 가져오기에서 파일을 선택한 뒤, 채워진 지침·resource 설정·model 선택을 모두 읽고 **<!-- ui-label: common.save -->저장<!-- /ui-label -->**을 선택하세요. 외부에서 받은 Template은 바로 적용하지 마세요. 특히 파일·shell·외부 전송을 지시하는 내용이 있다면 해당 Agent의 정책과 조직 승인을 별도로 확인해야 합니다.
+
+## Built-in과 custom의 차이
+
+Built-in Template은 사용과 export 중심으로 제공되고, custom Template은 권한이 있는 사용자가 수정·삭제할 수 있습니다. Template 삭제 전에는 다른 운영자가 그 설정을 새 Agent 생성 기준으로 쓰고 있지 않은지 확인하세요.

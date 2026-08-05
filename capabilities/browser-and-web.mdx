@@ -1,0 +1,24 @@
+---
+title: Browser와 웹 작업
+description: Agent runtime의 browser automation과 Cloud wrapper에서 제공되지 않는 일반 web search·fetch 경계를 설명합니다.
+---
+
+# Browser와 웹 작업
+
+Agent는 웹 페이지를 읽거나, full Agent image의 Playwright MCP와 desktop Skill로 browser를 탐색·입력·클릭·화면 캡처할 수 있습니다. `clawpod/agent-lite`에는 Chromium과 GUI desktop이 없습니다. 일반 사용자는 image를 직접 선택하지 못하므로 Browser·Desktop 작업이 필요하면 생성 전에 플랫폼 최고 관리자에게 full image 필요성을 요청합니다.
+
+## 일반 web fetch·search
+
+upstream Agent 도구 목록이나 지침에 `web_fetch`, `web_search`가 언급될 수 있어도, 현재 ClawPod Cloud wrapper는 이 도구를 등록하지 않습니다. Chat Room 요청만으로 일반 web fetch·search가 활성화되지는 않습니다.
+
+Portal AI Chat의 검색은 platform server가 관리하는 별도 기능이며, 대상 Agent에 연결되는 검색 credential이나 consumer 설정이 아닙니다. `TAVILY_API_KEY` 같은 값을 Chat·SOUL·환경 변수에 넣어 Agent search를 우회 활성화하지 마세요.
+
+## Browser automation
+
+full image에는 Chromium이 포함되고 Playwright MCP가 구성됩니다. 그러나 MCP 기동, browser launch, DNS·egress, 대상 사이트 접근은 실행 중인 Agent에서 작은 읽기 전용 요청으로 먼저 확인해야 합니다. profile 격리 여부는 현재 Cloud wrapper 계약으로 보장하지 않으므로, 로그인 정보·cookie·파일 다운로드를 민감한 데이터로 취급합니다.
+
+요청에는 대상 URL, 읽기 또는 입력 범위, 결과물, 제출·전송·다운로드 전 승인을 명시합니다. 조직은 허용 도메인과 외부 전송 범위를 운영 규칙으로 정하고, 요청에도 대상 도메인을 적으세요. 현재 Portal에는 고객별 browser 도메인 정책을 설정하는 경로가 없으며, wrapper의 egress가 고객별 allowlist로 강제된다고도 안내할 수 없습니다. CAPTCHA나 다른 사람 확인이 나타나면 Agent가 우회하지 않도록 지시하고 사람의 개입을 요청하게 하세요.
+
+## 검색이 필요한 경우
+
+현재 consumer Portal에는 Agent용 검색 provider credential을 등록하거나 target Agent에 연결하는 경로가 없습니다. 지원되는 Agent search contract가 제공되기 전에는 Browser의 명시적인 대상 URL 읽기 작업으로 범위를 제한하세요.

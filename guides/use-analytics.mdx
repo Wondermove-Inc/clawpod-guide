@@ -1,0 +1,30 @@
+---
+title: Analytics로 Agent 운영 확인
+description: Analytics Overview, Monitoring, Costs 지표를 해석하는 기본 방법입니다.
+---
+
+# Analytics로 Agent 운영 확인
+
+Analytics는 접근 가능한 Agent와 조직 범위의 활동·비용·성능 지표를 보는 기능입니다. 지표는 운영 판단의 근거이지, 개별 대화나 장애의 원인을 단독으로 확정하는 증거는 아닙니다.
+
+## 화면 구성
+
+현재 sidebar에서 제공하는 Analytics 보기는 다음과 같습니다.
+
+- Overview
+- Costs
+- Monitoring
+
+기간 선택으로 24시간, 7일, 30일, 90일 같은 범위를 바꿀 수 있습니다. 비교하기 전에는 모든 화면이 같은 기간과 같은 조직 범위를 보고 있는지 확인하세요.
+
+## 운영 점검 순서
+
+1. Overview에서 요청량, 대화량, 오류 또는 이상 징후를 확인합니다.
+2. Costs에서 기간·model·사용량 변화가 비용 증가와 일치하는지 확인합니다.
+3. Monitoring 경고가 있으면 System health, Agent logs, 관련 webhook Event를 함께 확인합니다.
+
+## 안전한 해석
+
+특정 사용자의 사용량, 대화량, 비용 정보는 운영 데이터입니다. 필요한 권한과 업무 목적이 있는 범위에서만 조회하고, export나 screenshot 공유 전에는 개인정보와 고객 데이터가 포함됐는지 확인하세요.
+
+성능 저하나 비용 급증이 보이면 곧바로 model·credential·권한을 변경하지 말고, 기간·Agent·조직·최근 설정 변경을 확인한 뒤 작은 범위에서 조치하세요.

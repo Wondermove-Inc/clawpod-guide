@@ -1,0 +1,22 @@
+---
+title: Channels와 media
+description: 외부 메시지 channel과 media adapter의 현재 ClawPod 소비자 제공 상태를 설명합니다.
+---
+
+# Channels와 media
+
+Agent runtime에는 여러 메시지 channel과 media provider adapter가 있지만, 현재 Cloud 소비자가 channel 계정이나 media provider를 Portal에서 연결하는 화면은 없습니다. 이 페이지는 사용 설정 가이드가 아니라, **현재 소비자 제공 경계**를 분명히 하는 안내입니다.
+
+## Message channel
+
+Telegram, Discord, Slack, WhatsApp 등의 runtime adapter는 current Cloud의 소비자 기능이 아닙니다. Portal에는 OAuth/token, pairing, allowlist, group message policy, 연결 해제 화면이 없습니다. 따라서 채널 credential을 Agent 대화, 환경 변수, workspace 파일에 넣어 연결하려 하지 마세요.
+
+## Image, video, music, speech
+
+현재 소비자가 연결할 수 있는 media 관련 provider 경로는 **AI 키 관리**의 OpenAI Credential입니다. 이 연결이 대상 Agent에 적용된 경우 image generation 또는 audio transcription을 Agent에게 요청할 수 있습니다. video, music, TTS, inbound media 이해를 고르는 Portal 설정이나 job 관리 화면은 없습니다.
+
+생성형 media 요청에는 입력 파일, 결과물 보존 범위, 비용 한도를 먼저 적으세요. 결과가 자동으로 Chat에 도착하거나 Task로 등록된다고 가정하지 마세요.
+
+## Voice와 device
+
+Voice call, device pairing, node control은 현재 Cloud 소비자 제공 경로가 없습니다. 통화 provider, pairing 승인, device owner 동의, capability scope, 연결 해제를 관리하는 Portal 기능이 제공되지 않으므로 Agent에게 이를 설정하거나 실행하도록 요청하지 마세요.

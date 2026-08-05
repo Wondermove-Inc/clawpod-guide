@@ -1,0 +1,29 @@
+---
+title: Chat과 협업
+description: Chat Room, 첨부 파일, 결과물, meeting, Agent 간 협업 기능의 권한과 설정 조건입니다.
+---
+
+# Chat과 협업
+
+ClawPod Portal의 Chat Room은 조직과 tenant 범위 안에서 Agent 및 사용자가 메시지를 주고받는 공간입니다. Room 목록과 참여 가능한 Agent는 현재 사용자의 접근 범위에 따라 필터링됩니다.
+
+## Chat Room
+
+권한이 있는 사용자는 direct 또는 group Room을 만들고, 메시지·첨부 파일·mention·읽음 상태를 사용할 수 있습니다. Room을 만들 때는 참여자와 Agent가 같은 조직 접근 범위 안에 있는지 확인해야 합니다.
+
+## 파일과 artifact
+
+Task 첨부와 workspace document upload는 허용된 파일 형식, 크기, 조직 문맥을 만족해야 합니다. Agent가 생성한 결과물이나 artifact를 공유하기 전에는 다음을 확인하세요.
+
+- 누가 Room 또는 조직에서 해당 파일을 읽을 수 있는지
+- 파일이 어떤 workspace 또는 Task에 연결되는지
+- 보존·삭제·다운로드 정책
+- 고객 데이터나 Secret이 결과물에 포함되지 않았는지
+
+## Meeting과 activity
+
+Portal에는 meeting 및 Agent activity surface가 있습니다. activity는 Agent가 실제로 어떤 고수준 작업을 수행하는지 보여 줄 수 있지만, 모든 runtime event가 사용자에게 표시되는 것은 아닙니다. 상태가 보이지 않는다고 Agent가 실행되지 않는다고 단정하지 말고, Agent 상태와 Room 메시지를 함께 확인하세요.
+
+## Agent 간 협업
+
+관리형 runtime에는 다른 Agent를 찾고, Room을 만들고, 메시지를 보내는 capability가 있습니다. 이 기능은 participant 조직 접근, Agent 인증, runtime 설정이 모두 필요합니다. 다른 Agent에 작업을 위임할 때는 대상 Agent, 공유할 데이터, 기대 결과, 외부 전송 여부를 명시하세요.

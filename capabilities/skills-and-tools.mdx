@@ -1,0 +1,40 @@
+---
+title: Skills와 도구
+description: Portal Skill Marketplace와 Agent image에 기본 포함된 도구를 구분해 사용하는 방법입니다.
+---
+
+# Skills와 도구
+
+ClawPod에는 두 종류의 Skill이 있습니다. **Marketplace Skill**은 Portal에서 package를 Agent에 연결하는 조직 관리 기능이고, **bundled Skill**은 선택한 Agent image에 기본 포함되는 runtime 기능입니다. 두 종류는 설치 경로와 관리자가 다릅니다.
+
+| 구분 | 사용하는 곳 | 사용자가 하는 일 | 관리 경로 |
+| --- | --- | --- | --- |
+| Marketplace Skill | Portal의 Skills | 찾기, 설치 대상 Agent 선택, 비동기 설치 상태 관리 | [Skill Marketplace](/guides/manage-skills) |
+| bundled Skill | Agent runtime | 필요한 Agent image를 선택하고 Agent에게 작업 요청 | [Agent image와 runtime](/capabilities/agent-image-and-runtime) |
+
+## Portal Skill Marketplace
+
+Marketplace에서는 공개 Skill과 tenant 범위 Skill을 검색, category filtering, 상세 보기, Agent별 설치·제거, download를 할 수 있습니다. 설치 요청은 `pending`으로 시작하며 Agent sidecar가 package를 준비한 뒤 `installed` 또는 `failed`를 보고합니다.
+
+Skill이 API key, service URL, 외부 계정을 요구한다면 순서는 다음과 같습니다.
+
+1. Skill의 상세 설명 또는 `SKILL.md`에서 필요한 값을 읽습니다.
+2. API key는 [AI Key Management](/guides/manage-credentials)에서 target Agent에 연결합니다.
+3. 필요 Agent에 Skill을 설치합니다.
+4. `installed` 상태가 된 뒤 새 Room에서 Skill의 작은 읽기 중심 작업을 확인합니다.
+
+Marketplace package를 Agent workspace에 직접 복사하거나 Chat으로 archive를 전달하지 않습니다. Portal의 install/uninstall 경로가 Agent별 연결과 sidecar 설치·제거 이벤트를 관리합니다.
+
+## Agent image에 기본 포함된 Skill
+
+full Agent image에는 desktop, browser, `cli-anything`, tasks 같은 runtime 패키지가 포함됩니다. lite image는 X11 desktop, Chromium, VNC/noVNC, LibreOffice, ffmpeg, SMB/CIFS와 data-science Python stack을 포함하지 않습니다. Browser control이나 desktop automation이 필요한 Agent는 full image를 선택하세요.
+
+이 bundled Skill은 Marketplace에서 업로드하거나 설치하지 않습니다. Agent image bootstrap이 runtime에 준비하며, 사용자는 Chat에서 Agent에게 해당 작업을 요청합니다. 작업 가능한 범위와 정책은 [Browser와 Web 작업](/capabilities/browser-and-web), [Browser·CLI 사용](/guides/use-browser-and-cli), [Agent capability policy](/capabilities/governance-and-settings)를 따릅니다.
+
+## 파일·명령·외부 서비스가 있는 Skill
+
+Skill에게 파일 변경, command 실행, browser 조작, 외부 전송을 맡길 때는 요청에 대상 workspace와 결과물을 명시하세요. 예를 들면 다음과 같습니다.
+
+> `/workspace/reports`의 이번 주 CSV만 읽고, 요약을 `weekly-summary.md`로 작성해 주세요. 외부 서비스에는 전송하지 마세요.
+
+필요 credential은 Agent에 연결하고, Skill package와 Chat에는 비밀값을 넣지 않습니다. Agent policy가 허용하지 않는 작업은 Marketplace 설치 상태와 별개로 실행되지 않습니다.

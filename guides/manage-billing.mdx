@@ -1,0 +1,49 @@
+---
+title: Billing과 구독 관리
+description: Portal에서 plan, subscription, 결제 주기, 취소·재개, 거래 내역을 안전하게 확인하는 방법입니다.
+---
+
+# Billing과 구독 관리
+
+Billing 변경은 tenant의 plan, quota, Agent 생성 가능 여부에 영향을 줄 수 있습니다. 결제 관리 권한과 현재 plan 상태를 먼저 확인하세요.
+
+## 현재 구독 확인
+
+1. Portal sidebar에서 **<!-- ui-label: nav.billing -->구독 관리<!-- /ui-label -->**를 선택합니다.
+2. 현재 화면에서 plan, subscription status, billing cycle, Agent 수에 따른 가격 정보를 확인합니다.
+3. 거래 내역이 필요하면 **<!-- ui-label: nav.paymentTransactions -->결제 내역<!-- /ui-label -->**을 선택합니다.
+
+Free plan과 유료 구독은 화면에 제공되는 선택지가 다를 수 있습니다.
+
+변경하기 전에 다음을 확인하세요.
+
+- 현재 plan과 다음 청구일 또는 취소 효력일
+- 현재 Agent 수와 plan 한도
+- 월간 또는 연간 billing cycle
+- 결제 수단과 청구 담당자
+
+## Plan 변경
+
+1. Free plan이면 **<!-- ui-label: billing.freePlan.upgradeButton -->플랜 업그레이드<!-- /ui-label -->**를, 유료 구독이면 **<!-- ui-label: billing.paidPlan.adjustButton -->요금제 조정<!-- /ui-label -->**을 선택합니다.
+2. Pricing 화면에서 target plan과 billing cycle을 선택합니다.
+3. checkout 화면의 대상 plan·청구 주기·금액을 다시 확인하고 결제를 진행합니다.
+4. 완료 대화상자가 보이면 Billing으로 돌아가 변경된 plan과 상태를 확인합니다.
+
+유료 구독의 downgrade 또는 Free plan 전환은 즉시 resource를 정리하는 작업이 아니라 subscription 상태와 종료일에 따라 처리될 수 있습니다.
+
+변경 전에는 target plan이 현재 Agent·조직·사용자 수를 수용하는지 확인하세요. 화면에 한도 초과 경고가 보이면 먼저 대상 plan 한도 안으로 resource를 줄인 뒤 다시 변경합니다.
+
+## 취소와 재개
+
+유료 구독은 취소를 예약할 수 있고, 종료일 전에는 재개 선택지가 표시될 수 있습니다. **<!-- ui-label: billing.paidPlan.cancelSection.cancelSubscription -->요금제 취소<!-- /ui-label -->**를 선택한 뒤 확인 대화상자에서 취소를 확정합니다. 재개할 때는 같은 구독 관리 화면의 **<!-- ui-label: billing.actions.resume -->구독 재개<!-- /ui-label -->**를 선택합니다. 취소를 확정하기 전에:
+
+1. 종료일과 영향받는 plan 기능을 확인합니다.
+2. Agent·workspace·조직 데이터를 보존할 계획을 확인합니다.
+3. 자동화와 webhook의 운영 책임자에게 알립니다.
+4. 취소 상태가 화면에 반영됐는지 확인합니다.
+
+취소가 예약된 상태에서는 plan 변경 선택이 제한될 수 있습니다. 재개 후에는 subscription status와 quota를 다시 확인하세요.
+
+## 거래 내역과 결제 오류
+
+거래 내역은 Billing의 transactions 화면에서 확인할 수 있습니다. 결제 오류나 past-due 상태가 보이면 결제 정보를 무단으로 공유하지 말고, 청구 담당자와 지원 채널을 통해 해결하세요.

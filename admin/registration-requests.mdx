@@ -1,0 +1,31 @@
+---
+title: 가입 요청 관리
+description: 새 workspace 또는 사용자 접근 요청을 검토하고 승인·거절·재안내하는 Platform 관리자 가이드입니다.
+---
+
+# 가입 요청 관리
+
+**<!-- ui-label: registrations.title -->가입 요청<!-- /ui-label -->**은 가입 또는 workspace 접근 요청을 검토하는 Platform 관리 화면입니다. 이 메뉴의 접근 권한은 배포된 Policy에 따라 다를 수 있습니다. 화면이 보이지 않으면 관리자가 해당 Policy를 확인해야 합니다.
+
+## 요청을 검토할 때
+
+요청자의 이메일, 요청 상태, 요청 workspace 정보를 확인합니다. 승인 전에 조직명·도메인·담당자 같은 신청 정보가 실제 고객과 맞는지 확인하세요. Approve는 기존 tenant에 사용자를 붙이는 흐름이 아니라 새 Free tenant와 초기 organization을 만들고, 신청자를 테넌트 관리자로 활성화합니다.
+
+## 가능한 작업
+
+| 작업 | 사용 시점 | 주의점 |
+| --- | --- | --- |
+| 승인 | 접근을 허용할 신청이 확인됨 | 새 Free tenant와 초기 organization을 만들고 신청자를 테넌트 관리자로 활성화합니다. |
+| 거절 | 중복·부적절하거나 확인할 수 없는 신청 | 거절 사유는 고객 지원 경로로 남깁니다. |
+| Resend Email | 이메일 인증 전 안내 메일을 다시 보내야 함 | `pending` 신청에만 사용할 수 있으며, 승인 대기·거절 상태를 되돌리거나 승인 메일을 재발송하지 않습니다. |
+| Delete | 더 이상 보관할 필요가 없는 잘못된 요청 | 복구 흐름이 화면에 보이지 않는 삭제 작업입니다. 기록 보존 정책을 확인한 뒤 실행하세요. |
+
+## 권장 절차
+
+1. **<!-- ui-label: registrations.title -->가입 요청<!-- /ui-label -->** 목록에서 요청자, workspace 정보와 상태를 확인합니다.
+2. `pending`이면 **<!-- ui-label: registrations.actions.resendEmail -->Resend Email<!-- /ui-label -->** 또는 **<!-- ui-label: registrations.actions.delete -->Delete<!-- /ui-label -->**, `pending_approval`이면 **<!-- ui-label: registrations.actions.approve -->승인<!-- /ui-label -->** 또는 **<!-- ui-label: registrations.actions.reject -->거절<!-- /ui-label -->**, `rejected`이면 **<!-- ui-label: registrations.actions.delete -->Delete<!-- /ui-label -->**만 사용합니다.
+3. 선택한 동작의 확인 창에서 같은 동작을 다시 선택합니다. 승인 전에는 workspace 이름, 요청자, 계약 정보를 다시 확인합니다.
+4. 목록 상태가 갱신됐는지 확인합니다. 승인한 경우 새 tenant의 첫 로그인과 초기 organization 접근을 검증합니다.
+5. 이 요청이 새 workspace 가입용인지 확인합니다. 기존 tenant에 멤버를 추가해야 하면 IAM과 조직 멤버 추가 흐름을 사용합니다.
+
+가입 요청 처리는 **접근 시작점**일 뿐입니다. Agent, credential, webhook, billing 권한은 IAM과 조직 멤버십에서 별도로 관리합니다.

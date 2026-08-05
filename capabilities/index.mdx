@@ -1,0 +1,53 @@
+---
+title: Agent 기능
+description: ClawPod Agent가 제공하는 기능과 각 기능을 사용하기 전에 필요한 설치, 연결, 권한을 찾는 곳입니다.
+---
+
+# Agent 기능
+
+ClawPod Agent의 기능은 기본 대화 화면에 보이는 항목만이 아닙니다. 조직에서 허용하고 필요한 연결을 마치면 추가 기능을 사용할 수 있습니다.
+
+각 기능 문서는 다음 상태를 명확히 표시합니다.
+
+| 상태 | 의미 |
+| --- | --- |
+| Cloud 확인 | Portal과 Cloud source에서 사용자 경로가 확인된 기능입니다. 권한·요금제·설정은 별도로 필요할 수 있습니다. |
+| Agent 요청 | Agent image 또는 wrapper에는 있고, Portal 설정 없이 Agent에게 준비 상태와 작업 범위를 요청하는 기능입니다. |
+| Cloud 경로 미확인 | upstream 또는 runtime source에만 확인되어 고객 기능으로 안내하지 않는 항목입니다. |
+
+## 기능을 찾는 방법
+
+| 원하는 결과 | 기능 문서가 다룰 내용 |
+| --- | --- |
+| Portal에서 바로 사용할 수 있는 기능 | [Portal 기능](/capabilities/portal-features) |
+| Agent의 memory·identity·system 설정 | [Memory와 Agent 설정](/capabilities/memory-and-configuration) |
+| 예약 작업·Webhook·Playbook | [자동화와 Webhook](/capabilities/automation-and-webhooks) |
+| 조직·권한·알림·요금제·감사 | [관리와 System 설정](/capabilities/governance-and-settings) |
+| 숨겨진 runtime 기능의 소비자 제공 상태 | [숨겨진 Agent 기능의 소비자 제공 상태](/capabilities/consumer-availability) |
+| Agent가 실제로 실행할 수 있는 작업과 전제조건 | [Agent 실행 capability matrix](/capabilities/agent-execution-matrix) |
+| 외부 채널·provider·device 연결 | [연동 기능](/capabilities/integrations) |
+| Skill 또는 도구 추가 | [Skills와 도구](/capabilities/skills-and-tools) |
+| browser 또는 웹 조사 | [Browser와 웹 작업](/capabilities/browser-and-web) |
+| channel·media 연동 | [Channels와 media](/capabilities/channels-and-media) |
+| Chat Room·파일·Agent 협업 | [Chat과 협업](/capabilities/chat-and-collaboration) |
+| model과 credential 연결 | [Credential과 model](/capabilities/credentials-and-models) |
+
+## 바로 실행할 수 있는 가이드
+
+- [Agent 상태와 설정 관리하기](/guides/manage-agent)
+- [Chat Room에서 Agent와 협업하기](/guides/use-chat-room)
+- [Skill Marketplace 사용하기](/guides/manage-skills)
+- [Credential 등록과 교체](/guides/manage-credentials)
+- [계정·조직·알림 설정 관리](/guides/manage-account-and-organization)
+- [Webhook으로 Agent에게 이벤트 보내기](/guides/send-webhook-to-agent)
+
+## 기능 페이지의 약속
+
+모든 기능 페이지는 실제 사용자 관점에서 다음을 답합니다.
+
+1. Agent가 이 기능으로 무엇을 할 수 있나요?
+2. 누가 활성화할 수 있고 무엇을 설치하거나 연결해야 하나요?
+3. 실행 전에 어떤 권한, 비용, 데이터 접근 범위를 검토해야 하나요?
+4. 정상 동작은 어떻게 확인하고, 필요 없을 때 어떻게 끄거나 제거하나요?
+
+메뉴에 없더라도 Agent 요청 기능일 수 있습니다. 하지만 소비자 제공 상태에서 “소비자 제공 경로 없음”인 항목은 현재 ClawPod 기능으로 사용할 수 없습니다.

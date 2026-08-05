@@ -1,0 +1,26 @@
+---
+title: 연동 기능
+description: Agent source의 외부 adapter 중 현재 Cloud 소비자가 설정할 수 있는 경로와 없는 경로를 구분합니다.
+---
+
+# 연동 기능
+
+Agent runtime에는 많은 외부 adapter가 있습니다. 현재 Cloud 소비자가 설정할 수 있는 연동은 **AI 키 관리의 model provider credential**, **Skill Marketplace**, **Webhook**입니다. 이 밖의 adapter는 숨겨진 설정이 아니라 현재 고객 lifecycle이 없는 범위입니다.
+
+| 영역 | 현재 소비자 상태 | 사용하는 경로 |
+| --- | --- | --- |
+| Model provider | **직접 설정 가능** | [AI 키 관리](/guides/manage-credentials)에서 Anthropic, OpenAI, OpenAI Codex `auth.json`, Google Gemini, OpenRouter, local LLM을 연결합니다. |
+| Skill | **package 관리·설치 요청 가능** | [Skill Marketplace](/guides/manage-skills)에서 공개·조직 Skill을 업로드·다운로드하고 Agent별 설치·제거 요청을 합니다. 실제 package runtime lifecycle은 확인되지 않았습니다. |
+| Webhook | **직접 설정 가능** | [Webhook](/guides/send-webhook-to-agent)에서 Source, Rule, Playbook, Event를 만듭니다. |
+| OpenAI image generation·audio transcription | **조건부 Agent 요청** | OpenAI Credential을 대상 Agent에 연결한 뒤, Agent에게 작업을 요청합니다. 별도 media provider 설정 화면은 없습니다. |
+| Chat channel, web search provider, node/device, voice call, external plugin | **소비자 제공 경로 없음** | Portal에서 계정 연결·pairing·allowlist·설치·회수할 수 없습니다. |
+
+## 사용 전에 할 일
+
+1. **AI 키 관리**, **스토어**, **연동 → 웹훅** 중 맞는 Portal 경로를 엽니다.
+2. 대상 Agent와 같은 tenant의 Credential·Webhook 범위를 확인하고, Skill은 설치 요청만으로 runtime 활성화를 가정하지 않습니다.
+3. Agent가 읽거나 외부로 보낼 데이터 범위를 prompt에 명시합니다.
+4. 비민감 데이터로 작은 요청 또는 test event를 실행합니다.
+5. 더 이상 쓰지 않으면 Skill 연결 record, Credential binding 또는 Webhook rule을 정리합니다. Skill package 파일 제거는 Marketplace 요청만으로 보장되지 않습니다.
+
+API key, access token, phone credential, pairing code는 Agent 대화나 문서에 직접 붙여 넣지 마세요.

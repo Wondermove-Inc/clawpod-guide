@@ -1,0 +1,49 @@
+---
+title: MEMORY.md와 memory 폴더
+description: Agent의 장기 기억, 일별 메모, memory 검색을 구분하고 안전하게 기록하는 방법입니다.
+---
+
+# MEMORY.md와 memory 폴더
+
+`MEMORY.md`는 Agent가 오래 유지해야 할 결정, 선호, 교훈을 정리하는 파일입니다. `memory/*.md`는 날짜별 또는 주제별 상세 기록을 두는 공간입니다.
+
+## 무엇을 어디에 기록하나요?
+
+| 종류 | 권장 위치 | 예 |
+| --- | --- | --- |
+| 오래 유지할 팀 선호 | `MEMORY.md` | “운영 보고는 한국어로, 사실·추정·확인을 나눈다.” |
+| 확정된 운영 결정 | `MEMORY.md` | “배포 승인자는 조직 관리자다.” |
+| 오늘의 조사·작업 메모 | `memory/YYYY-MM-DD.md` | event 조사 과정과 다음 확인 항목 |
+| 긴 자료·근거 | `memory/주제.md` | provider 전환 검토의 근거 링크와 요약 |
+
+`MEMORY.md`는 workspace의 장기 기록 파일입니다. session마다 prompt context에 자동으로 들어가는지는 Cloud Portal이 보장하지 않습니다. `memory/*.md`는 필요할 때 filesystem MCP·CLI로 명시적으로 읽도록 Agent 지침에 적으세요.
+
+## 추천 포맷
+
+```markdown
+# Long-Term Memory
+
+## Team Preferences
+
+- 운영 보고는 한국어로 작성한다.
+- 확정 사실과 추정을 분리한다.
+
+## Active Decisions
+
+- Webhook event는 전용 Room으로 전달한다.
+
+## Lessons Learned
+
+- credential 교체 뒤에는 영향을 받는 Agent 상태를 확인한다.
+```
+
+기록은 짧고 검증 가능한 문장으로 유지합니다. 이전 결정을 바꿀 때는 오래된 문장을 조용히 덮어쓰기보다 변경된 사실과 날짜를 남기는 편이 좋습니다.
+
+## 절대 기록하지 말 것
+
+- API key, OAuth token, password, recovery code
+- 고객의 불필요한 원문·개인식별정보
+- 다른 tenant 또는 조직의 접근 정보
+- 확인되지 않은 추측을 확정 사실처럼 쓴 문장
+
+Portal에서 독립적으로 `MEMORY.md`를 편집하는 화면은 현재 확인되지 않았습니다. Agent에게 memory를 갱신하도록 요청하는 경우에도, tool policy와 workspace 쓰기 권한이 필요하며 결과를 검토해야 합니다.

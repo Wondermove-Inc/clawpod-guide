@@ -1,0 +1,39 @@
+---
+title: Documents 화면 사용하기
+description: Portal의 legacy 공유 문서 저장소를 탐색하고 업로드할 때의 현재 기능 범위를 설명합니다.
+---
+
+# Documents 화면 사용하기
+
+Documents는 Agent workspace가 아닌 Portal의 legacy 공유 문서 저장소(`/shared/documents`)를 탐색·업로드하는 화면입니다. 이 화면으로 Agent의 `/workspace` 파일이나 `SOUL.md`·`AGENTS.md`·`MEMORY.md`를 관리할 수 없습니다.
+
+## 파일 찾기와 읽기
+
+1. Portal에서 **Documents**를 엽니다.
+2. 왼쪽 파일 트리와 breadcrumb에서 경로를 탐색합니다.
+3. 파일을 선택해 내용을 확인합니다.
+
+표시되는 경로가 Agent workspace 또는 조직별 개인 저장소라고 가정하지 마세요. Agent workspace 파일은 [Agent workspace 파일](/guides/configure-agent-workspace-files) 절차와 분리되어 있습니다.
+
+## 미리보기와 다운로드
+
+현재 Documents viewer는 UTF-8 텍스트를 읽어 표시하고 알려진 text MIME type을 반환합니다. 이미지·PDF·Office 같은 binary 파일 미리보기는 제공하지 않습니다. 이 route는 legacy·교체 예정이며, 업로드 형식·크기 allowlist도 소비자 계약으로 확인되지 않았습니다. Chat·Task 첨부의 확정 allowlist와 미리보기 제한은 [파일 형식과 artifact](/guides/file-formats-and-artifacts)를 기준으로 합니다.
+
+1. 제목과 경로가 요청한 파일인지 확인합니다.
+2. 텍스트 화면에서 내용과 민감 정보 포함 여부를 검토합니다.
+3. binary 파일은 이 viewer에서 미리볼 수 없음을 전제로 별도 승인된 도구로 검토합니다.
+
+Chat Room의 첨부도 지원되는 text·image·PDF·CSV 형식에서 미리보기를 제공할 수 있습니다. 미리보기가 안 되는 형식은 다운로드만 제공될 수 있으며, 이 경우 확장자만 믿지 말고 신뢰 가능한 보안 도구로 먼저 검사하세요.
+
+## 파일 업로드
+
+1. Upload 영역을 엽니다.
+2. 파일과 대상 경로를 선택합니다.
+3. 업로드 진행과 완료 상태를 확인합니다.
+4. 업로드 뒤 파일 트리에서 실제 경로와 내용을 다시 확인합니다.
+
+업로드 전에는 secret, 개인정보, 고객 데이터, 실행 파일이 포함됐는지 검토하세요. Agent에게 참고시킬 문서는 Agent workspace가 아닌 이 공유 저장소에만 올렸다고 해서 자동으로 읽히지 않습니다.
+
+## 현재 제공하지 않는 작업
+
+Documents 화면은 현재 source에서 파일 공유 링크와 삭제 UI 호출은 보이지만, 이에 대응하는 Admin API route가 확인되지 않습니다. 따라서 이 화면을 파일 공유·삭제 기능으로 안내하지 않습니다. 공유·삭제가 필요한 결과물은 Chat·Task 첨부 또는 조직의 승인된 저장소를 사용하세요.

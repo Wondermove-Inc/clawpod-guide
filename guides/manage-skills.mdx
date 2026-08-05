@@ -1,0 +1,52 @@
+---
+title: Skill Marketplace 사용하기
+description: Skill을 찾고 Agent에 비동기로 설치·제거하거나 조직 Skill을 게시하는 방법입니다.
+---
+
+# Skill Marketplace 사용하기
+
+Skill Marketplace는 Agent에 연결할 Skill 패키지를 찾고 관리하는 Portal 기능입니다. Skill 목록을 보려면 `core:skill:List` 권한이 필요합니다. 설치는 테넌트 관리자 또는 플랫폼 최고 관리자가 수행하며, Portal의 설치 정책(`core:skill:Install`)도 필요합니다.
+
+## 1. Skill 찾기
+
+1. Portal에서 **Skills**를 엽니다.
+2. 검색어를 입력하거나 카테고리를 선택합니다. 검색은 입력을 멈춘 뒤 적용되며, Enter로 즉시 실행할 수 있습니다.
+3. 카드에서 version, 설명, category, 공개 여부, package 크기, 다운로드 수, 설치된 Agent 수를 봅니다.
+4. 원하는 카드를 열어 상세 설명, 작성자, tags, version, 설치된 Agent 목록을 읽습니다.
+
+공개 Skill은 Marketplace에서 찾을 수 있고, 비공개 Skill은 해당 tenant 범위에서만 접근합니다.
+
+## 2. Agent에 설치하기
+
+1. Skill 상세 화면에서 **Install**을 선택합니다.
+2. 설치할 Agent를 검색해 하나 이상 선택합니다. 테넌트 관리자에게는 자신의 tenant Agent만 보이고, 플랫폼 최고 관리자에게는 전체 Agent가 보입니다.
+3. 이미 이 Skill이 연결된 Agent는 선택할 수 없습니다.
+4. **Install n Agents**를 선택해 설치를 요청합니다.
+5. 요청이 제출되면 설치 대화상자는 닫힙니다. Agent sidecar가 package를 다운로드·압축 해제·workspace에 복사하고 필요 시 dependency를 설치한 뒤 상태를 보고합니다.
+6. 상세 화면의 **Installed Agents** 목록에서 `installed` 또는 `failed` 상태를 확인합니다. `pending`/`installing`이면 처리가 끝나지 않은 것입니다.
+
+`pending`은 설치 요청이 등록된 상태이고, `installed`는 Agent sidecar가 설치 완료를 Cloud에 보고한 상태입니다. `failed`이면 해당 Agent에서 아직 사용할 수 없습니다. Skill 상세 설명 또는 패키지의 `SKILL.md`가 요구하는 credential·서비스 URL·외부 계정을 먼저 설정한 뒤 다시 설치합니다. API key 같은 비밀값은 Chat에 붙여 넣지 말고 [AI Key Management](/guides/manage-credentials)에서 target Agent에 연결합니다.
+
+## 3. Package 내려받기
+
+Skill 상세 화면의 **Download**는 등록된 package를 내려받습니다. `core:skill:Download` 권한이 필요합니다. 공개 Skill은 접근 가능한 사용자에게, 비공개 Skill은 같은 tenant 또는 플랫폼 최고 관리자에게 제공됩니다.
+
+내려받은 package는 검토 또는 조직의 package 관리에 사용합니다. Agent에 적용하는 표준 경로는 download 후 수동 복사가 아니라 Marketplace의 **Install**입니다.
+
+## 4. 조직 Skill 게시하기
+
+플랫폼 최고 관리자이고 `core:skill:Create` 권한이 있으면 **Upload Skill**로 조직 Skill을 게시합니다.
+
+1. `.tar.gz` 또는 `.zip` package를 준비합니다. 파일은 100 MB 이하여야 하며 실제 archive 형식도 검사됩니다.
+2. **Name**을 입력합니다. name은 필수이고 100자 이하여야 합니다.
+3. Description, Category, Author, Tags를 입력하고 공개 여부를 선택합니다.
+4. package를 선택한 뒤 업로드합니다.
+5. 업로드된 상세 화면을 열어 description과 package 정보를 검토한 뒤 필요한 Agent에 설치합니다.
+
+공개로 게시하면 다른 사용자가 Marketplace에서 발견할 수 있습니다. package 안에는 비밀값을 포함하지 말고, 외부 API key는 [AI Key Management](/guides/manage-credentials)에서 관리합니다.
+
+## 5. 제거와 삭제
+
+특정 Agent에서만 중지하려면 Skill 상세 화면의 설치된 Agent에서 **Uninstall**을 선택합니다. 테넌트 관리자 또는 플랫폼 최고 관리자와 `core:skill:Uninstall` 권한이 필요합니다. Agent sidecar가 uninstall event를 받아 workspace package를 제거하고 상태를 보고합니다.
+
+Marketplace에서 패키지 자체를 삭제하는 작업은 플랫폼 최고 관리자와 `core:skill:Delete` 권한만 수행할 수 있습니다. 삭제는 데이터베이스의 Skill과 저장된 패키지를 지우므로, 먼저 설치된 Agent 목록에서 이 Skill을 제거하고 Skill에 의존하는 playbook·예약 작업·운영 절차를 다른 Skill 또는 절차로 바꾸세요.

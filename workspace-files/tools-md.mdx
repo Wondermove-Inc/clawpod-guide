@@ -1,0 +1,50 @@
+---
+title: TOOLS.md tool 사용 규칙
+description: Agent가 가진 tool을 늘리는 것이 아니라, 안전하고 일관되게 사용하도록 TOOLS.md에 운영 메모를 작성하는 방법입니다.
+---
+
+# TOOLS.md tool 사용 규칙
+
+`TOOLS.md`는 Agent가 사용할 수 있는 tool의 local convention과 안전한 사용법을 적는 문서입니다. 새로운 tool을 설치하거나 권한을 부여하는 설정 파일은 아닙니다.
+
+ClawPod는 `TOOLS.md`가 비어 있으면 `mcporter` 호출법과 일부 A2A 기본 안내를 제공하고 첫 boot에 workspace로 복사합니다. filesystem·browser·memory tool의 사용법 전체를 기본 `TOOLS.md`가 안내하는 것은 아닙니다. 현재 Portal에는 직접 편집 UI가 확인되지 않았습니다.
+
+첫 boot 이후에는 workspace 초기화 marker가 staging 파일을 다시 복사하지 않습니다. 기본 `TOOLS.md`를 나중에 변경해야 한다면 이미 실행된 Agent의 workspace를 자동 덮어쓰기하지 말고, 승인된 migration과 실제 파일 확인 절차를 사용하세요.
+
+## 무엇을 넣으면 좋은가요?
+
+- 조직에서 승인한 tool의 사용 목적
+- 실행 전 확인할 대상·계정·경로
+- 결과를 어디에 보고할지
+- 실패했을 때 재시도 대신 확인해야 할 항목
+- tool로 절대 읽거나 출력하면 안 되는 데이터
+
+## 추천 포맷
+
+```markdown
+# Browser
+
+- 고객 시스템은 승인된 계정으로만 연다.
+- form 제출, 구매, 권한 변경 전에는 대상과 영향을 Room에 요약한다.
+
+# Files
+
+- `/workspace/projects/` 밖의 파일은 수정하지 않는다.
+- 기존 파일을 덮어쓰기 전에는 diff와 복구 방법을 확인한다.
+
+# A2A
+
+- 같은 조직의 Agent에게만 업무를 요청한다.
+- task를 위임할 때 목표, 완료 조건, 민감 데이터 제한을 함께 전달한다.
+
+# Memory
+
+- 장기 memory에는 결정과 선호만 기록한다.
+- secret, password, 고객 원문은 memory에 저장하지 않는다.
+```
+
+## 꼭 구분하세요
+
+`TOOLS.md`에 “browser를 쓴다”라고 적어도 browser runtime, network policy, 조직 권한이 없으면 실행할 수 없습니다. 반대로 tool이 제공된다고 모든 대상을 읽거나 바꿔도 되는 것도 아닙니다. 실제 capability와 권한은 Agent runtime, Skill, Credential, tenant policy가 결정합니다.
+
+기본 `TOOLS.md`의 tool discovery와 A2A 사용 안내는 유지하고, 조직 특유의 안전 절차만 덧붙이는 방식을 권장합니다.

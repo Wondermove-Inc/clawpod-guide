@@ -1,0 +1,31 @@
+---
+title: Agent Desktop과 대화 기록 보기
+description: 실행 중인 Agent의 OpenClaw Dashboard, VNC Desktop, Conversations를 확인할 때의 사용 방법과 보안 주의사항입니다.
+---
+
+# Agent Desktop과 대화 기록 보기
+
+OpenClaw Dashboard는 `running` 상태의 Agent에서, Desktop은 full image Agent에서 사용합니다. `clawpod/agent-lite`에는 Chromium, GUI desktop, VNC/noVNC가 없으므로 GUI 작업용 Agent는 [생성 시 full image](/guides/create-agent)를 선택하세요.
+
+Agent 상세 화면에는 실행 중인 Agent의 Desktop, Dashboard, Conversations가 표시될 수 있습니다. 이 기능은 Agent의 실행 환경과 대화 데이터를 보여 주므로, 업무상 필요한 대상에만 접근하세요.
+
+## OpenClaw Dashboard
+
+1. Agent 상세에서 **<!-- ui-label: agentDetail.tabs.dashboard -->ClawPod 연결<!-- /ui-label -->** 섹션을 엽니다.
+2. Dashboard를 iframe에서 보거나 **<!-- ui-label: desktopTab.openInNewTab -->새 탭에서 열기<!-- /ui-label -->**로 분리해 엽니다.
+3. 필요하면 fullscreen을 사용합니다.
+
+Gateway token은 Portal proxy가 서버에서 Agent에 전달하므로 사용자가 입력하지 않습니다. Agent가 `awaiting_auth`이면 먼저 인증 안내를 완료합니다. K8s Desktop이 준비되지 않으면 unavailable 메시지가 표시되고, Gateway 연결 오류는 Portal이 최대 두 번 다시 불러온 뒤 오류로 표시합니다.
+
+## Desktop
+
+1. 실행 중인 full image Agent 상세에서 **<!-- ui-label: agentDetail.tabs.desktop -->원격 에이전트 PC 제어<!-- /ui-label -->** 섹션을 엽니다.
+2. 상태가 **<!-- ui-label: vncDesktop.passwordNotSet -->비밀번호: 미설정<!-- /ui-label -->**이면 **<!-- ui-label: vncDesktop.setPassword -->비밀번호 설정<!-- /ui-label -->**을 선택하고 비밀번호를 입력한 뒤 **<!-- ui-label: common.save -->저장<!-- /ui-label -->**을 선택합니다.
+3. 상태가 **<!-- ui-label: vncDesktop.passwordSet -->비밀번호: 설정됨<!-- /ui-label -->**이면 **<!-- ui-label: vncDesktop.change -->변경<!-- /ui-label -->**으로 교체합니다. **<!-- ui-label: common.remove -->제거<!-- /ui-label -->**는 현재 기존 password 제거가 확인되지 않았으므로 passwordless VNC로 돌아가는 방법으로 사용하지 마세요.
+4. 비밀번호 변경 뒤 Agent restart가 시작되며, viewer는 약 8초 뒤 새 연결을 불러옵니다.
+
+VNC password는 Portal에서 Agent별로 관리되며, 조회 화면은 password 값 대신 설정 여부만 표시합니다. password를 Chat·SOUL.md·AGENTS.md에 기록하지 마세요. noVNC/websockify가 실행되지 않았거나 Pod에 연결할 수 없으면 viewer는 연결 오류를 표시합니다. 원격 Desktop에는 Agent의 파일·browser·로그인이 보일 수 있으므로 화면 공유와 녹화에는 민감한 정보를 포함하지 마세요.
+
+## Conversations
+
+**<!-- ui-label: agentDetail.tabs.conversations -->채팅 모니터링<!-- /ui-label -->**은 이 Agent가 참여한 Room을 user 참여 Room과 agent-only Room으로 나눠 보여 줍니다. Room을 고르면 최근 100개 메시지가 읽기 전용으로 표시되고 10초 주기로 갱신됩니다. 여기서는 메시지를 보내거나 Room을 편집하지 않습니다.

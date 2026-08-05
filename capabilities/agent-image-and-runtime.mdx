@@ -1,0 +1,60 @@
+---
+title: Agent image와 runtime
+description: ClawPod Agent full·lite image에 패키징된 기능과 실제 사용 전에 확인할 runtime 조건을 구분합니다.
+---
+
+# Agent image와 runtime
+
+ClawPod Agent의 capability는 세 단계로 구분해야 합니다.
+
+1. **Agent repository source**: `clawpod-agent` software가 구현한 기능
+2. **Cloud image packaging**: Cloud full 또는 lite image에 포함한 구성요소
+3. **실행 중인 Agent**: 선택된 image, boot, credential, network, Policy가 실제 충족된 상태
+
+첫 번째나 두 번째가 확인됐다고 세 번째가 자동으로 성립하지는 않습니다.
+
+## Full image
+
+Cloud의 `clawpod/agent` full image 정의에는 Chromium, XFCE/Xvfb, VNC/noVNC, xdotool·AT-SPI 기반 Desktop automation, ffmpeg, tmux, Python/build 도구, GitHub CLI가 포함됩니다. wrapper는 filesystem(`/workspace`), Playwright, memory, A2A, Skill Store MCP와 desktop·tasks·`cli-anything` Skill을 준비합니다.
+
+명령줄 도구와 기본 Skill의 전체 목록은 [Agent image 도구 목록](/capabilities/agent-image-tool-inventory)을 참고하세요.
+
+따라서 full image는 다음 작업을 수행할 수 있는 **패키징 전제조건**을 갖습니다.
+
+| 작업 | 먼저 확인할 것 |
+| --- | --- |
+| GUI Desktop·browser | Agent가 running이고 Desktop/noVNC가 실제 열리는지 |
+| browser automation | Playwright MCP package 기동, 대상 website network 접근, login·제출 승인 |
+| CLI·개발 작업 | `cli-anything` ready, 필요한 binary, command policy, workspace scope |
+| image·audio·video 파일 처리 | 필요한 provider credential, 비용 정책, 결과물 보존 범위 |
+| Task Skill | Agent runtime의 task service 인증·연결과 조직 권한 |
+
+## Lite image
+
+`clawpod/agent-lite` image 정의는 GUI Desktop, Chromium, Xvfb/VNC, ffmpeg, SMB/CIFS, 일부 data-science/Python tooling을 제거합니다. Lite Agent에 GUI browser, Desktop automation, media 처리 도구가 있다고 가정하지 마세요. script 기반 웹 접근이나 core CLI가 가능해도, full image의 browser control과 같은 기능으로 취급하면 안 됩니다.
+
+## Workspace와 지속성
+
+Cloud wrapper의 `/workspace`에는 Agent workspace, bootstrap 파일, Skill, 사용자 설치 package 상태가 유지될 수 있습니다. `/root`에는 OpenClaw config·auth 관련 상태가 유지될 수 있습니다. 둘 다 Agent runtime의 민감한 상태를 담을 수 있으므로, 다른 Agent나 tenant의 경로를 추측해 읽거나 공유하지 마세요.
+
+workspace persistence는 기능 준비와 다릅니다. 예를 들어 Skill folder가 남아 있어도 필요한 binary, credential, service 연결이 끊기면 Skill은 실행할 수 없습니다.
+
+## Agent repository에 있으나 Cloud 제공을 확정할 수 없는 범위
+
+upstream Agent repository에는 web search/fetch, memory backend, cron, channel adapters, canvas, camera·screen·location node capability, media generation/understanding, plugin 기반 provider 같은 폭넓은 기능이 있습니다. Cloud wrapper가 이를 실제로 등록·연결하지 않거나 Portal customer lifecycle과 tenant 권한 경로가 확인되지 않은 경우에는 Cloud 제공 기능으로 취급하지 않습니다.
+
+특히 다음은 별도 설정·운영 증거가 필요합니다.
+
+- cron: Gateway scheduler, delivery channel, timezone·retry 운영
+- channel adapters: channel account, token, plugin, allowlist·pairing
+- paired node/device: device owner 승인과 node capability scope
+- media generation: provider model·credential, 비용·결과물 보존
+- external plugin: package compatibility, restart, 최소 권한
+
+## 실행 전 확인 요청
+
+Agent에게 실제 작업을 맡기기 전 다음 정보를 먼저 요청하세요.
+
+> 선택된 image(full/lite), 준비된 Skill/MCP, 허용된 workspace·network 범위, 필요한 credential, 그리고 이 요청에서 실행 전 승인이 필요한 동작을 알려 주세요. 아직 작업은 실행하지 마세요.
+
+그 다음 읽기 중심의 test Room 요청으로 확인하고, browser 제출·외부 전송·파일 수정·package 설치 같은 동작은 별도 승인 뒤에 진행하세요. 자세한 요청 방식은 [Browser와 CLI 작업 요청](/guides/use-browser-and-cli)을 참고하세요.

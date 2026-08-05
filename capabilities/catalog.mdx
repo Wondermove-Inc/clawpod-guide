@@ -1,0 +1,87 @@
+---
+title: 기능 catalog
+description: source로 확인한 ClawPod Portal과 Agent runtime 기능을 사용 가능 상태별로 찾는 목록입니다.
+---
+
+# 기능 catalog
+
+이 catalog는 기능을 빠르게 찾기 위한 index입니다. `Cloud 확인`은 현재 Cloud source에서 권한·tenant 경계와 함께 확인한 기능입니다. `runtime 확인`은 Agent runtime source에 존재하지만, 현재 tenant에서의 배포·활성화는 별도 확인이 필요한 기능입니다.
+
+## Cloud 확인
+
+| 기능 | 상태 | 상세 |
+| --- | --- | --- |
+| Agent 목록·생성·관리 | 권한·quota 필요 | [Agent 생성 가이드](/guides/create-agent), [운영 가이드](/guides/manage-agent) |
+| Agent Template 생성·사용·import/export | Agent 수정 권한 필요 | [Agent Template 가이드](/guides/use-agent-templates) |
+| Agent Dashboard·VNC Desktop·대화 기록 조회 | Agent 접근 권한과 실행 runtime 필요 | [Agent Desktop 가이드](/guides/use-agent-desktop) |
+| Chat Room·첨부·mention·meeting | 조직·chat 권한 필요 | [Chat Room 가이드](/guides/use-chat-room) |
+| 조직·멤버·Agent membership | 조직 권한·quota 필요 | [관리와 System 설정](/capabilities/governance-and-settings) |
+| 조직 생성·멤버와 Agent 연결 | 조직 권한·quota 필요 | [조직 관리 가이드](/guides/manage-organization) |
+| 초대 링크 확인·수락·거절 | 초대받은 이메일 계정 필요 | [조직 초대 수락 가이드](/guides/accept-organization-invite) |
+| Credential 생성·교체·local LLM test | credential 권한 필요 | [Credential 가이드](/guides/manage-credentials) |
+| Provider·model 역할 선택과 fallback | model catalog·credential·Agent 설정 필요 | [Provider와 model 선택](/guides/select-models) |
+| Skill Store 탐색·업로드·다운로드·Agent별 설치/제거 요청 | Skill 권한 필요 | [Skill Marketplace](/guides/manage-skills) |
+| Webhook source·rule·playbook·event | Webhook 권한·tenant scope 필요 | [Webhook→Agent 가이드](/guides/send-webhook-to-agent) |
+| Task 첨부·workspace document | 조직·Agent 접근 및 파일 정책 필요 | [Chat과 협업](/capabilities/chat-and-collaboration) |
+| Documents 공유 저장소 파일 탐색·업로드 | legacy 화면 | [Documents 가이드](/guides/manage-workspace-documents) |
+| 조직별 Task board·Milestone·CSV export | 조직 접근 권한 필요 | [Tasks와 Milestone 가이드](/guides/use-tasks-and-milestones) |
+| Analytics·비용·billing | 역할·plan·quota 필요 | [관리와 System 설정](/capabilities/governance-and-settings) |
+| Analytics Overview·Monitoring·Costs | 접근 가능한 Agent 범위 필요 | [Analytics 가이드](/guides/use-analytics) |
+| 구독·plan 변경·취소·재개·transactions | billing 권한 필요 | [Billing 가이드](/guides/manage-billing) |
+| IAM·audit log·system health | 관리자 또는 지정 권한 필요 | [관리와 System 설정](/capabilities/governance-and-settings) |
+| Tenant·plan·platform language | 플랫폼 최고 관리자 전용 | [관리와 System 설정](/capabilities/governance-and-settings) |
+| 가입 요청·초대 코드 | Platform 관리 권한 필요 | [가입 요청](/admin/registration-requests), [초대 코드](/admin/invite-codes) |
+| 전역 언어·메뉴 노출 | 플랫폼 최고 관리자 전용 | [언어 설정](/admin/language-settings), [메뉴 노출](/admin/menu-visibility) |
+| model pricing·Agent preset | Platform 관리 권한 필요 | [Model pricing](/admin/model-pricing), [Agent preset](/admin/agent-presets) |
+| 로그인 후 공지 | 대상 tenant·조직을 검토할 운영 권한 필요 | [공지 관리](/admin/announcements) |
+| Platform plan catalog·quota | 플랫폼 최고 관리자 전용 | [Platform plan 관리](/admin/manage-plans) |
+| Tenant 생성·상태·삭제·탈퇴 요청 복원 | 플랫폼 최고 관리자 전용 | [Tenant 관리 가이드](/guides/manage-tenants) |
+| Terms·Privacy·Refund·B2B confirmation 버전 | 플랫폼 최고 관리자 전용 | [Legal 문서 가이드](/guides/manage-legal-documents) |
+| Workspace plan·quota·system health | 역할·plan 필요 | [Workspace와 System 상태 가이드](/guides/check-workspace-and-system) |
+| in-app·browser push 알림 선호 | 본인 계정 | [알림 설정 가이드](/guides/manage-notifications) |
+
+## Agent runtime 확인
+
+| 기능 | 상태 | 활성화 조건 |
+| --- | --- | --- |
+| Workspace와 bootstrap 지침 | runtime 확인 | persistent workspace와 Agent 정책 |
+| `SOUL.md`·`AGENTS.md`·memory workspace 파일 | runtime 확인 | [workspace 파일 가이드](/guides/configure-agent-workspace-files) |
+| Identity·timezone·system prompt | runtime 확인 | per-Agent config와 관리자 정책 |
+| Memory search·get·remember | runtime 확인 | memory tool·workspace·보존 정책 |
+| Subagent·session 도구 | runtime 확인 | allowlist·동시성·scope 정책 |
+| File·coding·shell 도구 | runtime 확인 | 현재 wrapper 기본값은 full tool profile과 `exec.ask = off`; 조직 정책 |
+| Browser automation | runtime 확인 | full image, browser service와 조직 운영 규칙 |
+| Skills loading·runtime install | runtime 확인 | package·workspace·tenant isolation |
+| Cron·background task ledger | Cloud 경로 미확인 | upstream runtime·release |
+| Agent-to-Agent Room·message | runtime 확인 | participant 조직 접근·runtime 인증 |
+| Full image desktop·CLI·Tasks | runtime 확인 | 실제 image/release |
+| Lite image CLI 중심 실행 | runtime 확인 | 실제 image/release |
+| Heartbeat 주기 점검과 `HEARTBEAT.md` | runtime 확인 | [Heartbeat 가이드](/guides/configure-heartbeat) |
+| Full/Lite image별 desktop·browser·CLI·media 차이 | wrapper packaging 확인 | [Agent image와 runtime](/capabilities/agent-image-and-runtime) |
+
+## Optional integration 확인
+
+| 기능 | 상태 | 활성화 조건 |
+| --- | --- | --- |
+| 여러 message channel 연결 | runtime adapter 확인 | channel 계정·pairing·allowlist·조직 승인 |
+| model provider와 fallback | runtime adapter 확인 | provider credential·지원 release |
+| Image generation·edit | runtime adapter 확인 | provider 연결·비용·입력 정책 |
+| Video·music generation | runtime adapter 확인 | provider 연결·비동기 task delivery |
+| Text-to-speech·media 이해 | runtime adapter 확인 | media provider·auto 설정 |
+| Web search provider | Cloud wrapper binding 미확인 | Portal AI Chat 검색과 별개이며, Agent용 consumer credential·binding 경로 없음 |
+| Node·device pairing | runtime adapter 확인 | device owner 승인·scope·연결 해제 |
+| Voice call | runtime adapter 확인 | telephony provider·plugin·운영자 설정 |
+| Plugin 설치 | runtime adapter 확인 | 호환 package·restart·최소 권한 |
+
+패키징·API key 조건·Cloud 미확인 capability의 세부 상태는 [Runtime capability 활성화 상태](/capabilities/runtime-availability)에서 확인합니다.
+
+`runtime 확인` 항목은 [소비자 제공 상태](/capabilities/consumer-availability)에서 “Agent에게 요청” 또는 “소비자 제공 경로 없음”으로 다시 구분합니다. 후자 항목은 현재 고객 기능이 아닙니다.
+
+## 현재 소비자 기능이 아닌 항목
+
+| 항목 | 상태 | 안내 |
+| --- | --- | --- |
+| API Keys settings | retired | Portal 경로는 홈으로 redirect되며, 소비자용 API key 생성 기능으로 안내하지 않습니다. |
+| IAM Group·reusable Role 관리 | API source만 확인 | 현재 Portal의 고객 관리 흐름은 사용자 직접 Policy이며, Group·reusable Role은 고객 관리 기능이 아닙니다. |
+| Dreaming | removed | 현재 Agent의 memory 기능으로 대체되며, Dreaming 설정·주기 기능을 안내하지 않습니다. |
+| Legacy Workflow route | unsupported | route가 남아 있어도 인증·RBAC·tenant 경계가 소비자 기능으로 확인되지 않았습니다. 고객·플랫폼 최고 관리자 사용 절차로 안내하지 않습니다. |
