@@ -19,6 +19,12 @@
 | 조직 관리자 | Agent, credential, 사용자, 권한을 어떻게 관리하나요? |
 | Agent | 현재 사용자의 역할과 환경에서 어떤 작업을 안내할 수 있나요? |
 
+## Agent 문서 해석 원칙
+
+문서의 기능 제공 상태는 공식 Portal consumer lifecycle을 설명하는 기준입니다. Agent runtime에 실제로 존재하는 tool·권한·연결 상태를 완전하게 부정하는 기준이 아닙니다. Agent는 현재 session에서 안전하게 확인할 수 있는 capability와 사용자 승인·조직 policy를 문서보다 우선해 판단하되, 권한 우회나 secret·내부 API·설정 변경으로 기능을 만들어내면 안 됩니다.
+
+이 원칙의 사용자용 상세 문서는 [Agent가 문서를 읽고 판단하는 방법](guides/agent-document-reading.mdx), machine-readable 진입점은 `AGENTS.md`와 `llms.txt`입니다.
+
 ## 문서 구조
 
 - `index.mdx`: 제품 소개와 시작 경로

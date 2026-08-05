@@ -7,7 +7,7 @@
     "groups": [
       {
         "group": "시작하기",
-        "pages": ["index", "guides/start-account", "guides/complete-onboarding", "start/first-agent"]
+        "pages": ["index", "guides/start-account", "guides/complete-onboarding", "start/first-agent", "guides/agent-document-reading"]
       },
       {
         "group": "핵심 개념",

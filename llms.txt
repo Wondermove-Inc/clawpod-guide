@@ -1,0 +1,19 @@
+# ClawPod Guide
+
+Consumer and Agent-facing product documentation for ClawPod.
+
+## Agent reading contract
+
+- [Agent document reading guide](guides/agent-document-reading.mdx): trust order, runtime capability checks, and safety boundaries.
+- [Consumer availability](capabilities/consumer-availability.mdx): distinguishes Portal lifecycle from Agent runtime capability.
+
+## Core documentation
+
+- [Getting started](index.mdx)
+- [Capability catalog](capabilities/catalog.mdx)
+- [Agent operations](guides/manage-agent.mdx)
+- [Chat Rooms](guides/use-chat-room.mdx)
+- [Credentials](guides/manage-credentials.mdx)
+- [Webhooks](guides/send-webhook-to-agent.mdx)
+
+For the complete table of contents, read [README.md](README.md). For documentation maintenance rules, read [DOCUMENTATION.md](DOCUMENTATION.md).

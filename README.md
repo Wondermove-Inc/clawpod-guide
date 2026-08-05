@@ -12,6 +12,7 @@ ClawPod의 소비자·Agent용 제품 문서입니다. 문서 작성·검증 규
 - [가입, 로그인, 계정 복구](guides/start-account.mdx)
 - [새 workspace 온보딩 완료하기](guides/complete-onboarding.mdx)
 - [첫 Agent 만들기](start/first-agent.mdx)
+- [Agent가 문서를 읽고 판단하는 방법](guides/agent-document-reading.mdx)
 
 ### 핵심 개념
 
