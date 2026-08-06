@@ -1,0 +1,54 @@
+---
+title: Agent용 ClawPod Guide 검색 도구
+description: Agent가 공개 ClawPod Guide를 내려받지 않고 검색하고 필요한 페이지를 읽는 MCP 도구의 사용 기준입니다.
+---
+
+# Agent용 ClawPod Guide 검색 도구
+
+`clawpod-guide`는 ClawPod Agent image에 등록되는 읽기 전용 MCP 서버입니다. 공개 `Wondermove-Inc/clawpod-guide` 저장소의 `main`을 원격으로 조회합니다. Agent workspace에 repository를 clone하거나 문서 파일을 저장하지 않습니다.
+
+이 도구는 **해당 MCP 서버를 포함한 Agent image가 배포되어 실행 중이고**, runtime의 외부 네트워크 정책이 GitHub 접근을 허용할 때 사용할 수 있습니다. 기존 실행 중인 Agent는 새 image release로 교체·재시작되기 전까지 이 도구를 갖지 않습니다.
+
+## 등록 방식
+
+Agent image의 기본 MCP 설정에 서버 이름 `clawpod-guide`로 자동 등록됩니다. Portal에서 API key를 만들거나 MCP 서버 주소를 직접 입력할 필요가 없습니다. Agent는 현재 tool 목록에 `clawpod-guide`가 표시되는지 먼저 확인합니다.
+
+도구가 없거나 GitHub 연결이 실패하면 Agent는 설치 파일을 찾거나 문서를 복사하지 않습니다. 현재 사용 가능한 tool과 오류 원인을 알리고, 사용자가 제공한 문서나 다른 허용된 정보원으로 범위를 좁힙니다.
+
+## 제공 API
+
+### `search_clawpod_guide`
+
+질문과 관련된 가이드 페이지를 찾습니다. 검색 인덱스는 매 호출 시 공개 저장소에서 읽고, 결과에는 페이지 경로·제목·설명·관련 문맥만 반환합니다.
+
+| 입력 | 필수 | 설명 |
+| --- | --- | --- |
+| `query` | 예 | 찾을 기능, 설정 또는 작업을 자연어로 입력합니다. |
+| `limit` | 아니오 | 반환할 결과 수입니다. 기본값은 5개, 최대 10개입니다. |
+
+검색 결과만으로 설정·권한·지원 여부를 확정하지 않습니다. 이어서 `read_clawpod_guide`로 해당 페이지를 읽습니다.
+
+### `read_clawpod_guide`
+
+`search_clawpod_guide` 또는 `list_clawpod_guide_sections`가 반환한 페이지를 줄 단위로 읽습니다. 임의 URL이나 저장소 밖의 경로는 받을 수 없습니다.
+
+| 입력 | 필수 | 설명 |
+| --- | --- | --- |
+| `path` | 예 | 예: `guides/manage-agent`처럼 검색 결과의 정확한 페이지 경로를 사용합니다. |
+| `start_line` | 아니오 | 읽기를 시작할 줄 번호입니다. 기본값은 1입니다. |
+| `max_lines` | 아니오 | 한 번에 읽을 최대 줄 수입니다. 기본값은 200줄, 최대 400줄입니다. |
+
+응답에 `next_start_line`이 있으면 같은 `path`에 그 값을 넣어 다음 부분을 읽을 수 있습니다.
+
+### `list_clawpod_guide_sections`
+
+가이드의 문서 영역과 페이지 목록을 봅니다. `group`을 주면 특정 영역만 좁힐 수 있습니다. 검색어를 모르거나 문서 전체 범위를 확인해야 할 때 먼저 사용합니다.
+
+## Agent 사용 순서
+
+1. 질문을 받으면 `search_clawpod_guide`로 관련 페이지를 찾습니다.
+2. 가장 관련 높은 결과를 `read_clawpod_guide`로 읽어 설정 순서·사전조건·제한을 확인합니다.
+3. 문서보다 현재 session의 사용자 승인, 조직 policy, 실제 tool·권한 상태를 우선해 실행 가능 범위를 판단합니다.
+4. 문서에 없거나 runtime에 도구가 없으면 기능이 없다고 단정하지 말고, [Agent가 문서를 읽고 판단하는 방법](/guides/agent-document-reading)의 안전한 확인 기준을 따릅니다.
+
+이 도구는 문서 조회만 합니다. secret, tenant data, Agent 설정, 외부 서비스에는 접근·변경하지 않습니다.

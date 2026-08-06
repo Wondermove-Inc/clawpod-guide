@@ -12,6 +12,7 @@ description: clawpod-agent source와 Cloud wrapper를 대조한 작업별 기능
 | Workspace 파일 읽기·쓰기 | filesystem MCP root는 `/workspace`; 실행 도구는 `/root`, `/tmp`도 접근 가능한 구성일 수 있음 | Agent 권한, 허용 경로, 운영상 변경 승인 | `/workspace` 파일의 Portal 탐색·다운로드 경로는 미확인 | [Browser와 CLI 요청](/guides/use-browser-and-cli) |
 | Chat 파일 미리보기·다운로드 | Portal attachment viewer 확인 | Room 접근 권한, 지원 MIME type | 확인됨 | [파일 관리](/guides/manage-workspace-documents) |
 | 일반 web fetch·search | upstream tool 목록에는 언급될 수 있으나 Cloud wrapper MCP 등록은 확인되지 않음 | 지원되는 Agent tool binding 필요 | consumer provider 연결·binding 경로 없음 | [Browser와 웹 작업](/capabilities/browser-and-web) |
+| ClawPod Guide 검색·읽기 | `clawpod-guide` MCP가 공개 GitHub Guide의 검색 인덱스·페이지를 원격 조회 | 해당 image release, MCP 기동, GitHub 외부 네트워크 허용 | Portal 설정 없이 image 기본 등록 | [Agent용 ClawPod Guide 검색 도구](/guides/use-clawpod-guide-tool) |
 | Browser automation | Playwright MCP wrapper 구성, full image는 Chromium 포함 | MCP 기동, browser runtime·network, login·제출 승인 | Portal self-service browser 설정 미확인 | [Browser와 CLI 요청](/guides/use-browser-and-cli) |
 | GUI Desktop automation | full image에 XFCE/Xvfb/VNC/noVNC, xdotool·AT-SPI와 Desktop Skill 패키징 | full image, running Agent, Desktop 접속, GUI 변경 승인 | Desktop 접속은 확인됨 | [Agent Desktop](/guides/use-agent-desktop) |
 | CLI·개발 작업 | full image에 CLI 도구, `cli-anything` Skill packaging | Skill ready, binary, command·network 운영 규칙, 허용 경로 | 직접 terminal 관리 화면은 미확인 | [Browser와 CLI 요청](/guides/use-browser-and-cli) |

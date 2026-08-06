@@ -14,6 +14,7 @@ Agent라면 작업·설명 전에 [AGENTS.md](AGENTS.md)를 먼저 읽어 현재
 - [새 workspace 온보딩 완료하기](guides/complete-onboarding.mdx)
 - [첫 Agent 만들기](start/first-agent.mdx)
 - [Agent가 문서를 읽고 판단하는 방법](guides/agent-document-reading.mdx)
+- [Agent용 ClawPod Guide 검색 도구](guides/use-clawpod-guide-tool.mdx)
 
 ### 핵심 개념
 
