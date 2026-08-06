@@ -7,7 +7,7 @@
     "groups": [
       {
         "group": "시작하기",
-        "pages": ["index", "guides/start-account", "guides/complete-onboarding", "start/first-agent", "guides/agent-document-reading"]
+        "pages": ["index", "guides/start-account", "guides/complete-onboarding", "start/first-agent", "guides/agent-document-reading", "guides/use-clawpod-guide-tool"]
       },
       {
         "group": "핵심 개념",

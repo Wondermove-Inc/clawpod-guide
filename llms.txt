@@ -5,6 +5,7 @@ Consumer and Agent-facing product documentation for ClawPod.
 ## Agent reading contract
 
 - [Agent document reading guide](guides/agent-document-reading.mdx): trust order, runtime capability checks, and safety boundaries.
+- [Agent Guide search tool](guides/use-clawpod-guide-tool.mdx): registered MCP API, remote search/read flow, and runtime prerequisites.
 - [Consumer availability](capabilities/consumer-availability.mdx): distinguishes Portal lifecycle from Agent runtime capability.
 
 ## Core documentation
