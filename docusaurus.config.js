@@ -5,6 +5,7 @@ const guide = require('./docs.json');
 module.exports = {
   title: guide.name,
   tagline: guide.description,
+  favicon: 'img/favicon.svg',
   url: process.env.GUIDE_SITE_URL || 'https://wondermove-inc.github.io',
   baseUrl: process.env.GUIDE_BASE_URL || '/clawpod-guide/',
   organizationName: 'Wondermove-Inc',
