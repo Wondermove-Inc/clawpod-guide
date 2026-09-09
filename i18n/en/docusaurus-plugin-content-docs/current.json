@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.guideSidebar.category.시작하기": {
+    "message": "Getting started",
+    "description": "The label for category '시작하기' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.기능 안내": {
+    "message": "Features",
+    "description": "The label for category '기능 안내' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.대화와 업무": {
+    "message": "Conversations and work",
+    "description": "The label for category '대화와 업무' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.Agent 만들기와 설정": {
+    "message": "Create and configure Agents",
+    "description": "The label for category 'Agent 만들기와 설정' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.이벤트 연동": {
+    "message": "Event integrations",
+    "description": "The label for category '이벤트 연동' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.계정과 조직 관리": {
+    "message": "Account and organization",
+    "description": "The label for category '계정과 조직 관리' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.도움말": {
+    "message": "Help",
+    "description": "The label for category '도움말' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.Agent용 문서 읽기": {
+    "message": "Documentation for Agents",
+    "description": "The label for category 'Agent용 문서 읽기' in sidebar 'guideSidebar'"
+  }
+}

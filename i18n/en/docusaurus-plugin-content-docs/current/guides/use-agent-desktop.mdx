@@ -1,0 +1,31 @@
+---
+title: "View Agent Desktop and conversations"
+description: "Use the running Agent Dashboard, VNC Desktop, and read-only conversation history."
+---
+
+# View Agent Desktop and conversations
+
+OpenClaw Dashboard requires a `running` Agent. Desktop requires a full-image Agent. `clawpod/agent-lite` has no Chromium, GUI desktop, or VNC/noVNC; arrange a [full image during creation](./create-agent.mdx) for GUI tasks.
+
+Agent details may show Desktop, Dashboard, and Conversations. These expose the Agent's environment and conversation data, so access only the Agents needed for your work.
+
+## OpenClaw Dashboard
+
+1. Open <strong><span data-ui-label="agentDetail.tabs.dashboard">ClawPod Connection</span></strong> in Agent details.
+2. View the iframe or select <strong><span data-ui-label="desktopTab.openInNewTab">Open in New Tab</span></strong>.
+3. Use fullscreen if needed.
+
+The Portal proxy supplies the Gateway token server-side; users do not enter it. Complete authentication first if the Agent is `awaiting_auth`. An unavailable message appears when K8s Desktop is not ready. For Gateway connection failures, the Portal retries loading up to twice before showing an error.
+
+## Desktop
+
+1. In a running full-image Agent, open <strong><span data-ui-label="agentDetail.tabs.desktop">Remote Agent PC Control</span></strong>.
+2. If the state is <strong><span data-ui-label="vncDesktop.passwordNotSet">Password: Not set</span></strong>, select <strong><span data-ui-label="vncDesktop.setPassword">Set Password</span></strong>, enter a password, and <strong><span data-ui-label="common.save">Save</span></strong>.
+3. If it is <strong><span data-ui-label="vncDesktop.passwordSet">Password: Set</span></strong>, use <strong><span data-ui-label="vncDesktop.change">Change</span></strong> to replace it. <strong><span data-ui-label="common.remove">Remove</span></strong> has not been verified to remove an existing password; do not use it as a way to return to passwordless VNC.
+4. Changing the password starts an Agent restart. The viewer loads a new connection after about eight seconds.
+
+VNC passwords are managed per Agent; the view shows whether one is set, not its value. Never place the password in Chat, `SOUL.md`, or `AGENTS.md`. The viewer shows a connection error if noVNC/websockify is stopped or the Pod is unreachable. Desktop views may expose files, browsers, and sign-ins; exclude sensitive information from screen sharing and recording.
+
+## Conversations
+
+<strong><span data-ui-label="agentDetail.tabs.conversations">Chat Monitoring</span></strong> separates Rooms with user participants from Agent-only Rooms. Selecting a Room shows its latest 100 messages read-only, refreshed every ten seconds. You cannot send messages or edit Rooms here.

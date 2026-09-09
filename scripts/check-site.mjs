@@ -10,9 +10,15 @@ const guide = require('../docs.json');
 const compatibility = require('./public-compatibility-pages.json');
 const errors = [];
 const pages = guide.navigation.groups.flatMap((group) => group.pages);
-const routeFile = (page) => path.join(build, page === 'index' ? '' : page, 'index.html');
-for (const page of [...pages, ...compatibility]) {
-  if (!fs.existsSync(routeFile(page))) errors.push(`Missing page route: ${page}`);
+const locales = config.i18n?.locales || ['ko'];
+const defaultLocale = config.i18n?.defaultLocale || 'ko';
+const localeDirectory = (locale) => locale === defaultLocale ? '' : locale;
+for (const locale of locales) {
+  for (const page of [...pages, ...compatibility]) {
+    const route = path.join(build, localeDirectory(locale), page === 'index' ? '' : page, 'index.html');
+    if (!fs.existsSync(route)) errors.push(`Missing page route: ${localeDirectory(locale) ? locale + '/' : ''}${page}`);
+    else if (config.i18n && !fs.readFileSync(route, 'utf8').includes(`lang="${locale}"`)) errors.push(`Incorrect document language: ${locale}/${page}`);
+  }
 }
 const walk = (directory) => fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
   const file = path.join(directory, entry.name);
@@ -38,12 +44,17 @@ for (const file of walk(build)) {
     }
   }
 }
-for (const file of ['llms.txt', 'guide-index.json', ...pages.map((page) => `${page}.mdx`), ...compatibility.map((page) => `${page}.mdx`)]) {
-  if (!fs.existsSync(path.join(build, file))) errors.push(`Missing public file: ${file}`);
-  else if (!fs.readFileSync(path.join(build, file)).equals(fs.readFileSync(path.join(root, file)))) errors.push(`Public file differs from source: ${file}`);
-}
-for (const match of fs.readFileSync(path.join(root, 'llms.txt'), 'utf8').matchAll(/\]\(\.\/([^\s)]+)\)/g)) {
-  if (!fs.existsSync(path.join(build, match[1]))) errors.push(`Missing llms.txt target: ${match[1]}`);
+for (const locale of locales) {
+  const output = path.join(build, localeDirectory(locale));
+  const source = locale === defaultLocale ? root : path.join(root, 'i18n', locale, 'docusaurus-plugin-content-docs/current');
+  for (const file of ['llms.txt', 'guide-index.json', ...pages.map((page) => `${page}.mdx`), ...compatibility.map((page) => `${page}.mdx`)]) {
+    const label = localeDirectory(locale) ? `${locale}/${file}` : file;
+    if (!fs.existsSync(path.join(output, file))) errors.push(`Missing public file: ${label}`);
+    else if (!fs.existsSync(path.join(source, file)) || !fs.readFileSync(path.join(output, file)).equals(fs.readFileSync(path.join(source, file)))) errors.push(`Public file differs from source: ${label}`);
+  }
+  for (const match of fs.readFileSync(path.join(source, 'llms.txt'), 'utf8').matchAll(/\]\(\.\/([^\s)]+)\)/g)) {
+    if (!fs.existsSync(path.join(output, match[1]))) errors.push(`Missing llms.txt target: ${locale}/${match[1]}`);
+  }
 }
 if (errors.length) { console.error([...new Set(errors)].join('\n')); process.exitCode = 1; }
-else console.log(`Built site: ${pages.length} guides, ${compatibility.length} existing routes and ${links} local links/assets passed under ${config.baseUrl}.`);
+else console.log(`Built site: ${locales.length} languages, ${pages.length} guides, ${compatibility.length} existing routes and ${links} local links/assets passed under ${config.baseUrl}.`);

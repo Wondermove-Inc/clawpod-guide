@@ -2,6 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
+const english = process.argv.includes("--english");
+const sourceRoot = english ? path.join(root, "i18n/en/docusaurus-plugin-content-docs/current") : root;
+const translations = english ? JSON.parse(fs.readFileSync(path.join(root, "i18n/en/docusaurus-plugin-content-docs/current.json"), "utf8")) : {};
 const check = process.argv.includes("--check");
 const docs = JSON.parse(fs.readFileSync(path.join(root, "docs.json"), "utf8"));
 
@@ -25,13 +28,13 @@ function plainText(content) {
 
 const pages = docs.navigation.groups.flatMap((group) =>
   group.pages.map((page) => {
-    const content = fs.readFileSync(path.join(root, `${page}.mdx`), "utf8");
+    const content = fs.readFileSync(path.join(sourceRoot, `${page}.mdx`), "utf8");
     const title = frontmatterValue(content, "title");
     if (!title) throw new Error(`Missing frontmatter title: ${page}.mdx`);
 
     return {
       path: page,
-      group: group.group,
+      group: english ? translations[`sidebar.guideSidebar.category.${group.group}`].message : group.group,
       title,
       description: frontmatterValue(content, "description"),
       headings: [...content.matchAll(/^#{1,3}\s+(.+)$/gm)].map((match) => match[1].trim()),
@@ -41,7 +44,7 @@ const pages = docs.navigation.groups.flatMap((group) =>
 );
 
 const output = `${JSON.stringify({ version: 1, pages }, null, 2)}\n`;
-const target = path.join(root, "guide-index.json");
+const target = path.join(sourceRoot, "guide-index.json");
 const current = fs.existsSync(target) ? fs.readFileSync(target, "utf8") : "";
 
 if (check) {

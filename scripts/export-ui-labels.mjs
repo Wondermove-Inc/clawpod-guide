@@ -12,7 +12,8 @@ if (portalRootFlag !== -1 && (!process.argv[portalRootFlag + 1] || process.argv[
   throw new Error('--portal-root requires a repository path');
 }
 const repositoryDirectory = portalRootFlag === -1 ? resolve(docsDirectory, '..') : resolve(process.argv[portalRootFlag + 1]);
-const outputPath = join(docsDirectory, 'ui-labels.ko.json');
+const locale = process.argv.includes('--english') ? 'en' : 'ko';
+const outputPath = join(docsDirectory, `ui-labels.${locale}.json`);
 const portalRequire = createRequire(join(repositoryDirectory, 'src/admin-portal/package.json'));
 const typescript = portalRequire('typescript');
 const cache = new Map();
@@ -20,7 +21,7 @@ const cache = new Map();
 function collectFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
-    if (entry.isDirectory()) return ['scripts', 'node_modules', 'build'].includes(entry.name) || entry.name.startsWith('.') ? [] : collectFiles(path);
+    if (entry.isDirectory()) return ['scripts', 'node_modules', 'build', 'i18n'].includes(entry.name) || entry.name.startsWith('.') ? [] : collectFiles(path);
     return /\.mdx?$/.test(entry.name) ? [path] : [];
   });
 }
@@ -59,9 +60,9 @@ function valueAt(object, key) {
   return key.split('.').reduce((value, segment) => value?.[segment], object);
 }
 
-const { ko } = loadTypeScriptModule(join(repositoryDirectory, 'src/admin-portal/i18n/locales/ko/index.ts'));
+const dictionary = loadTypeScriptModule(join(repositoryDirectory, `src/admin-portal/i18n/locales/${locale}/index.ts`))[locale];
 const labels = Object.fromEntries(collectKeys().map((key) => {
-  const value = valueAt(ko, key);
+  const value = valueAt(dictionary, key);
   if (typeof value !== 'string') throw new Error(`Unknown or non-string UI label key: ${key}`);
   return [key, value];
 }));

@@ -1,0 +1,44 @@
+---
+title: "BOOTSTRAP.md, IDENTITY.md, USER.md, and HEARTBEAT.md"
+description: "Understand supporting files for initial setup and ongoing collaboration."
+---
+
+# BOOTSTRAP.md, IDENTITY.md, USER.md, and HEARTBEAT.md
+
+These supporting files help an Agent understand a workspace and its collaborators. Keep the main role and operating rules in `SOUL.md` and `AGENTS.md`.
+
+## BOOTSTRAP.md
+
+A new workspace may receive `BOOTSTRAP.md`, which guides the Agent to read `SOUL.md` and `AGENTS.md`, prepare `USER.md` and memory, and introduce itself. The Agent is instructed to delete it after setup. Do not treat the deleted file as persistent configuration that returns on every restart.
+
+## IDENTITY.md
+
+This file contains the Agent name, role/theme, and identity expression. The runtime may prepare it at creation. Keep lengthy persona and work rules in `SOUL.md`.
+
+## USER.md
+
+Store stable context such as preferred forms of address, timezone, and team collaboration preferences.
+
+```markdown
+# User Profile
+
+- Preferred language: Korean
+- Preferred report format: summary, evidence, next actions
+- Timezone: Asia/Seoul
+```
+
+Exclude personal identifiers, contact information, authentication data, and customer data. A lasting preference can also be summarized briefly in `MEMORY.md`.
+
+## HEARTBEAT.md
+
+This is a short checklist for an Agent with heartbeat enabled.
+
+```markdown
+# Heartbeat Checklist
+
+- [ ] Check for pending messages.
+- [ ] Check for failed Tasks or webhook events.
+- [ ] Check for confirmed decisions worth recording.
+```
+
+Use short, low-cost checks rather than long-running work or repeated messages. Verify execution permission and schedule availability against runtime and organization policy.

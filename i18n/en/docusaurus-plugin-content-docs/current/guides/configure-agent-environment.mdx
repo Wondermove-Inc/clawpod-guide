@@ -1,0 +1,33 @@
+---
+title: "Set environment variables during Agent creation"
+description: "Pass non-sensitive runtime settings to a new Agent."
+---
+
+# Set environment variables during Agent creation
+
+Environment variables are name/value configuration for a new Agent. Use them only for non-sensitive service URLs, project identifiers, and feature flags. Although the fields appear inside <strong><span data-ui-label="reviewDialog.secretsConfiguration">Secrets Configuration</span></strong>, they are not a general secret vault.
+
+Use them for endpoints and settings the environment must read, including a local LLM endpoint verified during creation. Manage provider API keys and shared credentials through [Credentials](./manage-credentials.mdx); copying them into several Agents' variables makes rotation and auditing difficult.
+
+## Add variables to a new Agent
+
+1. Open <strong><span data-ui-label="nav.agents">Agent</span></strong> → <strong><span data-ui-label="pages.agents.createAgent">Add New Member</span></strong> and configure basic information and models.
+2. Open <strong><span data-ui-label="reviewDialog.secretsConfiguration">Secrets Configuration</span></strong>.
+3. Add a row in the additional environment variables area.
+4. Enter a name and value, then complete creation review.
+
+Names must start with an uppercase letter or `_`, followed only by uppercase letters, digits, or `_`, such as `ACME_PROJECT_ID` or `INTERNAL_API_URL`. Values cannot consist only of whitespace.
+
+The creation flow passes custom variables to Agent configuration. Users cannot override reserved platform keys such as `AGENT_ID`, organization identifiers, Gateway tokens, and internal API URLs. Selecting a local LLM sets `OLLAMA_HOST` from its connection information.
+
+## Verify after creation
+
+Run a small test and verify the needed setting was read and the external connection works. This guide does not provide a procedure for editing existing Agents' variables. Do not call unexposed management APIs or pass secrets to bypass missing UI.
+
+Keep passwords, API keys, access tokens, MFA and recovery codes, customer originals, bulk personal data, and shared provider credentials out of custom variables. Do not copy secrets already written in Chat, Task comments, or workspace instructions.
+
+Variables configure behavior; they do not replace instructions. Put role rules in [SOUL.md](../workspace-files/soul-md.mdx) and tool conventions in [TOOLS.md](../workspace-files/tools-md.mdx).
+
+:::warning
+The current Portal exposes these fields for new Agent creation only. For an existing Agent, use the organization's approved creation or operational process to update its configuration.
+:::

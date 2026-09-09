@@ -1,0 +1,40 @@
+---
+title: "Manage Agent status and settings"
+description: "Inspect an Agent, control its execution, and verify configuration changes."
+---
+
+# Manage Agent status and settings
+
+Available controls and detail sections vary by permissions and Agent status.
+
+## Find and inspect an Agent
+
+Open **Agents**, search by name, role, or status, and use status or unassigned-Agent filters if needed. Select the Agent and check whether it is running, stopped, or in error before acting.
+
+Depending on the environment, details may show Desktop, Dashboard and usage, Conversations, Metrics, Overview, Config, and Logs. Check Overview, Config, and Logs together before restarting. Confirm the intended organization, model, credential, and workspace and distinguish recent errors from configuration issues.
+
+## Start, stop, and restart
+
+Use the controls at the bottom of Agent details:
+
+- **Start** runs a stopped Agent.
+- **Stop** stops a running Agent.
+- **Restart** restarts the environment.
+
+These require Agent update permission and can affect running work or conversations. Notify the Room and confirm current work has ended before stopping or restarting an operational Agent.
+
+## After configuration or credential changes
+
+Saving `SOUL.md` may require a restart. Saving alone does not confirm runtime application; inspect restart warnings or failures and verify status and a fresh conversation. Follow the relevant screen for restart requirements after connection or environment changes.
+
+1. Identify the setting and affected Agents.
+2. Save at a safe time.
+3. Apply required restarts only as indicated by the screen.
+4. Verify status and a small Room request.
+5. Check Logs and Metrics for errors.
+
+## Before deletion
+
+**Fire** or deletion may be irreversible. Check whether the Agent is targeted by Rooms, webhook rules, scheduled tasks, or installed Skills; preserve required workspace documents and outputs; and prepare a replacement Agent and owner.
+
+Deletion is also controlled by Agent update permissions. Ask an organization administrator if you lack access or cannot establish the impact.

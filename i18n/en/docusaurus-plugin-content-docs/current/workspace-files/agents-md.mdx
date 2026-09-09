@@ -1,0 +1,42 @@
+---
+title: "Write AGENTS.md operating rules"
+description: "Preserve default safeguards while documenting repeated workflows."
+---
+
+# Write AGENTS.md operating rules
+
+`AGENTS.md` holds repeated workflows, safety, and collaboration rules. The runtime may copy it into the workspace on first boot; the Portal does not guarantee automatic injection into every session. Describe how to work instead of repeating the persona from `SOUL.md`.
+
+## Preserve default rules
+
+If empty at creation, ClawPod supplies server defaults and copies them at first boot. Defaults cover tool discipline, avoiding repeated responses, secret protection, confirmation before risky work, and deciding when to speak in group chats.
+
+Do not replace them wholesale or weaken rules against credential sharing, unconfirmed destructive/external/financial/legal/out-of-scope actions, invented facts, or repeated messages.
+
+There is no verified customer-facing Portal editor. Use an approved workspace procedure, preserve a copy, review the change, and apply the minimum needed. Updated defaults do not automatically update existing Agent workspaces.
+
+## Suggested structure
+
+```markdown
+# Session Startup
+
+1. Identify the organization and Agent targeted by the current request.
+2. Ask for missing information instead of guessing.
+3. Decide whether relevant MEMORY.md content or memory search is needed.
+
+# Working Rules
+
+- Before external changes, summarize the target, impact, and authorization.
+- Mention the intended Agent clearly in multi-Agent Rooms.
+- Report changes, verification, and remaining risks separately.
+
+# Red Lines
+
+- Never output or store secrets, tokens, passwords, or personal identifiers.
+- Reject cross-tenant or cross-organization data requests and refer to an administrator.
+- Do not delete, deploy, pay, or change permissions without authorization.
+```
+
+Use clear headings and instruct the Agent to read the file first when relevant.
+
+Before changing it, preserve the old rules, avoid duplicating persona or tool notes, maintain tenant and secret safeguards, and test responses and behavior in a small Room.

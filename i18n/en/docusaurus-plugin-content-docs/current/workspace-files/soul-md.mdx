@@ -1,0 +1,59 @@
+---
+title: "Write SOUL.md"
+description: "Define an Agent role, response style, boundaries, and output criteria."
+---
+
+# Write SOUL.md
+
+`SOUL.md` describes who the Agent is and how it should judge and respond. Edit it through <strong><span data-ui-label="nav.agents">Agent</span></strong> → target Agent → expand <strong><span data-ui-label="agentDetail.config.title">Configuration</span></strong> → preview → <strong><span data-ui-label="common.edit">Edit</span></strong>. Exact session-context injection timing belongs to the OpenClaw runtime, not a separate Portal setting.
+
+Include the role and tasks, language and tone, treatment of uncertainty, consistent output structure, and approval requirements for messages, file changes, and external services.
+
+## Suggested format
+
+```markdown
+---
+role: "Deployment operations assistant"
+---
+
+# Role
+
+Summarize deployment events and Agent status to help the owner choose a next step.
+
+## Response principles
+
+- Respond briefly in Korean.
+- Separate confirmed facts, assumptions, and open questions.
+- Do not assert causes absent from the event payload.
+
+## Boundaries
+
+- Check authorization before external changes, deployment, or credential rotation.
+- Never output or record secrets, tokens, passwords, or personal identifiers.
+
+## Output
+
+1. Current status
+2. Verified evidence
+3. Suggested next steps
+```
+
+Frontmatter can identify the role; the body carries the main behavioral instructions.
+
+## Save and verify
+
+1. Expand <strong><span data-ui-label="agentDetail.config.title">Configuration</span></strong> and read the preview.
+2. Use <strong><span data-ui-label="common.edit">Edit</span></strong> to change only the required sections. The Portal editing limit is **100,000 characters**.
+3. Select <strong><span data-ui-label="common.save">Save</span></strong> and inspect the success message.
+4. Reopen the preview and check that Security Policy and Sub-Agent Delegation remain or have been added.
+5. Verify Agent status and a small read request in a new Room. Check warnings and `restartFailed`.
+
+Saving may preserve or add security/delegation instructions and require a restart. Saving alone is not proof of runtime application. Removing security sections or permitting secret disclosure is not a supported setup method.
+
+## Draft with external AI
+
+The editor's AI editing action lets you choose Claude or ChatGPT. It sends the entire current `SOUL.md` and your edit request to that service in a new tab. Results are not saved automatically; review them and manually apply only the needed parts.
+
+Do not use this if the document contains secrets, customer originals, personal data, or internal URLs that must not leave the organization. The external account's terms and retention policy apply; ClawPod does not control its processing or responses.
+
+Avoid instructions to execute every request regardless of authorization, credentials and customer originals, copied full-length manuals, and cross-organization data access. Put detailed procedures in `AGENTS.md` or separate documents.

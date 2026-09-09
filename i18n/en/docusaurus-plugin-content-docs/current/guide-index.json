@@ -1,0 +1,748 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "path": "index",
+      "group": "Getting started",
+      "title": "Get started with ClawPod",
+      "description": "Create role-based AI Agents and collaborate through chats, files, and tasks.",
+      "headings": [
+        "Get started with ClawPod",
+        "Your first steps",
+        "Find a workflow"
+      ],
+      "text": "Get started with ClawPod ClawPod lets you create AI Agents for different roles and manage conversations, files, and tasks with your team. Your first steps 1. Create an account or accept your organization invitation. 2. For a new workspace, complete onboarding. 3. Set up an AI credential. Ask your administrator if you cannot access this setting. 4. Create your first Agent and review its role and instructions. 5. Try a small task in a Chat Room and verify the result. Find a workflow Goal Guide --- --- Read, summarize, or create files File formats and artifacts Work on the web Browser and CLI tasks Track team tasks Tasks and Milestones Transcribe a meeting Meeting minutes Set an Agent's role and response style Workspace files Deliver external events Webhooks Manage members, permissions, and costs Organizations, billing Available menus depend on your permissions, organization, plan, and Agent environment. See the feature catalog and help."
+    },
+    {
+      "path": "guides/start-account",
+      "group": "Getting started",
+      "title": "Create an account and sign in",
+      "description": "Sign up, verify your email, sign in, and recover access.",
+      "headings": [
+        "Create an account and sign in",
+        "Sign up",
+        "Sign in",
+        "Reset a password"
+      ],
+      "text": "Create an account and sign in Self-service registration requires email verification before sign-in. An invitation can activate your account and membership through its own flow; start from the invitation link if you received one. Sign up 1. Select Sign Up and enter your name, email, and password. 2. Enter your intended use and workspace name for self-service registration. Invitations may prefill these details. 3. Review and accept the terms, privacy policy, and B2B terms when shown. 4. Continue and enter the six-digit code sent to your email. You can paste the code. 5. Use Resend verification code if needed; the resend cooldown is 60 seconds. Passwords require at least eight characters, including uppercase and lowercase letters, a number, and a special character. After verification, administrator approval may still be required. Invitation behavior depends on the invitation conditions. Continue with onboarding or accepting an invitation. Sign in Select Sign In. Use Remember me only on your own device. Accounts awaiting email verification return to the verification screen. Repeated failed attempts may temporarily limit sign-in; use password recovery instead of repeatedly guessing. If MFA is enabled in your profile, enter its six-digit code after your password. If necessary, use Use recovery code. See account security. Recovery codes may not be shown again; keep them private and never place them in Chat or documentation. Reset a password 1. Select Forgot Password? and enter your email. 2. Request a code and enter the six-digit code from the email. 3. Enter and confirm the new password, then sign in. The response is the same whether an account exists or not. Check spam filters if the email does not arrive. There is no per-device session list or remote sign-out UI. If you suspect unauthorized access, change your password, review MFA, and ask an administrator to review access revocation and audit records. For support, share your email, the time, and the error message. Never share passwords, MFA codes, recovery codes, or cookies."
+    },
+    {
+      "path": "guides/accept-organization-invite",
+      "group": "Getting started",
+      "title": "Accept an organization invitation",
+      "description": "Join the intended organization with the account named in your invitation.",
+      "headings": [
+        "Accept an organization invitation",
+        "Accept the invitation"
+      ],
+      "text": "Accept an organization invitation An invitation link is tied to an email address and organization membership. Do not forward it or accept it with a different account. Accept the invitation 1. Open the link in the invitation email. 2. Review the organization, inviter, and role. 3. Sign in with the matching email address. 4. Accept the invitation. 5. Open Chat and confirm the Rooms and Agents you can access. An account with a different email cannot accept the invitation. For an expired or already accepted link, ask an administrator to check its status. If the email or role is wrong, ask for cancellation and a corrected invitation before accepting. Declining only exits the screen; it does not cancel or expire the invitation. If you will not join or the link may have been exposed, ask an administrator to cancel the pending invitation and issue a new one if needed."
+    },
+    {
+      "path": "guides/complete-onboarding",
+      "group": "Getting started",
+      "title": "Complete workspace onboarding",
+      "description": "Provide company information and prepare the initial Agents for a new workspace.",
+      "headings": [
+        "Complete workspace onboarding",
+        "Set up a new workspace",
+        "Partial failures"
+      ],
+      "text": "Complete workspace onboarding The /onboarding flow analyzes a company and prepares its initial Agents. It is separate from ordinary Agent creation. Set up a new workspace 1. Select Get Started, enter the company name and business domain, and follow Continue on each screen. 2. Provide homepage, competitor, or agency URLs as requested, plus any additional requirements. A company or competitor URL is required. 3. Select View Results and review the overview and proposed organization. Select roles and choose Confirm Organization. 4. Enter the provider API key and complete validation. 5. Complete phone verification and follow the preparation states: Preparing Soul.md generation..., Organization established, and Deploying agents.... 6. When the AI organization is ready, open Portal Chat and verify the result. Submitted URLs are used for analysis. Do not include secrets, passwords, API keys, or confidential contracts in the analysis request. Use the matching provider for key validation. See credentials and handling secrets. Partial failures When Some agents failed to deploy. appears, use Retry failed agents to retry only the failed Agents, or create them manually. If onboarding does not appear, the workspace may already be onboarded or the account may be awaiting approval. Check account setup and your first Agent."
+    },
+    {
+      "path": "start/first-agent",
+      "group": "Getting started",
+      "title": "Create your first Agent",
+      "description": "Create an Agent, review its instructions, and verify a small first task.",
+      "headings": [
+        "Create your first Agent",
+        "Create and verify"
+      ],
+      "text": "Create your first Agent You need permission to create Agents. Ask an administrator if creation is unavailable. Depending on organization policy, use a saved credential or provide one during creation. Start with one clear task, such as drafting a customer support response. Create and verify 1. Open Agent and select Add New Member. 2. Enter a name and select a role preset or a custom role. 3. Choose a model and credential from the options available to your organization and permissions. 4. Review the instructions: task, tone, and actions to avoid. 5. Select Hire This Expert, review the details, and choose Confirm &amp; Create. 6. Open the Agent from the list, check its status and settings, and try a small task in Chat. If creation is missing, check permissions. If a model or credential is missing, check availability and access. If Chat does not work, check the Agent status and ask an administrator to review the connection. Never include credentials or access tokens in Chat, documentation, or support messages."
+    },
+    {
+      "path": "concepts/agent",
+      "group": "Getting started",
+      "title": "What is an Agent?",
+      "description": "Understand Agent roles, models, credentials, and tools.",
+      "headings": [
+        "What is an Agent?"
+      ],
+      "text": "What is an Agent? An Agent is a configured unit of work: for example, meeting summaries, customer response drafts, or recurring tasks. Setting Purpose --- --- Role and instructions Define the task and response style Model Supplies the AI model used for the task Organization credential Connects the Agent to an authorized provider Skills and tools Add capabilities that may require installation, connections, and permissions An Agent follows its own policies and connections; it does not automatically inherit every personal permission of its creator. Review important outputs and actions. For example: “Summarize customer requests in friendly Korean and draft a response. Do not assert unconfirmed policies; identify anything that needs confirmation from its owner.” Include what the Agent must not do, when a person should review its work, and information it must not use or reveal. See the feature catalog."
+    },
+    {
+      "path": "capabilities/catalog",
+      "group": "Features",
+      "title": "ClawPod feature catalog",
+      "description": "Find a public workflow and check its requirements before use.",
+      "headings": [
+        "ClawPod feature catalog",
+        "Portal workflows",
+        "Agent tasks"
+      ],
+      "text": "ClawPod feature catalog Use this catalog to choose a workflow. Availability depends on your organization, permissions, plan, and Agent environment. Portal workflows Goal Requirements and guide --- --- Create or manage Agents Creation permissions and quota: create, manage Chat and exchange files Organization and Room access: Chat Rooms, file formats Personal AI assistance and search AI Chat access and model availability: AI Chat Read past conversations Accessible Rooms: Chat Archive Track team work Organization access: Tasks and Milestones Create meeting minutes Meeting access, participant consent, and organization policy: meetings Configure AI keys and models Credential and Agent management permissions: credentials, models Install Skills Skill permissions and a target Agent: Skills Configure instructions and templates Workspace files, templates Deliver events Webhook permissions, source, and target: webhooks Manage members and access Organization and IAM permissions: organizations, IAM Review analytics and billing Appropriate access: analytics, billing Manage account security and records MFA, notifications, audit log Agent tasks Task Check first --- --- Files and coding Allowed paths and available tools: CLI work Browser work Browser readiness and site access: browser and web Remote desktop A running, supported Agent: Agent Desktop Memory and instructions Retention policy and scope: memory Image generation and audio transcription OpenAI tools, input rights, and budget: media Specify the target, expected result, allowed changes, and external transfers. State what is unknown instead of assuming readiness. See availability checks."
+    },
+    {
+      "path": "capabilities/consumer-availability",
+      "group": "Features",
+      "title": "Check feature availability",
+      "description": "Distinguish visible settings, completed setup, and verified capability.",
+      "headings": [
+        "Check feature availability",
+        "Check a Portal workflow",
+        "Check an Agent task",
+        "Verify and clean up"
+      ],
+      "text": "Check feature availability A visible menu or an installed Skill does not mean every operation is available. Check a Portal workflow 1. Find the workflow in the catalog. 2. Check your role, organization, plan, and quota. 3. Follow its AI credential, Agent, Skill, or webhook setup guide. 4. Confirm the saved status, then run a small test without secrets. Pending, installing, and failed states do not mean ready. Even an installed Skill may require an account connection or additional permissions. See Skill management. Check an Agent task Confirm the actual tools, file access, AI connection, and organization scope for the target Agent. For example: “Check whether you can read the specified document, summarize its key decisions, and flag unresolved questions.” Ordinary users cannot choose every runtime or tool. Use help when setup is unavailable. This guide is not a complete inventory of runtime tools or a grant of permission. A safely observable, authorized capability can be used even when undocumented. Conversely, do not claim a documented capability is available without verifying it for the current Agent. Do not invent settings, discover secrets or internal paths, or bypass permissions to enable a capability. See how Agents should read this guide. Verify and clean up Check the result, actual changes, failures, and steps that were not executed. Revoke unused connections, Skills, and webhooks, and handle files and memory according to the retention policy."
+    },
+    {
+      "path": "capabilities/browser-and-web",
+      "group": "Features",
+      "title": "Browser and web tasks",
+      "description": "Check browser readiness, site access, and the scope of a web task.",
+      "headings": [
+        "Browser and web tasks",
+        "Request a task"
+      ],
+      "text": "Browser and web tasks An Agent equipped with a browser can read pages, navigate, enter information, and inspect results. A lightweight Agent without a desktop is not ready for GUI browser work; confirm its environment first. You need the appropriate site account and permissions, a ready browser, and access to the target URL. Treat login sessions, cookies, and downloads as sensitive data. Ordinary users cannot select every runtime; explain the required task to an administrator when adjustments are needed. Request a task 1. Give the target URL and expected result. 2. Specify whether reading, input, submission, downloads, and external transfers are allowed. 3. Start with a small read-only check. 4. Ask for source URLs, actual changes, and failed or unexecuted steps. Follow the browser and CLI guide. Stop and ask the user when login or human verification is needed. AI Chat web search is a separate feature; it does not equip an Agent with a browser. See AI Chat. When unsure, request an explicit check of the target URL. Instructions are not technical access controls. Follow organization access and external-transfer policies."
+    },
+    {
+      "path": "capabilities/channels-and-media",
+      "group": "Features",
+      "title": "Image generation and audio transcription",
+      "description": "Understand Agent media tools and their setup requirements.",
+      "headings": [
+        "Image generation and audio transcription",
+        "Before a media task"
+      ],
+      "text": "Image generation and audio transcription Agent image generation and audio transcription use AI tools. They are separate from Portal voice input and meeting features. Before a media task 1. Connect the required OpenAI credential. 2. Verify that the corresponding tool is ready. A saved credential alone is insufficient. 3. Specify the input, output, budget, and retention requirements. 4. Run a small test and check the actual output format. Never put secrets in Chat. Confirm rights to other people's voices and materials. Do not assume results automatically become Tasks; see files and artifacts. For Portal voice input, follow Chat Rooms. For recording and meeting summaries, follow meeting minutes. If processing fails, check the connection, tool readiness, format, and budget. Check whether processing already occurred before retrying. Disconnect unused credentials and remove retained inputs and outputs according to policy."
+    },
+    {
+      "path": "capabilities/chat-and-collaboration",
+      "group": "Features",
+      "title": "Chat and collaboration",
+      "description": "Understand Room access, shared files, activity, and Agent delegation.",
+      "headings": [
+        "Chat and collaboration",
+        "Shared files and activity",
+        "Agent-to-Agent collaboration"
+      ],
+      "text": "Chat and collaboration Rooms bring users and Agents together within organization and tenant access boundaries. The Room list and available Agents are filtered by your permissions. Authorized users can use direct or group Rooms, messages, attachments, mentions, and read status within the permitted organization scope. Shared files and activity Files in Tasks and documents follow their own format, size, and organization rules. Before sharing, check the audience, workspace or Task association, retention, deletion and download needs, and whether the file contains secrets or customer data. Meeting and activity views show high-level information, not every runtime event. Missing activity does not prove an Agent is idle; check its status and messages. Agent-to-Agent collaboration Finding Agents, creating Rooms, and sending messages require the relevant participant and organization access, Agent authentication, and runtime support. When delegating, specify the receiving Agent, data to share, expected result, and whether external transfer is allowed."
+    },
+    {
+      "path": "capabilities/integrations",
+      "group": "Features",
+      "title": "Connections and integrations",
+      "description": "Set up AI credentials, Skills, and webhooks, then verify each connection.",
+      "headings": [
+        "Connections and integrations"
+      ],
+      "text": "Connections and integrations ClawPod connections include AI credentials, Skills, and webhooks. Connection Setup and verification --- --- AI provider Credentials and models; test a small Agent response Skill Skill management; verify status and any required account connection Webhook Webhooks; verify the event and target Image or audio tool Media tools; verify readiness and the actual result Before connecting, check the organization, target Agent, permissions, and data-transfer scope. Enter keys in the designated settings, not Chat, documentation, or Skill packages. Saving a setting or accepting a request does not prove readiness. Test with non-sensitive data and inspect status and errors on failure. Follow the relevant guide to disconnect or remove a connection. Removing it from ClawPod does not necessarily revoke its provider-side key."
+    },
+    {
+      "path": "capabilities/skills-and-tools",
+      "group": "Features",
+      "title": "Skills and tools",
+      "description": "Distinguish marketplace installation from tools bundled with an Agent.",
+      "headings": [
+        "Skills and tools",
+        "Set up a Skill"
+      ],
+      "text": "Skills and tools Skills can come from the marketplace or be included in an Agent image. Source How to use it --- --- Marketplace Find the Skill, select an Agent, and verify asynchronous installation status: manage Skills Bundled tools Verify readiness for the current task: availability The marketplace supports public and tenant Skill search, filters, details, installation, removal, and downloads. Installation moves from pending to installed or failed. Set up a Skill 1. Read its SKILL.md for dependencies and requirements. 2. Set up any key through AI credential management for the correct target. 3. Install through the Portal. 4. After it shows installed, try a small read-only task in a new Room. Do not copy packages directly into an Agent or a chat archive to bypass the managed installation flow. Use the Portal to track status. Bundled tools vary by runtime. Lightweight Agents may lack GUI and some office or media tools. Verify availability before assigning work, including browser tasks. Specify allowed files, commands, browser activity, and external transfers. For example: “Read only this week's CSV files in /workspace/reports , write weekly-summary.md , and do not send data externally.” Connect credentials through settings, not packages or Chat. Installation never overrides policy restrictions."
+    },
+    {
+      "path": "guides/use-chat-room",
+      "group": "Conversations and work",
+      "title": "Collaborate in a Chat Room",
+      "description": "Create Rooms, send clear requests, and use files and meeting features.",
+      "headings": [
+        "Collaborate in a Chat Room",
+        "Prepare a Room",
+        "Write a clear request",
+        "Files and outputs",
+        "Voice input",
+        "Meetings",
+        "Clean up a Room",
+        "Find messages"
+      ],
+      "text": "Collaborate in a Chat Room A Chat Room gives users and Agents a shared conversation context. Access and participants are limited by organization permissions. Prepare a Room 1. Open Chat in the Portal. 2. Create a Room from the left sidebar or select an existing one. 3. For a new Room, choose its name and participants. Available participants depend on your access. 4. Confirm the new Room is selected and the intended users and Agents are present. 5. Write your message. To clarify the intended Agent, select it from mention suggestions, then choose Send. All participating Agents can receive and process a Room message. A mention clarifies intent; it does not route exclusively to one Agent. If exactly one Agent must work, use a dedicated Room containing only that Agent. Webhook events also arrive as Room messages, so a separate automation Room can simplify operations. Confirm that the message appears and the intended Agent responds or shows a processing state. Sending does not mean completion. If Stop appears during generation, it stops that response. Write a clear request Include the expected output and completion criteria, allowed material or attachments, constraints and prohibited actions, and whether the Agent should ask questions or may make assumptions. Example: “@DeploymentHelper summarize today's deployment failure events. Separate confirmed facts from items needing verification, and never output secret values.” Files and outputs Attach files only within the allowed formats and size limits. Check for personal information, secrets, and customer data before uploading. Uploading does not authorize automatic external transfer or permanent retention. Review generated outputs separately from the conversation and keep important files in an approved organization repository. Voice input 1. Select the microphone on the left of the composer to Start voice input. 2. Allow browser microphone access after confirming it is for dictation, separately from meeting recording. 3. When speech appears in the composer, select the microphone again to Stop voice input. 4. Review the transcribed text and Agent mention, then choose Send. The composer is locked while dictating. Speaking @Agent does not automatically open mention suggestions; check the selected mention after stopping. For microphone, network, or voice-session errors, fix permissions or connectivity before restarting instead of repeatedly sending. Meetings Meeting features include recording consent, transcription, summaries, and discarding minutes. Follow meeting minutes for the procedure and privacy boundaries. Clean up a Room Deleting a Room can affect access to its history. Preserve required outputs and decisions and check whether automation targets the Room before deleting. Adjust Room notification settings when alerts are no longer needed. Find messages Open Search messages or press Cmd+F / Ctrl+F in a Room, then enter a query. Search covers only loaded messages; scroll up to load older history first. Opening search may close the Artifact panel."
+    },
+    {
+      "path": "guides/use-chat-archive",
+      "group": "Conversations and work",
+      "title": "Use Chat Archive",
+      "description": "Find accessible Room history and manage Rooms within your permissions.",
+      "headings": [
+        "Use Chat Archive",
+        "Find and read history",
+        "Create and delete Rooms"
+      ],
+      "text": "Use Chat Archive Chat Archive is a view of accessible Chat Room history, not a separate export store. The list follows core:chat:List permissions and tenant, organization, and internal-visibility rules. Find and read history 1. Open Chat Archive in the Portal. 2. Search by Room name to narrow the list. 3. Select a Room to open its message history. 4. Scroll up for older messages. New messages arrive through WebSocket; an immediate refresh interval during disconnection is not guaranteed. Opening a Room updates its read status. Access only Rooms available in your list; do not guess or share other Room addresses or IDs. Create and delete Rooms Use + at the top right to create a direct or group Room. Use Select to choose multiple existing Rooms for deletion. Delete only Rooms you can manage and check the impact on other participants. Open and download required conversations' artifacts before deletion. Chat Archive does not export an entire conversation. To send messages or change participants, follow the Chat Room guide."
+    },
+    {
+      "path": "guides/use-ai-chat",
+      "group": "Conversations and work",
+      "title": "Use AI Chat",
+      "description": "Manage personal sessions, streamed responses, search, and artifacts.",
+      "headings": [
+        "Use AI Chat",
+        "Start and manage sessions",
+        "Ask a scoped question",
+        "Web search",
+        "Artifacts",
+        "Errors"
+      ],
+      "text": "Use AI Chat AI Chat helps signed-in Portal users ask about ClawPod operations and assist with work. Its sessions are private to each user, unlike Chat Rooms with Agents. Start and manage sessions 1. Open OpenClaw AI in the Portal. 2. Select an existing session on the left or start a new conversation. 3. Enter a question in the composer and choose Submit. 4. Responses stream into the conversation. Use Stop or Esc to stop the current response. The first user message becomes the session title, up to 100 characters. 5. In history, use Search conversations to find sessions and Select to select one or more, then Delete Conversation. Confirming deletion also deletes those sessions' messages. The list shows up to 50 of your own sessions, ordered by last modification. Ask a scoped question Available Portal tools depend on your role. Platform super administrators and tenant administrators have administration and consultation tools; tenant users have Agent management and consultation tools; read-only users and Agents have common read tools. Do not request permission bypasses. Example: “List our organization's five highest-cost Agents over the last seven days and explain each cost in a table. Do not change settings.” Tool denials and failures appear in the conversation. Obtain required IAM access through the IAM guide. Web search Search requires a query and uses five results by default. Result URLs and summaries are external information; open original sources for important decisions. Never include API keys, cookies, or personal information in a query. Artifacts When AI Chat creates a document, HTML, SVG, React, research-paper, or code artifact, open it in the Artifact panel. Choose a version, inspect the preview or code, and copy the content to the clipboard. Portal AI Chat currently has no artifact file download button. Artifacts do not automatically change Portal settings or original Agent workspace files. Request changes separately in a Chat Room, specifying the Agent and workspace. Errors - An expired sign-in session redirects to sign-in. - For interrupted or unfinished responses, inspect the visible error. A fixed timeout is not a verified consumer guarantee. - An unavailable error appears when the AI Chat backend cannot be reached. These errors follow a different path from Agent model credentials. For Agent issues, see providers and models."
+    },
+    {
+      "path": "guides/file-formats-and-artifacts",
+      "group": "Conversations and work",
+      "title": "File formats and Agent artifacts",
+      "description": "Understand upload formats, preview limits, and generated outputs.",
+      "headings": [
+        "File formats and Agent artifacts",
+        "Chat attachment formats",
+        "Task and Milestone attachments",
+        "Preview boundaries",
+        "Skill packages",
+        "Generated outputs",
+        "Open and download Chat artifacts",
+        "Example request"
+      ],
+      "text": "File formats and Agent artifacts Uploading a file, previewing it in the Portal, and generating it with an Agent are separate capabilities. Chat attachment formats Chat Room attachments allow up to 50 MB per file . The current Portal upload UI accepts these MIME types: Category Formats Portal preview --- --- --- Images JPEG, PNG, GIF, WebP, BMP Image preview; download large or browser-unsupported images Documents PDF, DOCX, XLSX, PPTX PDF preview up to 10 MiB ; download DOCX/XLSX/PPTX Text TXT, CSV, Markdown Text preview; files over 1 MiB may be truncated Archives ZIP Download only SVG, HTML, and JavaScript MIME types are blocked for Chat attachments. A matching extension is insufficient if the browser supplies a MIME type outside the allowlist. Task and Milestone attachments Task and Milestone attachments use the same 50 MB limit and backend MIME allowlist, including HWP/HWPX. The Chat Portal upload UI does not include HWP/HWPX, so these are not documented as ordinary Chat attachment formats. Preview boundaries Text previews support only TXT, CSV, and Markdown and may show only the beginning of large files. PDF previews support files up to 10 MiB. Image previews require an allowed image MIME type. Other accepted formats can be stored and downloaded without a guaranteed content preview. A preview is not a security scan or complete file validation. Follow organization security procedures before executing or externally sharing received ZIP files, Office documents, or images. Skill packages The organization Skill upload flow accepts only .zip or .tar.gz packages, up to 100 MB . The server checks ZIP/GZIP magic bytes as well as extensions. This is not a general document or script upload feature. A Skill's SKILL.md , executables, and dependencies still depend on runtime, permissions, and credentials. Upload success does not mean installation or execution readiness. Generated outputs Output Verified path Limits --- --- --- Chat artifact Markdown or HTML download UI Only when the Agent responds with an artifact Meeting result Text or Markdown download UI Requires the meeting and artifact generation conditions Workspace file Ready Agent file/CLI tools Formats depend on tools, image, and policy; not every extension is guaranteed Generated image OpenAI key and ready image-generation runtime Check actual MIME type, storage location, and cost in the result You may request PDF, DOCX, XLSX, PPTX, or ZIP, but first verify that the selected image, Skill, or runtime has the necessary generator. Accepting a Chat attachment does not prove the Agent can create that format. Open and download Chat artifacts Select an artifact card in a Chat message to open its exact version in the Artifact panel. Choose another version if available. Preview Markdown or HTML, copy Markdown or plain text, or download an HTML artifact as .html and other artifacts as .md . Unauthorized access shows forbidden; a missing version shows not found. Versioned Chat artifacts do not automatically synchronize with Agent workspace files. Example request Create this week's summary as weekly-summary.md and weekly-summary.csv in /workspace/reports . First check the tools and path permissions. Do not overwrite existing files or transfer data externally. Report the paths and validation results when finished. Specify filenames, formats, paths, overwrite rules, and external transfers. See the catalog and browser and CLI guide."
+    },
+    {
+      "path": "guides/use-browser-and-cli",
+      "group": "Conversations and work",
+      "title": "Request browser and CLI tasks",
+      "description": "Scope and verify web navigation, downloads, commands, and file changes.",
+      "headings": [
+        "Request browser and CLI tasks",
+        "Browser requests",
+        "CLI and file requests",
+        "Retrieve and clean up outputs"
+      ],
+      "text": "Request browser and CLI tasks Browser control uses the full Agent image; CLI work uses full or lite images. Platform super administrators control image selection. Ordinary users receive an available full image by default; request an adjustment only if the created Agent uses lite or fails browser-readiness checks. clawpod/agent-lite has no Chromium, X11 Desktop, or VNC/noVNC and is unsuitable for GUI browser work. The cli-anything Skill is bundled in full and lite images and prepared at /workspace/skills/cli-anything during boot. For Skills needing a specific CLI package or external service, first configure the dependencies and credentials listed in SKILL.md . Browser requests Browser tasks include opening pages, navigating, typing, clicking, snapshots, screenshots, uploads, and downloads. Full-image Agents use Playwright MCP for browser control and a desktop Skill for GUI desktop control. Include: 1. Target URL and business purpose. 2. Whether the Agent may only read or also enter information and click. 3. The allowed account or browser-profile scope. 4. Whether confirmation is required before submission, purchases, sending, or downloads. 5. Expected output: URLs, summary, screenshots, or downloaded files. Read only this week's report list at https://example.com/reports . Do not log in, enter information, download, or transfer data externally. Return a table of titles and URLs. Cloud does not provide a lifecycle for creating, selecting, and revoking dedicated browser profiles. Treat existing Agent browser state, cookies, and downloads as sensitive. Do not share your everyday browser profile or password manager. Ask for confirmation immediately before payments, account changes, messages, uploads, or downloads that may be hard to reverse or transfer data externally. CLI and file requests Specify the target Agent workspace and allowed paths. Check that the required commands or Skills are actually available. Lightweight Agents may lack desktop and some document or media tools. Work only inside /workspace/project . First show the proposed commands and files. Do not access the network, install packages, delete files, or push to Git. Report inspection results only. For changes, use these stages: 1. Inspect: identify commands, files to read, and expected outputs. 2. Review: confirm the files and external effects. 3. Execute: work within authorized paths. 4. Verify: report changed files, checks, failures, and unexecuted steps. Explicitly authorize high-impact commands such as rm , credential changes, package installation, deployment, Git push, and external API calls, and request confirmation before execution. Retrieve and clean up outputs A customer flow for previewing or downloading Agent /workspace files through Portal Documents has not been verified. Ask the Agent to deliver results as Chat artifacts or Chat/Task attachments, and verify filenames and contents before downloading. Clean up sensitive outputs and browser downloads according to retention policy. Send task requests in Chat , in a Room containing the target Agent. The Agent detail Conversations view is read-only. For failures, share the executed step, target URL or workspace path, a non-sensitive error summary, and Agent status. Do not share raw credentials, browser cookies, or full terminal logs."
+    },
+    {
+      "path": "guides/use-agent-desktop",
+      "group": "Conversations and work",
+      "title": "View Agent Desktop and conversations",
+      "description": "Use the running Agent Dashboard, VNC Desktop, and read-only conversation history.",
+      "headings": [
+        "View Agent Desktop and conversations",
+        "OpenClaw Dashboard",
+        "Desktop",
+        "Conversations"
+      ],
+      "text": "View Agent Desktop and conversations OpenClaw Dashboard requires a running Agent. Desktop requires a full-image Agent. clawpod/agent-lite has no Chromium, GUI desktop, or VNC/noVNC; arrange a full image during creation for GUI tasks. Agent details may show Desktop, Dashboard, and Conversations. These expose the Agent's environment and conversation data, so access only the Agents needed for your work. OpenClaw Dashboard 1. Open ClawPod Connection in Agent details. 2. View the iframe or select Open in New Tab. 3. Use fullscreen if needed. The Portal proxy supplies the Gateway token server-side; users do not enter it. Complete authentication first if the Agent is awaiting auth . An unavailable message appears when K8s Desktop is not ready. For Gateway connection failures, the Portal retries loading up to twice before showing an error. Desktop 1. In a running full-image Agent, open Remote Agent PC Control. 2. If the state is Password: Not set, select Set Password, enter a password, and Save. 3. If it is Password: Set, use Change to replace it. Remove has not been verified to remove an existing password; do not use it as a way to return to passwordless VNC. 4. Changing the password starts an Agent restart. The viewer loads a new connection after about eight seconds. VNC passwords are managed per Agent; the view shows whether one is set, not its value. Never place the password in Chat, SOUL.md , or AGENTS.md . The viewer shows a connection error if noVNC/websockify is stopped or the Pod is unreachable. Desktop views may expose files, browsers, and sign-ins; exclude sensitive information from screen sharing and recording. Conversations Chat Monitoring separates Rooms with user participants from Agent-only Rooms. Selecting a Room shows its latest 100 messages read-only, refreshed every ten seconds. You cannot send messages or edit Rooms here."
+    },
+    {
+      "path": "guides/use-tasks-and-milestones",
+      "group": "Conversations and work",
+      "title": "Track Tasks and Milestones",
+      "description": "Use organization boards, comments, attachments, GitHub references, and CSV exports.",
+      "headings": [
+        "Track Tasks and Milestones",
+        "Open a board",
+        "Update status",
+        "Comments and attachments",
+        "Link GitHub issues and pull requests",
+        "Create a Milestone",
+        "Export CSV",
+        "Scope"
+      ],
+      "text": "Track Tasks and Milestones Tasks tracks work by organization with Kanban and list views, Task details, organization statistics, Milestones, and CSV export. Open a board 1. Open Tasks and choose an organization. 2. Search or filter the Kanban or list view. 3. Open a Task to inspect status, assignee, reporter, due date, activity, comments, attachments, and linked material. Use activity and linked Rooms or events to identify the creating Agent or automation. Do not infer ownership or cause from the title alone. Update status Move a Task on the board or change its status in details. Before marking it Done, check completion criteria, outputs, and the Agent's final result. Multiple users may update a Task concurrently; record the reason for important transitions in comments or activity. Comments and attachments Use comments for decisions, instructions to the owner, and blockers. Authors can edit or delete their own comments. Comments render Markdown and may create notifications. Drag files into attachments or select files to upload. Task and Milestone attachments allow 50 MB per file ; see formats. Download or delete files from the list. Before deletion, check references in comments and external work. Link GitHub issues and pull requests In Task details, select the link action in the GitHub area and enter: 1. Repository owner. 2. Repository name. 3. Issue or pull request number. 4. Reference type: Issue or Pull Request. The Task shows the repository, number, type, and status saved at linking time. You can open or unlink the reference. This does not create, edit, merge, or synchronize the live state of GitHub issues or pull requests. Create a Milestone 1. Select Create Milestone on the organization board. 2. Enter name, description, start and due dates, reporter, and any attachments. 3. After creation, select the Milestone in each Task's details to associate it. 4. Check progress and the Done count. Removing a Task from a Milestone does not delete the Task. Check ownership and impact before changing or deleting a Milestone tied to a release or customer commitment. Export CSV 1. Apply search, status, assignee, and Milestone filters. 2. Confirm there are results, then choose Export CSV in the toolbar. 3. Check the downloaded organization, period, and row count. Exports contain organization operational data. Store them in approved locations and limit sharing. Scope Internal relay of instructions to Agents and automatic escalation are not ordinary board controls. Do not assume Task, Milestone, comment, attachment, or GitHub-reference actions guarantee automatic execution."
+    },
+    {
+      "path": "guides/use-meeting-minutes",
+      "group": "Conversations and work",
+      "title": "Create and manage meeting minutes",
+      "description": "Obtain recording consent, review transcripts and summaries, and deliver or discard minutes.",
+      "headings": [
+        "Create and manage meeting minutes",
+        "Start a meeting",
+        "Review transcription and delivery",
+        "Past minutes and summary versions",
+        "Manual review after validation failure",
+        "Errors and privacy"
+      ],
+      "text": "Create and manage meeting minutes Create minutes through a Chat Room's meeting feature. Recording and transcription process personal information; confirm organization retention policy and obtain every participant's consent before starting. Start a meeting 1. Open the Room and select Meeting. Starting may be restricted in Agent-only Rooms. 2. Accept both recording and participant-notification consent items. New meetings use the Portal's default title. 3. Choose translation if needed: none, one-way, or two-way. 4. Select 15, 30, or 60 minutes and choose Agree and Start. Both consent items are required. Do not use transcription without consent or where recording is prohibited. Review transcription and delivery Read the transcript and organize paragraphs in the Meeting panel while the meeting runs. At the end, choose: - Deliver to Agent: save the transcript, generate a summary, and send transcript and summary artifacts to the Room. - Discard: soft-delete the minutes to exclude them from the archive. The same choice appears when the time limit ends. An empty or unsaved transcript cannot produce a summary. Inspect the content before delivery and confirm the delivery or discard result afterward. Past minutes and summary versions Open past minutes from the Room's meeting history. Finalized minutes show transcript and summary and support summary regeneration. Regeneration saves a new version; check the current version before sharing important decisions. Download transcripts as .txt or .md from the history panel. Preserve required originals and summaries in approved storage before deletion. Deleting minutes records a reason and may make referenced results inaccessible from Chat. Manual review after validation failure If distortion or factual errors are detected, Manual review is required. and Start Manual Review appear. Users who can see the action should: 1. Compare decisions, numbers, owners, and deadlines with the original transcript. 2. Select Start Manual Review. 3. Score M8, M10, M11, and M13 from 0–5, and S3 and S4 from 0–3. 4. Select Submit Review to rerun validation. Scores do not edit the summary. If it is wrong, regenerate from the transcript or follow the correction procedure. Do not raise scores just to pass validation. Errors and privacy For processing errors, inspect the message and meeting status instead of creating duplicate meetings. Recordings, transcripts, translations, and summaries may contain personal or customer data; limit recipients and retention when moving them through Chat, webhooks, or external tools. Meeting-domain validation and summary-quota dashboards are separate operational concerns. Use manual review only when its action is actually shown."
+    },
+    {
+      "path": "guides/manage-workspace-documents",
+      "group": "Conversations and work",
+      "title": "Use the Documents screen",
+      "description": "Browse and upload files in the existing shared document store.",
+      "headings": [
+        "Use the Documents screen",
+        "Browse files",
+        "Preview and download boundaries",
+        "Upload"
+      ],
+      "text": "Use the Documents screen Documents is the Portal's existing shared document store. Do not assume it is private or separated by organization. It does not manage Agent /workspace files or SOUL.md , AGENTS.md , and MEMORY.md . Browse files 1. Open Documents . 2. Navigate using the left file tree and breadcrumbs. 3. Select a file to read it. The shown path is not necessarily an Agent workspace or private organization store. Follow Agent workspace files separately. Preview and download boundaries The current viewer reads UTF-8 text and returns known text MIME types. It does not preview binary images, PDF, or Office files. This guide does not establish this legacy screen's upload formats or size limits. For verified Chat and Task attachment limits, see file formats. Check the title and path, inspect text for sensitive information, and review binary files with a separate approved tool. Supported Chat attachments may offer text, image, PDF, or CSV previews. Other formats may be download-only; scan with a trusted security tool instead of relying on the extension. Upload 1. Open the Upload area. 2. Select the file and destination path. 3. Confirm progress and completion. 4. Verify the actual path and content in the file tree. Check for secrets, personal information, customer data, and executables before uploading. Putting a reference document only in this shared store does not automatically make an Agent read it. This guide does not provide Documents sharing or deletion procedures. Use Chat/Task attachments or approved organization storage for outputs that require those workflows."
+    },
+    {
+      "path": "guides/create-agent",
+      "group": "Create and configure Agents",
+      "title": "Create an Agent and review its configuration",
+      "description": "Review persona, instructions, resources, and connections before creation.",
+      "headings": [
+        "Create an Agent and review its configuration",
+        "Persona and organization",
+        "SOUL and instructions",
+        "Resources and secrets",
+        "Review and verify"
+      ],
+      "text": "Create an Agent and review its configuration Creating an Agent requires core:agent:Create and available Agent quota. An Agent is an operational resource with a workspace, instructions, model, credentials, and execution environment. Persona and organization 1. Open Agent → Add New Member. 2. Choose an industry and persona preset, or a blank Agent. 3. Check the name, role, description, and target organization. 4. Check whether an Agent already has the same role. If a duplicate-role warning appears, decide whether to create another Agent or improve the existing one. Duplicates can spread webhook targets, costs, and operational ownership across several Agents. SOUL and instructions Specify goals, permitted information, prohibited behavior, uncertainty handling, and output format. Do not put secrets, API keys, sensitive customer originals, or another user's account information in SOUL. For shell, file, or browser work, distinguish authorized automatic actions from those requiring confirmation. Resources and secrets Before creation, check with an administrator if the work needs browser, desktop, or document tools. Lightweight Agents lack GUI desktop and some tools. Ordinary users create with the provided defaults rather than directly changing the environment. Explain additional tool needs to the administrator. Resources can affect usage limits and costs. Use only the purpose-specific inputs in handling secrets for provider and service connections. Do not copy sensitive values into unrelated creation fields, Chat, templates, or documentation. For non-sensitive custom settings, follow environment variables. Review and verify 1. Complete required settings and choose Hire This Expert at the bottom. 2. If validation passes, review the organization, role, model, instructions, resources, and connections in the dialog. 3. Select Confirm &amp; Create. 4. On success, the Portal opens Agent details. This confirms acceptance of creation; next check status, organization, a small request in a test Room, required Skills/credentials/webhooks, and Logs/Metrics for errors. Avatar generation for blank Agents is supplementary. Its failure neither proves nor prevents Agent creation success."
+    },
+    {
+      "path": "guides/manage-agent",
+      "group": "Create and configure Agents",
+      "title": "Manage Agent status and settings",
+      "description": "Inspect an Agent, control its execution, and verify configuration changes.",
+      "headings": [
+        "Manage Agent status and settings",
+        "Find and inspect an Agent",
+        "Start, stop, and restart",
+        "After configuration or credential changes",
+        "Before deletion"
+      ],
+      "text": "Manage Agent status and settings Available controls and detail sections vary by permissions and Agent status. Find and inspect an Agent Open Agents , search by name, role, or status, and use status or unassigned-Agent filters if needed. Select the Agent and check whether it is running, stopped, or in error before acting. Depending on the environment, details may show Desktop, Dashboard and usage, Conversations, Metrics, Overview, Config, and Logs. Check Overview, Config, and Logs together before restarting. Confirm the intended organization, model, credential, and workspace and distinguish recent errors from configuration issues. Start, stop, and restart Use the controls at the bottom of Agent details: - Start runs a stopped Agent. - Stop stops a running Agent. - Restart restarts the environment. These require Agent update permission and can affect running work or conversations. Notify the Room and confirm current work has ended before stopping or restarting an operational Agent. After configuration or credential changes Saving SOUL.md may require a restart. Saving alone does not confirm runtime application; inspect restart warnings or failures and verify status and a fresh conversation. Follow the relevant screen for restart requirements after connection or environment changes. 1. Identify the setting and affected Agents. 2. Save at a safe time. 3. Apply required restarts only as indicated by the screen. 4. Verify status and a small Room request. 5. Check Logs and Metrics for errors. Before deletion Fire or deletion may be irreversible. Check whether the Agent is targeted by Rooms, webhook rules, scheduled tasks, or installed Skills; preserve required workspace documents and outputs; and prepare a replacement Agent and owner. Deletion is also controlled by Agent update permissions. Ask an organization administrator if you lack access or cannot establish the impact."
+    },
+    {
+      "path": "guides/use-agent-templates",
+      "group": "Create and configure Agents",
+      "title": "Create and use Agent templates",
+      "description": "Reuse reviewed roles, models, resources, and SOUL instructions.",
+      "headings": [
+        "Create and use Agent templates",
+        "Apply a template",
+        "Custom templates",
+        "Import and export"
+      ],
+      "text": "Create and use Agent templates Templates reuse role, model, resource limits, and SOUL instructions. They do not remove the need to check credentials, target organization, and final settings. Apply a template 1. Open Agent → Templates. 2. Filter by category and review the description and settings. 3. Select Use Template. 4. Review the prefilled creation settings for the target organization and task. 5. Check credentials, resources, and instructions, then create the Agent. A template starts a new Agent configuration. It does not automatically change running Agents. Custom templates Users with Agent update permission can create, edit, and delete custom templates. 1. In Agent → Templates, select Create Template. 2. Enter name, description, icon, category, role, model, CPU and memory limits, and SOUL content. 3. Select Save and inspect the resulting card. 4. Use the card's edit or delete actions to manage custom templates. Do not include secrets, personal access tokens, or sensitive customer originals. Templates can be reused and exported; include only organization policy and reviewed work instructions. Import and export Select Export on a card to download JSON. To import, open Create Template, select a file in JSON import, review every instruction, resource setting, and model choice, then Save. Do not immediately apply an external template. Review file, shell, and external-transfer instructions against Agent policy and organization approval. Built-in templates primarily support use and export. Authorized users can edit and delete custom templates. Before deletion, check whether another operator relies on it for new Agents."
+    },
+    {
+      "path": "guides/manage-credentials",
+      "group": "Create and configure Agents",
+      "title": "Manage AI keys and credentials",
+      "description": "Register, connect, rotate, and revoke provider credentials.",
+      "headings": [
+        "Manage AI keys and credentials",
+        "Permissions and identity",
+        "Register a credential",
+        "Obtain provider API keys",
+        "Create OpenAI Codex auth.json",
+        "Connect an Agent",
+        "Rotate safely",
+        "Disconnect and delete",
+        "Troubleshooting"
+      ],
+      "text": "Manage AI keys and credentials A Credential profile in AI Key Management holds sensitive connection data for a model provider or local LLM. It is not a personal password vault or general-purpose secret store. Never copy its values into Chat, playbooks, documents, or logs. See secret boundaries. Permissions and identity Listing, creating, rotating, applying, and deleting can require different permissions. Tenant and platform super administrators may have role-based bypasses; other users need all relevant Credential and Agent actions. Seeing the screen does not grant access to every button. Platform super administrators can filter profiles by tenant. When switching tenants, check the tenant, provider, fingerprint, and number of connected Agents , not just the key name. Register a credential 1. Open AI Key Management → Add . 2. Select provider and credential type. 3. Enter an identifiable name and the secret, then save. 4. Check provider, type, fingerprint, version, and connected Agent count. Options include Claude API key or setup token, OpenAI API key, OpenAI Codex auth.json , Google Gemini API key, OpenRouter API key, Ollama server, and OpenAI-compatible local LLM server. Actual options depend on release and permissions. Ollama takes a server address and model, not an API key. OpenAI-compatible local servers can accept an API key if needed. A successful connection test does not prove Agent runtime access; verify a non-sensitive prompt on the Agent too. Obtain provider API keys ClawPod does not issue provider keys. Create one in your provider account or project, store it according to organization secret-handling procedures, and enter it only in the Credential input. Provider Issuing console Value for ClawPod --- --- --- Anthropic Claude Anthropic Console API key; setup tokens can be stored but not bound to Agents OpenAI OpenAI API keys Project API key Google Gemini Google AI Studio Gemini API key OpenRouter OpenRouter API keys OpenRouter API key Choose the intended organization/project and set minimum permissions, budgets, and billing with the provider. The Official console link opens the corresponding issuing page. Provider menus and billing terms can change, so fixed button sequences are not reproduced here. The full value may not be shown again. Never paste it into Chat, Tasks, workspace files, screenshots, or support requests. If exposure is suspected, revoke the old key at the provider as well as replacing it in ClawPod. Create OpenAI Codex auth.json OpenAI Codex uses the OAuth credential JSON created by a local Codex CLI login, not an ordinary OpenAI API key. 1. Install Codex CLI in a trusted personal development environment. 2. Run codex login and complete browser sign-in. 3. Open the generated ~/.codex/auth.json . 4. Paste the entire JSON into the OpenAI Codex Credential input or the Agent creation Secrets configuration. The input must be valid JSON with a top-level tokens object. Do not copy only part of the file or substitute OPENAI API KEY . ClawPod passes it through OPENAI CODEX AUTH JSON and synchronizes the Agent's ~/.codex/auth.json at runtime. This file is an account credential and may include a refresh token. Keep it out of source control, shared drives, issues, Chat, and Skill packages. Do not obtain it using another person's session. After expiry or revocation, repeat sign-in with your own account and replace the credential. Connect an Agent 1. Select the Credential in the target Agent's settings. 2. Confirm the Agent and Credential belong to the same tenant. 3. Check for another credential conflicting in the same runtime slot. 4. Inspect whether application is updated, pending, or failed. 5. For pending or runtime warnings, check status and restart requirements, then verify a small request. Claude setup tokens can be stored, but Agent binding accepts API keys only. To change provider or type, create a new profile and review the binding instead of assuming the old profile can be overwritten. Rotate safely 1. Issue a new secret at the provider. 2. Check the profile fingerprint and Used by Agent list. 3. Open the profile and enter the new value. Provider, type, and profile name cannot be changed in the rotation screen. 4. Verify application results and Agent count, then test affected Agents. 5. Revoke the old provider secret after the new connection works. The Portal does not reveal stored raw secrets. It shows identifying fingerprints and current versions. If a value is lost, issue and replace it rather than trying to retrieve it. Disconnect and delete A profile must have no connected Agents before deletion. Check Used by , replace or remove every binding, then delete. If deletion is rejected, check remaining bindings instead of repeatedly submitting. Deleting a profile does not revoke the provider's API key. For exposure, departure, or contract termination, revoke it in the provider console too. Troubleshooting Check the binding, Agent settings, restart state, then provider account, quota, and connectivity. If problems remain, inspect a safe test Room and Agent logs. For suspected exposure, rotate immediately and restart affected Agents. Creation and rotation rights follow organization policy. Never request or share another member's secret. Encryption-key creation, rotation, and recovery are not verified customer Portal self-service features and are not documented here as operational procedures."
+    },
+    {
+      "path": "guides/handle-secrets",
+      "group": "Create and configure Agents",
+      "title": "Handle secrets and sensitive values",
+      "description": "Use the dedicated paths for provider credentials and webhook signing secrets.",
+      "headings": [
+        "Handle secrets and sensitive values",
+        "Provider credentials",
+        "Webhook signing secrets",
+        "Do not store secrets in ordinary content"
+      ],
+      "text": "Handle secrets and sensitive values The Portal has no general-purpose vault for arbitrary secrets to pass to Agents. Use each value's designated input. Value Input Boundary --- --- --- Anthropic, OpenAI, Codex auth.json , Gemini, OpenRouter, local LLM credentials AI Key Management → Credential Tenant-scoped profiles bound to Agents in the same tenant; see credentials Provider credential entered directly for a new Agent Creation Secrets configuration One-time, per-Agent manual input; use a profile for shared rotation and revocation Signing secret for incoming ClawPod webhooks Webhooks → Sources Plaintext may appear only during creation, regeneration, or rotation; see webhooks Passwords, MFA codes, recovery codes, personal access tokens Do not store in the Portal Use organization secret storage, never Chat, workspace files, Tasks, or playbooks URLs, project IDs, non-sensitive feature flags Creation environment variables Not a secret storage path; see environment variables Provider credentials Issue an Agent-specific credential in the provider's official console, register its provider and type in AI Key Management, bind it only to the intended same-tenant Agents, and test in a small Room. On exposure, departure, or contract termination, issue and apply a replacement and revoke the old value. The Portal does not reveal stored raw credentials. Replace lost values rather than trying to retrieve them. Webhook signing secrets A signing secret verifies incoming requests from a Source; it is separate from provider credentials. 1. Securely store the secret shown when creating the Source. 2. Enter the same value in the external service's webhook settings. 3. If exposure is suspected, rotate or regenerate the Source secret and immediately update the external service. 4. Send a test event to verify the new signature and delivery. Do not store secrets in ordinary content Keep secrets out of SOUL.md , AGENTS.md , TOOLS.md , MEMORY.md , Chat, AI Chat, Task comments, meeting transcripts, Skill packages, webhook payloads, and custom environment variables. Do not register another user's auth.json , MFA recovery code, or browser cookie. Do not use internal settings or APIs as a vault. An internal per-Agent configuration path returns masked values, but it is not exposed in the Portal. Do not call it directly or treat it as general secret storage. Do not ask an Agent to remember a secret or read an environment value into Chat. Connect provider access through Credential bindings and request only success or failure status, not the value itself."
+    },
+    {
+      "path": "guides/select-models",
+      "group": "Create and configure Agents",
+      "title": "Choose providers and models",
+      "description": "Configure main, sub, fallback, and heartbeat models with matching credentials.",
+      "headings": [
+        "Choose providers and models",
+        "Managed providers",
+        "Available models",
+        "Configure and verify",
+        "Local LLM prerequisites"
+      ],
+      "text": "Choose providers and models Agent creation and settings support main , sub , fallback , and heartbeat models. Choices must match actual credentials, the model catalog, and the runtime release. Managed providers Provider Credential Model selection --- --- --- Anthropic API key or setup token Standard selector; Agent binding accepts API keys only OpenAI API key Standard selector OpenAI Codex auth.json Standard selector; subscription candidates depend on catalog status Google Gemini API key Standard selector OpenRouter API key Catalog models can appear in the standard selector Local LLM (Ollama) Server URL and model Models can be assigned to roles after a connection test; no API key support OpenAI-compatible Server URL, model, optional API key Models can be assigned to roles after a connection test The Credential dialog has six service choices: Anthropic, OpenAI, OpenAI Codex, Google, OpenRouter, and Local LLM. Local LLM distinguishes Ollama from OpenAI-compatible servers, giving seven runtime provider identifiers. The hosted selector uses the first five hosted providers. See provider keys and Codex authentication. auth.json is a separate JSON login credential, not a replacement string for an OpenAI API key. Use the provided Portal settings and each service's terms. Available models Use the current Portal list rather than a fixed list in documentation. Service and model activation can change. If a model is missing, ask your organization administrator; writing its name in instructions does not enable it. Role Purpose Selection principle --- --- --- main Primary responses and final decisions Balance quality, tool compatibility, and cost sub Research, drafts, and supporting work Can be lighter than main; do not delegate sensitive judgments fallback Alternative when main fails Must have working authentication and access, including another provider's credential if needed heartbeat Periodic check-in turns Choose for short checks; this does not enable a Cloud self-service scheduler Fallback is a usable alternate route, not simply a cheaper model. If it uses another provider, connect both credentials and verify each in a test Room. Configure and verify 1. Prepare provider credentials. 2. Select main during Agent creation or settings. 3. Select sub, fallback, and heartbeat when needed. 4. Verify all required credentials are bound within the same tenant. 5. Test main responses, fallback conditions, and tool availability using non-sensitive requests. 6. Track cost, errors, and latency in Analytics. Avoid changing several roles at once when diagnosing problems. Local LLM prerequisites Register an Ollama or OpenAI-compatible server and pass the connection test. If parameter-size information is available, the Portal can assign a larger model to main and a smaller one to heartbeat. Review these assignments for access scope, performance, privacy, and fallback. A successful connection test still requires a real response from the target Agent. Verify server access and model readiness. For other integrations, first confirm a supported Portal setup path; do not guess settings or paste secrets into conversation."
+    },
+    {
+      "path": "guides/manage-skills",
+      "group": "Create and configure Agents",
+      "title": "Use the Skill Marketplace",
+      "description": "Find, install, remove, and publish Skill packages.",
+      "headings": [
+        "Use the Skill Marketplace",
+        "Find a Skill",
+        "Install on Agents",
+        "Download a package",
+        "Publish an organization Skill",
+        "Uninstall and delete"
+      ],
+      "text": "Use the Skill Marketplace Listing Skills requires core:skill:List . Installation is performed by tenant administrators or platform super administrators and also requires the Portal policy core:skill:Install . Find a Skill 1. Open Skills . 2. Search or select a category. Search runs after typing pauses; press Enter to run it immediately. 3. Review version, description, category, visibility, package size, downloads, and installed-Agent count on cards. 4. Open a card to read its details, author, tags, version, and installed Agents. Public Skills are discoverable in the marketplace. Private Skills are scoped to their tenant. Install on Agents 1. Select Install in Skill details. 2. Search and choose one or more Agents. Tenant administrators see their tenant's Agents; platform super administrators see all Agents. 3. Agents already associated with the Skill cannot be selected. 4. Select Install n Agents . 5. The dialog closes after submission. Installation is asynchronous; verify completion separately. 6. In Installed Agents , check for installed or failed . pending and installing are unfinished. Pending means accepted, installed means completion was reported, and failed means the Skill is not yet usable on that Agent. Configure credentials, service URLs, and external accounts required by the description or SKILL.md before retrying. Connect API keys through AI Key Management, never Chat. Download a package Download requires core:skill:Download . Public packages are available to authorized users; private ones require the same tenant or platform super administrator access. Downloads are for review or organization package management. The standard Agent installation path is Install , not manual copying. Publish an organization Skill Platform super administrators with core:skill:Create can use Upload Skill . 1. Prepare a .tar.gz or .zip package up to 100 MB ; the archive format is checked too. 2. Enter a required Name of no more than 100 characters . 3. Enter description, category, author, and tags, and choose public or private visibility. 4. Select and upload the package. 5. Review its published details, then install it on the required Agents. Public packages are discoverable by other users. Keep secrets out of packages; manage external keys in AI Key Management. Uninstall and delete To remove a Skill from one Agent, choose Uninstall in its installed-Agent list. This requires tenant administrator or platform super administrator status and core:skill:Uninstall . Removal is asynchronous; confirm completion. Deleting the marketplace package requires platform super administrator status and core:skill:Delete . It removes the Skill database record and stored package. First uninstall it from listed Agents and replace dependent playbooks, scheduled tasks, and operational procedures."
+    },
+    {
+      "path": "guides/configure-agent-environment",
+      "group": "Create and configure Agents",
+      "title": "Set environment variables during Agent creation",
+      "description": "Pass non-sensitive runtime settings to a new Agent.",
+      "headings": [
+        "Set environment variables during Agent creation",
+        "Add variables to a new Agent",
+        "Verify after creation"
+      ],
+      "text": "Set environment variables during Agent creation Environment variables are name/value configuration for a new Agent. Use them only for non-sensitive service URLs, project identifiers, and feature flags. Although the fields appear inside Secrets Configuration, they are not a general secret vault. Use them for endpoints and settings the environment must read, including a local LLM endpoint verified during creation. Manage provider API keys and shared credentials through Credentials; copying them into several Agents' variables makes rotation and auditing difficult. Add variables to a new Agent 1. Open Agent → Add New Member and configure basic information and models. 2. Open Secrets Configuration. 3. Add a row in the additional environment variables area. 4. Enter a name and value, then complete creation review. Names must start with an uppercase letter or , followed only by uppercase letters, digits, or , such as ACME PROJECT ID or INTERNAL API URL . Values cannot consist only of whitespace. The creation flow passes custom variables to Agent configuration. Users cannot override reserved platform keys such as AGENT ID , organization identifiers, Gateway tokens, and internal API URLs. Selecting a local LLM sets OLLAMA HOST from its connection information. Verify after creation Run a small test and verify the needed setting was read and the external connection works. This guide does not provide a procedure for editing existing Agents' variables. Do not call unexposed management APIs or pass secrets to bypass missing UI. Keep passwords, API keys, access tokens, MFA and recovery codes, customer originals, bulk personal data, and shared provider credentials out of custom variables. Do not copy secrets already written in Chat, Task comments, or workspace instructions. Variables configure behavior; they do not replace instructions. Put role rules in SOUL.md and tool conventions in TOOLS.md. The current Portal exposes these fields for new Agent creation only. For an existing Agent, use the organization's approved creation or operational process to update its configuration."
+    },
+    {
+      "path": "guides/configure-agent-workspace-files",
+      "group": "Create and configure Agents",
+      "title": "SOUL.md, AGENTS.md, and workspace files",
+      "description": "Choose the right instruction or memory file and verify changes.",
+      "headings": [
+        "SOUL.md, AGENTS.md, and workspace files",
+        "Reading and application",
+        "File roles and management",
+        "Edit SOUL.md",
+        "AGENTS.md and TOOLS.md",
+        "Where content belongs",
+        "Scoped requests and verification"
+      ],
+      "text": "SOUL.md, AGENTS.md, and workspace files Find formats and templates in the workspace file reference. Files have different roles and management paths; saving one does not mean it automatically applies to every conversation. Reading and application - Instruct the Agent to read needed files or explicitly read them with filesystem MCP/CLI. The Portal does not control per-session automatic injection lists. - Instructions supply context; writing a shell command, transfer, or deletion in a file does not automatically execute it or technically enforce approvals and access limits. Follow organization policy. - Long bootstrap files may be truncated by context limits. Put essential rules first and reference separate detailed procedures from AGENTS.md . - Changes do not retroactively alter an in-progress response. Check restart requirements and verify with a new conversation. File roles and management File Purpose Management --- --- --- SOUL.md Role, tone, behavior boundaries Agent → target Agent → Configuration AGENTS.md Repeated workflows and operating rules No direct Portal editor; request a scoped, authorized Agent change TOOLS.md Tool conventions No direct Portal editor; request a scoped, authorized Agent change IDENTITY.md , USER.md Introduction and collaboration preferences Agent file permissions and organization policy MEMORY.md , memory/ .md Long-term decisions and daily/topic records Specify retention and deletion scope BOOTSTRAP.md One-time workspace introduction Follow the bootstrap reference after setup HEARTBEAT.md Short periodic checks First verify heartbeat actually runs on the Agent Edit SOUL.md 1. Open the target in Agent. 2. Expand Configuration and read the SOUL.md preview. 3. Select Edit and update only the needed role, allowed scope, prohibitions, and output format. 4. Select Save and check the success message. 5. Reopen the preview and confirm Security Policy and Sub-Agent Delegation sections remain or have been added. 6. Check Agent status and a small read-only request in a new Room. Inspect warnings and restartFailed ; saving does not prove restart completion. Default security and delegation instructions may be preserved or supplemented on save. AGENTS.md and TOOLS.md New Agents may receive default operating instructions. These are workspace documents that authorized file tools can read and update. Review defaults and change only what is necessary. SOUL.md is supplied by runtime configuration for persona and security boundaries. AGENTS.md and TOOLS.md are workspace documents after first boot. Only SOUL.md editing is currently exposed in Portal Config. Do not ask an Agent to overwrite every instruction. Establish purpose, target file, rules to preserve, secret exclusions, and reviewer, then obtain the organization's supported workspace-change procedure. Where content belongs Content File Example --- --- --- Tone, role, uncertainty handling SOUL.md Separate confirmed deployment facts from open questions Repeated work procedure AGENTS.md Check authorization and impact before external changes Tool-specific convention TOOLS.md Confirm the account before opening a customer system Stable team preferences USER.md or MEMORY.md Respond in Korean with a summary followed by open questions Daily investigations and long records memory/ .md Dated deployment-event investigation One-time setup BOOTSTRAP.md Workspace introduction and initial checks Never store secrets, passwords, API keys, OAuth tokens, or unnecessary customer originals in workspace files. Use Credentials and dedicated secret inputs. Scoped requests and verification Propose only the output-format section of SOUL.md . Preserve existing security instructions and show the draft first. Record a lasting team preference as one line in MEMORY.md . Exclude credentials, personal identifiers, and customer originals. Requests still require tool policy and actual file permissions; they do not guarantee a write. The Portal cannot directly verify AGENTS.md , TOOLS.md , or MEMORY.md . Review important changes using the organization's procedure and verification artifacts. Check which file changed, whether its management path is supported, whether security and tenant boundaries are preserved, and whether a new test Room confirms behavior after status stabilizes. Keep detailed manuals separate from short workspace rules."
+    },
+    {
+      "path": "capabilities/memory-and-configuration",
+      "group": "Create and configure Agents",
+      "title": "Memory and Agent configuration",
+      "description": "Understand workspace memory, identity, sessions, and execution policies.",
+      "headings": [
+        "Memory and Agent configuration",
+        "Memory",
+        "Identity and workspace",
+        "Sessions and subagents",
+        "High-impact tools"
+      ],
+      "text": "Memory and Agent configuration You can ask an Agent to retain work context, subject to its tools and organization policy. The only workspace file currently editable directly in the Portal is SOUL.md . There are no Portal controls to enable, disable, or directly edit memory, AGENTS.md , or TOOLS.md . Follow workspace files. Memory Capability Behavior Conditions --- --- --- Search Find relevant past records by meaning and keywords Runtime memory tools and workspace policy must allow it Read Read needed portions of matching files Search first and minimize the read scope Store Keep long-term preferences, decisions, and context Never store secrets in ordinary memory Session summary May write recent context to daily memory on a new session or reset Not a separately configurable or executable Portal feature Memory is managed workspace information, not hidden model state. Specify both what to retain and what to delete. Use dedicated secret inputs for credentials. Identity and workspace Setting Effect Boundary --- --- --- Identity Name, avatar, introduction Follow organization identity policy Workspace Files and instructions Keep separate from other Agents and tenants Bootstrap documents Initial instructions, persona, and user context Long content can be truncated System prompt Basic behavior and boundaries A complete override can replace safety instructions and requires administrator review Timezone and format Default time presentation Specify the user or organization timezone See the workspace guide for reading and management boundaries. Portal-editable files differ from first-boot files. Sessions and subagents The runtime can create sessions and run subagents. Concurrency, depth, model, timeout, and result notifications follow runtime policy, with no per-user Portal configuration screen. Viewing or messaging other Agents' sessions is also not a separate self-service setting equivalent to ordinary Chat Rooms. High-impact tools Specify targets, changes, allowed paths, and external transfers. Written instructions do not automatically enforce approvals or access limits. Follow organization permissions and data policies and verify actual changes and results."
+    },
+    {
+      "path": "workspace-files/index",
+      "group": "Create and configure Agents",
+      "title": "Agent workspace file reference",
+      "description": "Write instruction and memory files for a clear, limited purpose.",
+      "headings": [
+        "Agent workspace file reference",
+        "Writing principles"
+      ],
+      "text": "Agent workspace file reference File Purpose Reference --- --- --- SOUL.md Role, tone, and judgment SOUL.md AGENTS.md Operating procedures and collaboration AGENTS.md TOOLS.md Tool use and local conventions TOOLS.md MEMORY.md Lasting decisions, preferences, and lessons Memory files BOOTSTRAP.md One-time setup in a new workspace Bootstrap and identity Writing principles 1. Give each file one responsibility: persona in SOUL.md , working rules in AGENTS.md , tool details in TOOLS.md . 2. Write short, verifiable actions, such as checking target, impact, and approval before external changes. 3. Use minimum data and permissions. Never include secrets, passwords, tokens, or customer originals. 4. Instructions do not automatically execute tools. Runtime and organization rules determine actual scope. 5. Verify important changes in a test Room. A file cannot bypass model, tool, or channel permissions. The Portal currently edits SOUL.md . Default AGENTS.md and TOOLS.md are supplied at creation and copied at first boot, but no direct Portal editor has been verified for them."
+    },
+    {
+      "path": "workspace-files/soul-md",
+      "group": "Create and configure Agents",
+      "title": "Write SOUL.md",
+      "description": "Define an Agent role, response style, boundaries, and output criteria.",
+      "headings": [
+        "Write SOUL.md",
+        "Suggested format",
+        "Role",
+        "Response principles",
+        "Boundaries",
+        "Output",
+        "Save and verify",
+        "Draft with external AI"
+      ],
+      "text": "Write SOUL.md SOUL.md describes who the Agent is and how it should judge and respond. Edit it through Agent → target Agent → expand Configuration → preview → Edit. Exact session-context injection timing belongs to the OpenClaw runtime, not a separate Portal setting. Include the role and tasks, language and tone, treatment of uncertainty, consistent output structure, and approval requirements for messages, file changes, and external services. Suggested format Frontmatter can identify the role; the body carries the main behavioral instructions. Save and verify 1. Expand Configuration and read the preview. 2. Use Edit to change only the required sections. The Portal editing limit is 100,000 characters . 3. Select Save and inspect the success message. 4. Reopen the preview and check that Security Policy and Sub-Agent Delegation remain or have been added. 5. Verify Agent status and a small read request in a new Room. Check warnings and restartFailed . Saving may preserve or add security/delegation instructions and require a restart. Saving alone is not proof of runtime application. Removing security sections or permitting secret disclosure is not a supported setup method. Draft with external AI The editor's AI editing action lets you choose Claude or ChatGPT. It sends the entire current SOUL.md and your edit request to that service in a new tab. Results are not saved automatically; review them and manually apply only the needed parts. Do not use this if the document contains secrets, customer originals, personal data, or internal URLs that must not leave the organization. The external account's terms and retention policy apply; ClawPod does not control its processing or responses. Avoid instructions to execute every request regardless of authorization, credentials and customer originals, copied full-length manuals, and cross-organization data access. Put detailed procedures in AGENTS.md or separate documents."
+    },
+    {
+      "path": "workspace-files/agents-md",
+      "group": "Create and configure Agents",
+      "title": "Write AGENTS.md operating rules",
+      "description": "Preserve default safeguards while documenting repeated workflows.",
+      "headings": [
+        "Write AGENTS.md operating rules",
+        "Preserve default rules",
+        "Suggested structure",
+        "Session Startup",
+        "Working Rules",
+        "Red Lines"
+      ],
+      "text": "Write AGENTS.md operating rules AGENTS.md holds repeated workflows, safety, and collaboration rules. The runtime may copy it into the workspace on first boot; the Portal does not guarantee automatic injection into every session. Describe how to work instead of repeating the persona from SOUL.md . Preserve default rules If empty at creation, ClawPod supplies server defaults and copies them at first boot. Defaults cover tool discipline, avoiding repeated responses, secret protection, confirmation before risky work, and deciding when to speak in group chats. Do not replace them wholesale or weaken rules against credential sharing, unconfirmed destructive/external/financial/legal/out-of-scope actions, invented facts, or repeated messages. There is no verified customer-facing Portal editor. Use an approved workspace procedure, preserve a copy, review the change, and apply the minimum needed. Updated defaults do not automatically update existing Agent workspaces. Suggested structure Use clear headings and instruct the Agent to read the file first when relevant. Before changing it, preserve the old rules, avoid duplicating persona or tool notes, maintain tenant and secret safeguards, and test responses and behavior in a small Room."
+    },
+    {
+      "path": "workspace-files/tools-md",
+      "group": "Create and configure Agents",
+      "title": "Write TOOLS.md conventions",
+      "description": "Document safe tool use without confusing instructions with capabilities.",
+      "headings": [
+        "Write TOOLS.md conventions",
+        "Content to include",
+        "Browser",
+        "Files",
+        "A2A",
+        "Memory"
+      ],
+      "text": "Write TOOLS.md conventions TOOLS.md records local conventions for available tools. It neither installs tools nor grants permissions. When empty, ClawPod supplies mcporter usage and some A2A guidance and copies it at first boot. This is not a complete manual for filesystem, browser, and memory tools. No direct Portal editor has been verified. After first boot, the workspace initialization marker prevents recopying staged files. Change existing workspaces through an approved migration and inspect actual files; do not assume updated defaults overwrite them. Content to include Document approved purposes, targets/accounts/paths to check, where to report results, what to inspect before retrying failures, and data tools must never read or reveal. Writing “use a browser” cannot supply a missing browser runtime, network access, or permission. An available tool also does not authorize every target. Runtime, Skills, credentials, and tenant policy determine actual capability and access. Preserve default discovery and A2A guidance and add only organization-specific procedures."
+    },
+    {
+      "path": "workspace-files/memory-md",
+      "group": "Create and configure Agents",
+      "title": "Use MEMORY.md and the memory folder",
+      "description": "Separate lasting decisions from daily records and exclude sensitive data.",
+      "headings": [
+        "Use MEMORY.md and the memory folder",
+        "Suggested format",
+        "Long-Term Memory",
+        "Team Preferences",
+        "Active Decisions",
+        "Lessons Learned"
+      ],
+      "text": "Use MEMORY.md and the memory folder MEMORY.md holds lasting decisions, preferences, and lessons. memory/ .md stores daily or topic-specific details. Content Location Example --- --- --- Stable team preferences MEMORY.md Korean operational reports separating facts, assumptions, and checks Confirmed operating decisions MEMORY.md The organization administrator approves deployments Today's investigation memory/YYYY-MM-DD.md Event investigation and next checks Longer evidence memory/topic.md Links and reasoning for a provider change The Portal does not guarantee that MEMORY.md enters every session's prompt. Instruct the Agent to explicitly read needed memory/ .md files with filesystem MCP or CLI. Suggested format Keep records short and verifiable. When a decision changes, record the new fact and date rather than silently overwriting history. Never record API keys, OAuth tokens, passwords, recovery codes, unnecessary customer originals or personal identifiers, other tenants' access information, or unverified assumptions presented as facts. No independent Portal editor has been verified. Agent memory updates require tool policy and workspace write permission, and the result must be reviewed."
+    },
+    {
+      "path": "workspace-files/bootstrap-and-identity",
+      "group": "Create and configure Agents",
+      "title": "BOOTSTRAP.md, IDENTITY.md, USER.md, and HEARTBEAT.md",
+      "description": "Understand supporting files for initial setup and ongoing collaboration.",
+      "headings": [
+        "BOOTSTRAP.md, IDENTITY.md, USER.md, and HEARTBEAT.md",
+        "BOOTSTRAP.md",
+        "IDENTITY.md",
+        "USER.md",
+        "User Profile",
+        "HEARTBEAT.md",
+        "Heartbeat Checklist"
+      ],
+      "text": "BOOTSTRAP.md, IDENTITY.md, USER.md, and HEARTBEAT.md These supporting files help an Agent understand a workspace and its collaborators. Keep the main role and operating rules in SOUL.md and AGENTS.md . BOOTSTRAP.md A new workspace may receive BOOTSTRAP.md , which guides the Agent to read SOUL.md and AGENTS.md , prepare USER.md and memory, and introduce itself. The Agent is instructed to delete it after setup. Do not treat the deleted file as persistent configuration that returns on every restart. IDENTITY.md This file contains the Agent name, role/theme, and identity expression. The runtime may prepare it at creation. Keep lengthy persona and work rules in SOUL.md . USER.md Store stable context such as preferred forms of address, timezone, and team collaboration preferences. Exclude personal identifiers, contact information, authentication data, and customer data. A lasting preference can also be summarized briefly in MEMORY.md . HEARTBEAT.md This is a short checklist for an Agent with heartbeat enabled. Use short, low-cost checks rather than long-running work or repeated messages. Verify execution permission and schedule availability against runtime and organization policy."
+    },
+    {
+      "path": "guides/configure-heartbeat",
+      "group": "Create and configure Agents",
+      "title": "HEARTBEAT.md and periodic checks",
+      "description": "Understand runtime check-ins without assuming a Portal scheduler.",
+      "headings": [
+        "HEARTBEAT.md and periodic checks",
+        "Checklist",
+        "Heartbeat Checklist",
+        "When action is needed",
+        "Execution conditions",
+        "HEARTBEAT_OK and alerts"
+      ],
+      "text": "HEARTBEAT.md and periodic checks Heartbeat lets an Agent periodically check status. Writing instructions alone does not configure automatic execution or Task creation. No customer Portal controls for heartbeat cadence or delivery policy have been verified. This page describes runtime behavior and HEARTBEAT.md ; it does not promise a default tenant automation feature. Checklist HEARTBEAT.md is a short checklist read when heartbeat runs. It is a new-session bootstrap candidate, but heartbeat-specific instructions may be omitted from normal runs when heartbeat is disabled in runtime configuration. An empty or heading-only file may skip a model call. Keep only necessary checks instead of a long list of situations requiring no work. Execution conditions Whether checks run, their frequency, and alert delivery depend on Agent configuration and readiness. No fixed interval or delivery is guaranteed for every Agent. There is no Portal setup procedure for cadence or recipients. Give the responsible operator the Agent and desired check purpose; do not guess configuration files or commands. HEARTBEAT OK and alerts HEARTBEAT OK can acknowledge that no action is needed. It is not intended for ordinary user responses outside heartbeat. For an issue, report confirmed impact, evidence, required approval, and next actions briefly. Avoid repeated alerts and unauthorized external work. Need Approach --- --- Group lightweight checks in one session context Heartbeat Run an independent task at an exact time No current Cloud consumer scheduler setup path; use a separately provided organization scheduler only through its procedure Record completed work and status Task record Task completion may wake a subsequent heartbeat, but heartbeat itself does not guarantee Task creation or exactly-once execution. Use the checklist only where heartbeat actually runs, keep it short, require authorization for external changes, check Room/event history to prevent duplicate alerts, and identify affected Agents and organizations before changing disablement, active hours, or delivery targets."
+    },
+    {
+      "path": "capabilities/automation-and-webhooks",
+      "group": "Event integrations",
+      "title": "Automation and webhooks",
+      "description": "Deliver external events to Agents or Rooms and verify processing.",
+      "headings": [
+        "Automation and webhooks"
+      ],
+      "text": "Automation and webhooks Use webhooks to send external-service events to an Agent or Chat Room. Configure the source, destination, and processing instructions, then verify a test event. Component Role Check --- --- --- Source Event origin Organization, source type, and signing secret Rule Receiving Agents or Rooms Same-tenant targets, conditions, and delivery limits Playbook Instructions sent to the Agent Expected result and permitted actions/data Event Receipt and delivery record Success/failure and the target's actual response Follow webhook setup. Test with non-sensitive data and confirm the Event record and target Room. Receipt alone does not guarantee completed Agent work or automatic retries. On failure, inspect the Event, destination, and Agent status. Check for already executed work before resending. Disable the Source or Rule to stop new processing. Before deletion, review connected services and required settings. Update the sending service too when rotating secrets. HEARTBEAT.md provides instructions for Agents using periodic checks; Tasks and Milestones track work and deadlines. Writing a file or due date does not schedule execution at a specific time."
+    },
+    {
+      "path": "guides/send-webhook-to-agent",
+      "group": "Event integrations",
+      "title": "Send webhook events to an Agent",
+      "description": "Configure Sources, Rules, and Playbooks and verify delivery.",
+      "headings": [
+        "Send webhook events to an Agent",
+        "Create a Playbook",
+        "Create a Source",
+        "Choose targets with a Rule",
+        "Test and verify",
+        "Stop, rotate, and recover"
+      ],
+      "text": "Send webhook events to an Agent This workflow sends external events to a chosen Agent or Chat Room. Sources with a signing secret and verifier validate signatures. Before starting, obtain Source and Rule creation permission, choose the receiving organization and Agent/Room, and confirm the external service supports an HTTPS webhook URL and signing secret. Minimize recipients and Playbook content because payloads may contain customer data. Create a Playbook 1. Open Webhooks → Playbooks → Create Playbook. 2. Enter Name and Content. Use Preview or Split to inspect Markdown if needed. 3. Select Save and confirm the new list entry. Playbooks can be attached to both Sources and Rules and are added to event messages. Example: “On a deployment failure event, summarize the impact. Do not guess unconfirmed causes; list the checks still needed.” Create a Source 1. Open Webhooks → Sources → Create Source, choose a source type, and continue. 2. Enter Name and the target organization. 3. Configure a Source Playbook, rate limit, secret generation, and signature method as needed. 4. Select Create Source. 5. In the final integration guide, separately copy the webhook URL and signing secret if shown into the external service's settings. Plaintext secrets may appear only during creation, regeneration, or rotation. Store them according to organization policy, never in documents or Chat. Choose targets with a Rule 1. Open Webhooks → Rules → Create Rule. 2. Choose Name, Source, and Target Type, and add event conditions. 3. Select one or more Agents or Rooms in Target. 4. For multiple targets of the same type, choose broadcast or round-robin. 5. Configure a Rule Playbook, cooldown, and hourly limit if needed. 6. Select Create Rule at the bottom and confirm the Rule appears. Source and targets must be in the same tenant. The operator manages organization separation by selecting the correct Agents and Rooms. Test and verify Send a test event from the external service and check: 1. Receipt in Webhooks → Events. 2. For an Agent target, delivery to that Agent's webhook Room and an executable Agent state. 3. For a Room target, a system message in the selected Room and the necessary participants. The Agent receives the Source, Rule, event ID, JSON payload, and attached Playbook instructions as a message. Stop, rotate, and recover Set the Source or Rule inactive to stop new events. For exposed secrets, rotate or regenerate the Source secret and immediately update the sender. Preserve Source, Rule, and Playbook configuration before potentially irreversible deletion. No user-operated replay endpoint or automatic delivery retry has been verified for the current ingress. Inspect Event records, the target Room, and Agent status; recovery may require sending a new event from the external service."
+    },
+    {
+      "path": "capabilities/governance-and-settings",
+      "group": "Account and organization",
+      "title": "Account and organization administration",
+      "description": "Find guides for members, access, notifications, usage, and subscriptions.",
+      "headings": [
+        "Account and organization administration"
+      ],
+      "text": "Account and organization administration Administration features depend on your role, organization access, plan, and limits. If a menu is missing, first verify the account and organization. Area Workflow Guide --- --- --- Organizations and members Create organizations and connect users/Agents Organizations Access Attach Policies and inspect effective permissions IAM Security Passwords and MFA Account security Notifications Types and delivery preferences Notifications Audit Read and export permitted change records Audit Log Activity and cost Accessible Agent activity, conversations, and costs Analytics, Dashboard and Costs Subscriptions and limits Status, changes, cancellation, and usage Billing, Workspace usage Before changing settings, verify the organization and target users/Agents and grant only necessary access. Member removal, disconnection, and subscription changes can affect existing work; follow each guide's conditions and verification. For errors, check the target, limits, and error message before broadening permissions. Platform-wide settings and operational recovery are outside this public organization-user guide."
+    },
+    {
+      "path": "guides/manage-account-and-organization",
+      "group": "Account and organization",
+      "title": "Manage account and organization settings",
+      "description": "Understand personal preferences and organization membership changes.",
+      "headings": [
+        "Manage account and organization settings",
+        "Personal settings",
+        "Organizations and membership",
+        "Notification history",
+        "Tenant withdrawal and platform changes"
+      ],
+      "text": "Manage account and organization settings Personal settings apply to your account. Organization and membership changes can affect other users and Agents; check the scope first. Personal settings Open Settings in the sidebar and choose: - Profile for profile, password, and MFA settings. - Appearance for Light, Dark, or System theme. - Notifications for preferences and notification history. Where Save appears, confirm saving succeeds. After password or MFA changes, check your devices and recovery method. Agree with the team which critical alerts, such as webhook failures and Task changes, must remain covered before disabling notifications. Organizations and membership Authorized users can create organizations and manage user/Agent membership. 1. Open the target organization. 2. Review members, Agents, roles, and access. 3. Add members or adjust roles with minimum necessary access. 4. Before removal, hand over owned Rooms, Tasks, webhook settings, and Agent operations. Creation depends on tenant quota and plan. Removing membership may remove organization data and feature access. Notification history Use type/severity filters and mark one or all notifications read. Check linked Room, event, and Task originals before marking critical alerts read. For the currently exposed actions and delivery settings, follow notification management. Tenant withdrawal and platform changes Tenant administrators may see a withdrawal flow. It can stop related Agents and sign out members. Verify retention, contracts, and recovery windows before using it. Tenant creation/restoration/deletion, plan catalogs/prices, and platform language administration are platform super administrator features outside ordinary organization management. Follow separate approved administrator procedures."
+    },
+    {
+      "path": "guides/manage-organization",
+      "group": "Account and organization",
+      "title": "Create organizations and manage members",
+      "description": "Connect users and Agents with appropriate membership and review deletion impact.",
+      "headings": [
+        "Create organizations and manage members",
+        "Create an organization",
+        "Add users and Agents",
+        "Agent membership",
+        "Delete an organization"
+      ],
+      "text": "Create organizations and manage members An organization groups users, Agents, Rooms, Tasks, costs, and analytics. Creating one or changing membership can change others' access. Create an organization 1. Open Organization. 2. Select Create Organization. 3. Enter Name and optionally Description. Check tenant quota first. 4. Select Create in the dialog. 5. Confirm the organization name and Members area in the new details page. Creation requires core:org:Create and available quota. Define real ownership, data, and membership boundaries instead of treating a renamed organization as a replacement for an existing one. Add users and Agents 1. Open Organization → target organization → Members and choose Add Member. 2. Choose Add User or Add Agent, search, and select one or more targets. 3. For users, choose admin or member , then add. Add Agents after selection. 4. Confirm the success message and names, types, and roles in the Members table. Edit a user's role with the row edit action and save. To remove membership, select Remove Member and confirm removal in the dialog. This Members view does not provide new-account invitation, pending, resend, or cancellation flows. Only platform super administrators can assign or change Inspector roles. Agent membership Connect Agents from organization details. Unassigned Agents may show operational warnings; assign an appropriate organization after creation. Before moving or removing an Agent, verify continued Room and webhook-rule access, Task and workspace-document ownership/access, and credentials, Skills, and owners in the new organization. Delete an organization 1. In Organization, select the target card's delete action. 2. Confirm Delete Organization. 3. Check the success notification and removal from the list. Deletion affects user and Agent data access and has no restore procedure in this screen. Review members, Agents, Rooms, Tasks, webhooks, and workspace documents and preserve required data in approved storage. Ask a tenant administrator if access or impact is unclear."
+    },
+    {
+      "path": "guides/manage-iam",
+      "group": "Account and organization",
+      "title": "Manage IAM, Policies, and roles",
+      "description": "Assign direct Policies and inspect effective access within Portal boundaries.",
+      "headings": [
+        "Manage IAM, Policies, and roles",
+        "Portal scope",
+        "Attach a Policy",
+        "Custom Policies",
+        "Diagnose access"
+      ],
+      "text": "Manage IAM, Policies, and roles IAM controls actions on Agents, credentials, Rooms, webhooks, and organization data. Even a small permission addition can affect a tenant or organization; grant minimum necessary access. Portal scope Opening IAM requires Policy read access. User management can show or manage profiles, status, last sign-in, organization memberships, Agent assignments, direct Policies, effective permissions, user creation/invitations/updates/deletion, and password-reset email or MFA reset where authorized. Creation/deletion and Policy attachment/detachment require separate actions. Visibility does not imply write access. Role information Scope Principle --- --- --- Platform role Platform or tenant administration System roles such as super administrator and tenant administrator may not be direct-Policy editing targets Organization membership role One organization Use roles such as admin and member for membership scope Direct Policy Fine-grained user access Include only required actions and resources Policy details currently manage direct user attachments. Group and reusable Role APIs may exist in code, but are not exposed and verified customer Portal workflows. Do not treat them as public procedures or call internal APIs directly. Attach a Policy 1. In IAM → Users , open the target user's view action. 2. Choose Direct Policies → Attach Policy . 3. Select one or more Policies and Attach Policy (N) . 4. Review Effective Permissions . 5. Test the minimum required task with the target account. Detach unneeded access from the same view. First check whether it would interrupt webhook management, Agent operations, exports, or credential rotation. Custom Policies Creation and deletion are platform super administrator operations. The creation screen accepts name, description, and a Policy document using visual or JSON editing. 1. Open IAM → Policies → Create Policy and enter a name. 2. Choose a Quick Start template or at least one action in Visual editor . 3. Limit resources to the intended tenant and organization. In JSON editor, validate JSON and every statement's actions. 4. Select Create Policy . 5. Attach to one test user and check effective permissions and behavior. 6. Record impact and a rollback owner before expanding to necessary users. System Policies may not be editable or deletable. Deletion can immediately change attached users' access; inspect attachments and effective permissions first. Diagnose access Check organization memberships, platform role, direct Policies, the source of each effective permission, tenant/organization scope, and plan/quota limits. Identify the exact resource and action before increasing access. Avoid temporary super administrator grants; reproduce with a test account and minimal Policy."
+    },
+    {
+      "path": "guides/secure-your-account",
+      "group": "Account and organization",
+      "title": "Secure your account and manage MFA",
+      "description": "Configure MFA, change passwords, and understand administrator resets.",
+      "headings": [
+        "Secure your account and manage MFA",
+        "MFA",
+        "Password and profile",
+        "Administrator resets"
+      ],
+      "text": "Secure your account and manage MFA A ClawPod account can access Agents, credentials, organization data, and automation. Enable MFA and store recovery methods securely. MFA 1. Open Profile in settings. 2. Review MFA status and follow setup or disablement. 3. During setup, verify activation with a six-digit authenticator TOTP code. Store recovery codes securely; do not enter one merely as a test. Never store authentication or recovery codes or passwords in Rooms, webhook payloads, Task comments, or templates. A recovery code is consumed immediately when used to sign in. Verify the authenticator on a new device before replacing the old one. Password and profile 1. Enter Current Password and select Verify. Wait for the verified state. 2. Enter New Password and Confirm Password. Use at least eight characters with uppercase, lowercase, a number, and a special character. 3. Select Save Changes. After completion, sign in with the new password only on approved devices. Keep profile information current. Do not reuse passwords or share team accounts. Administrator resets Authorized administrators may send password-reset emails or reset MFA from IAM user details. Availability depends on the target's system role and the requester's permissions. Verify identity and authorization first, then notify the user through a safe channel. Reset is a support feature, not a way to access another person's account. For suspected compromise, update password/MFA, rotate connected credentials, and review Audit Log changes. Ask the organization administrator to review account access revocation and affected Agent operations if needed."
+    },
+    {
+      "path": "guides/manage-notifications",
+      "group": "Account and organization",
+      "title": "Manage notifications",
+      "description": "Set your in-app and browser push preferences and read notification history.",
+      "headings": [
+        "Manage notifications",
+        "Delivery",
+        "Types",
+        "History"
+      ],
+      "text": "Manage notifications Notifications shows notifications and your delivery preferences. These settings do not change other users' preferences or Agent execution policy. Delivery 1. Open Notifications. 2. Toggle In-App Notifications. 3. In a supported browser, enable Push Notifications and approve the permission prompt. Push depends on the browser and current origin's permission. Allow it separately on other devices or browsers. The toggle cannot be enabled if permission is denied or the environment is unsupported. Check operating-system notification blocks and browser site permissions too. Types Administrators may see message, Agent error/lifecycle, security, system, Skill, and usage types. Tenant administrators may see member-related types; ordinary members may see only messages. Change only the types shown for your account. Ensure alternative monitoring before disabling critical Agent or security alerts. Preferences do not delete original Agent, Task, or webhook events and execution records. History Apply available type and severity filters, open an item to verify its linked target, and mark individual or all notifications read. The current Portal notification list has no delete button. Marking read does not change original Room, Task, Agent, or webhook data."
+    },
+    {
+      "path": "guides/use-audit-log",
+      "group": "Account and organization",
+      "title": "Read and export Audit Log",
+      "description": "Investigate changes and export only the necessary records.",
+      "headings": [
+        "Read and export Audit Log",
+        "Find records",
+        "Export"
+      ],
+      "text": "Read and export Audit Log Audit Log records important permission, Agent, and configuration changes. Read and export permissions may be restricted separately. Find records 1. Open Audit Log . 2. Filter by date, event type, Agent, and severity. 3. Open an entry to inspect before/after differences and related information. Narrow time, organization, and Agent scope first. Broad exports may include other users' operational information. Export When filtered results exist, choose CSV or JSON: 1. Apply necessary filters. 2. Recheck count and scope. 3. Select CSV or JSON . 4. Save to an approved location and record recipients and retention period. Treat exports as access-controlled operational data. Do not upload them to Chat Rooms or public issues. Dispose of them according to retention policy after the investigation. Check who performed which action, affected resources and organizations, sensitive before/after values, and whether follow-up requires access revocation, credential rotation, or Agent restart. Audit Log assists investigation; it does not automatically roll back changes. Verify current settings and affected users/Agents before reversing anything."
+    },
+    {
+      "path": "guides/use-analytics",
+      "group": "Account and organization",
+      "title": "Review Agent operations with Analytics",
+      "description": "Interpret Overview, Costs, and Monitoring within the correct scope.",
+      "headings": [
+        "Review Agent operations with Analytics",
+        "Review sequence"
+      ],
+      "text": "Review Agent operations with Analytics Analytics shows activity, cost, and performance for accessible Agents and organizations. Metrics inform operations but cannot establish a conversation or incident's cause on their own. The sidebar offers Overview , Costs , and Monitoring . Period selectors include ranges such as 24 hours, seven days, 30 days, and 90 days. Compare the same period and organization scope across views. Review sequence 1. Check request volume, conversations, errors, and anomalies in Overview. 2. Compare period, model, and usage changes with cost increases in Costs. 3. For Monitoring warnings, inspect System health, Agent logs, and related webhook Events together. User usage, conversations, and costs are operational data. Access only what your role and task require. Check screenshots and exports for personal/customer data before sharing. For poor performance or rising cost, inspect period, Agent, organization, and recent configuration changes before changing models, credentials, or permissions. Act in a small scope first."
+    },
+    {
+      "path": "guides/use-dashboard-and-costs",
+      "group": "Account and organization",
+      "title": "Use Dashboard and Costs",
+      "description": "Review operational metrics, quota, and costs and customize your layout.",
+      "headings": [
+        "Use Dashboard and Costs",
+        "Dashboard",
+        "Costs"
+      ],
+      "text": "Use Dashboard and Costs Dashboard requires analytics:dashboard:View . Costs opens Analytics Costs and displays data within your analytics access. Dashboard 1. Open Dashboard. 2. Select 24h , 7d , 30d , or 90d . 3. Read the four widgets: Agent insights, top Agents status, recent activity, and tenant quota. 4. Select Edit Layout to drag widgets and resize with the lower-right handle. 5. Select Lock Layout when finished. Layout is saved in this browser's local storage. 6. Reset restores this browser's default layout. Layout changes affect presentation only, not Agents, quota, or costs. Costs 1. Open Costs and choose a period. 2. Read total cost, highest-cost model, input/output token totals, and average cost per request. 3. Compare cost over time, hourly average, organization/model breakdowns, and the ten highest-cost Agents. 4. For a concentration alert, narrow the period and top Agent and inspect configuration and execution records through Agent management. This view shows cost data. It does not set budgets, export costs, or change payment methods. Manage subscriptions and plans through Billing."
+    },
+    {
+      "path": "guides/manage-billing",
+      "group": "Account and organization",
+      "title": "Manage billing and subscriptions",
+      "description": "Review plans, billing cycles, cancellation, resumption, and transactions.",
+      "headings": [
+        "Manage billing and subscriptions",
+        "Review the subscription",
+        "Change plans",
+        "Cancel and resume",
+        "Transactions and errors"
+      ],
+      "text": "Manage billing and subscriptions Billing changes can affect the tenant plan, quota, and Agent creation. Check billing-management permission and current plan status first. Review the subscription 1. Open Subscription in the sidebar. 2. Check the plan, subscription status, billing cycle, and Agent-count pricing shown. 3. Open Payment Transactions for transaction history. Free and paid plans may offer different actions. Before changing, check the next billing or cancellation date, Agent count and limits, monthly/annual cycle, payment method, and billing owner. Change plans 1. For Free, choose Upgrade Plan; for paid subscriptions, Adjust Plan. 2. Choose the target plan and billing cycle in Pricing. 3. Review plan, cycle, and amount at checkout before paying. 4. After the completion dialog, return to Billing and verify the plan and status. Downgrades or switches to Free may follow subscription status and end dates rather than immediately cleaning up resources. Confirm the target supports current Agent, organization, and user counts. If an over-limit warning appears, reduce resources to the target limits before retrying. Cancel and resume Paid subscriptions can schedule cancellation and may offer resumption before the end date. Select Cancel subscription and confirm. Use Resume Subscription on the subscription screen to resume when available. Before confirming cancellation, review the end date and affected features, plan preservation of Agent/workspace/organization data, and notify automation/webhook owners. Afterward verify the displayed cancellation state. Pending cancellation can restrict plan changes; after resumption, recheck status and quota. Transactions and errors Review history in Billing transactions. For payment errors or past-due status, work with the billing owner and support without sharing payment information without authorization."
+    },
+    {
+      "path": "guides/check-workspace-and-system",
+      "group": "Account and organization",
+      "title": "Check workspace usage and system health",
+      "description": "Distinguish quota limits, permissions, and service failures.",
+      "headings": [
+        "Check workspace usage and system health",
+        "Workspace usage",
+        "System health"
+      ],
+      "text": "Check workspace usage and system health When Agent creation or Portal features fail, check workspace quota and system health as well as permissions. Workspace usage Settings → Workspace shows the current tenant's plan, user count/limit, organization count/limit, Agent usage/limit, and available-plan overview. Reaching a limit can block Agent or organization creation. Review unused resources and plan needs before expanding IAM permissions. The Workspace view's other-plan flow directs users to sales or administrators, rather than immediate self-service switching. Include required users, organizations, Agents, features, and expected start date in a request. Before lowering a plan or resources, identify Agents and organizations affected by over-limit usage. System health If you can access Settings → System , inspect the shown service states. Items and access depend on your role and organization settings. The page refreshes periodically and can be refreshed manually. For unhealthy or unknown status, do not repeatedly change user settings. Give the operator the time and affected Agents, Rooms, and events. Symptom First checks --- --- Cannot create an Agent or organization Workspace quota and action permission Only one user cannot access a menu or action Effective Permissions and organization membership Webhook event does not reach a Room Event records, target Agent/Room, system health Several Agents stop responding together System health, Agent status, operational announcements Health is a diagnostic clue, not automatic recovery or proof of a cause. Restarts, deployment, and infrastructure changes follow authorized operator procedures."
+    },
+    {
+      "path": "help/index",
+      "group": "Help",
+      "title": "Help",
+      "description": "Start troubleshooting permissions, Agent creation, and connections.",
+      "headings": [
+        "Help",
+        "Common questions"
+      ],
+      "text": "Help If something goes wrong: 1. Verify the current organization and account. 2. Check roles and permissions if a menu or button is missing. 3. Confirm the required model and credential are connected for the organization. 4. If the problem continues, send the time, attempted action, error, and Agent name to your organization administrator or support. Do not include secrets, access tokens, API keys, or full customer conversations. Common questions - Cannot create an Agent: first Agent. - New to Agents: what is an Agent?."
+    },
+    {
+      "path": "help/portal-feature-map",
+      "group": "Help",
+      "title": "Portal feature map",
+      "description": "Find the guide for a Portal menu and check access requirements.",
+      "headings": [
+        "Portal feature map"
+      ],
+      "text": "Portal feature map This map connects Portal menus to public guides. If a menu is missing, check role, Policy, tenant/organization scope, plan, and limits. Portal feature Purpose Guide --- --- --- Dashboard · Agents Create and operate Agents Creation, management Chat · Chat Archive · AI Chat Room conversations, attachments, mentions Chat Rooms Documents · Tasks · Meeting minutes Shared text documents, task boards, transcription and summaries Documents, formats, Tasks, meetings Skills Find, upload, download, install, and remove Skills Marketplace Credential · AI Key Management Connect and rotate Agent credentials Credentials Agent models Main, sub, fallback, and heartbeat selection Providers and models Webhooks Sources, Rules, Playbooks, and Events Webhooks Organizations · Users · IAM Organizations, members, direct Policies Organizations, IAM Analytics · Costs Agent activity, conversations, usage, and costs Analytics, Dashboard/Costs AI Chat · Chat Archive Personal AI sessions and accessible Room history AI Chat, Archive Billing · Plans Subscriptions, plans, and quota Billing, Workspace/System Audit Log Permission and administration records Audit Log Notifications Personal in-app/browser push preferences Notifications Settings Profile, appearance, usage, service health Sign-up/sign-in, account settings, security For missing menus or failed actions, check availability and help. Agent browser and CLI tasks follow their prerequisites. Platform operations menus are outside this map."
+    },
+    {
+      "path": "guides/agent-document-reading",
+      "group": "Documentation for Agents",
+      "title": "How Agents should interpret this guide",
+      "description": "Resolve differences between documented workflows and verified runtime capability.",
+      "headings": [
+        "How Agents should interpret this guide",
+        "Trust order",
+        "Undocumented capabilities",
+        "Boundaries",
+        "Suggested response"
+      ],
+      "text": "How Agents should interpret this guide Product documentation describes official consumer workflows; it does not fully replace actual tools, permissions, or connection state. Trust order 1. The current user request, explicit authorization, and organization policy. 2. Permissions, tools, and runtime state verified in the current session. 3. Safely readable resources and connection state. 4. This guide and its capability tables. Prefer safely verified facts in the current environment when documentation differs. A capability's existence does not itself grant execution permission or user approval. Undocumented capabilities “No official consumer lifecycle” means no verified customer Portal creation, configuration, and revocation flow. “Available on the current Agent” means safely verified tools/runtime plus the necessary permissions and approval. In the latter case, explain availability and perform the requested scope after the smallest read-only/no-op check. For example, an existing browser tool can perform an authorized limited URL read even without a Portal setup screen. Boundaries - Do not exceed permissions, organization policy, tenant boundaries, user authorization, or credential scope because a tool exists. - Do not discover secrets, directly call internal APIs, or force-enable hidden features through configuration or shell commands. - Follow explicit user scope for external transfers, file changes, browser input/submission, installation, and deletion. - Do not guess when docs and runtime differ. Separate verified state, the smallest possible action, and why something cannot be checked. Suggested response Report the verified capability, allowed task scope, remaining restrictions or approval needs, and the next safe check or user choice. See availability for the distinction between consumer setup and runtime capability."
+    },
+    {
+      "path": "guides/use-clawpod-guide-tool",
+      "group": "Documentation for Agents",
+      "title": "ClawPod Guide tools for Agents",
+      "description": "Search and read public product documentation through the read-only MCP server.",
+      "headings": [
+        "ClawPod Guide tools for Agents",
+        "Registration",
+        "APIs",
+        "search_clawpod_guide",
+        "read_clawpod_guide",
+        "list_clawpod_guide_sections",
+        "Agent workflow"
+      ],
+      "text": "ClawPod Guide tools for Agents clawpod-guide is a read-only MCP server registered in ClawPod Agent images. It remotely reads main of the public Wondermove-Inc/clawpod-guide repository without cloning it or saving documents in the Agent workspace. It requires a running image containing the server and runtime network policy allowing GitHub. Existing Agents do not gain it until replaced/restarted with a supporting image release. Registration The image's default MCP configuration registers clawpod-guide automatically. No Portal API key or manual MCP server address is needed. First check whether it appears in the current tool list. If it is missing or GitHub is unreachable, do not search for installation files or copy documentation into the workspace. Report the available tools and failure and narrow the task to user-provided documents or other permitted sources. APIs search clawpod guide Find relevant pages. Each call reads the public repository's search index and returns paths, titles, descriptions, and relevant context. Input Required Meaning --- --- --- query Yes Natural-language feature, setting, or task limit No Default 5, maximum 10 results Search results alone do not establish setup, permissions, or support. Read the returned page next. read clawpod guide Read lines from a page returned by search or section listing. Arbitrary URLs and paths outside the repository are not accepted. Input Required Meaning --- --- --- path Yes Exact returned path, such as guides/manage-agent start line No First line to read; default 1 max lines No Default 200, maximum 400 If the response includes next start line , use it with the same path to continue. list clawpod guide sections List sections and pages. Supply group to narrow to one section. Use this when the query or documentation scope is unclear. Agent workflow 1. Search for relevant pages. 2. Read the best match for procedure, prerequisites, and limits. 3. Prioritize current authorization, organization policy, and actual tools/permissions over documentation when assessing execution scope. 4. If a page or runtime tool is missing, do not conclude the capability is impossible; follow safe interpretation. The tools only read documentation. They do not access or modify secrets, tenant data, Agent settings, or external services."
+    }
+  ]
+}

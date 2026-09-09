@@ -21,6 +21,8 @@ const lines = [
   "ClawPod의 소비자·Agent용 제품 문서입니다. 문서 작성·검증 규칙은 [DOCUMENTATION.md](./DOCUMENTATION.md)를 참고하세요.",
   "Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현재 runtime capability와 문서의 우선순위를 확인하세요.",
   "",
+  "[한국어 가이드](https://wondermove-inc.github.io/clawpod-guide/) · [English guide](https://wondermove-inc.github.io/clawpod-guide/en/)",
+  "",
   "## 목차",
   "",
 ];

@@ -126,3 +126,24 @@ PR에서는 검증과 빌드만 실행합니다. `main`에 병합하면 같은 �
 기본 사이트 주소는 `https://wondermove-inc.github.io/clawpod-guide/`입니다. 이 주소는 설정상 배포 대상이며 최초 배포 성공 여부는 Actions의 deploy 결과로 확인합니다. 도메인을 변경하면 `docusaurus.config.js`의 `url`과 `baseUrl`, GitHub Pages의 도메인·DNS 설정을 함께 변경하고 링크를 재검증합니다.
 
 Agent MCP가 읽는 공개 `guide-index.json`과 원본 문서 경로는 유지합니다. 사이트에는 같은 검색 인덱스로 동작하는 로컬 검색을 제공하며 외부 검색 서비스 계정이 필요하지 않습니다. `llms.txt`와 여기서 링크하는 원본 문서도 사이트 빌드에 포함합니다.
+
+## 한국어와 English 문서
+
+한국어 원본은 기존 경로에 유지하고, 영어 문서는 `i18n/en/docusaurus-plugin-content-docs/current/`에서 같은 파일 경로로 관리합니다. 사이트의 언어 메뉴는 문서 언어만 바꿉니다. Portal 계정 언어 설정이나 기존 Agent MCP의 입력 형식을 변경하지 않습니다.
+
+한국어 문서를 변경하면 대응하는 영어 문서도 함께 검토하고 갱신합니다. 공개 가이드와 기존 주소 안내 페이지 모두 영어 파일이 필요하며, 누락 시 검사가 실패합니다. 기능·권한·제한을 번역 과정에서 임의로 추가하지 않습니다.
+
+영어 UI 문구는 Portal의 영어 사전에서 동기화합니다.
+
+```bash
+node scripts/export-ui-labels.mjs --english --portal-root /path/to/portal-repository
+node scripts/sync-ui-labels.mjs --english
+node scripts/generate-guide-index.mjs --english
+node scripts/generate-english-readme.mjs
+npm run check
+npm run build
+```
+
+영어 검색 인덱스와 README는 생성 파일입니다. `--check`로 최신 여부를 검사합니다. 메뉴 번역은 `i18n/en/docusaurus-plugin-content-docs/current.json`과 `i18n/en/docusaurus-theme-classic/`에서 관리합니다. 개발 중 영어 미리보기는 `npm run start -- --locale en`으로 실행합니다.
+
+한국어는 `/clawpod-guide/`, 영어는 `/clawpod-guide/en/`에 배포됩니다. 각 언어에 검색 인덱스와 원본 Markdown, `llms.txt`를 별도로 제공하며 기존 Agent MCP의 한국어 문서 경로와 인덱스 구조는 유지합니다.

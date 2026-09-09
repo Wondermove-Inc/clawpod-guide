@@ -1,0 +1,31 @@
+---
+title: "Check workspace usage and system health"
+description: "Distinguish quota limits, permissions, and service failures."
+---
+
+# Check workspace usage and system health
+
+When Agent creation or Portal features fail, check workspace quota and system health as well as permissions.
+
+## Workspace usage
+
+**Settings → Workspace** shows the current tenant's plan, user count/limit, organization count/limit, Agent usage/limit, and available-plan overview.
+
+Reaching a limit can block Agent or organization creation. Review unused resources and plan needs before expanding IAM permissions.
+
+The Workspace view's other-plan flow directs users to sales or administrators, rather than immediate self-service switching. Include required users, organizations, Agents, features, and expected start date in a request. Before lowering a plan or resources, identify Agents and organizations affected by over-limit usage.
+
+## System health
+
+If you can access **Settings → System**, inspect the shown service states. Items and access depend on your role and organization settings. The page refreshes periodically and can be refreshed manually.
+
+For unhealthy or unknown status, do not repeatedly change user settings. Give the operator the time and affected Agents, Rooms, and events.
+
+| Symptom | First checks |
+| --- | --- |
+| Cannot create an Agent or organization | Workspace quota and action permission |
+| Only one user cannot access a menu or action | Effective Permissions and organization membership |
+| Webhook event does not reach a Room | Event records, target Agent/Room, system health |
+| Several Agents stop responding together | System health, Agent status, operational announcements |
+
+Health is a diagnostic clue, not automatic recovery or proof of a cause. Restarts, deployment, and infrastructure changes follow authorized operator procedures.

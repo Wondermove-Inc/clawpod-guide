@@ -1,0 +1,30 @@
+---
+title: "Skills and tools"
+description: "Distinguish marketplace installation from tools bundled with an Agent."
+---
+
+# Skills and tools
+
+Skills can come from the marketplace or be included in an Agent image.
+
+| Source | How to use it |
+| --- | --- |
+| Marketplace | Find the Skill, select an Agent, and verify asynchronous installation status: [manage Skills](../guides/manage-skills.mdx) |
+| Bundled tools | Verify readiness for the current task: [availability](./consumer-availability.mdx) |
+
+The marketplace supports public and tenant Skill search, filters, details, installation, removal, and downloads. Installation moves from pending to installed or failed.
+
+## Set up a Skill
+
+1. Read its `SKILL.md` for dependencies and requirements.
+2. Set up any key through AI credential management for the correct target.
+3. Install through the Portal.
+4. After it shows installed, try a small read-only task in a new Room.
+
+Do not copy packages directly into an Agent or a chat archive to bypass the managed installation flow. Use the Portal to track status.
+
+Bundled tools vary by runtime. Lightweight Agents may lack GUI and some office or media tools. Verify availability before assigning work, including browser tasks.
+
+Specify allowed files, commands, browser activity, and external transfers. For example: “Read only this week's CSV files in `/workspace/reports`, write `weekly-summary.md`, and do not send data externally.”
+
+Connect credentials through settings, not packages or Chat. Installation never overrides policy restrictions.

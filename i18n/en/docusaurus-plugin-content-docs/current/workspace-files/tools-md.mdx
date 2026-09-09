@@ -1,0 +1,42 @@
+---
+title: "Write TOOLS.md conventions"
+description: "Document safe tool use without confusing instructions with capabilities."
+---
+
+# Write TOOLS.md conventions
+
+`TOOLS.md` records local conventions for available tools. It neither installs tools nor grants permissions.
+
+When empty, ClawPod supplies `mcporter` usage and some A2A guidance and copies it at first boot. This is not a complete manual for filesystem, browser, and memory tools. No direct Portal editor has been verified.
+
+After first boot, the workspace initialization marker prevents recopying staged files. Change existing workspaces through an approved migration and inspect actual files; do not assume updated defaults overwrite them.
+
+## Content to include
+
+Document approved purposes, targets/accounts/paths to check, where to report results, what to inspect before retrying failures, and data tools must never read or reveal.
+
+```markdown
+# Browser
+
+- Open customer systems only with an approved account.
+- Summarize target and impact in the Room before submitting forms, purchases, or permission changes.
+
+# Files
+
+- Do not modify files outside `/workspace/projects/`.
+- Review the diff and recovery method before overwriting existing files.
+
+# A2A
+
+- Delegate only to Agents in the same organization.
+- Include the objective, completion criteria, and sensitive-data limits.
+
+# Memory
+
+- Store only decisions and preferences in long-term memory.
+- Never store secrets, passwords, or customer originals.
+```
+
+Writing “use a browser” cannot supply a missing browser runtime, network access, or permission. An available tool also does not authorize every target. Runtime, Skills, credentials, and tenant policy determine actual capability and access.
+
+Preserve default discovery and A2A guidance and add only organization-specific procedures.

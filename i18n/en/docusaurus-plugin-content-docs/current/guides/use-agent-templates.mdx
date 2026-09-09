@@ -1,0 +1,37 @@
+---
+title: "Create and use Agent templates"
+description: "Reuse reviewed roles, models, resources, and SOUL instructions."
+---
+
+# Create and use Agent templates
+
+Templates reuse role, model, resource limits, and SOUL instructions. They do not remove the need to check credentials, target organization, and final settings.
+
+## Apply a template
+
+1. Open <strong><span data-ui-label="nav.agents">Agent</span></strong> → Templates.
+2. Filter by category and review the description and settings.
+3. Select <strong><span data-ui-label="templateCard.useTemplate">Use Template</span></strong>.
+4. Review the prefilled creation settings for the target organization and task.
+5. Check credentials, resources, and instructions, then create the Agent.
+
+A template starts a new Agent configuration. It does not automatically change running Agents.
+
+## Custom templates
+
+Users with Agent update permission can create, edit, and delete custom templates.
+
+1. In <strong><span data-ui-label="nav.agents">Agent</span></strong> → Templates, select <strong><span data-ui-label="agentTemplates.dialog.createTitle">Create Template</span></strong>.
+2. Enter name, description, icon, category, role, model, CPU and memory limits, and SOUL content.
+3. Select <strong><span data-ui-label="common.save">Save</span></strong> and inspect the resulting card.
+4. Use the card's edit or delete actions to manage custom templates.
+
+Do not include secrets, personal access tokens, or sensitive customer originals. Templates can be reused and exported; include only organization policy and reviewed work instructions.
+
+## Import and export
+
+Select <strong><span data-ui-label="templateCardAria.export">Export</span></strong> on a card to download JSON. To import, open <strong><span data-ui-label="agentTemplates.dialog.createTitle">Create Template</span></strong>, select a file in JSON import, review every instruction, resource setting, and model choice, then <strong><span data-ui-label="common.save">Save</span></strong>.
+
+Do not immediately apply an external template. Review file, shell, and external-transfer instructions against Agent policy and organization approval.
+
+Built-in templates primarily support use and export. Authorized users can edit and delete custom templates. Before deletion, check whether another operator relies on it for new Agents.

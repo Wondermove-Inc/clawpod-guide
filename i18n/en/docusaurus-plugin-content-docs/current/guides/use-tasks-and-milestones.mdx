@@ -1,0 +1,58 @@
+---
+title: "Track Tasks and Milestones"
+description: "Use organization boards, comments, attachments, GitHub references, and CSV exports."
+---
+
+# Track Tasks and Milestones
+
+Tasks tracks work by organization with Kanban and list views, Task details, organization statistics, Milestones, and CSV export.
+
+## Open a board
+
+1. Open <strong><span data-ui-label="nav.tasks">Tasks</span></strong> and choose an organization.
+2. Search or filter the Kanban or list view.
+3. Open a Task to inspect status, assignee, reporter, due date, activity, comments, attachments, and linked material.
+
+Use activity and linked Rooms or events to identify the creating Agent or automation. Do not infer ownership or cause from the title alone.
+
+## Update status
+
+Move a Task on the board or change its status in details. Before marking it Done, check completion criteria, outputs, and the Agent's final result. Multiple users may update a Task concurrently; record the reason for important transitions in comments or activity.
+
+## Comments and attachments
+
+Use comments for decisions, instructions to the owner, and blockers. Authors can edit or delete their own comments. Comments render Markdown and may create notifications.
+
+Drag files into attachments or select files to upload. Task and Milestone attachments allow **50 MB per file**; see [formats](./file-formats-and-artifacts.mdx). Download or delete files from the list. Before deletion, check references in comments and external work.
+
+## Link GitHub issues and pull requests
+
+In Task details, select the link action in the **GitHub** area and enter:
+
+1. Repository owner.
+2. Repository name.
+3. Issue or pull request number.
+4. Reference type: Issue or Pull Request.
+
+The Task shows the repository, number, type, and status saved at linking time. You can open or unlink the reference. This does not create, edit, merge, or synchronize the live state of GitHub issues or pull requests.
+
+## Create a Milestone
+
+1. Select <strong><span data-ui-label="tasks.milestones.create">Create Milestone</span></strong> on the organization board.
+2. Enter name, description, start and due dates, reporter, and any attachments.
+3. After creation, select the Milestone in each Task's details to associate it.
+4. Check progress and the Done count.
+
+Removing a Task from a Milestone does not delete the Task. Check ownership and impact before changing or deleting a Milestone tied to a release or customer commitment.
+
+## Export CSV
+
+1. Apply search, status, assignee, and Milestone filters.
+2. Confirm there are results, then choose <strong><span data-ui-label="tasks.export.csv">Export CSV</span></strong> in the toolbar.
+3. Check the downloaded organization, period, and row count.
+
+Exports contain organization operational data. Store them in approved locations and limit sharing.
+
+## Scope
+
+Internal relay of instructions to Agents and automatic escalation are not ordinary board controls. Do not assume Task, Milestone, comment, attachment, or GitHub-reference actions guarantee automatic execution.

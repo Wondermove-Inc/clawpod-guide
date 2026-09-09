@@ -1,0 +1,52 @@
+---
+title: "Choose providers and models"
+description: "Configure main, sub, fallback, and heartbeat models with matching credentials."
+---
+
+# Choose providers and models
+
+Agent creation and settings support **main**, **sub**, **fallback**, and **heartbeat** models. Choices must match actual credentials, the model catalog, and the runtime release.
+
+## Managed providers
+
+| Provider | Credential | Model selection |
+| --- | --- | --- |
+| Anthropic | API key or setup token | Standard selector; Agent binding accepts API keys only |
+| OpenAI | API key | Standard selector |
+| OpenAI Codex | `auth.json` | Standard selector; subscription candidates depend on catalog status |
+| Google Gemini | API key | Standard selector |
+| OpenRouter | API key | Catalog models can appear in the standard selector |
+| Local LLM (Ollama) | Server URL and model | Models can be assigned to roles after a connection test; no API key support |
+| OpenAI-compatible | Server URL, model, optional API key | Models can be assigned to roles after a connection test |
+
+The Credential dialog has six service choices: Anthropic, OpenAI, OpenAI Codex, Google, OpenRouter, and Local LLM. Local LLM distinguishes Ollama from OpenAI-compatible servers, giving seven runtime provider identifiers. The hosted selector uses the first five hosted providers.
+
+See [provider keys and Codex authentication](./manage-credentials.mdx#obtain-provider-api-keys). `auth.json` is a separate JSON login credential, not a replacement string for an OpenAI API key. Use the provided Portal settings and each service's terms.
+
+## Available models
+
+Use the current Portal list rather than a fixed list in documentation. Service and model activation can change. If a model is missing, ask your organization administrator; writing its name in instructions does not enable it.
+
+| Role | Purpose | Selection principle |
+| --- | --- | --- |
+| main | Primary responses and final decisions | Balance quality, tool compatibility, and cost |
+| sub | Research, drafts, and supporting work | Can be lighter than main; do not delegate sensitive judgments |
+| fallback | Alternative when main fails | Must have working authentication and access, including another provider's credential if needed |
+| heartbeat | Periodic check-in turns | Choose for short checks; this does not enable a Cloud self-service scheduler |
+
+Fallback is a usable alternate route, not simply a cheaper model. If it uses another provider, connect both credentials and verify each in a test Room.
+
+## Configure and verify
+
+1. Prepare [provider credentials](./manage-credentials.mdx).
+2. Select main during Agent creation or settings.
+3. Select sub, fallback, and heartbeat when needed.
+4. Verify all required credentials are bound within the same tenant.
+5. Test main responses, fallback conditions, and tool availability using non-sensitive requests.
+6. Track cost, errors, and latency in [Analytics](./use-analytics.mdx). Avoid changing several roles at once when diagnosing problems.
+
+## Local LLM prerequisites
+
+Register an Ollama or OpenAI-compatible server and pass the connection test. If parameter-size information is available, the Portal can assign a larger model to main and a smaller one to heartbeat. Review these assignments for access scope, performance, privacy, and fallback.
+
+A successful connection test still requires a real response from the target Agent. Verify server access and model readiness. For other integrations, first confirm a supported Portal setup path; do not guess settings or paste secrets into conversation.

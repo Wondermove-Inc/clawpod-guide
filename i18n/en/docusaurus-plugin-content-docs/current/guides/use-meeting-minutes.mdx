@@ -1,0 +1,49 @@
+---
+title: "Create and manage meeting minutes"
+description: "Obtain recording consent, review transcripts and summaries, and deliver or discard minutes."
+---
+
+# Create and manage meeting minutes
+
+Create minutes through a Chat Room's meeting feature. Recording and transcription process personal information; confirm organization retention policy and obtain every participant's consent before starting.
+
+## Start a meeting
+
+1. Open the Room and select <strong><span data-ui-label="chat.meeting.toggleLabel">Meeting</span></strong>. Starting may be restricted in Agent-only Rooms.
+2. Accept both recording and participant-notification consent items. New meetings use the Portal's default title.
+3. Choose translation if needed: none, one-way, or two-way.
+4. Select 15, 30, or 60 minutes and choose <strong><span data-ui-label="chat.meeting.consentConfirm">Agree and Start</span></strong>.
+
+Both consent items are required. Do not use transcription without consent or where recording is prohibited.
+
+## Review transcription and delivery
+
+Read the transcript and organize paragraphs in the Meeting panel while the meeting runs. At the end, choose:
+
+- <strong><span data-ui-label="chat.meeting.endDeliver">Deliver to Agent</span></strong>: save the transcript, generate a summary, and send transcript and summary artifacts to the Room.
+- <strong><span data-ui-label="chat.meeting.endDiscard">Discard</span></strong>: soft-delete the minutes to exclude them from the archive.
+
+The same choice appears when the time limit ends. An empty or unsaved transcript cannot produce a summary. Inspect the content before delivery and confirm the delivery or discard result afterward.
+
+## Past minutes and summary versions
+
+Open past minutes from the Room's meeting history. Finalized minutes show transcript and summary and support summary regeneration. Regeneration saves a new version; check the current version before sharing important decisions.
+
+Download transcripts as `.txt` or `.md` from the history panel. Preserve required originals and summaries in approved storage before deletion. Deleting minutes records a reason and may make referenced results inaccessible from Chat.
+
+## Manual review after validation failure
+
+If distortion or factual errors are detected, <strong><span data-ui-label="chat.meeting.validation.manualReviewRequired">Manual review is required.</span></strong> and <strong><span data-ui-label="chat.meeting.validation.reviewCta">Start Manual Review</span></strong> appear. Users who can see the action should:
+
+1. Compare decisions, numbers, owners, and deadlines with the original transcript.
+2. Select <strong><span data-ui-label="chat.meeting.validation.reviewCta">Start Manual Review</span></strong>.
+3. Score M8, M10, M11, and M13 from 0–5, and S3 and S4 from 0–3.
+4. Select <strong><span data-ui-label="chat.meeting.attestation.submit">Submit Review</span></strong> to rerun validation.
+
+Scores do not edit the summary. If it is wrong, regenerate from the transcript or follow the correction procedure. Do not raise scores just to pass validation.
+
+## Errors and privacy
+
+For processing errors, inspect the message and meeting status instead of creating duplicate meetings. Recordings, transcripts, translations, and summaries may contain personal or customer data; limit recipients and retention when moving them through Chat, webhooks, or external tools.
+
+Meeting-domain validation and summary-quota dashboards are separate operational concerns. Use manual review only when its action is actually shown.

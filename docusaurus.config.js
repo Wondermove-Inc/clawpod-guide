@@ -14,7 +14,7 @@ module.exports = {
   onBrokenLinks: 'throw',
   onDuplicateRoutes: 'throw',
   markdown: { hooks: { onBrokenMarkdownLinks: 'throw', onBrokenMarkdownImages: 'throw' } },
-  i18n: { defaultLocale: 'ko', locales: ['ko'] },
+  i18n: { defaultLocale: 'ko', locales: ['ko', 'en'], localeConfigs: { ko: { label: '한국어', htmlLang: 'ko' }, en: { label: 'English', htmlLang: 'en' } } },
   presets: [
     ['classic', {
       docs: {
@@ -30,12 +30,13 @@ module.exports = {
       theme: { customCss: require.resolve('./src/css/custom.css') },
     }],
   ],
-  plugins: [function publicGuideFiles() {
+  plugins: [function publicGuideFiles(context) {
     return {
       name: 'public-guide-files',
       async postBuild({ outDir }) {
-        // Keep raw Markdown URLs in llms.txt valid without moving MCP source files.
-        const references = fs.readFileSync(path.join(__dirname, 'llms.txt'), 'utf8');
+        // Publish each locale's raw documents alongside its rendered routes.
+        const sourceRoot = context.i18n.currentLocale === 'en' ? path.join(__dirname, 'i18n/en/docusaurus-plugin-content-docs/current') : __dirname;
+        const references = fs.readFileSync(path.join(sourceRoot, 'llms.txt'), 'utf8');
         const documentPages = guide.navigation.groups.flatMap((group) => group.pages);
         const previousPages = require('./scripts/public-compatibility-pages.json');
         const files = new Set([
@@ -48,7 +49,7 @@ module.exports = {
         for (const file of files) {
           const target = path.join(outDir, file);
           fs.mkdirSync(path.dirname(target), { recursive: true });
-          fs.copyFileSync(path.join(__dirname, file), target);
+          fs.copyFileSync(path.join(sourceRoot, file), target);
         }
       },
     };
@@ -60,6 +61,7 @@ module.exports = {
       items: [
         { type: 'docSidebar', sidebarId: 'guideSidebar', label: '사용 가이드', position: 'left' },
         { href: 'https://github.com/Wondermove-Inc/clawpod-guide', label: 'GitHub', position: 'right' },
+        { type: 'localeDropdown', position: 'right' },
         { type: 'search', position: 'right' },
       ],
     },

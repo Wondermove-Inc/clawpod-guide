@@ -1,0 +1,35 @@
+---
+title: "Manage billing and subscriptions"
+description: "Review plans, billing cycles, cancellation, resumption, and transactions."
+---
+
+# Manage billing and subscriptions
+
+Billing changes can affect the tenant plan, quota, and Agent creation. Check billing-management permission and current plan status first.
+
+## Review the subscription
+
+1. Open <strong><span data-ui-label="nav.billing">Subscription</span></strong> in the sidebar.
+2. Check the plan, subscription status, billing cycle, and Agent-count pricing shown.
+3. Open <strong><span data-ui-label="nav.paymentTransactions">Payment Transactions</span></strong> for transaction history.
+
+Free and paid plans may offer different actions. Before changing, check the next billing or cancellation date, Agent count and limits, monthly/annual cycle, payment method, and billing owner.
+
+## Change plans
+
+1. For Free, choose <strong><span data-ui-label="billing.freePlan.upgradeButton">Upgrade Plan</span></strong>; for paid subscriptions, <strong><span data-ui-label="billing.paidPlan.adjustButton">Adjust Plan</span></strong>.
+2. Choose the target plan and billing cycle in Pricing.
+3. Review plan, cycle, and amount at checkout before paying.
+4. After the completion dialog, return to Billing and verify the plan and status.
+
+Downgrades or switches to Free may follow subscription status and end dates rather than immediately cleaning up resources. Confirm the target supports current Agent, organization, and user counts. If an over-limit warning appears, reduce resources to the target limits before retrying.
+
+## Cancel and resume
+
+Paid subscriptions can schedule cancellation and may offer resumption before the end date. Select <strong><span data-ui-label="billing.paidPlan.cancelSection.cancelSubscription">Cancel subscription</span></strong> and confirm. Use <strong><span data-ui-label="billing.actions.resume">Resume Subscription</span></strong> on the subscription screen to resume when available.
+
+Before confirming cancellation, review the end date and affected features, plan preservation of Agent/workspace/organization data, and notify automation/webhook owners. Afterward verify the displayed cancellation state. Pending cancellation can restrict plan changes; after resumption, recheck status and quota.
+
+## Transactions and errors
+
+Review history in Billing transactions. For payment errors or past-due status, work with the billing owner and support without sharing payment information without authorization.

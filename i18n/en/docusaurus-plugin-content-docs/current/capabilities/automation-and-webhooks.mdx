@@ -1,0 +1,21 @@
+---
+title: "Automation and webhooks"
+description: "Deliver external events to Agents or Rooms and verify processing."
+---
+
+# Automation and webhooks
+
+Use webhooks to send external-service events to an Agent or Chat Room. Configure the source, destination, and processing instructions, then verify a test event.
+
+| Component | Role | Check |
+| --- | --- | --- |
+| Source | Event origin | Organization, source type, and signing secret |
+| Rule | Receiving Agents or Rooms | Same-tenant targets, conditions, and delivery limits |
+| Playbook | Instructions sent to the Agent | Expected result and permitted actions/data |
+| Event | Receipt and delivery record | Success/failure and the target's actual response |
+
+Follow [webhook setup](../guides/send-webhook-to-agent.mdx). Test with non-sensitive data and confirm the Event record and target Room. Receipt alone does not guarantee completed Agent work or automatic retries. On failure, inspect the Event, destination, and Agent status. Check for already executed work before resending.
+
+Disable the Source or Rule to stop new processing. Before deletion, review connected services and required settings. Update the sending service too when rotating secrets.
+
+[HEARTBEAT.md](../guides/configure-heartbeat.mdx) provides instructions for Agents using periodic checks; [Tasks and Milestones](../guides/use-tasks-and-milestones.mdx) track work and deadlines. Writing a file or due date does not schedule execution at a specific time.

@@ -1,0 +1,23 @@
+---
+title: "Browser and web tasks"
+description: "Check browser readiness, site access, and the scope of a web task."
+---
+
+# Browser and web tasks
+
+An Agent equipped with a browser can read pages, navigate, enter information, and inspect results. A lightweight Agent without a desktop is not ready for GUI browser work; confirm its environment first.
+
+You need the appropriate site account and permissions, a ready browser, and access to the target URL. Treat login sessions, cookies, and downloads as sensitive data. Ordinary users cannot select every runtime; explain the required task to an administrator when adjustments are needed.
+
+## Request a task
+
+1. Give the target URL and expected result.
+2. Specify whether reading, input, submission, downloads, and external transfers are allowed.
+3. Start with a small read-only check.
+4. Ask for source URLs, actual changes, and failed or unexecuted steps.
+
+Follow the [browser and CLI guide](../guides/use-browser-and-cli.mdx). Stop and ask the user when login or human verification is needed.
+
+AI Chat web search is a separate feature; it does not equip an Agent with a browser. See [AI Chat](../guides/use-ai-chat.mdx). When unsure, request an explicit check of the target URL.
+
+Instructions are not technical access controls. Follow organization access and external-transfer policies.

@@ -1,0 +1,36 @@
+---
+title: "How Agents should interpret this guide"
+description: "Resolve differences between documented workflows and verified runtime capability."
+---
+
+# How Agents should interpret this guide
+
+Product documentation describes official consumer workflows; it does not fully replace actual tools, permissions, or connection state.
+
+## Trust order
+
+1. The current user request, explicit authorization, and organization policy.
+2. Permissions, tools, and runtime state verified in the current session.
+3. Safely readable resources and connection state.
+4. This guide and its capability tables.
+
+Prefer safely verified facts in the current environment when documentation differs. A capability's existence does not itself grant execution permission or user approval.
+
+## Undocumented capabilities
+
+“No official consumer lifecycle” means no verified customer Portal creation, configuration, and revocation flow. “Available on the current Agent” means safely verified tools/runtime plus the necessary permissions and approval.
+
+In the latter case, explain availability and perform the requested scope after the smallest read-only/no-op check. For example, an existing browser tool can perform an authorized limited URL read even without a Portal setup screen.
+
+## Boundaries
+
+- Do not exceed permissions, organization policy, tenant boundaries, user authorization, or credential scope because a tool exists.
+- Do not discover secrets, directly call internal APIs, or force-enable hidden features through configuration or shell commands.
+- Follow explicit user scope for external transfers, file changes, browser input/submission, installation, and deletion.
+- Do not guess when docs and runtime differ. Separate verified state, the smallest possible action, and why something cannot be checked.
+
+## Suggested response
+
+Report the verified capability, allowed task scope, remaining restrictions or approval needs, and the next safe check or user choice.
+
+See [availability](../capabilities/consumer-availability.mdx) for the distinction between consumer setup and runtime capability.

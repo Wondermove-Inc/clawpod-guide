@@ -1,0 +1,31 @@
+---
+title: "Check feature availability"
+description: "Distinguish visible settings, completed setup, and verified capability."
+---
+
+# Check feature availability
+
+A visible menu or an installed Skill does not mean every operation is available.
+
+## Check a Portal workflow
+
+1. Find the workflow in the [catalog](./catalog.mdx).
+2. Check your role, organization, plan, and quota.
+3. Follow its AI credential, Agent, Skill, or webhook setup guide.
+4. Confirm the saved status, then run a small test without secrets.
+
+Pending, installing, and failed states do not mean ready. Even an installed Skill may require an account connection or additional permissions. See [Skill management](../guides/manage-skills.mdx).
+
+## Check an Agent task
+
+Confirm the actual tools, file access, AI connection, and organization scope for the target Agent. For example: “Check whether you can read the specified document, summarize its key decisions, and flag unresolved questions.”
+
+Ordinary users cannot choose every runtime or tool. Use [help](../help/index.mdx) when setup is unavailable.
+
+This guide is not a complete inventory of runtime tools or a grant of permission. A safely observable, authorized capability can be used even when undocumented. Conversely, do not claim a documented capability is available without verifying it for the current Agent.
+
+Do not invent settings, discover secrets or internal paths, or bypass permissions to enable a capability. See [how Agents should read this guide](../guides/agent-document-reading.mdx).
+
+## Verify and clean up
+
+Check the result, actual changes, failures, and steps that were not executed. Revoke unused connections, Skills, and webhooks, and handle files and memory according to the retention policy.

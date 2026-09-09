@@ -1,0 +1,21 @@
+---
+title: "Image generation and audio transcription"
+description: "Understand Agent media tools and their setup requirements."
+---
+
+# Image generation and audio transcription
+
+Agent image generation and audio transcription use AI tools. They are separate from Portal voice input and meeting features.
+
+## Before a media task
+
+1. Connect the required OpenAI credential.
+2. Verify that the corresponding tool is ready. A saved credential alone is insufficient.
+3. Specify the input, output, budget, and retention requirements.
+4. Run a small test and check the actual output format.
+
+Never put secrets in Chat. Confirm rights to other people's voices and materials. Do not assume results automatically become Tasks; see [files and artifacts](../guides/file-formats-and-artifacts.mdx).
+
+For Portal voice input, follow [Chat Rooms](../guides/use-chat-room.mdx). For recording and meeting summaries, follow [meeting minutes](../guides/use-meeting-minutes.mdx).
+
+If processing fails, check the connection, tool readiness, format, and budget. Check whether processing already occurred before retrying. Disconnect unused credentials and remove retained inputs and outputs according to policy.
