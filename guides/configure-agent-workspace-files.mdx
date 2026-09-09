@@ -1,49 +1,47 @@
 ---
 title: SOUL.md, AGENTS.md와 Agent workspace 파일
-description: Agent의 persona, 운영 지침, tool notes, memory가 어디에 저장되고 first boot에 어떻게 준비되는지 설명합니다.
+description: Agent의 역할·운영 지침·도구 메모·기억 파일을 구분하고 수정 결과를 확인합니다.
 ---
 
 # SOUL.md, AGENTS.md와 Agent workspace 파일
 
-파일별 포맷·템플릿·수정 원칙은 [Agent 설정 파일 안내](/workspace-files/index)에서 별도 페이지로 제공합니다. 이 페이지는 ClawPod runtime이 파일을 저장하고 first boot에 초기화하는 방식을 설명합니다.
+파일별 포맷·템플릿·수정 원칙은 [Agent 설정 파일 안내](../workspace-files/index.mdx)에서 별도 페이지로 제공합니다. 이 페이지에서는 파일의 역할과 사용자가 변경할 수 있는 범위를 설명합니다.
 
-Agent의 workspace는 단순한 파일 보관함이 아닙니다. ClawPod wrapper는 first boot에 정해진 파일을 workspace에 만들거나 복사합니다. session마다 무엇을 Agent prompt context에 넣는지는 OpenClaw runtime 동작이며 Portal이 설정·보장하지 않습니다. 따라서 파일마다 목적과 편집 경로를 구분해야 합니다.
+Agent는 작업 공간의 지침과 기억을 업무에 활용할 수 있습니다. 파일마다 목적과 관리 경로가 다르며, 파일을 저장했다고 모든 대화에 자동으로 적용된다고 가정하지 마세요.
 
 ## 먼저 알아둘 점
 
 - **runtime 읽기 방식**: 필요한 파일은 Agent 지침에서 읽도록 정하거나 filesystem MCP·CLI로 명시적으로 읽습니다. Cloud Portal은 session별 자동 주입 목록을 제어하지 않습니다.
-- **자동 실행이 아님**: 파일의 문장은 Agent의 지침과 맥락입니다. shell command, 외부 전송, 삭제 같은 행동을 파일에 적었다고 자동 실행되지는 않습니다. 현재 wrapper가 사용자별 실행 승인을 자동 강제하지 않으므로, 조직은 허용 범위를 지침과 배포 정책으로 정해야 합니다.
+- **자동 실행이 아님**: 파일의 문장은 Agent의 지침과 맥락입니다. shell command, 외부 전송, 삭제 같은 행동을 파일에 적었다고 자동 실행되지는 않습니다. 지침 작성만으로 실행 승인과 접근 제한이 자동 강제되는 것은 아니므로 조직의 권한 정책을 함께 따라야 합니다.
 - **길이 제한**: 긴 bootstrap 파일은 context 한도 안에서 잘릴 수 있습니다. 핵심 규칙을 앞에 두고, 상세 절차는 별도 문서로 분리해 `AGENTS.md`에서 참조하세요.
 - **세션 기준**: 변경한 내용은 이미 진행 중인 응답을 소급 변경하지 않습니다. Config 저장 뒤 재시작과 새 테스트 대화로 반영 여부를 확인하세요.
 
 ## 파일별 역할과 현재 설정 경로
 
-| 파일 | 무엇을 정하나요? | 주입·읽기 방식 | ClawPod에서의 현재 관리 경로 |
-| --- | --- | --- | --- |
-| `SOUL.md` | persona, tone, 역할, 행동 경계 | pod/runtime이 읽는 설정 파일 | **<!-- ui-label: nav.agents -->에이전트<!-- /ui-label --> → 대상 Agent → <!-- ui-label: agentDetail.config.title -->설정<!-- /ui-label -->**에서 편집·저장 |
-| `AGENTS.md` | 반복 업무의 운영 지침, 안전 규칙, workflow | first boot에 workspace로 복사될 수 있음 | 생성 시 서버 기본값이 제공됩니다. 현재 Portal 직접 편집 UI는 확인되지 않았습니다. |
-| `TOOLS.md` | tool 사용 메모와 local convention | first boot에 workspace로 복사될 수 있음 | 생성 시 서버 기본값이 제공됩니다. 현재 Portal 직접 편집 UI는 확인되지 않았습니다. |
-| `IDENTITY.md` | 이름, 역할, theme 같은 identity 정보 | first boot에 runtime이 준비할 수 있음 | Portal에서의 독립 편집 경로는 확인되지 않았습니다. |
-| `USER.md` | 관리자·팀의 선호와 협업 맥락 | first boot에 기본 파일이 만들어질 수 있음 | runtime의 쓰기 정책에 따릅니다. |
-| `MEMORY.md` | 장기적으로 유지할 결정·선호·교훈 | workspace 장기 기록 파일 | runtime이 기본 파일을 만들 수 있습니다. Portal 독립 편집 UI는 확인되지 않았습니다. |
-| `memory/*.md` | 일별·주제별 상세 memory | filesystem MCP·CLI로 필요할 때 명시적으로 읽음 | runtime이 directory를 준비할 수 있습니다. |
-| `BOOTSTRAP.md` | 새 workspace에서 한 번만 하는 초기 설정 | 새 workspace의 첫 setup에만 사용 | 완료 뒤 Agent가 삭제하도록 안내되며, 이후 restart마다 다시 만들도록 설계된 파일이 아닙니다. |
-| `HEARTBEAT.md` | heartbeat 때 점검할 짧은 checklist | runtime이 읽을 수 있는 workspace 파일 | 첫 boot에서 기본 파일이 만들어질 수 있습니다. |
+| 파일 | 용도 | 관리 방법 |
+| --- | --- | --- |
+| `SOUL.md` | 역할, 말투, 행동 범위 | **<span data-ui-label="nav.agents">에이전트</span> → 대상 Agent → <span data-ui-label="agentDetail.config.title">설정</span>**에서 편집·저장 |
+| `AGENTS.md` | 반복 업무의 지침과 기본 규칙 | Portal 직접 편집기가 없습니다. 허용된 작업 범위를 정해 Agent에게 요청합니다. |
+| `TOOLS.md` | 도구 사용 메모 | Portal 직접 편집기가 없습니다. 허용된 작업 범위를 정해 Agent에게 요청합니다. |
+| `IDENTITY.md`, `USER.md` | Agent 소개와 협업 선호 | Agent의 파일 접근 권한과 조직 정책을 따릅니다. |
+| `MEMORY.md`, `memory/*.md` | 장기 결정과 일별·주제별 기록 | 보존·삭제 범위를 정해 Agent에게 요청합니다. |
+| `BOOTSTRAP.md` | 처음 사용하는 작업 공간의 초기 안내 | 초기 설정이 끝난 뒤 처리 방법은 [파일 안내](../workspace-files/bootstrap-and-identity.mdx)를 따릅니다. |
+| `HEARTBEAT.md` | 주기 점검의 짧은 지침 | 해당 Agent에서 주기 점검이 실행되는지 먼저 확인합니다. |
 
 ## SOUL.md 설정하기
 
-1. **<!-- ui-label: nav.agents -->에이전트<!-- /ui-label -->**에서 대상 Agent를 엽니다.
-2. **<!-- ui-label: agentDetail.config.title -->설정<!-- /ui-label -->** 카드를 펼친 뒤 `SOUL.md` 미리보기를 읽습니다.
-3. **<!-- ui-label: common.edit -->수정<!-- /ui-label -->**으로 역할, 허용 범위, 금지 행동, 결과 형식을 수정합니다.
-4. **<!-- ui-label: common.save -->저장<!-- /ui-label -->**을 선택하고 저장 성공 메시지를 확인합니다.
+1. **<span data-ui-label="nav.agents">에이전트</span>**에서 대상 Agent를 엽니다.
+2. **<span data-ui-label="agentDetail.config.title">설정</span>** 카드를 펼친 뒤 `SOUL.md` 미리보기를 읽습니다.
+3. **<span data-ui-label="common.edit">수정</span>**으로 역할, 허용 범위, 금지 행동, 결과 형식을 수정합니다.
+4. **<span data-ui-label="common.save">저장</span>**을 선택하고 저장 성공 메시지를 확인합니다.
 5. 미리보기를 다시 열어 Security Policy와 Sub-Agent Delegation 섹션이 유지되거나 추가됐는지 확인합니다.
 6. Agent 상태와 새 Room의 작은 읽기 요청으로 반영을 확인합니다. 성공 메시지만으로 restart 완료를 단정하지 말고 warning이나 `restartFailed`가 없는지 확인합니다.
 
-Portal의 실제 `SOUL.md` 저장(PATCH)은 mandatory security와 background delegation 지침을 유지·보강하고, 설정 저장소와 Pod ConfigMap을 갱신한 뒤 Agent restart를 시도합니다. restart warning 또는 실패가 있을 수 있으므로 성공 메시지만으로 반영 완료를 단정하지 마세요. legacy PUT/POST config route는 DB 저장만 하며 Portal의 편집 화면이 사용하는 경로가 아닙니다.
+저장 시 기본 보안·작업 위임 지침이 유지되거나 보완될 수 있습니다. 재시작 경고나 실패가 있으면 반영 완료를 단정하지 말고 Agent 상태와 새 대화에서 확인하세요.
 
 ## AGENTS.md와 TOOLS.md는 어떻게 되나요?
 
-Agent 생성 시 ClawPod는 `AGENTS.md`와 `TOOLS.md`가 비어 있으면 안전 기본값을 서버에서 넣습니다. 이 파일들은 ConfigMap staging을 거쳐 **첫 boot에 workspace로 복사**됩니다. 그 뒤 workspace의 파일은 Agent가 허용된 file tool로 읽거나 수정할 수 있는 파일입니다.
+새 Agent에는 기본 운영 지침이 제공될 수 있습니다. `AGENTS.md`와 `TOOLS.md`는 작업 공간의 문서이며, Agent가 허용된 파일 도구로 읽거나 수정할 수 있습니다. 기본 규칙을 검토하고 필요한 부분만 변경하세요.
 
 중요한 차이:
 
@@ -64,7 +62,7 @@ Agent 생성 시 ClawPod는 `AGENTS.md`와 `TOOLS.md`가 비어 있으면 안전
 | 날짜별 조사 메모·긴 기록 | `memory/*.md` | “2026-08-05 배포 event 조사 메모” |
 | 한 번만 할 onboarding | `BOOTSTRAP.md` | workspace 소개와 초기 확인 절차 |
 
-Secret, password, API key, OAuth token, 고객의 불필요한 원문은 어느 workspace 파일에도 저장하지 마세요. Credential은 [Credential 관리](/guides/manage-credentials)와 [Secret과 민감한 값 다루기](/guides/handle-secrets)의 용도별 입력 경로로 관리합니다.
+Secret, password, API key, OAuth token, 고객의 불필요한 원문은 어느 workspace 파일에도 저장하지 마세요. Credential은 [Credential 관리](./manage-credentials.mdx)와 [Secret과 민감한 값 다루기](./handle-secrets.mdx)의 용도별 입력 경로로 관리합니다.
 
 ## Agent에게 파일을 읽게 하거나 갱신하게 할 때
 

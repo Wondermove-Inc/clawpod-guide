@@ -7,105 +7,103 @@
     "groups": [
       {
         "group": "시작하기",
-        "pages": ["index", "guides/start-account", "guides/complete-onboarding", "start/first-agent", "guides/agent-document-reading", "guides/use-clawpod-guide-tool"]
-      },
-      {
-        "group": "핵심 개념",
-        "pages": ["concepts/agent"]
-      },
-      {
-        "group": "Agent 기능",
         "pages": [
-          "capabilities/index",
+          "index",
+          "guides/start-account",
+          "guides/accept-organization-invite",
+          "guides/complete-onboarding",
+          "start/first-agent",
+          "concepts/agent"
+        ]
+      },
+      {
+        "group": "기능 안내",
+        "pages": [
           "capabilities/catalog",
-          "capabilities/portal-features",
           "capabilities/consumer-availability",
-          "capabilities/memory-and-configuration",
-          "capabilities/automation-and-webhooks",
-          "capabilities/dreaming-and-memory-automation",
-          "capabilities/governance-and-settings",
-          "capabilities/managed-runtime",
-          "capabilities/runtime-availability",
-          "capabilities/agent-image-and-runtime",
-          "capabilities/agent-image-tool-inventory",
-          "capabilities/agent-execution-matrix",
-          "capabilities/integrations",
-          "capabilities/skills-and-tools",
           "capabilities/browser-and-web",
           "capabilities/channels-and-media",
           "capabilities/chat-and-collaboration",
-          "capabilities/credentials-and-models",
-          "capabilities/enablement",
-          "CAPABILITY-COVERAGE"
+          "capabilities/integrations",
+          "capabilities/skills-and-tools"
         ]
       },
       {
-        "group": "사용 가이드",
+        "group": "대화와 업무",
         "pages": [
-          "guides/manage-agent",
-          "guides/configure-agent-environment",
           "guides/use-chat-room",
           "guides/use-chat-archive",
           "guides/use-ai-chat",
-          "guides/manage-skills",
-          "guides/manage-credentials",
-          "guides/handle-secrets",
-          "guides/select-models",
-          "guides/manage-account-and-organization",
-          "guides/manage-notifications",
-          "guides/manage-iam",
-          "guides/use-audit-log",
-          "guides/check-workspace-and-system",
-          "guides/manage-workspace-documents",
           "guides/file-formats-and-artifacts",
           "guides/use-browser-and-cli",
+          "guides/use-agent-desktop",
           "guides/use-tasks-and-milestones",
           "guides/use-meeting-minutes",
-          "guides/manage-billing",
-          "guides/use-agent-templates",
-          "guides/use-analytics",
-          "guides/use-dashboard-and-costs",
-          "guides/secure-your-account",
-          "guides/manage-organization",
-          "guides/accept-organization-invite",
-          "guides/create-agent",
-          "guides/manage-tenants",
-          "guides/use-agent-desktop",
-          "guides/manage-legal-documents",
-          "guides/configure-agent-workspace-files",
-          "guides/configure-heartbeat",
-          "guides/send-webhook-to-agent"
+          "guides/manage-workspace-documents"
         ]
       },
       {
-        "group": "Agent 설정 파일",
+        "group": "Agent 만들기와 설정",
         "pages": [
+          "guides/create-agent",
+          "guides/manage-agent",
+          "guides/use-agent-templates",
+          "guides/manage-credentials",
+          "guides/handle-secrets",
+          "guides/select-models",
+          "guides/manage-skills",
+          "guides/configure-agent-environment",
+          "guides/configure-agent-workspace-files",
+          "capabilities/memory-and-configuration",
           "workspace-files/index",
           "workspace-files/soul-md",
           "workspace-files/agents-md",
           "workspace-files/tools-md",
           "workspace-files/memory-md",
-          "workspace-files/bootstrap-and-identity"
+          "workspace-files/bootstrap-and-identity",
+          "guides/configure-heartbeat"
         ]
       },
       {
-        "group": "Platform 관리자",
+        "group": "이벤트 연동",
         "pages": [
-          "admin/registration-requests",
-          "admin/invite-codes",
-          "admin/language-settings",
-          "admin/menu-visibility",
-          "admin/model-pricing",
-          "admin/agent-presets",
-          "admin/announcements",
-          "admin/manage-plans",
-          "admin/workflows"
+          "capabilities/automation-and-webhooks",
+          "guides/send-webhook-to-agent"
+        ]
+      },
+      {
+        "group": "계정과 조직 관리",
+        "pages": [
+          "capabilities/governance-and-settings",
+          "guides/manage-account-and-organization",
+          "guides/manage-organization",
+          "guides/manage-iam",
+          "guides/secure-your-account",
+          "guides/manage-notifications",
+          "guides/use-audit-log",
+          "guides/use-analytics",
+          "guides/use-dashboard-and-costs",
+          "guides/manage-billing",
+          "guides/check-workspace-and-system"
         ]
       },
       {
         "group": "도움말",
-        "pages": ["help/index", "help/portal-feature-map"]
+        "pages": [
+          "help/index",
+          "help/portal-feature-map"
+        ]
+      },
+      {
+        "group": "Agent용 문서 읽기",
+        "pages": [
+          "guides/agent-document-reading",
+          "guides/use-clawpod-guide-tool"
+        ]
       }
     ]
+  },
+  "colors": {
+    "primary": "#0F766E"
   }
 }

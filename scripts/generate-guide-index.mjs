@@ -15,6 +15,7 @@ function plainText(content) {
   return content
     .replace(/^---[\s\S]*?---\s*/m, "")
     .replace(/```[\s\S]*?```/g, " ")
+    .replace(/<[^>]+>/g, "")
     .replace(/!?(?:\[([^\]]*)\])\([^)]*\)/g, "$1")
     .replace(/[`*_>#|]/g, " ")
     .replace(/\s+/g, " ")

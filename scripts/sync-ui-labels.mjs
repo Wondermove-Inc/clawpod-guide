@@ -7,7 +7,7 @@ const scriptDirectory = dirname(new URL(import.meta.url).pathname);
 const docsDirectory = resolve(scriptDirectory, '..');
 const labels = JSON.parse(readFileSync(join(docsDirectory, 'ui-labels.ko.json'), 'utf8'));
 const checkOnly = process.argv.includes('--check');
-const marker = /<!--\s*ui-label:\s*([\w.-]+)\s*-->([^\n]*?)<!--\s*\/ui-label\s*-->/g;
+const marker = /<span data-ui-label="([\w.-]+)">([^\n]*?)<\/span>/g;
 
 function collectFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -23,15 +23,16 @@ for (const path of collectFiles(docsDirectory)) {
   const updated = source.replace(marker, (whole, key, current) => {
     const label = labels[key];
     if (typeof label !== 'string') throw new Error(`${path}: unknown UI label key: ${key}`);
-    if (current !== label) stale.push(path);
-    return `<!-- ui-label: ${key} -->${label}<!-- /ui-label -->`;
+    const escaped = label.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("{", "&#123;").replaceAll("}", "&#125;");
+    if (current !== escaped) stale.push(path);
+    return `<span data-ui-label="${key}">${escaped}</span>`;
   });
   if (updated !== source && !checkOnly) writeFileSync(path, updated);
 }
 
 if (checkOnly && stale.length) {
   const paths = [...new Set(stale)].map((path) => path.replace(`${docsDirectory}/`, '')).join(', ');
-  throw new Error(`Stale UI labels in: ${paths}. Run: node product-docs/scripts/sync-ui-labels.mjs`);
+  throw new Error(`Stale UI labels in: ${paths}. Run: node scripts/sync-ui-labels.mjs`);
 }
 
 console.log(`UI label sync: ${checkOnly ? 'current' : 'completed'}.`);

@@ -16,3 +16,7 @@ jobs:
       - run: node scripts/generate-readme.mjs --check
       - run: node scripts/generate-guide-index.mjs --check
       - run: node scripts/sync-ui-labels.mjs --check
+      - run: node scripts/check-links.mjs
+      - run: node --test scripts/check-docs.test.mjs
+      - run: npx --yes mint@4.2.880 validate
+      - run: npx --yes mint@4.2.880 broken-links

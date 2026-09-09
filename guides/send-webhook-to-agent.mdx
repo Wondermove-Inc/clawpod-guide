@@ -16,9 +16,9 @@ description: Webhook source, rule, playbook을 설정해 외부 이벤트를 Cla
 
 ## 1. Playbook 만들기
 
-1. **<!-- ui-label: nav.webhooks -->웹훅<!-- /ui-label --> → <!-- ui-label: webhooks.tabs.playbooks -->플레이북<!-- /ui-label --> → <!-- ui-label: webhooks.playbooks.create -->플레이북 생성<!-- /ui-label -->**을 선택합니다.
-2. **<!-- ui-label: webhooks.playbooks.name -->이름<!-- /ui-label -->**과 **<!-- ui-label: webhooks.playbooks.content -->내용<!-- /ui-label -->**을 입력합니다. 필요하면 **<!-- ui-label: webhooks.playbooks.preview -->미리보기<!-- /ui-label -->** 또는 **<!-- ui-label: webhooks.playbooks.split -->분할<!-- /ui-label -->**로 Markdown 결과를 확인합니다.
-3. 하단 **<!-- ui-label: webhooks.playbooks.save -->저장<!-- /ui-label -->**을 선택하고, 플레이북 목록에 새 항목이 보이는지 확인합니다.
+1. **<span data-ui-label="nav.webhooks">웹훅</span> → <span data-ui-label="webhooks.tabs.playbooks">플레이북</span> → <span data-ui-label="webhooks.playbooks.create">플레이북 생성</span>**을 선택합니다.
+2. **<span data-ui-label="webhooks.playbooks.name">이름</span>**과 **<span data-ui-label="webhooks.playbooks.content">내용</span>**을 입력합니다. 필요하면 **<span data-ui-label="webhooks.playbooks.preview">미리보기</span>** 또는 **<span data-ui-label="webhooks.playbooks.split">분할</span>**로 Markdown 결과를 확인합니다.
+3. 하단 **<span data-ui-label="webhooks.playbooks.save">저장</span>**을 선택하고, 플레이북 목록에 새 항목이 보이는지 확인합니다.
 
 Playbook은 source와 rule에 각각 연결할 수 있으며, event 메시지에 함께 추가됩니다.
 
@@ -26,22 +26,22 @@ Playbook은 source와 rule에 각각 연결할 수 있으며, event 메시지에
 
 ## 2. Source 만들기
 
-1. **<!-- ui-label: nav.webhooks -->웹훅<!-- /ui-label --> → <!-- ui-label: webhooks.tabs.sources -->소스<!-- /ui-label --> → <!-- ui-label: webhooks.sources.create -->소스 생성<!-- /ui-label -->**을 열고 source type을 고른 뒤 다음 단계로 이동합니다.
-2. **<!-- ui-label: webhooks.sources.name -->이름<!-- /ui-label -->**과 대상 조직을 입력합니다.
+1. **<span data-ui-label="nav.webhooks">웹훅</span> → <span data-ui-label="webhooks.tabs.sources">소스</span> → <span data-ui-label="webhooks.sources.create">소스 생성</span>**을 열고 source type을 고른 뒤 다음 단계로 이동합니다.
+2. **<span data-ui-label="webhooks.sources.name">이름</span>**과 대상 조직을 입력합니다.
 3. 필요하면 source 수준 Playbook, rate limit, secret 생성, signature 방식을 지정합니다.
-4. **<!-- ui-label: webhooks.wizard.finish -->소스 생성<!-- /ui-label -->**을 선택합니다.
+4. **<span data-ui-label="webhooks.wizard.finish">소스 생성</span>**을 선택합니다.
 5. 마지막 Integration guide에서 Webhook URL과, 표시될 경우 signing secret의 복사 버튼을 각각 눌러 외부 서비스 설정에 등록합니다.
 
 signing secret은 생성·재생성·rotation 때만 평문으로 표시될 수 있습니다. 문서나 Chat에 붙여 넣지 말고 조직의 비밀값 보관 절차에 따라 보관하세요.
 
 ## 3. Rule로 대상 정하기
 
-1. **<!-- ui-label: nav.webhooks -->웹훅<!-- /ui-label --> → <!-- ui-label: webhooks.tabs.rules -->규칙<!-- /ui-label --> → <!-- ui-label: webhooks.rules.create -->규칙 생성<!-- /ui-label -->**을 엽니다.
-2. **<!-- ui-label: webhooks.rules.name -->이름<!-- /ui-label -->**, **<!-- ui-label: webhooks.rules.source -->소스<!-- /ui-label -->**, **<!-- ui-label: webhooks.rules.targetType -->대상 유형<!-- /ui-label -->**을 고르고 필요한 event 조건을 추가합니다.
-3. **<!-- ui-label: webhooks.rules.target -->대상<!-- /ui-label -->**으로 Agent 또는 Room을 하나 이상 선택합니다.
+1. **<span data-ui-label="nav.webhooks">웹훅</span> → <span data-ui-label="webhooks.tabs.rules">규칙</span> → <span data-ui-label="webhooks.rules.create">규칙 생성</span>**을 엽니다.
+2. **<span data-ui-label="webhooks.rules.name">이름</span>**, **<span data-ui-label="webhooks.rules.source">소스</span>**, **<span data-ui-label="webhooks.rules.targetType">대상 유형</span>**을 고르고 필요한 event 조건을 추가합니다.
+3. **<span data-ui-label="webhooks.rules.target">대상</span>**으로 Agent 또는 Room을 하나 이상 선택합니다.
 4. 같은 유형의 대상을 둘 이상 고르면 전체 전달(broadcast) 또는 round-robin 방식을 선택합니다.
 5. 필요하면 rule 수준 Playbook, cooldown, 시간당 제한을 설정합니다.
-6. 하단 **<!-- ui-label: webhooks.rules.create -->규칙 생성<!-- /ui-label -->**을 선택하고 웹훅 목록에 새 규칙이 보이는지 확인합니다.
+6. 하단 **<span data-ui-label="webhooks.rules.create">규칙 생성</span>**을 선택하고 웹훅 목록에 새 규칙이 보이는지 확인합니다.
 
 Source와 대상 Agent·Room은 같은 tenant 안에 있어야 합니다. 조직 단위 분리는 rule을 만드는 운영자가 대상 Agent·Room을 정확히 선택해 관리합니다.
 
@@ -49,11 +49,11 @@ Source와 대상 Agent·Room은 같은 tenant 안에 있어야 합니다. 조직
 
 외부 서비스의 test event를 보낸 뒤 다음을 확인합니다.
 
-1. **<!-- ui-label: nav.webhooks -->웹훅<!-- /ui-label --> → <!-- ui-label: webhooks.tabs.events -->이벤트<!-- /ui-label -->**에 수신 event가 기록되는지
+1. **<span data-ui-label="nav.webhooks">웹훅</span> → <span data-ui-label="webhooks.tabs.events">이벤트</span>**에 수신 event가 기록되는지
 2. Agent target이면 Cloud가 해당 Agent용 webhook Room으로 event를 전달하는지와 Agent가 실행 가능한 상태인지
 3. Room target이면 지정한 Room에 시스템 메시지가 나타나는지와 필요한 참여자가 있는지
 
-Agent는 event의 source, rule, event ID, JSON payload, 연결된 Playbook 지침을 메시지로 받습니다. Webhook이 Agent runtime을 직접 호출하는 구조는 아닙니다.
+Agent는 event의 source, rule, event ID, JSON payload, 연결된 Playbook 지침을 메시지로 받습니다.
 
 ## 중지·rotation·복구
 

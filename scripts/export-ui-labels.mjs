@@ -7,7 +7,11 @@ import vm from 'node:vm';
 
 const scriptDirectory = dirname(new URL(import.meta.url).pathname);
 const docsDirectory = resolve(scriptDirectory, '..');
-const repositoryDirectory = resolve(docsDirectory, '..');
+const portalRootFlag = process.argv.indexOf('--portal-root');
+if (portalRootFlag !== -1 && (!process.argv[portalRootFlag + 1] || process.argv[portalRootFlag + 1].startsWith('--'))) {
+  throw new Error('--portal-root requires a repository path');
+}
+const repositoryDirectory = portalRootFlag === -1 ? resolve(docsDirectory, '..') : resolve(process.argv[portalRootFlag + 1]);
 const outputPath = join(docsDirectory, 'ui-labels.ko.json');
 const portalRequire = createRequire(join(repositoryDirectory, 'src/admin-portal/package.json'));
 const typescript = portalRequire('typescript');
@@ -25,7 +29,7 @@ function collectKeys() {
   const keys = new Set();
   for (const path of collectFiles(docsDirectory)) {
     const document = readFileSync(path, 'utf8');
-    for (const match of document.matchAll(/<!--\s*ui-label:\s*([\w.-]+)\s*-->/g)) keys.add(match[1]);
+    for (const match of document.matchAll(/<span data-ui-label="([\w.-]+)">/g)) keys.add(match[1]);
   }
   return [...keys].sort();
 }
@@ -65,7 +69,7 @@ const serialized = `${JSON.stringify(labels, null, 2)}\n`;
 
 if (process.argv.includes('--check')) {
   const current = readFileSync(outputPath, 'utf8');
-  if (current !== serialized) throw new Error(`${relative(repositoryDirectory, outputPath)} is stale. Run: node product-docs/scripts/export-ui-labels.mjs`);
+  if (current !== serialized) throw new Error(`${relative(repositoryDirectory, outputPath)} is stale. Run: node scripts/export-ui-labels.mjs --portal-root <portal-repository>`);
   console.log(`UI labels: ${Object.keys(labels).length} keys are current.`);
 } else {
   writeFileSync(outputPath, serialized);

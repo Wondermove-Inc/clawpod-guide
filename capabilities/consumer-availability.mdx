@@ -1,72 +1,35 @@
 ---
-title: 숨겨진 Agent 기능의 소비자 제공 상태
-description: Agent source에 존재하는 기능을 현재 ClawPod에서 직접 쓰는 경로, Agent에게 요청하는 경로, 소비자 제공 경로 없음으로 구분합니다.
+title: 기능 사용 조건
+description: Portal에서 설정하는 기능과 Agent에게 요청하는 작업의 준비 조건입니다.
 ---
 
-# 숨겨진 Agent 기능의 소비자 제공 상태
+# 기능 사용 조건
 
-Agent image와 upstream runtime에는 Portal 메뉴보다 많은 기능이 들어 있습니다. **들어 있다는 사실은 고객 기능이라는 뜻이 아닙니다.** 이 표는 현재 Cloud source를 기준으로, 소비자가 실제로 어디서 어떤 방식으로 쓸 수 있는지를 명시합니다.
+ClawPod 기능은 Portal에서 직접 설정하거나 Agent에게 요청해 사용합니다. 메뉴가 보인다는 사실이나 도구가 설치됐다는 사실만으로 모든 작업이 가능한 것은 아닙니다.
 
-## Agent가 이 문서를 읽을 때
+## Portal에서 설정할 때
 
-이 문서는 특정 시점의 제품 가이드이며, Agent의 실제 runtime capability·권한·연결 상태를 완전하게 보장하지 않습니다. Agent는 현재 session에서 안전하게 확인할 수 있는 tool 목록, runtime 상태, 사용자의 명시적 권한을 먼저 판단합니다.
+1. [기능 안내](./catalog.mdx)에서 해당 작업의 가이드를 찾습니다.
+2. 내 역할과 조직 범위, 요금제·사용량 한도를 확인합니다.
+3. 가이드의 순서대로 AI 연결, Agent, Skill 또는 Webhook을 설정합니다.
+4. 저장 결과나 설치 상태를 확인하고 비민감 데이터로 작은 작업을 시험합니다.
 
-- 문서에 기능이 없거나 **소비자 제공 경로 없음**으로 표시돼도, Agent가 현재 환경에서 해당 capability를 안전하게 확인하고 사용할 권한이 있다면 그 capability는 현재 Agent에게 존재합니다.
-- 이 표의 “소비자 제공 경로 없음”은 **Portal에서 고객이 설정·운영하는 공식 lifecycle이 확인되지 않았다**는 뜻이지, Agent runtime의 절대적 금지나 부재 선언이 아닙니다.
-- 반대로 tool이 보이거나 runtime에 존재해도 사용자 권한, 조직 policy, credential, 승인, 데이터 범위를 우회할 수는 없습니다.
-- 불일치가 있으면 안전한 read-only/no-op 확인을 우선하고, 확인할 수 없으면 “문서와 현재 환경이 다르거나 확인 불가”로 설명합니다. secret 탐색, 내부 API 호출, 설정 파일 변경, 외부 전송으로 capability를 억지로 활성화하지 않습니다.
+Skill 설치는 요청 접수와 완료를 구분하세요. `pending` 또는 `installing`은 진행 중이고, `failed`이면 사용할 준비가 끝나지 않은 상태입니다. `installed` 이후에도 필요한 외부 계정과 권한이 갖춰져야 합니다. 자세한 절차는 [Skill Marketplace](../guides/manage-skills.mdx)를 따르세요.
 
-| 상태 | 의미 |
-| --- | --- |
-| **Portal에서 직접 사용** | Portal 화면에서 만들고, 변경하고, 중지하거나 삭제하는 경로가 있습니다. |
-| **Agent에게 요청** | Agent runtime 또는 image에는 준비돼 있지만 Portal에서 세부 기능을 켜거나 연결하는 화면은 없습니다. Agent에게 작은 테스트 작업부터 요청합니다. |
-| **소비자 제공 경로 없음** | 현재 Cloud에서 고객이 설정·운영하는 lifecycle이 확인되지 않았습니다. Agent는 현재 runtime에서 안전하게 확인된 capability를 사용할 수 있지만, 사용 방법을 추정하거나 내부 API·secret·설정 우회로 활성화하지 않습니다. |
+## Agent에게 요청할 때
 
-## Portal에서 직접 사용하는 기능
+파일·브라우저·데스크톱·기억 작업은 Agent의 도구, 파일 접근 권한, AI 연결과 조직 정책에 따라 달라집니다. 먼저 준비 상태를 확인한 뒤 대상과 결과물을 명확히 요청하세요.
 
-| 기능 | 현재 사용 위치 | 자세한 사용법 |
-| --- | --- | --- |
-| Agent 생성, 상태, 재시작, 삭제, 환경 변수 | **에이전트**와 Agent 상세 | [Agent 생성](/guides/create-agent), [Agent 운영](/guides/manage-agent) |
-| `SOUL.md` | Agent 상세의 **Soul 설정** | [workspace 파일 설정](/guides/configure-agent-workspace-files) |
-| Credential, `auth.json`, local LLM 연결 | **AI 키 관리** | [Credential 관리](/guides/manage-credentials) |
-| Skill 탐색·업로드·다운로드·Agent별 설치/제거 요청 | **스토어 → 에이전트 스킬** | 실제 package runtime lifecycle은 [Skill Marketplace](/guides/manage-skills)에서 제한을 확인 |
-| Chat 파일 미리보기·다운로드, Room, 회의록 | **채팅**, **문서**, **태스크** | [Chat Room](/guides/use-chat-room), [파일 형식](/guides/file-formats-and-artifacts) |
-| Chat 음성 입력·회의 전사 | Chat Room compose 영역과 **회의록** | [Chat Room](/guides/use-chat-room), [회의록](/guides/use-meeting-minutes) |
-| Webhook source·rule·playbook·event | **연동 → 웹훅** | [Webhook에서 Agent 호출](/guides/send-webhook-to-agent) |
-| 원격 Agent PC 화면 | 실행 중인 full image Agent 상세의 **원격 에이전트 PC 제어** | [Agent Desktop](/guides/use-agent-desktop) |
+> 이 Agent에서 지정한 문서를 읽고 요약할 수 있는지 확인해 주세요. 가능하면 문서의 주요 결정과 미결 항목을 정리하고, 확인할 수 없는 부분은 표시해 주세요.
 
-## Agent에게 요청하는 기능
+일반 사용자가 실행 환경을 직접 선택하거나 모든 도구를 설정하는 화면이 있는 것은 아닙니다. 필요한 작업이 준비되지 않았다면 [도움말](../help/index.mdx)에 따라 대상 Agent와 오류를 정리해 관리자에게 전달하세요.
 
-아래 기능은 Portal에서 별도 switch나 설정 wizard를 찾을 기능이 아닙니다. Agent가 준비 상태를 먼저 보고한 뒤, 읽기 중심의 작은 요청으로 검증합니다.
+## 문서와 현재 환경이 다를 때
 
-| 기능 | 전제조건 | 요청 방법과 한계 |
-| --- | --- | --- |
-| workspace 파일 읽기·쓰기 | Agent의 허용 경로와 tool policy | `/workspace`를 포함한 파일 작업을 Agent에게 요청할 수 있습니다. `AGENTS.md`·`TOOLS.md`·`MEMORY.md`에는 Portal 편집기가 없습니다. |
-| Memory, session, subagent | runtime 정책 | Agent가 memory를 활용하거나 subagent를 실행할 수 있지만, 소비자가 보존 기간·동시성·깊이·model을 Portal에서 바꾸는 화면은 없습니다. |
-| Browser control | full image의 Chromium/Playwright, 실제 MCP·browser 기동·network 접근 | 먼저 대상 URL과 “로그인·제출·다운로드는 하지 않음” 범위를 요청합니다. browser profile, cookie, allowlist를 Portal에서 관리하는 화면은 없습니다. |
-| CLI, 코딩, `cli-anything` | image의 binary, Skill 준비, command·network policy | 필요한 명령과 예상 파일 변경을 먼저 보고하게 한 뒤 승인합니다. Portal terminal은 없습니다. |
-| Desktop GUI 자동화 | full image, 실행 중인 Agent, 원격 PC 화면이 실제로 열림 | 화면을 직접 열어도 Agent가 클릭·입력하는 자동화는 별도 승인이 필요한 작업입니다. |
-| A2A 협업 | 같은 조직의 Agent participant와 runtime 연결 | Agent 간 직접 HTTP API가 아니라 Room 기반 협업입니다. 소비자가 대상 allowlist나 delegation depth를 Portal에서 설정하는 화면은 없습니다. |
-| OpenAI 기반 이미지 생성·음성 전사 | 해당 Agent에 OpenAI Credential이 연결됨 | Agent에게 요청할 수 있으나 별도 media 생성 메뉴는 없습니다. 입력 파일·결과물·비용을 먼저 정합니다. |
+이 가이드는 Agent의 도구와 권한 전체 목록이 아닙니다. 문서에 없는 기능도 현재 Agent가 안전하게 확인할 수 있고 사용자 권한과 조직 정책이 허용한다면 그 범위에서 판단할 수 있습니다. 반대로 문서에 있어도 현재 준비 상태를 확인하지 못했다면 실행 가능하다고 단정하지 않습니다.
 
-## 소비자 제공 경로가 없는 기능
+문서에 없는 설정을 추측하거나 비밀값·내부 경로·권한 우회로 기능을 활성화하지 마세요. Agent의 판단 순서는 [문서 읽기 원칙](../guides/agent-document-reading.mdx)을 따릅니다.
 
-다음은 “숨겨진 설정”이 아닙니다. 현재 Cloud 소비자가 설정하거나 운영하는 경로가 없는 runtime·image·upstream 범위입니다.
+## 작업을 마친 뒤
 
-| 기능 | 현재 상태 |
-| --- | --- |
-| Telegram, Discord, Slack, WhatsApp 등 channel adapter | channel 계정 연결, pairing, allowlist, 회수 화면이 없습니다. |
-| voice call, telephony, paired node/device, camera·screen·location 제어 | tenant별 승인·scope·연결 해제 lifecycle이 없습니다. Chat 음성 입력·회의 전사와는 다른 기능입니다. |
-| external plugin, arbitrary provider, web search provider | Marketplace Skill과 Credential 화면 밖에서 고객이 plugin을 설치·연결하는 경로가 없습니다. |
-| cron, background scheduler, task ledger | 고객이 schedule을 만들고 조회·중지하는 Cloud 경로가 없습니다. Task board의 마감일은 Agent runtime scheduler가 아닙니다. |
-| Tailscale, CIFS/NFS 또는 다른 원격 mount | Portal 연결·자격 증명·회수 경로가 없습니다. `/workspace`와 혼동하지 마세요. |
-| runtime Secret Manager·secret store | Portal의 범용 비밀 보관소가 아닙니다. 소비자가 사용하는 secret 입력·교체는 **AI 키 관리**와 Agent의 환경 변수 흐름입니다. |
-| Dreaming, Memory Wiki | Dreaming은 현재 소비자 설정 기능이 아니며, Memory Wiki의 Cloud image·Portal 제공 경로도 없습니다. |
-| 일반 `web_search`, `web_fetch` | Cloud wrapper의 Agent MCP 등록과 consumer credential·binding 경로가 없습니다. Portal AI Chat 검색과 혼동하지 마세요. |
-| Legacy Workflow route | sidebar에 남아 있지만 인증·RBAC·tenant 경계가 소비자 기능으로 확인되지 않았습니다. 고객 또는 플랫폼 최고 관리자 사용 경로로 안내하지 않습니다. |
-
-<Note>
-“소비자 제공 경로 없음” 상태는 기능 누락이 아니라 현재 제품 경계입니다. 이 상태의 기능을 실행시키기 위해 config 파일, shell command, 내부 URL, Agent 대화에 credential을 넣지 마세요.
-</Note>
-
-실행 image와 도구 차이는 [Agent image와 runtime](/capabilities/agent-image-and-runtime), 조건별 세부 근거는 [실행 capability matrix](/capabilities/agent-execution-matrix)에서 이어서 봅니다.
+결과물과 실제 변경, 실패하거나 실행하지 못한 부분을 확인합니다. 더 이상 필요하지 않은 AI 연결, Skill, Webhook은 각 관리 가이드에 따라 해제하고, 파일과 기억은 조직의 보존 정책에 맞게 정리하세요.
