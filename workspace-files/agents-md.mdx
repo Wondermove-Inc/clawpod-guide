@@ -20,7 +20,7 @@ ClawPod는 Agent 생성 시 `AGENTS.md`가 비어 있으면 서버 기본 지침
 
 현재 Portal에는 `AGENTS.md`를 직접 편집하는 customer-facing UI가 확인되지 않았습니다. 따라서 일반 사용자가 Portal 설정 메뉴에서 이를 바꾸는 절차로 안내하지 않습니다. 조직의 승인된 workspace 관리 절차가 있는 경우에만, 기존 내용의 사본과 review를 거쳐 최소 변경을 적용하세요.
 
-첫 boot 이후에는 workspace 초기화 marker가 ConfigMap의 `AGENTS.md`를 다시 복사하지 않습니다. 즉 관리자가 server-side 설정을 바꾸더라도, 이미 실행된 Agent의 workspace 파일이 자동으로 같은 내용으로 덮어써진다고 가정하면 안 됩니다. 변경이 필요하면 기존 Agent에 적용되는 승인된 migration·검증 절차를 사용하세요.
+기본 지침이 변경돼도 기존 Agent의 작업 공간에 자동으로 반영된다고 가정하지 마세요. 기존 내용을 확인하고 조직의 승인된 변경·검증 절차를 따릅니다.
 
 ## 추천 구성
 

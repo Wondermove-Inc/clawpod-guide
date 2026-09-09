@@ -23,38 +23,38 @@
 
 문서의 기능 제공 상태는 공식 Portal consumer lifecycle을 설명하는 기준입니다. Agent runtime에 실제로 존재하는 tool·권한·연결 상태를 완전하게 부정하는 기준이 아닙니다. Agent는 현재 session에서 안전하게 확인할 수 있는 capability와 사용자 승인·조직 policy를 문서보다 우선해 판단하되, 권한 우회나 secret·내부 API·설정 변경으로 기능을 만들어내면 안 됩니다.
 
-이 원칙의 사용자용 상세 문서는 [Agent가 문서를 읽고 판단하는 방법](guides/agent-document-reading.mdx), machine-readable 진입점은 `AGENTS.md`와 `llms.txt`입니다.
+이 원칙의 사용자용 상세 문서는 [Agent가 문서를 읽고 판단하는 방법](./guides/agent-document-reading.mdx), machine-readable 진입점은 `AGENTS.md`와 `llms.txt`입니다.
 
 ## 문서 구조
 
 - `index.mdx`: 제품 소개와 시작 경로
 - `start/`: 첫 사용 경험
 - `concepts/`: Agent, 조직, credential처럼 이해가 필요한 개념
-- `capabilities/`: Agent가 할 수 있는 모든 사용자 노출 기능과 활성화 조건
+- `capabilities/`: 사용자 기능과 준비 조건
 - `guides/`: 반복 업무를 끝내는 방법
 - `help/`: 오류, 제한, 복구와 지원 요청
 - `_templates/`: 새 페이지 작성 템플릿
 
 ## 검증과 게시
 
-이 저장소가 ClawPod 소비자·Agent용 문서의 공개 source of truth입니다. Mintlify 배포와 사람·Agent의 Markdown 탐색은 이 저장소의 `docs.json`과 문서를 기준으로 합니다.
+이 저장소가 ClawPod 소비자·Agent용 문서의 공개 source of truth입니다. Docusaurus 배포와 사람·Agent의 Markdown 탐색은 이 저장소의 `docs.json`과 문서를 기준으로 합니다.
 
-새 문서는 [작업 가이드 템플릿](_templates/task-guide.mdx)에서 시작합니다.
+새 문서는 [작업 가이드 템플릿](./_templates/task-guide.mdx)에서 시작합니다.
 
 ## Portal UI 문구 동기화
 
-클릭 경로에서 Portal의 실제 화면 문구를 인용할 때는 다음 표식을 씁니다. 표식은 Mintlify에 표시되지 않고, 그 사이의 문구만 독자에게 표시됩니다.
+클릭 경로에서 Portal의 실제 화면 문구를 인용할 때는 다음 표식을 씁니다. `span`의 속성은 화면에 표시되지 않고, 내부의 문구만 GitHub와 Docusaurus에서 표시됩니다.
 
 ```mdx
-**<!-- ui-label: nav.agents -->에이전트<!-- /ui-label -->**
+<strong><span data-ui-label="nav.agents">에이전트</span></strong>
 ```
 
-Portal 저장소에서 한국어 i18n을 바꾼 뒤에는 Portal 저장소 루트에서 아래 순서로 실행합니다.
+Portal의 한국어 i18n을 바꾼 뒤에는 이 문서 저장소 루트에서 Portal 저장소 경로를 지정해 실행합니다.
 
 ```bash
-node scripts/export-ui-labels.mjs
+node scripts/export-ui-labels.mjs --portal-root /path/to/portal-repository
 node scripts/sync-ui-labels.mjs
-node scripts/export-ui-labels.mjs --check
+node scripts/export-ui-labels.mjs --portal-root /path/to/portal-repository --check
 node scripts/sync-ui-labels.mjs --check
 ```
 
@@ -75,7 +75,7 @@ node scripts/generate-readme.mjs --check
 
 ## Capability catalog 원칙
 
-Agent의 기능은 Portal에 처음부터 보이는 메뉴만을 뜻하지 않습니다. Skill, tool, channel, automation, memory, browser, device, media, model provider처럼 설치·연결·권한 부여 뒤에 사용할 수 있는 기능도 모두 catalog에 기록합니다.
+공개 catalog에는 사용자 가이드로 설명할 수 있는 기능과 필요한 연결·권한·준비 조건을 기록합니다. 내부 구현 목록이나 제공 여부가 미확인인 기능은 공개 catalog에 추가하지 않습니다.
 
 각 capability 페이지에는 반드시 다음을 적습니다.
 
@@ -87,4 +87,42 @@ Agent의 기능은 Portal에 처음부터 보이는 메뉴만을 뜻하지 않�
 
 코드에만 존재하는 test, 개발, 운영 복구 경로는 소비자 기능으로 단정하지 않습니다. 공개 여부가 확정되지 않은 항목은 공개 문서에 노출하지 않고, 지원 정책을 먼저 결정합니다.
 
-전수 작성 진행과 완료 기준은 [capability coverage](/CAPABILITY-COVERAGE)에서 관리합니다.
+## 공개 범위와 기존 주소
+
+플랫폼 전체 운영 절차, 내부 서비스·배포 구성, 실행 정책 기본값, 미확인 연동 목록은 공개 사용자 가이드에서 제외합니다. 고객에게 영향을 주는 제한은 숨기지 않고, 사용자에게 필요한 조건과 실제 확인 방법으로 설명합니다. 코드에 있다는 사실만으로 현재 배포 기능을 보장하지 않습니다.
+
+기존 문서 주소는 짧은 안내 페이지로 유지할 수 있습니다. 해당 페이지는 `scripts/public-compatibility-pages.json`에 기록하고 navigation과 Agent 검색 인덱스에 포함하지 않습니다. 공개 레포의 파일과 Git 이력은 누구나 볼 수 있으므로 이 목록은 접근 통제 수단이 아닙니다. 내부 운영 내용을 다른 공개 폴더로 옮기지 않습니다.
+
+## 링크 규칙과 검사
+
+본문의 내부 링크는 `./` 또는 `../`로 시작하는 현재 파일 기준 상대 경로에 실제 확장자를 붙입니다. 예: `../guides/manage-agent.mdx`. GitHub에서 파일을 열 수 있고 Docusaurus는 문서 경로로 해석합니다. 안내문은 `:::note` 또는 `:::warning` 구문을 사용합니다. `docs.json`의 페이지 식별자에는 확장자를 붙이지 않습니다.
+
+```bash
+node scripts/check-links.mjs
+node scripts/check-links.mjs --external
+```
+
+기본 검사는 파일·앵커·navigation·공개 검색 범위를 확인하며 CI에서 실행합니다. 외부 검사에서 확인 불가 항목이 있으면 종료 코드 2, 끊긴 링크는 종료 코드 1을 반환합니다. 외부 검사는 수동으로 실행합니다. 404·410은 실패로 처리하고 로그인·접근 차단(401·403)·요청 제한(429)·통신 오류는 확인 필요로 구분합니다. 응답을 확인하지 못한 링크를 삭제하거나 임의 주소로 바꾸지 않습니다.
+
+## 로컬 사이트 확인
+
+Node.js 22에서 다음 순서로 실행합니다.
+
+```bash
+npm ci
+npm run check
+npm run build
+npm run serve
+```
+
+`npm run start`는 개발 중 미리보기입니다. `npm run build`는 Docusaurus 문서 빌드 후 전체 생성 페이지의 링크·앵커·정적 파일과 GitHub Pages 하위 경로를 검사합니다. 문서 내용은 기존 위치에 유지하며 `docs.json`은 도구에 독립적인 목차 데이터입니다. sidebar·README·Agent 검색은 모두 이 목차를 사용합니다.
+
+## GitHub Pages 배포
+
+레포 Settings → Pages → Build and deployment에서 Source를 **GitHub Actions**로 설정합니다. 조직에서 Pages가 제한되면 조직 소유자에게 허용을 요청하세요. 외부 앱 연결이나 개인 토큰을 레포에 넣을 필요가 없습니다.
+
+PR에서는 검증과 빌드만 실행합니다. `main`에 병합하면 같은 검증이 통과한 결과물을 GitHub Pages에 배포합니다. Actions의 **Documentation checks and Pages**를 `main`에서 수동 실행해 다시 배포할 수도 있습니다. 배포 작업은 GitHub가 제공하는 일회성 인증을 사용하며 `github-pages` 환경 정책을 따릅니다.
+
+기본 사이트 주소는 `https://wondermove-inc.github.io/clawpod-guide/`입니다. 이 주소는 설정상 배포 대상이며 최초 배포 성공 여부는 Actions의 deploy 결과로 확인합니다. 도메인을 변경하면 `docusaurus.config.js`의 `url`과 `baseUrl`, GitHub Pages의 도메인·DNS 설정을 함께 변경하고 링크를 재검증합니다.
+
+Agent MCP가 읽는 공개 `guide-index.json`과 원본 문서 경로는 유지합니다. 사이트에는 같은 검색 인덱스로 동작하는 로컬 검색을 제공하며 외부 검색 서비스 계정이 필요하지 않습니다. `llms.txt`와 여기서 링크하는 원본 문서도 사이트 빌드에 포함합니다.

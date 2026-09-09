@@ -9,27 +9,27 @@ ClawPod에는 두 종류의 Skill이 있습니다. **Marketplace Skill**은 Port
 
 | 구분 | 사용하는 곳 | 사용자가 하는 일 | 관리 경로 |
 | --- | --- | --- | --- |
-| Marketplace Skill | Portal의 Skills | 찾기, 설치 대상 Agent 선택, 비동기 설치 상태 관리 | [Skill Marketplace](/guides/manage-skills) |
-| bundled Skill | Agent runtime | 필요한 Agent image를 선택하고 Agent에게 작업 요청 | [Agent image와 runtime](/capabilities/agent-image-and-runtime) |
+| Marketplace Skill | Portal의 Skills | 찾기, 설치 대상 Agent 선택, 비동기 설치 상태 관리 | [Skill Marketplace](../guides/manage-skills.mdx) |
+| bundled Skill | Agent runtime | Agent의 준비 상태를 확인하고 작업 요청 | [기능 사용 조건](./consumer-availability.mdx) |
 
 ## Portal Skill Marketplace
 
-Marketplace에서는 공개 Skill과 tenant 범위 Skill을 검색, category filtering, 상세 보기, Agent별 설치·제거, download를 할 수 있습니다. 설치 요청은 `pending`으로 시작하며 Agent sidecar가 package를 준비한 뒤 `installed` 또는 `failed`를 보고합니다.
+Marketplace에서는 공개 Skill과 tenant 범위 Skill을 검색, category filtering, 상세 보기, Agent별 설치·제거, download를 할 수 있습니다. 설치 요청은 `pending`으로 시작하며 패키지 준비 결과에 따라 `installed` 또는 `failed`를 보고합니다.
 
 Skill이 API key, service URL, 외부 계정을 요구한다면 순서는 다음과 같습니다.
 
 1. Skill의 상세 설명 또는 `SKILL.md`에서 필요한 값을 읽습니다.
-2. API key는 [AI Key Management](/guides/manage-credentials)에서 target Agent에 연결합니다.
+2. API key는 [AI Key Management](../guides/manage-credentials.mdx)에서 target Agent에 연결합니다.
 3. 필요 Agent에 Skill을 설치합니다.
 4. `installed` 상태가 된 뒤 새 Room에서 Skill의 작은 읽기 중심 작업을 확인합니다.
 
-Marketplace package를 Agent workspace에 직접 복사하거나 Chat으로 archive를 전달하지 않습니다. Portal의 install/uninstall 경로가 Agent별 연결과 sidecar 설치·제거 이벤트를 관리합니다.
+Marketplace package를 Agent workspace에 직접 복사하거나 Chat으로 archive를 전달하지 않습니다. Portal에서 대상 Agent별 설치·제거 상태를 확인합니다.
 
 ## Agent image에 기본 포함된 Skill
 
-full Agent image에는 desktop, browser, `cli-anything`, tasks 같은 runtime 패키지가 포함됩니다. lite image는 X11 desktop, Chromium, VNC/noVNC, LibreOffice, ffmpeg, SMB/CIFS와 data-science Python stack을 포함하지 않습니다. Browser control이나 desktop automation이 필요한 Agent는 full image를 선택하세요.
+일부 도구와 Skill은 Agent에 기본으로 준비되며 별도 Marketplace 설치 없이 작업을 요청할 수 있습니다. 사용 가능한 도구는 Agent 실행 환경에 따라 달라집니다. 경량 Agent에는 GUI 데스크톱과 일부 문서·미디어 도구가 없으므로 필요한 작업이 가능한지 먼저 확인하세요.
 
-이 bundled Skill은 Marketplace에서 업로드하거나 설치하지 않습니다. Agent image bootstrap이 runtime에 준비하며, 사용자는 Chat에서 Agent에게 해당 작업을 요청합니다. 작업 가능한 범위와 정책은 [Browser와 Web 작업](/capabilities/browser-and-web), [Browser·CLI 사용](/guides/use-browser-and-cli), [Agent capability policy](/capabilities/governance-and-settings)를 따릅니다.
+작업 요청 방법은 [Browser와 웹 작업](./browser-and-web.mdx), [Browser와 CLI 작업 요청](../guides/use-browser-and-cli.mdx)을 참고하세요.
 
 ## 파일·명령·외부 서비스가 있는 Skill
 

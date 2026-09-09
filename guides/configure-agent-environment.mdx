@@ -5,19 +5,19 @@ description: 새 Agent에 필요한 비민감 실행 설정을 environment confi
 
 # Agent 생성 시 환경 변수 설정
 
-환경 변수는 새 Agent 생성 configuration으로 전달하는 이름-값 설정입니다. 현재 생성 흐름은 사용자 환경 변수를 ConfigMap에도 넣으므로, 비민감한 외부 서비스 URL, 프로젝트 식별자, 기능 플래그에만 사용합니다. 화면의 **<!-- ui-label: reviewDialog.secretsConfiguration -->시크릿 설정<!-- /ui-label -->** 안에 있지만 범용 Secret 보관 경로가 아닙니다.
+환경 변수는 새 Agent 생성 configuration으로 전달하는 이름-값 설정입니다. 비밀값 보관을 위한 경로가 아니므로 비민감한 외부 서비스 URL, 프로젝트 식별자, 기능 플래그에만 사용합니다. 화면의 <strong><span data-ui-label="reviewDialog.secretsConfiguration">시크릿 설정</span></strong> 안에 있지만 범용 Secret 보관 경로가 아닙니다.
 
 ## 언제 사용하나요
 
 - 서비스 endpoint, 프로젝트 ID, 기능 플래그처럼 Agent 실행 환경이 읽어야 하는 값
 - Local LLM 서버처럼 생성 흐름에서 연결을 확인한 endpoint
 
-AI provider API key와 조직 공용 credential은 먼저 [Credential 관리하기](/guides/manage-credentials)에서 관리하세요. 같은 값을 여러 Agent에 복사해서 환경 변수로 넣으면 교체와 감사가 어려워집니다.
+AI provider API key와 조직 공용 credential은 먼저 [Credential 관리하기](./manage-credentials.mdx)에서 관리하세요. 같은 값을 여러 Agent에 복사해서 환경 변수로 넣으면 교체와 감사가 어려워집니다.
 
 ## 새 Agent에 추가하기
 
-1. **<!-- ui-label: nav.agents -->에이전트<!-- /ui-label --> → <!-- ui-label: pages.agents.createAgent -->새 팀원 추가<!-- /ui-label -->**에서 기본 정보와 model을 설정합니다.
-2. **<!-- ui-label: reviewDialog.secretsConfiguration -->시크릿 설정<!-- /ui-label -->**을 엽니다.
+1. <strong><span data-ui-label="nav.agents">에이전트</span> → <span data-ui-label="pages.agents.createAgent">새 팀원 추가</span></strong>에서 기본 정보와 model을 설정합니다.
+2. <strong><span data-ui-label="reviewDialog.secretsConfiguration">시크릿 설정</span></strong>을 엽니다.
 3. 추가 환경 변수 영역에서 행을 추가합니다.
 4. 변수 이름과 값을 입력한 뒤 생성 검토를 완료합니다.
 
@@ -40,8 +40,8 @@ AI provider API key와 조직 공용 credential은 먼저 [Credential 관리하�
 - 여러 Agent가 공유해야 하는 provider credential
 - `SOUL.md`, `AGENTS.md`, Chat, task comment에 이미 쓴 secret의 복사본
 
-환경 변수는 Agent의 동작 설정이고, 지시문을 대체하지 않습니다. 역할과 행동 규칙은 [SOUL.md](/workspace-files/soul-md), 도구 사용 규칙은 [TOOLS.md](/workspace-files/tools-md)에 작성하세요.
+환경 변수는 Agent의 동작 설정이고, 지시문을 대체하지 않습니다. 역할과 행동 규칙은 [SOUL.md](../workspace-files/soul-md.mdx), 도구 사용 규칙은 [TOOLS.md](../workspace-files/tools-md.mdx)에 작성하세요.
 
-<Warning>
+:::warning
 이 문서는 Portal의 새 Agent 생성 흐름을 다룹니다. 기존 Agent의 환경 변수를 Portal 화면에서 추가·편집하는 기능은 현재 노출되어 있지 않습니다. 기존 Agent에 새 설정이 필요하면 승인된 생성·운영 절차로 Agent 구성을 갱신하세요.
-</Warning>
+:::
