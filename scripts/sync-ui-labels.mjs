@@ -12,7 +12,7 @@ const marker = /<span data-ui-label="([\w.-]+)">([^\n]*?)<\/span>/g;
 function collectFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
-    if (entry.isDirectory()) return entry.name === 'scripts' ? [] : collectFiles(path);
+    if (entry.isDirectory()) return ['scripts', 'node_modules', 'build'].includes(entry.name) || entry.name.startsWith('.') ? [] : collectFiles(path);
     return /\.mdx?$/.test(entry.name) ? [path] : [];
   });
 }

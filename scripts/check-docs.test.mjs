@@ -67,3 +67,33 @@ test('UI label sync escapes MDX syntax and search strips markup', (t) => {
   const index = JSON.parse(fs.readFileSync(path.join(f.root, 'guide-index.json'), 'utf8'));
   assert.doesNotMatch(index.pages[1].text, /data-ui-label|<span/);
 });
+
+function siteFixture(t) {
+  const f = fixture(t);
+  fs.copyFileSync(path.join(scripts, 'check-site.mjs'), path.join(f.root, 'scripts/check-site.mjs'));
+  f.write('docusaurus.config.js', "module.exports = { baseUrl: '/clawpod-guide/' };\n");
+  f.write('llms.txt', '[Guide](./index.mdx)\n');
+  for (const dir of ['build/guides/start', 'build/old']) fs.mkdirSync(path.join(f.root, dir), { recursive: true });
+  for (const file of ['llms.txt', 'guide-index.json', 'index.mdx', 'guides/start.mdx', 'old.mdx']) fs.copyFileSync(path.join(f.root, file), path.join(f.root, 'build', file));
+  f.write('build/index.html', '<h1 id="home">Home</h1><a href="/clawpod-guide/guides/start/#계정-설정">Start</a>');
+  f.write('build/guides/start/index.html', '<h1 id="계정-설정">Start</h1>');
+  f.write('build/old/index.html', '<a href="/clawpod-guide/">Home</a>');
+  return f;
+}
+
+test('built site preserves page routes, raw documents and Korean fragments', (t) => {
+  const f = siteFixture(t); const result = f.run('check-site.mjs');
+  assert.equal(result.status, 0, result.stderr);
+});
+test('built site rejects links outside the GitHub Pages subpath', (t) => {
+  const f = siteFixture(t); f.write('build/index.html', '<a href="/guides/start/">Start</a>');
+  const result = f.run('check-site.mjs'); assert.equal(result.status, 1); assert.match(result.stderr, /outside Pages base path/);
+});
+test('built site rejects absent compatibility routes and raw sources', (t) => {
+  const f = siteFixture(t); fs.unlinkSync(path.join(f.root, 'build/old/index.html')); fs.unlinkSync(path.join(f.root, 'build/guides/start.mdx'));
+  const result = f.run('check-site.mjs'); assert.equal(result.status, 1); assert.match(result.stderr, /Missing page route: old/); assert.match(result.stderr, /Missing public file: guides\/start.mdx/);
+});
+test('built site rejects missing assets and anchors', (t) => {
+  const f = siteFixture(t); f.write('build/index.html', '<img src="/clawpod-guide/absent.png"><a href="/clawpod-guide/guides/start/#absent">Start</a>');
+  const result = f.run('check-site.mjs'); assert.equal(result.status, 1); assert.match(result.stderr, /missing target/); assert.match(result.stderr, /missing anchor/);
+});

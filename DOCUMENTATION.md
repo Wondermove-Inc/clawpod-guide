@@ -37,16 +37,16 @@
 
 ## 검증과 게시
 
-이 저장소가 ClawPod 소비자·Agent용 문서의 공개 source of truth입니다. Mintlify 배포와 사람·Agent의 Markdown 탐색은 이 저장소의 `docs.json`과 문서를 기준으로 합니다.
+이 저장소가 ClawPod 소비자·Agent용 문서의 공개 source of truth입니다. Docusaurus 배포와 사람·Agent의 Markdown 탐색은 이 저장소의 `docs.json`과 문서를 기준으로 합니다.
 
 새 문서는 [작업 가이드 템플릿](./_templates/task-guide.mdx)에서 시작합니다.
 
 ## Portal UI 문구 동기화
 
-클릭 경로에서 Portal의 실제 화면 문구를 인용할 때는 다음 표식을 씁니다. `span`의 속성은 화면에 표시되지 않고, 내부의 문구만 GitHub와 Mintlify에서 표시됩니다.
+클릭 경로에서 Portal의 실제 화면 문구를 인용할 때는 다음 표식을 씁니다. `span`의 속성은 화면에 표시되지 않고, 내부의 문구만 GitHub와 Docusaurus에서 표시됩니다.
 
 ```mdx
-**<span data-ui-label="nav.agents">에이전트</span>**
+<strong><span data-ui-label="nav.agents">에이전트</span></strong>
 ```
 
 Portal의 한국어 i18n을 바꾼 뒤에는 이 문서 저장소 루트에서 Portal 저장소 경로를 지정해 실행합니다.
@@ -95,7 +95,7 @@ node scripts/generate-readme.mjs --check
 
 ## 링크 규칙과 검사
 
-본문의 내부 링크는 `./` 또는 `../`로 시작하는 현재 파일 기준 상대 경로에 실제 확장자를 붙입니다. 예: `../guides/manage-agent.mdx`. GitHub에서 파일을 열 수 있고 Mintlify는 문서 경로로 해석합니다. `docs.json`의 페이지 식별자에는 확장자를 붙이지 않습니다.
+본문의 내부 링크는 `./` 또는 `../`로 시작하는 현재 파일 기준 상대 경로에 실제 확장자를 붙입니다. 예: `../guides/manage-agent.mdx`. GitHub에서 파일을 열 수 있고 Docusaurus는 문서 경로로 해석합니다. 안내문은 `:::note` 또는 `:::warning` 구문을 사용합니다. `docs.json`의 페이지 식별자에는 확장자를 붙이지 않습니다.
 
 ```bash
 node scripts/check-links.mjs
@@ -104,4 +104,25 @@ node scripts/check-links.mjs --external
 
 기본 검사는 파일·앵커·navigation·공개 검색 범위를 확인하며 CI에서 실행합니다. 외부 검사에서 확인 불가 항목이 있으면 종료 코드 2, 끊긴 링크는 종료 코드 1을 반환합니다. 외부 검사는 수동으로 실행합니다. 404·410은 실패로 처리하고 로그인·접근 차단(401·403)·요청 제한(429)·통신 오류는 확인 필요로 구분합니다. 응답을 확인하지 못한 링크를 삭제하거나 임의 주소로 바꾸지 않습니다.
 
-게시 전 Mintlify 문법·링크 검증도 실행하세요. 명령은 `npx mint@4.2.880 validate`와 `npx mint@4.2.880 broken-links`입니다. 실제 배포 화면 검증은 별도이며 CLI 통과로 대체하지 않습니다.
+## 로컬 사이트 확인
+
+Node.js 22에서 다음 순서로 실행합니다.
+
+```bash
+npm ci
+npm run check
+npm run build
+npm run serve
+```
+
+`npm run start`는 개발 중 미리보기입니다. `npm run build`는 Docusaurus 문서 빌드 후 전체 생성 페이지의 링크·앵커·정적 파일과 GitHub Pages 하위 경로를 검사합니다. 문서 내용은 기존 위치에 유지하며 `docs.json`은 도구에 독립적인 목차 데이터입니다. sidebar·README·Agent 검색은 모두 이 목차를 사용합니다.
+
+## GitHub Pages 배포
+
+레포 Settings → Pages → Build and deployment에서 Source를 **GitHub Actions**로 설정합니다. 조직에서 Pages가 제한되면 조직 소유자에게 허용을 요청하세요. 외부 앱 연결이나 개인 토큰을 레포에 넣을 필요가 없습니다.
+
+PR에서는 검증과 빌드만 실행합니다. `main`에 병합하면 같은 검증이 통과한 결과물을 GitHub Pages에 배포합니다. Actions의 **Documentation checks and Pages**를 `main`에서 수동 실행해 다시 배포할 수도 있습니다. 배포 작업은 GitHub가 제공하는 일회성 인증을 사용하며 `github-pages` 환경 정책을 따릅니다.
+
+기본 사이트 주소는 `https://wondermove-inc.github.io/clawpod-guide/`입니다. 이 주소는 설정상 배포 대상이며 최초 배포 성공 여부는 Actions의 deploy 결과로 확인합니다. 도메인을 변경하면 `docusaurus.config.js`의 `url`과 `baseUrl`, GitHub Pages의 도메인·DNS 설정을 함께 변경하고 링크를 재검증합니다.
+
+Agent MCP가 읽는 공개 `guide-index.json`과 원본 문서 경로는 유지합니다. 사이트에는 같은 검색 인덱스로 동작하는 로컬 검색을 제공하며 외부 검색 서비스 계정이 필요하지 않습니다. `llms.txt`와 여기서 링크하는 원본 문서도 사이트 빌드에 포함합니다.

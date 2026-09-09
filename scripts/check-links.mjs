@@ -14,7 +14,7 @@ const indexed = JSON.parse(fs.readFileSync(path.join(root, 'guide-index.json'), 
 
 function filesIn(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if (entry.name.startsWith('.') || entry.name === 'node_modules') return [];
+    if (entry.name.startsWith('.') || ['node_modules', 'build'].includes(entry.name)) return [];
     const file = path.join(directory, entry.name);
     return entry.isDirectory() ? filesIn(file) : /\.(mdx?|txt)$/.test(entry.name) ? [file] : [];
   });

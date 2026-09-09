@@ -1,9 +1,13 @@
-name: Documentation checks
+name: Documentation checks and Pages
 
 on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   docs:
@@ -13,10 +17,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/generate-readme.mjs --check
-      - run: node scripts/generate-guide-index.mjs --check
-      - run: node scripts/sync-ui-labels.mjs --check
-      - run: node scripts/check-links.mjs
-      - run: node --test scripts/check-docs.test.mjs
-      - run: npx --yes mint@4.2.880 validate
-      - run: npx --yes mint@4.2.880 broken-links
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run check
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: build
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: docs
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
