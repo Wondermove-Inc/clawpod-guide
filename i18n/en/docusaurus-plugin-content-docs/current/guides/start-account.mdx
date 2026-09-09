@@ -1,0 +1,40 @@
+---
+title: "Create an account and sign in"
+description: "Sign up, verify your email, sign in, and recover access."
+---
+
+# Create an account and sign in
+
+Self-service registration requires email verification before sign-in. An invitation can activate your account and membership through its own flow; start from the invitation link if you received one.
+
+## Sign up
+
+1. Select <strong><span data-ui-label="register.signUp">Sign Up</span></strong> and enter your name, email, and password.
+2. Enter your intended use and workspace name for self-service registration. Invitations may prefill these details.
+3. Review and accept the terms, privacy policy, and B2B terms when shown.
+4. Continue and enter the six-digit code sent to your email. You can paste the code.
+5. Use <strong><span data-ui-label="verify.resendCode">Resend verification code</span></strong> if needed; the resend cooldown is 60 seconds.
+
+Passwords require at least eight characters, including uppercase and lowercase letters, a number, and a special character. After verification, administrator approval may still be required. Invitation behavior depends on the invitation conditions.
+
+Continue with [onboarding](./complete-onboarding.mdx) or [accepting an invitation](./accept-organization-invite.mdx).
+
+## Sign in
+
+Select <strong><span data-ui-label="login.signIn">Sign In</span></strong>. Use <strong><span data-ui-label="login.rememberMe">Remember me</span></strong> only on your own device. Accounts awaiting email verification return to the verification screen. Repeated failed attempts may temporarily limit sign-in; use password recovery instead of repeatedly guessing.
+
+If MFA is enabled in your profile, enter its six-digit code after your password. If necessary, use <strong><span data-ui-label="auth.mfa.useRecoveryCode">Use recovery code</span></strong>. See [account security](./secure-your-account.mdx). Recovery codes may not be shown again; keep them private and never place them in Chat or documentation.
+
+## Reset a password
+
+1. Select <strong><span data-ui-label="login.forgotPassword">Forgot Password?</span></strong> and enter your email.
+2. Request a code and enter the six-digit code from the email.
+3. Enter and confirm the new password, then sign in.
+
+The response is the same whether an account exists or not. Check spam filters if the email does not arrive.
+
+There is no per-device session list or remote sign-out UI. If you suspect unauthorized access, change your password, review MFA, and ask an administrator to review access revocation and audit records.
+
+:::note
+For support, share your email, the time, and the error message. Never share passwords, MFA codes, recovery codes, or cookies.
+:::

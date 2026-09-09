@@ -1,0 +1,42 @@
+---
+title: "Use MEMORY.md and the memory folder"
+description: "Separate lasting decisions from daily records and exclude sensitive data."
+---
+
+# Use MEMORY.md and the memory folder
+
+`MEMORY.md` holds lasting decisions, preferences, and lessons. `memory/*.md` stores daily or topic-specific details.
+
+| Content | Location | Example |
+| --- | --- | --- |
+| Stable team preferences | `MEMORY.md` | Korean operational reports separating facts, assumptions, and checks |
+| Confirmed operating decisions | `MEMORY.md` | The organization administrator approves deployments |
+| Today's investigation | `memory/YYYY-MM-DD.md` | Event investigation and next checks |
+| Longer evidence | `memory/topic.md` | Links and reasoning for a provider change |
+
+The Portal does not guarantee that `MEMORY.md` enters every session's prompt. Instruct the Agent to explicitly read needed `memory/*.md` files with filesystem MCP or CLI.
+
+## Suggested format
+
+```markdown
+# Long-Term Memory
+
+## Team Preferences
+
+- Write operational reports in Korean.
+- Separate confirmed facts from assumptions.
+
+## Active Decisions
+
+- Deliver webhook events to a dedicated Room.
+
+## Lessons Learned
+
+- Check affected Agent status after credential rotation.
+```
+
+Keep records short and verifiable. When a decision changes, record the new fact and date rather than silently overwriting history.
+
+Never record API keys, OAuth tokens, passwords, recovery codes, unnecessary customer originals or personal identifiers, other tenants' access information, or unverified assumptions presented as facts.
+
+No independent Portal editor has been verified. Agent memory updates require tool policy and workspace write permission, and the result must be reviewed.

@@ -1,0 +1,47 @@
+---
+title: "HEARTBEAT.md and periodic checks"
+description: "Understand runtime check-ins without assuming a Portal scheduler."
+---
+
+# HEARTBEAT.md and periodic checks
+
+Heartbeat lets an Agent periodically check status. Writing instructions alone does not configure automatic execution or Task creation.
+
+No customer Portal controls for heartbeat cadence or delivery policy have been verified. This page describes runtime behavior and `HEARTBEAT.md`; it does not promise a default tenant automation feature.
+
+## Checklist
+
+`HEARTBEAT.md` is a short checklist read when heartbeat runs. It is a new-session bootstrap candidate, but heartbeat-specific instructions may be omitted from normal runs when heartbeat is disabled in runtime configuration.
+
+```markdown
+# Heartbeat Checklist
+
+- [ ] Check pending messages and failed webhook events.
+- [ ] Check whether the same alert already reached the responsible Room.
+- [ ] Check for confirmed long-term decisions worth recording.
+
+## When action is needed
+
+- Summarize the affected Agent, organization, and event ID.
+- Confirm authorization before external changes.
+```
+
+An empty or heading-only file may skip a model call. Keep only necessary checks instead of a long list of situations requiring no work.
+
+## Execution conditions
+
+Whether checks run, their frequency, and alert delivery depend on Agent configuration and readiness. No fixed interval or delivery is guaranteed for every Agent. There is no Portal setup procedure for cadence or recipients. Give the responsible operator the Agent and desired check purpose; do not guess configuration files or commands.
+
+## HEARTBEAT_OK and alerts
+
+`HEARTBEAT_OK` can acknowledge that no action is needed. It is not intended for ordinary user responses outside heartbeat. For an issue, report confirmed impact, evidence, required approval, and next actions briefly. Avoid repeated alerts and unauthorized external work.
+
+| Need | Approach |
+| --- | --- |
+| Group lightweight checks in one session context | Heartbeat |
+| Run an independent task at an exact time | No current Cloud consumer scheduler setup path; use a separately provided organization scheduler only through its procedure |
+| Record completed work and status | Task record |
+
+Task completion may wake a subsequent heartbeat, but heartbeat itself does not guarantee Task creation or exactly-once execution.
+
+Use the checklist only where heartbeat actually runs, keep it short, require authorization for external changes, check Room/event history to prevent duplicate alerts, and identify affected Agents and organizations before changing disablement, active hours, or delivery targets.

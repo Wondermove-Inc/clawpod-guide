@@ -1,0 +1,29 @@
+---
+title: "Complete workspace onboarding"
+description: "Provide company information and prepare the initial Agents for a new workspace."
+---
+
+# Complete workspace onboarding
+
+The `/onboarding` flow analyzes a company and prepares its initial Agents. It is separate from ordinary Agent creation.
+
+## Set up a new workspace
+
+1. Select <strong><span data-ui-label="onboarding.startButton">Get Started</span></strong>, enter the company name and business domain, and follow <strong><span data-ui-label="onboarding.continueHint">Continue</span></strong> on each screen.
+2. Provide homepage, competitor, or agency URLs as requested, plus any additional requirements. A company or competitor URL is required.
+3. Select <strong><span data-ui-label="onboarding.viewResults">View Results</span></strong> and review the overview and proposed organization. Select roles and choose <strong><span data-ui-label="onboarding.confirmOrganization">Confirm Organization</span></strong>.
+4. Enter the provider API key and complete validation.
+5. Complete phone verification and follow the preparation states: <strong><span data-ui-label="onboarding.soulMdPreparing">Preparing Soul.md generation...</span></strong>, <strong><span data-ui-label="onboarding.orgEstablished">Organization established</span></strong>, and <strong><span data-ui-label="onboarding.deployingAgents">Deploying agents...</span></strong>.
+6. When the AI organization is ready, open Portal Chat and verify the result.
+
+Submitted URLs are used for analysis. Do not include secrets, passwords, API keys, or confidential contracts in the analysis request.
+
+Use the matching provider for key validation. See [credentials](./manage-credentials.mdx) and [handling secrets](./handle-secrets.mdx).
+
+## Partial failures
+
+When <strong><span data-ui-label="onboarding.partialFailureWarning">Some agents failed to deploy.</span></strong> appears, use <strong><span data-ui-label="onboarding.retryFailedAgents">Retry failed agents</span></strong> to retry only the failed Agents, or create them manually.
+
+:::note
+If onboarding does not appear, the workspace may already be onboarded or the account may be awaiting approval. Check [account setup](./start-account.mdx) and [your first Agent](../start/first-agent.mdx).
+:::

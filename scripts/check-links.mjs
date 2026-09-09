@@ -3,18 +3,19 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // No network is needed for the default CI check.
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const root = process.argv.includes('--english') ? path.join(repositoryRoot, 'i18n/en/docusaurus-plugin-content-docs/current') : repositoryRoot;
 const external = process.argv.includes('--external');
 const errors = [];
 const externalUrls = new Set();
-const docs = JSON.parse(fs.readFileSync(path.join(root, 'docs.json'), 'utf8'));
-const compatibility = new Set(JSON.parse(fs.readFileSync(path.join(root, 'scripts/public-compatibility-pages.json'), 'utf8')));
+const docs = JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'docs.json'), 'utf8'));
+const compatibility = new Set(JSON.parse(fs.readFileSync(path.join(repositoryRoot, 'scripts/public-compatibility-pages.json'), 'utf8')));
 const pages = docs.navigation.groups.flatMap((group) => group.pages);
 const indexed = JSON.parse(fs.readFileSync(path.join(root, 'guide-index.json'), 'utf8')).pages.map((page) => page.path);
 
 function filesIn(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if (entry.name.startsWith('.') || ['node_modules', 'build'].includes(entry.name)) return [];
+    if (entry.name.startsWith('.') || ['node_modules', 'build', 'i18n'].includes(entry.name)) return [];
     const file = path.join(directory, entry.name);
     return entry.isDirectory() ? filesIn(file) : /\.(mdx?|txt)$/.test(entry.name) ? [file] : [];
   });

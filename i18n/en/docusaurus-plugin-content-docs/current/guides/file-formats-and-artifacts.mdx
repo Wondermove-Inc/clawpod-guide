@@ -1,0 +1,60 @@
+---
+title: "File formats and Agent artifacts"
+description: "Understand upload formats, preview limits, and generated outputs."
+---
+
+# File formats and Agent artifacts
+
+Uploading a file, previewing it in the Portal, and generating it with an Agent are separate capabilities.
+
+## Chat attachment formats
+
+Chat Room attachments allow up to **50 MB per file**. The current Portal upload UI accepts these MIME types:
+
+| Category | Formats | Portal preview |
+| --- | --- | --- |
+| Images | JPEG, PNG, GIF, WebP, BMP | Image preview; download large or browser-unsupported images |
+| Documents | PDF, DOCX, XLSX, PPTX | PDF preview up to **10 MiB**; download DOCX/XLSX/PPTX |
+| Text | TXT, CSV, Markdown | Text preview; files over **1 MiB** may be truncated |
+| Archives | ZIP | Download only |
+
+SVG, HTML, and JavaScript MIME types are blocked for Chat attachments. A matching extension is insufficient if the browser supplies a MIME type outside the allowlist.
+
+## Task and Milestone attachments
+
+Task and Milestone attachments use the same 50 MB limit and backend MIME allowlist, including HWP/HWPX. The Chat Portal upload UI does not include HWP/HWPX, so these are not documented as ordinary Chat attachment formats.
+
+## Preview boundaries
+
+Text previews support only TXT, CSV, and Markdown and may show only the beginning of large files. PDF previews support files up to 10 MiB. Image previews require an allowed image MIME type. Other accepted formats can be stored and downloaded without a guaranteed content preview.
+
+A preview is not a security scan or complete file validation. Follow organization security procedures before executing or externally sharing received ZIP files, Office documents, or images.
+
+## Skill packages
+
+The organization Skill upload flow accepts only `.zip` or `.tar.gz` packages, up to **100 MB**. The server checks ZIP/GZIP magic bytes as well as extensions. This is not a general document or script upload feature.
+
+A Skill's `SKILL.md`, executables, and dependencies still depend on runtime, permissions, and credentials. Upload success does not mean installation or execution readiness.
+
+## Generated outputs
+
+| Output | Verified path | Limits |
+| --- | --- | --- |
+| Chat artifact | Markdown or HTML download UI | Only when the Agent responds with an artifact |
+| Meeting result | Text or Markdown download UI | Requires the meeting and artifact generation conditions |
+| Workspace file | Ready Agent file/CLI tools | Formats depend on tools, image, and policy; not every extension is guaranteed |
+| Generated image | OpenAI key and ready image-generation runtime | Check actual MIME type, storage location, and cost in the result |
+
+You may request PDF, DOCX, XLSX, PPTX, or ZIP, but first verify that the selected image, Skill, or runtime has the necessary generator. Accepting a Chat attachment does not prove the Agent can create that format.
+
+## Open and download Chat artifacts
+
+Select an artifact card in a Chat message to open its exact version in the Artifact panel. Choose another version if available. Preview Markdown or HTML, copy Markdown or plain text, or download an HTML artifact as `.html` and other artifacts as `.md`.
+
+Unauthorized access shows forbidden; a missing version shows not found. Versioned Chat artifacts do not automatically synchronize with Agent workspace files.
+
+## Example request
+
+> Create this week's summary as `weekly-summary.md` and `weekly-summary.csv` in `/workspace/reports`. First check the tools and path permissions. Do not overwrite existing files or transfer data externally. Report the paths and validation results when finished.
+
+Specify filenames, formats, paths, overwrite rules, and external transfers. See the [catalog](../capabilities/catalog.mdx) and [browser and CLI guide](./use-browser-and-cli.mdx).

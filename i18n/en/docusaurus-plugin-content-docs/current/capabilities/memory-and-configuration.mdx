@@ -1,0 +1,39 @@
+---
+title: "Memory and Agent configuration"
+description: "Understand workspace memory, identity, sessions, and execution policies."
+---
+
+# Memory and Agent configuration
+
+You can ask an Agent to retain work context, subject to its tools and organization policy. The only workspace file currently editable directly in the Portal is `SOUL.md`. There are no Portal controls to enable, disable, or directly edit memory, `AGENTS.md`, or `TOOLS.md`. Follow [workspace files](../guides/configure-agent-workspace-files.mdx).
+
+## Memory
+
+| Capability | Behavior | Conditions |
+| --- | --- | --- |
+| Search | Find relevant past records by meaning and keywords | Runtime memory tools and workspace policy must allow it |
+| Read | Read needed portions of matching files | Search first and minimize the read scope |
+| Store | Keep long-term preferences, decisions, and context | Never store secrets in ordinary memory |
+| Session summary | May write recent context to daily memory on a new session or reset | Not a separately configurable or executable Portal feature |
+
+Memory is managed workspace information, not hidden model state. Specify both what to retain and what to delete. Use [dedicated secret inputs](../guides/handle-secrets.mdx) for credentials.
+
+## Identity and workspace
+
+| Setting | Effect | Boundary |
+| --- | --- | --- |
+| Identity | Name, avatar, introduction | Follow organization identity policy |
+| Workspace | Files and instructions | Keep separate from other Agents and tenants |
+| Bootstrap documents | Initial instructions, persona, and user context | Long content can be truncated |
+| System prompt | Basic behavior and boundaries | A complete override can replace safety instructions and requires administrator review |
+| Timezone and format | Default time presentation | Specify the user or organization timezone |
+
+See the [workspace guide](../guides/configure-agent-workspace-files.mdx) for reading and management boundaries. Portal-editable files differ from first-boot files.
+
+## Sessions and subagents
+
+The runtime can create sessions and run subagents. Concurrency, depth, model, timeout, and result notifications follow runtime policy, with no per-user Portal configuration screen. Viewing or messaging other Agents' sessions is also not a separate self-service setting equivalent to ordinary Chat Rooms.
+
+## High-impact tools
+
+Specify targets, changes, allowed paths, and external transfers. Written instructions do not automatically enforce approvals or access limits. Follow organization permissions and data policies and verify actual changes and results.

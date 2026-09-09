@@ -97,3 +97,44 @@ test('built site rejects missing assets and anchors', (t) => {
   const f = siteFixture(t); f.write('build/index.html', '<img src="/clawpod-guide/absent.png"><a href="/clawpod-guide/guides/start/#absent">Start</a>');
   const result = f.run('check-site.mjs'); assert.equal(result.status, 1); assert.match(result.stderr, /missing target/); assert.match(result.stderr, /missing anchor/);
 });
+
+function englishFixture(t) {
+  const f = fixture(t);
+  const directory = 'i18n/en/docusaurus-plugin-content-docs/current';
+  fs.mkdirSync(path.join(f.root, directory, 'guides'), { recursive: true });
+  f.json('i18n/en/docusaurus-plugin-content-docs/current.json', { 'sidebar.guideSidebar.category.Guide': { message: 'English guides' } });
+  f.write(`${directory}/index.mdx`, '---\ntitle: English home\n---\n# English home\n[Start](./guides/start.mdx#setup)\n');
+  f.write(`${directory}/guides/start.mdx`, '---\ntitle: English setup\n---\n# Setup\n[Home](../index.mdx)\n');
+  f.write(`${directory}/old.mdx`, '# Previous URL\n[Start](./guides/start.mdx)\n');
+  f.json(`${directory}/guide-index.json`, { pages: [{ path: 'index' }, { path: 'guides/start' }] });
+  return { ...f, directory };
+}
+
+test('English source checks cannot fall back to Korean or leave their locale', (t) => {
+  const f = englishFixture(t);
+  assert.equal(f.run('check-links.mjs').status, 0);
+  assert.equal(f.run('check-links.mjs', '--english').status, 0);
+  f.write(`${f.directory}/index.mdx`, '# Home\n[Other language](../../../../index.mdx)\n');
+  const crossLocale = f.run('check-links.mjs', '--english');
+  assert.equal(crossLocale.status, 1); assert.match(crossLocale.stderr, /outside-repository/);
+  fs.unlinkSync(path.join(f.root, f.directory, 'guides/start.mdx'));
+  const missing = f.run('check-links.mjs', '--english');
+  assert.equal(missing.status, 1); assert.match(missing.stderr, /navigation: missing guides\/start/);
+});
+
+test('English generation and UI sync use only English documents and labels', (t) => {
+  const f = englishFixture(t);
+  f.json('ui-labels.ko.json', { 'nav.test': '한국어' });
+  f.json('ui-labels.en.json', { 'nav.test': 'English' });
+  f.write(`${f.directory}/guides/start.mdx`, '---\ntitle: English setup\n---\n# Setup\n<span data-ui-label="nav.test">Old</span>\n');
+  assert.equal(f.run('sync-ui-labels.mjs').status, 0);
+  assert.match(fs.readFileSync(path.join(f.root, f.directory, 'guides/start.mdx'), 'utf8'), />Old</);
+  assert.equal(f.run('sync-ui-labels.mjs', '--english').status, 0);
+  assert.equal(f.run('generate-guide-index.mjs', '--english').status, 0);
+  const index = JSON.parse(fs.readFileSync(path.join(f.root, f.directory, 'guide-index.json'), 'utf8'));
+  assert.equal(index.pages[1].title, 'English setup');
+  assert.equal(index.pages[1].group, 'English guides');
+  assert.match(index.pages[1].text, /English/);
+  assert.doesNotMatch(index.pages[1].text, /한국어/);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(f.root, 'guide-index.json'), 'utf8')).pages[0].title, undefined);
+});

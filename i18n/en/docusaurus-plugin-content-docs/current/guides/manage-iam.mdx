@@ -1,0 +1,49 @@
+---
+title: "Manage IAM, Policies, and roles"
+description: "Assign direct Policies and inspect effective access within Portal boundaries."
+---
+
+# Manage IAM, Policies, and roles
+
+IAM controls actions on Agents, credentials, Rooms, webhooks, and organization data. Even a small permission addition can affect a tenant or organization; grant minimum necessary access.
+
+## Portal scope
+
+Opening IAM requires Policy read access. User management can show or manage profiles, status, last sign-in, organization memberships, Agent assignments, direct Policies, effective permissions, user creation/invitations/updates/deletion, and password-reset email or MFA reset where authorized.
+
+Creation/deletion and Policy attachment/detachment require separate actions. Visibility does not imply write access.
+
+| Role information | Scope | Principle |
+| --- | --- | --- |
+| Platform role | Platform or tenant administration | System roles such as super administrator and tenant administrator may not be direct-Policy editing targets |
+| Organization membership role | One organization | Use roles such as admin and member for membership scope |
+| Direct Policy | Fine-grained user access | Include only required actions and resources |
+
+Policy details currently manage direct user attachments. Group and reusable Role APIs may exist in code, but are not exposed and verified customer Portal workflows. Do not treat them as public procedures or call internal APIs directly.
+
+## Attach a Policy
+
+1. In **IAM → Users**, open the target user's view action.
+2. Choose **Direct Policies → Attach Policy**.
+3. Select one or more Policies and **Attach Policy (N)**.
+4. Review **Effective Permissions**.
+5. Test the minimum required task with the target account.
+
+Detach unneeded access from the same view. First check whether it would interrupt webhook management, Agent operations, exports, or credential rotation.
+
+## Custom Policies
+
+Creation and deletion are platform super administrator operations. The creation screen accepts name, description, and a Policy document using visual or JSON editing.
+
+1. Open **IAM → Policies → Create Policy** and enter a name.
+2. Choose a Quick Start template or at least one action in **Visual editor**.
+3. Limit resources to the intended tenant and organization. In JSON editor, validate JSON and every statement's actions.
+4. Select **Create Policy**.
+5. Attach to one test user and check effective permissions and behavior.
+6. Record impact and a rollback owner before expanding to necessary users.
+
+System Policies may not be editable or deletable. Deletion can immediately change attached users' access; inspect attachments and effective permissions first.
+
+## Diagnose access
+
+Check organization memberships, platform role, direct Policies, the source of each effective permission, tenant/organization scope, and plan/quota limits. Identify the exact resource and action before increasing access. Avoid temporary super administrator grants; reproduce with a test account and minimal Policy.

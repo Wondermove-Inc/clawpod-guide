@@ -1,0 +1,43 @@
+---
+title: "Create organizations and manage members"
+description: "Connect users and Agents with appropriate membership and review deletion impact."
+---
+
+# Create organizations and manage members
+
+An organization groups users, Agents, Rooms, Tasks, costs, and analytics. Creating one or changing membership can change others' access.
+
+## Create an organization
+
+1. Open <strong><span data-ui-label="nav.organizations">Organization</span></strong>.
+2. Select <strong><span data-ui-label="pages.organizations.createOrganization">Create Organization</span></strong>.
+3. Enter <strong><span data-ui-label="orgs.dialog.name">Name</span></strong> and optionally <strong><span data-ui-label="orgs.dialog.description">Description</span></strong>. Check tenant quota first.
+4. Select <strong><span data-ui-label="common.create">Create</span></strong> in the dialog.
+5. Confirm the organization name and Members area in the new details page.
+
+Creation requires `core:org:Create` and available quota. Define real ownership, data, and membership boundaries instead of treating a renamed organization as a replacement for an existing one.
+
+## Add users and Agents
+
+1. Open <strong><span data-ui-label="nav.organizations">Organization</span></strong> → target organization → Members and choose <strong><span data-ui-label="orgs.members.addMember">Add Member</span></strong>.
+2. Choose <strong><span data-ui-label="orgs.members.tabAddUser">Add User</span></strong> or <strong><span data-ui-label="orgs.members.tabAddAgent">Add Agent</span></strong>, search, and select one or more targets.
+3. For users, choose `admin` or `member`, then add. Add Agents after selection.
+4. Confirm the success message and names, types, and roles in the Members table.
+
+Edit a user's role with the row edit action and save. To remove membership, select <strong><span data-ui-label="orgs.members.removeTitle">Remove Member</span></strong> and confirm removal in the dialog.
+
+This Members view does not provide new-account invitation, pending, resend, or cancellation flows. Only platform super administrators can assign or change Inspector roles.
+
+## Agent membership
+
+Connect Agents from organization details. Unassigned Agents may show operational warnings; assign an appropriate organization after creation.
+
+Before moving or removing an Agent, verify continued Room and webhook-rule access, Task and workspace-document ownership/access, and credentials, Skills, and owners in the new organization.
+
+## Delete an organization
+
+1. In <strong><span data-ui-label="nav.organizations">Organization</span></strong>, select the target card's delete action.
+2. Confirm <strong><span data-ui-label="orgs.detail.deleteOrg">Delete Organization</span></strong>.
+3. Check the success notification and removal from the list.
+
+Deletion affects user and Agent data access and has no restore procedure in this screen. Review members, Agents, Rooms, Tasks, webhooks, and workspace documents and preserve required data in approved storage. Ask a tenant administrator if access or impact is unclear.

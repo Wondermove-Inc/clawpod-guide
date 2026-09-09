@@ -4,15 +4,17 @@ import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 
 const scriptDirectory = dirname(new URL(import.meta.url).pathname);
-const docsDirectory = resolve(scriptDirectory, '..');
-const labels = JSON.parse(readFileSync(join(docsDirectory, 'ui-labels.ko.json'), 'utf8'));
+const root = resolve(scriptDirectory, '..');
+const locale = process.argv.includes('--english') ? 'en' : 'ko';
+const docsDirectory = locale === 'en' ? join(root, 'i18n/en/docusaurus-plugin-content-docs/current') : root;
+const labels = JSON.parse(readFileSync(join(root, `ui-labels.${locale}.json`), 'utf8'));
 const checkOnly = process.argv.includes('--check');
 const marker = /<span data-ui-label="([\w.-]+)">([^\n]*?)<\/span>/g;
 
 function collectFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
-    if (entry.isDirectory()) return ['scripts', 'node_modules', 'build'].includes(entry.name) || entry.name.startsWith('.') ? [] : collectFiles(path);
+    if (entry.isDirectory()) return ['scripts', 'node_modules', 'build', 'i18n'].includes(entry.name) || entry.name.startsWith('.') ? [] : collectFiles(path);
     return /\.mdx?$/.test(entry.name) ? [path] : [];
   });
 }

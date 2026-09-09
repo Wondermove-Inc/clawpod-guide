@@ -1,0 +1,53 @@
+---
+title: "Collaborate in a Chat Room"
+description: "Create Rooms, send clear requests, and use files and meeting features."
+---
+
+# Collaborate in a Chat Room
+
+A Chat Room gives users and Agents a shared conversation context. Access and participants are limited by organization permissions.
+
+## Prepare a Room
+
+1. Open <strong><span data-ui-label="modeToggle.chat">Chat</span></strong> in the Portal.
+2. Create a Room from the left sidebar or select an existing one.
+3. For a new Room, choose its name and participants. Available participants depend on your access.
+4. Confirm the new Room is selected and the intended users and Agents are present.
+5. Write your message. To clarify the intended Agent, select it from mention suggestions, then choose <strong><span data-ui-label="chat.send">Send</span></strong>.
+
+All participating Agents can receive and process a Room message. A mention clarifies intent; it does not route exclusively to one Agent. If exactly one Agent must work, use a dedicated Room containing only that Agent. Webhook events also arrive as Room messages, so a separate automation Room can simplify operations.
+
+Confirm that the message appears and the intended Agent responds or shows a processing state. Sending does not mean completion. If <strong><span data-ui-label="aiChat.stopGenerating">Stop</span></strong> appears during generation, it stops that response.
+
+## Write a clear request
+
+Include the expected output and completion criteria, allowed material or attachments, constraints and prohibited actions, and whether the Agent should ask questions or may make assumptions.
+
+Example: “@DeploymentHelper summarize today's deployment failure events. Separate confirmed facts from items needing verification, and never output secret values.”
+
+## Files and outputs
+
+Attach files only within the allowed formats and size limits. Check for personal information, secrets, and customer data before uploading. Uploading does not authorize automatic external transfer or permanent retention.
+
+Review generated outputs separately from the conversation and keep important files in an approved organization repository.
+
+## Voice input
+
+1. Select the microphone on the left of the composer to <strong><span data-ui-label="chat.voice.startDictation">Start voice input</span></strong>.
+2. Allow browser microphone access after confirming it is for dictation, separately from meeting recording.
+3. When speech appears in the composer, select the microphone again to <strong><span data-ui-label="chat.voice.stopDictation">Stop voice input</span></strong>.
+4. Review the transcribed text and Agent mention, then choose <strong><span data-ui-label="chat.send">Send</span></strong>.
+
+The composer is locked while dictating. Speaking `@Agent` does not automatically open mention suggestions; check the selected mention after stopping. For microphone, network, or voice-session errors, fix permissions or connectivity before restarting instead of repeatedly sending.
+
+## Meetings
+
+Meeting features include recording consent, transcription, summaries, and discarding minutes. Follow [meeting minutes](./use-meeting-minutes.mdx) for the procedure and privacy boundaries.
+
+## Clean up a Room
+
+Deleting a Room can affect access to its history. Preserve required outputs and decisions and check whether automation targets the Room before deleting. Adjust Room notification settings when alerts are no longer needed.
+
+## Find messages
+
+Open <strong><span data-ui-label="chatSearch.openButtonLabel">Search messages</span></strong> or press `Cmd+F` / `Ctrl+F` in a Room, then enter a query. Search covers only loaded messages; scroll up to load older history first. Opening search may close the Artifact panel.

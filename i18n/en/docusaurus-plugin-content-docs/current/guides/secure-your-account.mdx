@@ -1,0 +1,32 @@
+---
+title: "Secure your account and manage MFA"
+description: "Configure MFA, change passwords, and understand administrator resets."
+---
+
+# Secure your account and manage MFA
+
+A ClawPod account can access Agents, credentials, organization data, and automation. Enable MFA and store recovery methods securely.
+
+## MFA
+
+1. Open <strong><span data-ui-label="settings.nav.profile">Profile</span></strong> in settings.
+2. Review MFA status and follow setup or disablement.
+3. During setup, verify activation with a six-digit authenticator TOTP code. Store recovery codes securely; do not enter one merely as a test.
+
+Never store authentication or recovery codes or passwords in Rooms, webhook payloads, Task comments, or templates. A recovery code is consumed immediately when used to sign in. Verify the authenticator on a new device before replacing the old one.
+
+## Password and profile
+
+1. Enter <strong><span data-ui-label="settings.profile.currentPassword">Current Password</span></strong> and select <strong><span data-ui-label="settings.profile.verify">Verify</span></strong>. Wait for the verified state.
+2. Enter <strong><span data-ui-label="settings.profile.newPassword">New Password</span></strong> and <strong><span data-ui-label="settings.profile.confirmPassword">Confirm Password</span></strong>. Use at least eight characters with uppercase, lowercase, a number, and a special character.
+3. Select <strong><span data-ui-label="settings.profile.saveChanges">Save Changes</span></strong>. After completion, sign in with the new password only on approved devices.
+
+Keep profile information current. Do not reuse passwords or share team accounts.
+
+## Administrator resets
+
+Authorized administrators may send password-reset emails or reset MFA from IAM user details. Availability depends on the target's system role and the requester's permissions.
+
+Verify identity and authorization first, then notify the user through a safe channel. Reset is a support feature, not a way to access another person's account.
+
+For suspected compromise, update password/MFA, rotate connected credentials, and review Audit Log changes. Ask the organization administrator to review account access revocation and affected Agent operations if needed.

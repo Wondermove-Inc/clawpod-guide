@@ -2,12 +2,14 @@
   "name": "clawpod-guide",
   "version": "1.0.0",
   "private": true,
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "docusaurus start --host 127.0.0.1",
     "build": "docusaurus build && node scripts/check-site.mjs",
     "serve": "docusaurus serve --host 127.0.0.1",
-    "check": "node scripts/generate-readme.mjs --check && node scripts/generate-guide-index.mjs --check && node scripts/sync-ui-labels.mjs --check && node scripts/check-links.mjs && node --test scripts/check-docs.test.mjs"
+    "check": "node scripts/generate-readme.mjs --check && node scripts/generate-guide-index.mjs --check && node scripts/sync-ui-labels.mjs --check && node scripts/check-links.mjs && node scripts/generate-guide-index.mjs --english --check && node scripts/generate-english-readme.mjs --check && node scripts/sync-ui-labels.mjs --english --check && node scripts/check-links.mjs --english && node --test scripts/check-docs.test.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",

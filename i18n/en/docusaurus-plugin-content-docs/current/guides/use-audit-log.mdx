@@ -1,0 +1,31 @@
+---
+title: "Read and export Audit Log"
+description: "Investigate changes and export only the necessary records."
+---
+
+# Read and export Audit Log
+
+Audit Log records important permission, Agent, and configuration changes. Read and export permissions may be restricted separately.
+
+## Find records
+
+1. Open **Audit Log**.
+2. Filter by date, event type, Agent, and severity.
+3. Open an entry to inspect before/after differences and related information.
+
+Narrow time, organization, and Agent scope first. Broad exports may include other users' operational information.
+
+## Export
+
+When filtered results exist, choose CSV or JSON:
+
+1. Apply necessary filters.
+2. Recheck count and scope.
+3. Select **CSV** or **JSON**.
+4. Save to an approved location and record recipients and retention period.
+
+Treat exports as access-controlled operational data. Do not upload them to Chat Rooms or public issues. Dispose of them according to retention policy after the investigation.
+
+Check who performed which action, affected resources and organizations, sensitive before/after values, and whether follow-up requires access revocation, credential rotation, or Agent restart.
+
+Audit Log assists investigation; it does not automatically roll back changes. Verify current settings and affected users/Agents before reversing anything.

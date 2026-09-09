@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "ClawPod Guide",
+    "description": "The title in the navbar"
+  },
+  "item.label.사용 가이드": {
+    "message": "User guide",
+    "description": "Navbar item with label 사용 가이드"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

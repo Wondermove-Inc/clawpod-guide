@@ -1,0 +1,57 @@
+---
+title: "Send webhook events to an Agent"
+description: "Configure Sources, Rules, and Playbooks and verify delivery."
+---
+
+# Send webhook events to an Agent
+
+This workflow sends external events to a chosen Agent or Chat Room. Sources with a signing secret and verifier validate signatures.
+
+Before starting, obtain Source and Rule creation permission, choose the receiving organization and Agent/Room, and confirm the external service supports an HTTPS webhook URL and signing secret. Minimize recipients and Playbook content because payloads may contain customer data.
+
+## Create a Playbook
+
+1. Open <strong><span data-ui-label="nav.webhooks">Webhooks</span></strong> → <strong><span data-ui-label="webhooks.tabs.playbooks">Playbooks</span></strong> → <strong><span data-ui-label="webhooks.playbooks.create">Create Playbook</span></strong>.
+2. Enter <strong><span data-ui-label="webhooks.playbooks.name">Name</span></strong> and <strong><span data-ui-label="webhooks.playbooks.content">Content</span></strong>. Use <strong><span data-ui-label="webhooks.playbooks.preview">Preview</span></strong> or <strong><span data-ui-label="webhooks.playbooks.split">Split</span></strong> to inspect Markdown if needed.
+3. Select <strong><span data-ui-label="webhooks.playbooks.save">Save</span></strong> and confirm the new list entry.
+
+Playbooks can be attached to both Sources and Rules and are added to event messages.
+
+Example: “On a deployment failure event, summarize the impact. Do not guess unconfirmed causes; list the checks still needed.”
+
+## Create a Source
+
+1. Open <strong><span data-ui-label="nav.webhooks">Webhooks</span></strong> → <strong><span data-ui-label="webhooks.tabs.sources">Sources</span></strong> → <strong><span data-ui-label="webhooks.sources.create">Create Source</span></strong>, choose a source type, and continue.
+2. Enter <strong><span data-ui-label="webhooks.sources.name">Name</span></strong> and the target organization.
+3. Configure a Source Playbook, rate limit, secret generation, and signature method as needed.
+4. Select <strong><span data-ui-label="webhooks.wizard.finish">Create Source</span></strong>.
+5. In the final integration guide, separately copy the webhook URL and signing secret if shown into the external service's settings.
+
+Plaintext secrets may appear only during creation, regeneration, or rotation. Store them according to organization policy, never in documents or Chat.
+
+## Choose targets with a Rule
+
+1. Open <strong><span data-ui-label="nav.webhooks">Webhooks</span></strong> → <strong><span data-ui-label="webhooks.tabs.rules">Rules</span></strong> → <strong><span data-ui-label="webhooks.rules.create">Create Rule</span></strong>.
+2. Choose <strong><span data-ui-label="webhooks.rules.name">Name</span></strong>, <strong><span data-ui-label="webhooks.rules.source">Source</span></strong>, and <strong><span data-ui-label="webhooks.rules.targetType">Target Type</span></strong>, and add event conditions.
+3. Select one or more Agents or Rooms in <strong><span data-ui-label="webhooks.rules.target">Target</span></strong>.
+4. For multiple targets of the same type, choose broadcast or round-robin.
+5. Configure a Rule Playbook, cooldown, and hourly limit if needed.
+6. Select <strong><span data-ui-label="webhooks.rules.create">Create Rule</span></strong> at the bottom and confirm the Rule appears.
+
+Source and targets must be in the same tenant. The operator manages organization separation by selecting the correct Agents and Rooms.
+
+## Test and verify
+
+Send a test event from the external service and check:
+
+1. Receipt in <strong><span data-ui-label="nav.webhooks">Webhooks</span></strong> → <strong><span data-ui-label="webhooks.tabs.events">Events</span></strong>.
+2. For an Agent target, delivery to that Agent's webhook Room and an executable Agent state.
+3. For a Room target, a system message in the selected Room and the necessary participants.
+
+The Agent receives the Source, Rule, event ID, JSON payload, and attached Playbook instructions as a message.
+
+## Stop, rotate, and recover
+
+Set the Source or Rule inactive to stop new events. For exposed secrets, rotate or regenerate the Source secret and immediately update the sender. Preserve Source, Rule, and Playbook configuration before potentially irreversible deletion.
+
+No user-operated replay endpoint or automatic delivery retry has been verified for the current ingress. Inspect Event records, the target Room, and Agent status; recovery may require sending a new event from the external service.

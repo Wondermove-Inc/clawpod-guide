@@ -1,0 +1,47 @@
+---
+title: "Request browser and CLI tasks"
+description: "Scope and verify web navigation, downloads, commands, and file changes."
+---
+
+# Request browser and CLI tasks
+
+Browser control uses the full Agent image; CLI work uses full or lite images. Platform super administrators control image selection. Ordinary users receive an available full image by default; request an adjustment only if the created Agent uses lite or fails browser-readiness checks. `clawpod/agent-lite` has no Chromium, X11 Desktop, or VNC/noVNC and is unsuitable for GUI browser work.
+
+The `cli-anything` Skill is bundled in full and lite images and prepared at `/workspace/skills/cli-anything` during boot. For Skills needing a specific CLI package or external service, first configure the dependencies and credentials listed in `SKILL.md`.
+
+## Browser requests
+
+Browser tasks include opening pages, navigating, typing, clicking, snapshots, screenshots, uploads, and downloads. Full-image Agents use Playwright MCP for browser control and a desktop Skill for GUI desktop control. Include:
+
+1. Target URL and business purpose.
+2. Whether the Agent may only read or also enter information and click.
+3. The allowed account or browser-profile scope.
+4. Whether confirmation is required before submission, purchases, sending, or downloads.
+5. Expected output: URLs, summary, screenshots, or downloaded files.
+
+> Read only this week's report list at `https://example.com/reports`. Do not log in, enter information, download, or transfer data externally. Return a table of titles and URLs.
+
+Cloud does not provide a lifecycle for creating, selecting, and revoking dedicated browser profiles. Treat existing Agent browser state, cookies, and downloads as sensitive. Do not share your everyday browser profile or password manager. Ask for confirmation immediately before payments, account changes, messages, uploads, or downloads that may be hard to reverse or transfer data externally.
+
+## CLI and file requests
+
+Specify the target Agent workspace and allowed paths. Check that the required commands or Skills are actually available. Lightweight Agents may lack desktop and some document or media tools.
+
+> Work only inside `/workspace/project`. First show the proposed commands and files. Do not access the network, install packages, delete files, or push to Git. Report inspection results only.
+
+For changes, use these stages:
+
+1. Inspect: identify commands, files to read, and expected outputs.
+2. Review: confirm the files and external effects.
+3. Execute: work within authorized paths.
+4. Verify: report changed files, checks, failures, and unexecuted steps.
+
+Explicitly authorize high-impact commands such as `rm`, credential changes, package installation, deployment, Git push, and external API calls, and request confirmation before execution.
+
+## Retrieve and clean up outputs
+
+A customer flow for previewing or downloading Agent `/workspace` files through Portal Documents has not been verified. Ask the Agent to deliver results as Chat artifacts or Chat/Task attachments, and verify filenames and contents before downloading. Clean up sensitive outputs and browser downloads according to retention policy.
+
+Send task requests in **Chat**, in a Room containing the target Agent. The Agent detail **Conversations** view is read-only.
+
+For failures, share the executed step, target URL or workspace path, a non-sensitive error summary, and Agent status. Do not share raw credentials, browser cookies, or full terminal logs.

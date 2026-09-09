@@ -1,0 +1,36 @@
+---
+title: "Create an Agent and review its configuration"
+description: "Review persona, instructions, resources, and connections before creation."
+---
+
+# Create an Agent and review its configuration
+
+Creating an Agent requires `core:agent:Create` and available Agent quota. An Agent is an operational resource with a workspace, instructions, model, credentials, and execution environment.
+
+## Persona and organization
+
+1. Open <strong><span data-ui-label="nav.agents">Agent</span></strong> → <strong><span data-ui-label="pages.agents.createAgent">Add New Member</span></strong>.
+2. Choose an industry and persona preset, or a blank Agent.
+3. Check the name, role, description, and target organization.
+4. Check whether an Agent already has the same role.
+
+If a duplicate-role warning appears, decide whether to create another Agent or improve the existing one. Duplicates can spread webhook targets, costs, and operational ownership across several Agents.
+
+## SOUL and instructions
+
+Specify goals, permitted information, prohibited behavior, uncertainty handling, and output format. Do not put secrets, API keys, sensitive customer originals, or another user's account information in SOUL. For shell, file, or browser work, distinguish authorized automatic actions from those requiring confirmation.
+
+## Resources and secrets
+
+Before creation, check with an administrator if the work needs browser, desktop, or document tools. Lightweight Agents lack GUI desktop and some tools. Ordinary users create with the provided defaults rather than directly changing the environment. Explain additional tool needs to the administrator. Resources can affect usage limits and costs.
+
+Use only the purpose-specific inputs in [handling secrets](./handle-secrets.mdx) for provider and service connections. Do not copy sensitive values into unrelated creation fields, Chat, templates, or documentation. For non-sensitive custom settings, follow [environment variables](./configure-agent-environment.mdx).
+
+## Review and verify
+
+1. Complete required settings and choose <strong><span data-ui-label="agentCreateV2.hireExpert">Hire This Expert</span></strong> at the bottom.
+2. If validation passes, review the organization, role, model, instructions, resources, and connections in the dialog.
+3. Select <strong><span data-ui-label="reviewDialog.confirmCreate">Confirm &amp; Create</span></strong>.
+4. On success, the Portal opens Agent details. This confirms acceptance of creation; next check status, organization, a small request in a test Room, required Skills/credentials/webhooks, and Logs/Metrics for errors.
+
+Avatar generation for blank Agents is supplementary. Its failure neither proves nor prevents Agent creation success.

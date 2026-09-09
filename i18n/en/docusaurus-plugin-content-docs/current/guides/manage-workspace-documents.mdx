@@ -1,0 +1,33 @@
+---
+title: "Use the Documents screen"
+description: "Browse and upload files in the existing shared document store."
+---
+
+# Use the Documents screen
+
+Documents is the Portal's existing shared document store. Do not assume it is private or separated by organization. It does not manage Agent `/workspace` files or `SOUL.md`, `AGENTS.md`, and `MEMORY.md`.
+
+## Browse files
+
+1. Open **Documents**.
+2. Navigate using the left file tree and breadcrumbs.
+3. Select a file to read it.
+
+The shown path is not necessarily an Agent workspace or private organization store. Follow [Agent workspace files](./configure-agent-workspace-files.mdx) separately.
+
+## Preview and download boundaries
+
+The current viewer reads UTF-8 text and returns known text MIME types. It does not preview binary images, PDF, or Office files. This guide does not establish this legacy screen's upload formats or size limits. For verified Chat and Task attachment limits, see [file formats](./file-formats-and-artifacts.mdx).
+
+Check the title and path, inspect text for sensitive information, and review binary files with a separate approved tool. Supported Chat attachments may offer text, image, PDF, or CSV previews. Other formats may be download-only; scan with a trusted security tool instead of relying on the extension.
+
+## Upload
+
+1. Open the Upload area.
+2. Select the file and destination path.
+3. Confirm progress and completion.
+4. Verify the actual path and content in the file tree.
+
+Check for secrets, personal information, customer data, and executables before uploading. Putting a reference document only in this shared store does not automatically make an Agent read it.
+
+This guide does not provide Documents sharing or deletion procedures. Use Chat/Task attachments or approved organization storage for outputs that require those workflows.

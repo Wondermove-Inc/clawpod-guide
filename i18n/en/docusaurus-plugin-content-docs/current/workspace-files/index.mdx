@@ -1,0 +1,25 @@
+---
+title: "Agent workspace file reference"
+description: "Write instruction and memory files for a clear, limited purpose."
+slug: /workspace-files/index
+---
+
+# Agent workspace file reference
+
+| File | Purpose | Reference |
+| --- | --- | --- |
+| `SOUL.md` | Role, tone, and judgment | [SOUL.md](./soul-md.mdx) |
+| `AGENTS.md` | Operating procedures and collaboration | [AGENTS.md](./agents-md.mdx) |
+| `TOOLS.md` | Tool use and local conventions | [TOOLS.md](./tools-md.mdx) |
+| `MEMORY.md` | Lasting decisions, preferences, and lessons | [Memory files](./memory-md.mdx) |
+| `BOOTSTRAP.md` | One-time setup in a new workspace | [Bootstrap and identity](./bootstrap-and-identity.mdx) |
+
+## Writing principles
+
+1. Give each file one responsibility: persona in `SOUL.md`, working rules in `AGENTS.md`, tool details in `TOOLS.md`.
+2. Write short, verifiable actions, such as checking target, impact, and approval before external changes.
+3. Use minimum data and permissions. Never include secrets, passwords, tokens, or customer originals.
+4. Instructions do not automatically execute tools. Runtime and organization rules determine actual scope.
+5. Verify important changes in a test Room. A file cannot bypass model, tool, or channel permissions.
+
+The Portal currently edits `SOUL.md`. Default `AGENTS.md` and `TOOLS.md` are supplied at creation and copied at first boot, but no direct Portal editor has been verified for them.

@@ -1,0 +1,54 @@
+---
+title: "ClawPod Guide tools for Agents"
+description: "Search and read public product documentation through the read-only MCP server."
+---
+
+# ClawPod Guide tools for Agents
+
+`clawpod-guide` is a read-only MCP server registered in ClawPod Agent images. It remotely reads `main` of the public `Wondermove-Inc/clawpod-guide` repository without cloning it or saving documents in the Agent workspace.
+
+It requires a running image containing the server and runtime network policy allowing GitHub. Existing Agents do not gain it until replaced/restarted with a supporting image release.
+
+## Registration
+
+The image's default MCP configuration registers `clawpod-guide` automatically. No Portal API key or manual MCP server address is needed. First check whether it appears in the current tool list.
+
+If it is missing or GitHub is unreachable, do not search for installation files or copy documentation into the workspace. Report the available tools and failure and narrow the task to user-provided documents or other permitted sources.
+
+## APIs
+
+### search_clawpod_guide
+
+Find relevant pages. Each call reads the public repository's search index and returns paths, titles, descriptions, and relevant context.
+
+| Input | Required | Meaning |
+| --- | --- | --- |
+| `query` | Yes | Natural-language feature, setting, or task |
+| `limit` | No | Default 5, maximum 10 results |
+
+Search results alone do not establish setup, permissions, or support. Read the returned page next.
+
+### read_clawpod_guide
+
+Read lines from a page returned by search or section listing. Arbitrary URLs and paths outside the repository are not accepted.
+
+| Input | Required | Meaning |
+| --- | --- | --- |
+| `path` | Yes | Exact returned path, such as `guides/manage-agent` |
+| `start_line` | No | First line to read; default 1 |
+| `max_lines` | No | Default 200, maximum 400 |
+
+If the response includes `next_start_line`, use it with the same path to continue.
+
+### list_clawpod_guide_sections
+
+List sections and pages. Supply `group` to narrow to one section. Use this when the query or documentation scope is unclear.
+
+## Agent workflow
+
+1. Search for relevant pages.
+2. Read the best match for procedure, prerequisites, and limits.
+3. Prioritize current authorization, organization policy, and actual tools/permissions over documentation when assessing execution scope.
+4. If a page or runtime tool is missing, do not conclude the capability is impossible; follow [safe interpretation](./agent-document-reading.mdx).
+
+The tools only read documentation. They do not access or modify secrets, tenant data, Agent settings, or external services.

@@ -1,0 +1,50 @@
+---
+title: "Use the Skill Marketplace"
+description: "Find, install, remove, and publish Skill packages."
+---
+
+# Use the Skill Marketplace
+
+Listing Skills requires `core:skill:List`. Installation is performed by tenant administrators or platform super administrators and also requires the Portal policy `core:skill:Install`.
+
+## Find a Skill
+
+1. Open **Skills**.
+2. Search or select a category. Search runs after typing pauses; press Enter to run it immediately.
+3. Review version, description, category, visibility, package size, downloads, and installed-Agent count on cards.
+4. Open a card to read its details, author, tags, version, and installed Agents.
+
+Public Skills are discoverable in the marketplace. Private Skills are scoped to their tenant.
+
+## Install on Agents
+
+1. Select **Install** in Skill details.
+2. Search and choose one or more Agents. Tenant administrators see their tenant's Agents; platform super administrators see all Agents.
+3. Agents already associated with the Skill cannot be selected.
+4. Select **Install n Agents**.
+5. The dialog closes after submission. Installation is asynchronous; verify completion separately.
+6. In **Installed Agents**, check for `installed` or `failed`. `pending` and `installing` are unfinished.
+
+Pending means accepted, installed means completion was reported, and failed means the Skill is not yet usable on that Agent. Configure credentials, service URLs, and external accounts required by the description or `SKILL.md` before retrying. Connect API keys through [AI Key Management](./manage-credentials.mdx), never Chat.
+
+## Download a package
+
+**Download** requires `core:skill:Download`. Public packages are available to authorized users; private ones require the same tenant or platform super administrator access. Downloads are for review or organization package management. The standard Agent installation path is **Install**, not manual copying.
+
+## Publish an organization Skill
+
+Platform super administrators with `core:skill:Create` can use **Upload Skill**.
+
+1. Prepare a `.tar.gz` or `.zip` package up to **100 MB**; the archive format is checked too.
+2. Enter a required **Name** of no more than **100 characters**.
+3. Enter description, category, author, and tags, and choose public or private visibility.
+4. Select and upload the package.
+5. Review its published details, then install it on the required Agents.
+
+Public packages are discoverable by other users. Keep secrets out of packages; manage external keys in [AI Key Management](./manage-credentials.mdx).
+
+## Uninstall and delete
+
+To remove a Skill from one Agent, choose **Uninstall** in its installed-Agent list. This requires tenant administrator or platform super administrator status and `core:skill:Uninstall`. Removal is asynchronous; confirm completion.
+
+Deleting the marketplace package requires platform super administrator status and `core:skill:Delete`. It removes the Skill database record and stored package. First uninstall it from listed Agents and replace dependent playbooks, scheduled tasks, and operational procedures.
