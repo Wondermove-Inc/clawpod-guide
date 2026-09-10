@@ -46,7 +46,6 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 - [AI Key와 Credential 관리](./guides/manage-credentials.mdx)
 - [Secret과 민감한 값 다루기](./guides/handle-secrets.mdx)
 - [Provider와 model 선택](./guides/select-models.mdx)
-- [Skill Marketplace 사용하기](./guides/manage-skills.mdx)
 - [Agent 생성 시 환경 변수 설정](./guides/configure-agent-environment.mdx)
 - [SOUL.md, AGENTS.md와 Agent workspace 파일](./guides/configure-agent-workspace-files.mdx)
 - [Memory와 Agent 설정](./capabilities/memory-and-configuration.mdx)

@@ -1,40 +1,10 @@
 ---
-title: Skill Marketplace 사용하기
-description: Skill을 찾고 Agent에 설치·제거를 요청하고 상태를 확인하는 방법입니다.
+title: Skill Marketplace 안내
+description: 기능 개편 기간의 Skill Marketplace 가이드 안내입니다.
 ---
 
-# Skill Marketplace 사용하기
+# Skill Marketplace 안내
 
-Skill Marketplace는 Agent에 연결할 Skill 패키지를 찾고 관리하는 Portal 기능입니다. Skill 목록을 보려면 `core:skill:List` 권한이 필요합니다. 설치는 테넌트 관리자 또는 플랫폼 최고 관리자가 수행하며, Portal의 설치 정책(`core:skill:Install`)도 필요합니다.
+Skill Marketplace는 기능 개편에 따라 사용자 가이드에서 잠시 제외했습니다. 이 페이지에서는 설치·제거 절차를 안내하지 않습니다.
 
-## 1. Skill 찾기
-
-1. **관리자 → 스토어 → 에이전트 스킬**을 엽니다.
-2. 검색어를 입력하거나 카테고리를 선택합니다. 검색은 입력을 멈춘 뒤 적용되며, Enter로 즉시 실행할 수 있습니다.
-3. 카드에서 version, 설명, category, 공개 여부, package 크기, 다운로드 수, 설치된 Agent 수를 봅니다.
-4. 원하는 카드를 열어 상세 설명, 작성자, tags, version, 설치된 Agent 목록을 읽습니다.
-
-공개 Skill은 Marketplace에서 찾을 수 있고, 비공개 Skill은 해당 tenant 범위에서만 접근합니다.
-
-## 2. Agent에 설치하기
-
-1. Skill 상세 화면에서 **Install**을 선택합니다.
-2. 설치할 Agent를 검색해 하나 이상 선택합니다. 테넌트 관리자에게는 자신의 tenant Agent만 보이고, 플랫폼 최고 관리자에게는 전체 Agent가 보입니다.
-3. 이미 이 Skill이 연결된 Agent는 선택할 수 없습니다.
-4. **Install n Agents**를 선택해 설치를 요청합니다.
-5. 요청이 제출되면 설치 대화상자는 닫힙니다. 설치는 비동기로 진행되므로 대상 Agent의 완료 상태를 확인해야 합니다.
-6. 상세 화면의 **Installed Agents** 목록에서 `installed` 또는 `failed` 상태를 확인합니다. `pending`/`installing`이면 처리가 끝나지 않은 것입니다.
-
-`pending`은 설치 요청이 등록된 상태이고, `installed`는 설치 완료가 보고된 상태입니다. `failed`이면 해당 Agent에서 아직 사용할 수 없습니다. Skill 상세 설명 또는 패키지의 `SKILL.md`가 요구하는 credential·서비스 URL·외부 계정을 먼저 설정한 뒤 다시 설치합니다. API key 같은 비밀값은 Chat에 붙여 넣지 말고 [AI Key Management](./manage-credentials.mdx)에서 target Agent에 연결합니다.
-
-## 3. Package 내려받기
-
-Skill 상세 화면의 **Download**는 등록된 package를 내려받습니다. `core:skill:Download` 권한이 필요합니다. 공개 Skill은 접근 가능한 사용자에게, 비공개 Skill은 같은 tenant 또는 플랫폼 최고 관리자에게 제공됩니다.
-
-내려받은 package는 검토 또는 조직의 package 관리에 사용합니다. Agent에 적용하는 표준 경로는 download 후 수동 복사가 아니라 Marketplace의 **Install**입니다.
-
-## 4. Agent에서 제거
-
-특정 Agent에서만 중지하려면 Skill 상세 화면의 설치된 Agent에서 **Uninstall**을 선택합니다. 테넌트 관리자 또는 플랫폼 최고 관리자와 `core:skill:Uninstall` 권한이 필요합니다. 제거도 비동기로 처리되므로 완료 상태를 확인하세요.
-
-스킬 패키지의 게시·삭제는 플랫폼 운영 범위입니다. 필요한 패키지가 없으면 담당자에게 요청하세요.
+현재 Agent가 사용할 수 있는 도구는 [Skills와 도구](../capabilities/skills-and-tools.mdx)에서 확인하는 방법을 참고하세요.
