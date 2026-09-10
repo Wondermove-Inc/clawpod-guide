@@ -5,7 +5,7 @@ description: 새 Agent에 필요한 비민감 실행 설정을 environment confi
 
 # Agent 생성 시 환경 변수 설정
 
-환경 변수는 새 Agent 생성 configuration으로 전달하는 이름-값 설정입니다. 비밀값 보관을 위한 경로가 아니므로 비민감한 외부 서비스 URL, 프로젝트 식별자, 기능 플래그에만 사용합니다. 화면의 <strong><span data-ui-label="reviewDialog.secretsConfiguration">시크릿 설정</span></strong> 안에 있지만 범용 Secret 보관 경로가 아닙니다.
+환경 변수는 새 Agent 생성 configuration으로 전달하는 이름-값 설정입니다. 비밀값 보관을 위한 경로가 아니므로 비민감한 외부 서비스 URL, 프로젝트 식별자, 기능 플래그에만 사용합니다. Agent 생성 화면의 **추가 환경 변수** 영역에서 입력합니다.
 
 ## 언제 사용하나요
 
@@ -17,9 +17,9 @@ AI provider API key와 조직 공용 credential은 먼저 [Credential 관리하�
 ## 새 Agent에 추가하기
 
 1. <strong><span data-ui-label="nav.agents">에이전트</span> → <span data-ui-label="pages.agents.createAgent">새 팀원 추가</span></strong>에서 기본 정보와 model을 설정합니다.
-2. <strong><span data-ui-label="reviewDialog.secretsConfiguration">시크릿 설정</span></strong>을 엽니다.
-3. 추가 환경 변수 영역에서 행을 추가합니다.
-4. 변수 이름과 값을 입력한 뒤 생성 검토를 완료합니다.
+2. 생성 폼 아래쪽의 **추가 환경 변수** 영역을 펼칩니다.
+3. **변수 추가**를 선택합니다.
+4. **KEY_NAME**에 변수 이름을, **값**에 설정값을 입력한 뒤 생성 검토를 완료합니다.
 
 이름은 대문자 영문자 또는 `_`로 시작하고, 이후에는 대문자 영문자·숫자·`_`만 사용하세요. 예: `ACME_PROJECT_ID`, `INTERNAL_API_URL`. 값은 공백만으로 둘 수 없습니다.
 

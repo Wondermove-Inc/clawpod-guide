@@ -43,7 +43,6 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 
 - [Agent 만들기와 생성 전 검토](./guides/create-agent.mdx)
 - [Agent 상태와 설정 관리하기](./guides/manage-agent.mdx)
-- [Agent Template 만들고 사용하기](./guides/use-agent-templates.mdx)
 - [AI Key와 Credential 관리](./guides/manage-credentials.mdx)
 - [Secret과 민감한 값 다루기](./guides/handle-secrets.mdx)
 - [Provider와 model 선택](./guides/select-models.mdx)

@@ -38,12 +38,15 @@ Fallback is a usable alternate route, not simply a cheaper model. If it uses ano
 
 ## Configure and verify
 
+For a new Agent, select models and credentials during [Agent creation](./create-agent.mdx). To change an existing Agent:
+
 1. Prepare [provider credentials](./manage-credentials.mdx).
-2. Select main during Agent creation or settings.
-3. Select sub, fallback, and heartbeat when needed.
-4. Verify all required credentials are bound within the same tenant.
-5. Test main responses, fallback conditions, and tool availability using non-sensitive requests.
-6. Track cost, errors, and latency in [Analytics](./use-analytics.mdx). Avoid changing several roles at once when diagnosing problems.
+2. Open the target Agent's details from the Agent list and edit its AI resource settings.
+3. Change providers and models for main, sub, fallback, and heartbeat as needed.
+4. Choose a saved key or use the direct key entry field for each provider. Verify the selected credentials are available in the same tenant.
+5. Check the impact on ongoing work, then choose the action to **save and restart**. Choose cancel to leave without changes.
+6. Wait until the Agent is available again, then verify model responses and required tools with a small, non-sensitive test request.
+7. Track cost, errors, and latency in [Analytics](./use-analytics.mdx). Avoid changing several roles at once when diagnosing problems.
 
 ## Local LLM prerequisites
 

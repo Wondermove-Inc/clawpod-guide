@@ -5,16 +5,16 @@ description: "Pass non-sensitive runtime settings to a new Agent."
 
 # Set environment variables during Agent creation
 
-Environment variables are name/value configuration for a new Agent. Use them only for non-sensitive service URLs, project identifiers, and feature flags. Although the fields appear inside <strong><span data-ui-label="reviewDialog.secretsConfiguration">Secrets Configuration</span></strong>, they are not a general secret vault.
+Environment variables are name/value configuration for a new Agent. Use them only for non-sensitive service URLs, project identifiers, and feature flags. Enter them in the additional environment variables section of the Agent creation form.
 
 Use them for endpoints and settings the environment must read, including a local LLM endpoint verified during creation. Manage provider API keys and shared credentials through [Credentials](./manage-credentials.mdx); copying them into several Agents' variables makes rotation and auditing difficult.
 
 ## Add variables to a new Agent
 
 1. Open <strong><span data-ui-label="nav.agents">Agent</span></strong> → <strong><span data-ui-label="pages.agents.createAgent">Add New Member</span></strong> and configure basic information and models.
-2. Open <strong><span data-ui-label="reviewDialog.secretsConfiguration">Secrets Configuration</span></strong>.
-3. Add a row in the additional environment variables area.
-4. Enter a name and value, then complete creation review.
+2. Expand the additional environment variables section near the bottom of the creation form.
+3. Select the add-variable action.
+4. Enter the variable name in **KEY_NAME** and its setting in the value field, then complete creation review.
 
 Names must start with an uppercase letter or `_`, followed only by uppercase letters, digits, or `_`, such as `ACME_PROJECT_ID` or `INTERNAL_API_URL`. Values cannot consist only of whitespace.
 

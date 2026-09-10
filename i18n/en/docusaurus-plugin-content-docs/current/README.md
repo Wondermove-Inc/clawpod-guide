@@ -38,7 +38,6 @@ Public user and Agent documentation.
 
 - [Create an Agent and review its configuration](./guides/create-agent.mdx)
 - [Manage Agent status and settings](./guides/manage-agent.mdx)
-- [Create and use Agent templates](./guides/use-agent-templates.mdx)
 - [Manage AI keys and credentials](./guides/manage-credentials.mdx)
 - [Handle secrets and sensitive values](./guides/handle-secrets.mdx)
 - [Choose providers and models](./guides/select-models.mdx)
