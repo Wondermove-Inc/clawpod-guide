@@ -12,6 +12,7 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 ### 시작하기
 
 - [ClawPod 시작하기](./index.mdx)
+- [Portal 메뉴와 가이드 찾기](./help/portal-feature-map.mdx)
 - [가입, 로그인, 계정 복구](./guides/start-account.mdx)
 - [조직 초대 수락하기](./guides/accept-organization-invite.mdx)
 - [새 workspace 온보딩 완료하기](./guides/complete-onboarding.mdx)
@@ -31,14 +32,12 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 ### 대화와 업무
 
 - [Chat Room에서 Agent와 협업하기](./guides/use-chat-room.mdx)
-- [Chat Archive 사용하기](./guides/use-chat-archive.mdx)
-- [AI Chat 사용하기](./guides/use-ai-chat.mdx)
+- [이전 대화 찾기](./guides/use-chat-archive.mdx)
 - [파일 형식과 Agent artifact](./guides/file-formats-and-artifacts.mdx)
 - [Agent에게 Browser와 CLI 작업 요청하기](./guides/use-browser-and-cli.mdx)
 - [Agent Desktop과 대화 기록 보기](./guides/use-agent-desktop.mdx)
 - [Tasks와 Milestone으로 작업 추적](./guides/use-tasks-and-milestones.mdx)
 - [회의록 만들기와 관리](./guides/use-meeting-minutes.mdx)
-- [Documents 화면 사용하기](./guides/manage-workspace-documents.mdx)
 
 ### Agent 만들기와 설정
 
@@ -65,24 +64,27 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 - [자동화와 Webhook](./capabilities/automation-and-webhooks.mdx)
 - [Webhook으로 Agent에게 이벤트 보내기](./guides/send-webhook-to-agent.mdx)
 
-### 계정과 조직 관리
+### 계정과 알림
 
-- [계정과 조직 관리](./capabilities/governance-and-settings.mdx)
 - [계정·조직·알림 설정 관리](./guides/manage-account-and-organization.mdx)
-- [조직 만들기와 멤버·Agent 관리](./guides/manage-organization.mdx)
-- [IAM, Policy, Role 관리](./guides/manage-iam.mdx)
 - [계정 보안과 MFA 관리](./guides/secure-your-account.mdx)
 - [알림 설정 관리](./guides/manage-notifications.mdx)
+
+### 테넌트 관리자
+
+- [계정과 조직 관리](./capabilities/governance-and-settings.mdx)
+- [조직 만들기와 멤버·Agent 관리](./guides/manage-organization.mdx)
+- [IAM, Policy, Role 관리](./guides/manage-iam.mdx)
+- [테넌트 공지 관리](./guides/manage-announcements.mdx)
 - [Audit Log 확인과 내보내기](./guides/use-audit-log.mdx)
-- [Analytics로 Agent 운영 확인](./guides/use-analytics.mdx)
-- [Dashboard와 Costs 사용하기](./guides/use-dashboard-and-costs.mdx)
-- [Billing과 구독 관리](./guides/manage-billing.mdx)
-- [Workspace 사용량과 System 상태 확인](./guides/check-workspace-and-system.mdx)
+- [분석 요약과 LLM 사용 비용 확인](./guides/use-analytics.mdx)
+- [대시보드와 비용 확인](./guides/use-dashboard-and-costs.mdx)
+- [요금제와 구독·결제 내역 확인](./guides/manage-billing.mdx)
+- [사용량과 Agent 상태 확인](./guides/check-workspace-and-system.mdx)
 
 ### 도움말
 
 - [도움말](./help/index.mdx)
-- [Portal 기능 접근 지도](./help/portal-feature-map.mdx)
 
 ### Agent용 문서 읽기
 

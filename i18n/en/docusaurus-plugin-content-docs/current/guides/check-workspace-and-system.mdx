@@ -1,31 +1,29 @@
 ---
-title: "Check workspace usage and system health"
-description: "Distinguish quota limits, permissions, and service failures."
+title: "Check usage and Agent status"
+description: "Review usage in Dashboard and plan management, then investigate Agent issues."
 ---
 
-# Check workspace usage and system health
+# Check usage and Agent status
 
-When Agent creation or Portal features fail, check workspace quota and system health as well as permissions.
+## Check resource usage
 
-## Workspace usage
+1. Select **Admin** at the top and open **Dashboard**.
+2. Find **Workspace Usage** and review the plan, member, organization, and Agent counts and limits.
+3. If you manage subscriptions, open **Platform → Plans**. The billing screen also shows resource usage for organizations, users, and Agents.
 
-**Settings → Workspace** shows the current tenant's plan, user count/limit, organization count/limit, Agent usage/limit, and available-plan overview.
+These counts describe tenant resources, not an Agent's file workspace. You do not need a separate Workspace entry in Settings.
 
-Reaching a limit can block Agent or organization creation. Review unused resources and plan needs before expanding IAM permissions.
+If a limit blocks creation, compare the required resources with the current limits and discuss cleanup or a [plan change](./manage-billing.mdx) with your tenant administrator.
 
-The Workspace view's other-plan flow directs users to sales or administrators, rather than immediate self-service switching. Include required users, organizations, Agents, features, and expected start date in a request. Before lowering a plan or resources, identify Agents and organizations affected by over-limit usage.
+## When an Agent does not respond
 
-## System health
+1. Open **Management → Agents** and check its status.
+2. Open its details and review the available metrics and logs.
+3. For webhook requests, check **Integrations → Webhooks → Events**.
+4. If several Agents are affected, report the time and scope to the operations contact.
 
-If you can access **Settings → System**, inspect the shown service states. Items and access depend on your role and organization settings. The page refreshes periodically and can be refreshed manually.
+System and Monitoring are not required steps in this customer workflow. Do not guess addresses for menus that are not shown.
 
-For unhealthy or unknown status, do not repeatedly change user settings. Give the operator the time and affected Agents, Rooms, and events.
+## If a menu is missing
 
-| Symptom | First checks |
-| --- | --- |
-| Cannot create an Agent or organization | Workspace quota and action permission |
-| Only one user cannot access a menu or action | Effective Permissions and organization membership |
-| Webhook event does not reach a Room | Event records, target Agent/Room, system health |
-| Several Agents stop responding together | System health, Agent status, operational announcements |
-
-Health is a diagnostic clue, not automatic recovery or proof of a cause. Restarts, deployment, and infrastructure changes follow authorized operator procedures.
+Dashboard, Agents, and plan management depend on your role and allowed menus. Use the [Portal menu guide](../help/portal-feature-map.mdx) and ask your tenant administrator to check usage or status when you cannot access those views.

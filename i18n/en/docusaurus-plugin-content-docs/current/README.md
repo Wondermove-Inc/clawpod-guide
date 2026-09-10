@@ -7,6 +7,7 @@ Public user and Agent documentation.
 ## Getting started
 
 - [Get started with ClawPod](./index.mdx)
+- [Find Portal menus and guides](./help/portal-feature-map.mdx)
 - [Create an account and sign in](./guides/start-account.mdx)
 - [Accept an organization invitation](./guides/accept-organization-invite.mdx)
 - [Complete workspace onboarding](./guides/complete-onboarding.mdx)
@@ -26,14 +27,12 @@ Public user and Agent documentation.
 ## Conversations and work
 
 - [Collaborate in a Chat Room](./guides/use-chat-room.mdx)
-- [Use Chat Archive](./guides/use-chat-archive.mdx)
-- [Use AI Chat](./guides/use-ai-chat.mdx)
+- [Find previous conversations](./guides/use-chat-archive.mdx)
 - [File formats and Agent artifacts](./guides/file-formats-and-artifacts.mdx)
 - [Request browser and CLI tasks](./guides/use-browser-and-cli.mdx)
 - [View Agent Desktop and conversations](./guides/use-agent-desktop.mdx)
 - [Track Tasks and Milestones](./guides/use-tasks-and-milestones.mdx)
 - [Create and manage meeting minutes](./guides/use-meeting-minutes.mdx)
-- [Use the Documents screen](./guides/manage-workspace-documents.mdx)
 
 ## Create and configure Agents
 
@@ -60,24 +59,27 @@ Public user and Agent documentation.
 - [Automation and webhooks](./capabilities/automation-and-webhooks.mdx)
 - [Send webhook events to an Agent](./guides/send-webhook-to-agent.mdx)
 
-## Account and organization
+## Account and notifications
 
-- [Account and organization administration](./capabilities/governance-and-settings.mdx)
 - [Manage account and organization settings](./guides/manage-account-and-organization.mdx)
-- [Create organizations and manage members](./guides/manage-organization.mdx)
-- [Manage IAM, Policies, and roles](./guides/manage-iam.mdx)
 - [Secure your account and manage MFA](./guides/secure-your-account.mdx)
 - [Manage notifications](./guides/manage-notifications.mdx)
+
+## Tenant administrators
+
+- [Account and organization administration](./capabilities/governance-and-settings.mdx)
+- [Create organizations and manage members](./guides/manage-organization.mdx)
+- [Manage IAM, Policies, and roles](./guides/manage-iam.mdx)
+- [Manage tenant announcements](./guides/manage-announcements.mdx)
 - [Read and export Audit Log](./guides/use-audit-log.mdx)
-- [Review Agent operations with Analytics](./guides/use-analytics.mdx)
-- [Use Dashboard and Costs](./guides/use-dashboard-and-costs.mdx)
-- [Manage billing and subscriptions](./guides/manage-billing.mdx)
-- [Check workspace usage and system health](./guides/check-workspace-and-system.mdx)
+- [Review analytics and LLM costs](./guides/use-analytics.mdx)
+- [Review Dashboard and costs](./guides/use-dashboard-and-costs.mdx)
+- [Review plans, subscriptions, and payments](./guides/manage-billing.mdx)
+- [Check usage and Agent status](./guides/check-workspace-and-system.mdx)
 
 ## Help
 
 - [Help](./help/index.mdx)
-- [Portal feature map](./help/portal-feature-map.mdx)
 
 ## Documentation for Agents
 

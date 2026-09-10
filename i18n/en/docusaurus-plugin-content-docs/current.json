@@ -34,5 +34,13 @@
   "sidebar.guideSidebar.category.Agent용 문서 읽기": {
     "message": "Documentation for Agents",
     "description": "The label for category 'Agent용 문서 읽기' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.계정과 알림": {
+    "message": "Account and notifications",
+    "description": "The label for category '계정과 알림' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.테넌트 관리자": {
+    "message": "Tenant administrators",
+    "description": "The label for category '테넌트 관리자' in sidebar 'guideSidebar'"
   }
 }

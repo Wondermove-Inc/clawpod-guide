@@ -1,28 +1,23 @@
 ---
-title: "Use Dashboard and Costs"
-description: "Review operational metrics, quota, and costs and customize your layout."
+title: "Review Dashboard and costs"
+description: "Check activity and resource usage, then review LLM costs."
 ---
 
-# Use Dashboard and Costs
+# Review Dashboard and costs
 
-Dashboard requires `analytics:dashboard:View`. **Costs** opens Analytics Costs and displays data within your analytics access.
+Dashboard and cost entries depend on role and permissions. Start in **Admin** mode.
 
 ## Dashboard
 
-1. Open <strong><span data-ui-label="nav.dashboard">Dashboard</span></strong>.
-2. Select `24h`, `7d`, `30d`, or `90d`.
-3. Read the four widgets: Agent insights, top Agents status, recent activity, and tenant quota.
-4. Select <strong><span data-ui-label="analyticsToolbar.editLayout">Edit Layout</span></strong> to drag widgets and resize with the lower-right handle.
-5. Select <strong><span data-ui-label="analyticsToolbar.lockLayout">Lock Layout</span></strong> when finished. Layout is saved in this browser's local storage.
-6. <strong><span data-ui-label="analyticsToolbar.reset">Reset</span></strong> restores this browser's default layout.
+1. Open **Dashboard** in the sidebar.
+2. Choose the reporting period at the top.
+3. Review quick insights, top Agents, recent activity, and workspace usage.
+4. Open an Agent link or **Management → Agents** for more detail.
 
-Layout changes affect presentation only, not Agents, quota, or costs.
+Workspace usage shows the tenant plan and member, organization, and Agent counts and limits. No separate Settings entry is required.
 
-## Costs
+## LLM costs
 
-1. Open **Costs** and choose a period.
-2. Read total cost, highest-cost model, input/output token totals, and average cost per request.
-3. Compare cost over time, hourly average, organization/model breakdowns, and the ten highest-cost Agents.
-4. For a concentration alert, narrow the period and top Agent and inspect configuration and execution records through [Agent management](./manage-agent.mdx).
+Open **Analytics → Costs** to review total costs and model, organization, and Agent breakdowns for the selected period. See [analytics and costs](./use-analytics.mdx).
 
-This view shows cost data. It does not set budgets, export costs, or change payment methods. Manage subscriptions and plans through [Billing](./manage-billing.mdx).
+LLM usage analysis is separate from [subscription payment history](./manage-billing.mdx). Align the period and scope when comparing metrics.

@@ -9,13 +9,17 @@ description: 개인 계정 설정과 조직 멤버십을 역할과 영향 범위
 
 ## 개인 계정 설정
 
-Portal sidebar의 <strong><span data-ui-label="settings.title">설정</span></strong>에서 다음 항목을 관리할 수 있습니다.
+왼쪽 아래 **계정 이름 → 설정**을 열고 다음 항목을 선택합니다. 상단 관리자 메뉴와 개인 설정은 별도입니다.
 
 - <strong><span data-ui-label="settings.nav.profile">프로필</span></strong>: 프로필과 비밀번호, MFA 관련 보안 설정
 - <strong><span data-ui-label="settings.nav.appearance">외관</span></strong>: Light, Dark, System 테마
 - <strong><span data-ui-label="settings.nav.notifications">알림</span></strong>: 알림 선호와 알림 목록
 
 <strong><span data-ui-label="settings.nav.profile">프로필</span></strong>, <strong><span data-ui-label="settings.nav.appearance">외관</span></strong>, <strong><span data-ui-label="settings.nav.notifications">알림</span></strong> 중 원하는 항목을 선택하고 변경한 뒤 <strong><span data-ui-label="common.save">저장</span></strong>이 표시되는 화면에서는 저장 완료를 확인하세요. MFA 또는 비밀번호를 바꾼 뒤에는 현재 사용 중인 기기와 복구 수단을 확인하세요. 알림을 끄기 전에 webhook 실패, task 변경처럼 놓치면 안 되는 알림이 무엇인지 팀과 합의하는 것이 좋습니다.
+
+## Portal 언어 변경
+
+왼쪽 아래 **계정 이름 → 언어**에서 표시되는 언어를 선택합니다. 현재 언어에는 선택 표시가 붙습니다. Portal의 언어 선택과 이 가이드 사이트의 한국어/English 선택은 별도입니다. 조직·환경에서 허용하는 언어만 표시될 수 있습니다.
 
 ## 조직과 멤버 관리
 
@@ -30,7 +34,7 @@ Portal sidebar의 <strong><span data-ui-label="settings.title">설정</span></st
 
 ## 알림 확인
 
-알림 목록에서는 유형·심각도로 필터링하고 개별 또는 전체 알림을 읽음 처리할 수 있습니다. 개별 알림을 삭제하거나 읽은 알림을 비울 수도 있으며, 이 동작은 알림 상태만 바꾸고 원래의 Agent·task·webhook 데이터를 바꾸지 않습니다.
+설정의 알림 또는 상단 알림의 **모든 알림 보기**에서 유형·심각도를 필터링하고 읽음 처리합니다. 상단 알림 패널에는 별도의 **알림 삭제** 동작이 있습니다. 전체 목록과 패널의 동작을 구분하며 [알림 안내](./manage-notifications.mdx)를 따르세요.
 
 중요한 운영 알림은 읽음 처리하기 전에 연결된 Room, event, task의 원본 기록을 확인하세요.
 

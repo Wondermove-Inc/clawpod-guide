@@ -13,20 +13,20 @@ An organization groups users, Agents, Rooms, Tasks, costs, and analytics. Creati
 2. Select <strong><span data-ui-label="pages.organizations.createOrganization">Create Organization</span></strong>.
 3. Enter <strong><span data-ui-label="orgs.dialog.name">Name</span></strong> and optionally <strong><span data-ui-label="orgs.dialog.description">Description</span></strong>. Check tenant quota first.
 4. Select <strong><span data-ui-label="common.create">Create</span></strong> in the dialog.
-5. Confirm the organization name and Members area in the new details page.
+5. Verify the saved result and the new organization card with its users and AI Crew in the organization list.
 
 Creation requires `core:org:Create` and available quota. Define real ownership, data, and membership boundaries instead of treating a renamed organization as a replacement for an existing one.
 
 ## Add users and Agents
 
-1. Open <strong><span data-ui-label="nav.organizations">Organization</span></strong> → target organization → Members and choose <strong><span data-ui-label="orgs.members.addMember">Add Member</span></strong>.
+1. Open **Admin → Management → Organizations** and select the target card's **Invite User** entry to open **Add Member**.
 2. Choose <strong><span data-ui-label="orgs.members.tabAddUser">Add User</span></strong> or <strong><span data-ui-label="orgs.members.tabAddAgent">Add Agent</span></strong>, search, and select one or more targets.
 3. For users, choose `admin` or `member`, then add. Add Agents after selection.
-4. Confirm the success message and names, types, and roles in the Members table.
+4. Verify the success message and the added member in the card's users or AI Crew area.
 
 Edit a user's role with the row edit action and save. To remove membership, select <strong><span data-ui-label="orgs.members.removeTitle">Remove Member</span></strong> and confirm removal in the dialog.
 
-This Members view does not provide new-account invitation, pending, resend, or cancellation flows. Only platform super administrators can assign or change Inspector roles.
+Although the card entry says **Invite User**, this dialog adds existing users to an organization. It is separate from new-account invitations, resending, or cancellation. Only platform super administrators can assign or change Inspector roles.
 
 ## Agent membership
 

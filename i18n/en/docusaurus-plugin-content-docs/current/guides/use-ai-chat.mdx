@@ -1,44 +1,12 @@
 ---
-title: "Use AI Chat"
-description: "Manage personal sessions, streamed responses, search, and artifacts."
+title: "Previous AI Chat guide"
+description: "Use the current customer Chat workflow."
 ---
 
-# Use AI Chat
+# Previous AI Chat guide
 
-AI Chat helps signed-in Portal users ask about ClawPod operations and assist with work. Its sessions are private to each user, unlike [Chat Rooms](./use-chat-room.mdx) with Agents.
+The customer menus checked for this guide do not expose a separate **OpenClaw AI / AI Chat** entry. This page does not promise that screen to every user.
 
-## Start and manage sessions
+To work with an Agent, select **Chat** at the top and follow the [Chat Room guide](./use-chat-room.mdx). For web tasks, verify the Agent's tools and permissions and follow [browser workflows](./use-browser-and-cli.mdx).
 
-1. Open <strong><span data-ui-label="aiChat.title">OpenClaw AI</span></strong> in the Portal.
-2. Select an existing session on the left or start a new conversation.
-3. Enter a question in the composer and choose <strong><span data-ui-label="aiChat.submitMessage">Submit</span></strong>.
-4. Responses stream into the conversation. Use <strong><span data-ui-label="aiChat.stopGenerating">Stop</span></strong> or `Esc` to stop the current response. The first user message becomes the session title, up to 100 characters.
-5. In history, use <strong><span data-ui-label="aiChat.history.searchPlaceholder">Search conversations</span></strong> to find sessions and <strong><span data-ui-label="aiChat.history.select">Select</span></strong> to select one or more, then <strong><span data-ui-label="aiChat.history.deleteTitle">Delete Conversation</span></strong>. Confirming deletion also deletes those sessions' messages.
-
-The list shows up to 50 of your own sessions, ordered by last modification.
-
-## Ask a scoped question
-
-Available Portal tools depend on your role. Platform super administrators and tenant administrators have administration and consultation tools; tenant users have Agent management and consultation tools; read-only users and Agents have common read tools. Do not request permission bypasses.
-
-Example: “List our organization's five highest-cost Agents over the last seven days and explain each cost in a table. Do not change settings.”
-
-Tool denials and failures appear in the conversation. Obtain required IAM access through the [IAM guide](./manage-iam.mdx).
-
-## Web search
-
-Search requires a query and uses five results by default. Result URLs and summaries are external information; open original sources for important decisions. Never include API keys, cookies, or personal information in a query.
-
-## Artifacts
-
-When AI Chat creates a document, HTML, SVG, React, research-paper, or code artifact, open it in the Artifact panel. Choose a version, inspect the preview or code, and copy the content to the clipboard. Portal AI Chat currently has no artifact file download button.
-
-Artifacts do not automatically change Portal settings or original Agent workspace files. Request changes separately in a [Chat Room](./use-chat-room.mdx), specifying the Agent and workspace.
-
-## Errors
-
-- An expired sign-in session redirects to sign-in.
-- For interrupted or unfinished responses, inspect the visible error. A fixed timeout is not a verified consumer guarantee.
-- An unavailable error appears when the AI Chat backend cannot be reached.
-
-These errors follow a different path from Agent model credentials. For Agent issues, see [providers and models](./select-models.mdx).
+Do not guess internal addresses or broaden permissions to open an absent menu. This page preserves the previous documentation link.

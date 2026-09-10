@@ -20,5 +20,7 @@
   "capabilities/portal-features",
   "capabilities/runtime-availability",
   "guides/manage-legal-documents",
-  "guides/manage-tenants"
+  "guides/manage-tenants",
+  "guides/manage-workspace-documents",
+  "guides/use-ai-chat"
 ]
