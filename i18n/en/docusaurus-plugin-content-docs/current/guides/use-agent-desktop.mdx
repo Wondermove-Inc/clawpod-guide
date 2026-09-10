@@ -5,7 +5,7 @@ description: "Use the running Agent Dashboard, VNC Desktop, and read-only conver
 
 # View Agent Desktop and conversations
 
-OpenClaw Dashboard requires a `running` Agent. Desktop requires a full-image Agent. `clawpod/agent-lite` has no Chromium, GUI desktop, or VNC/noVNC; arrange a [full image during creation](./create-agent.mdx) for GUI tasks.
+OpenClaw Dashboard requires a `running` Agent. Desktop requires a full-image Agent. `clawpod/agent-lite` has no Chromium, GUI desktop, or VNC/noVNC; confirm a Desktop-capable environment with your administrator [before creation](./create-agent.mdx) for GUI tasks. The standard creation form does not provide a full/lite image selection procedure.
 
 Agent details may show Desktop, Dashboard, and Conversations. These expose the Agent's environment and conversation data, so access only the Agents needed for your work.
 
@@ -20,7 +20,7 @@ The Portal proxy supplies the Gateway token server-side; users do not enter it. 
 ## Desktop
 
 1. In a running full-image Agent, open <strong><span data-ui-label="agentDetail.tabs.desktop">Remote Agent PC Control</span></strong>.
-2. If the state is <strong><span data-ui-label="vncDesktop.passwordNotSet">Password: Not set</span></strong>, select <strong><span data-ui-label="vncDesktop.setPassword">Set Password</span></strong>, enter a password, and <strong><span data-ui-label="common.save">Save</span></strong>.
+2. Open the password-status icon in the PC view. If the state is <strong><span data-ui-label="vncDesktop.passwordNotSet">Password: Not set</span></strong>, select <strong><span data-ui-label="vncDesktop.setPassword">Set Password</span></strong>, enter a password, and <strong><span data-ui-label="common.save">Save</span></strong>.
 3. If it is <strong><span data-ui-label="vncDesktop.passwordSet">Password: Set</span></strong>, use <strong><span data-ui-label="vncDesktop.change">Change</span></strong> to replace it. <strong><span data-ui-label="common.remove">Remove</span></strong> has not been verified to remove an existing password; do not use it as a way to return to passwordless VNC.
 4. Changing the password starts an Agent restart. The viewer loads a new connection after about eight seconds.
 
