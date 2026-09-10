@@ -5,7 +5,7 @@ description: 실행 중인 Agent의 OpenClaw Dashboard, VNC Desktop, Conversatio
 
 # Agent Desktop과 대화 기록 보기
 
-OpenClaw Dashboard는 `running` 상태의 Agent에서, Desktop은 full image Agent에서 사용합니다. `clawpod/agent-lite`에는 Chromium, GUI desktop, VNC/noVNC가 없으므로 GUI 작업용 Agent는 [생성 시 full image](./create-agent.mdx)를 선택하세요.
+OpenClaw Dashboard는 `running` 상태의 Agent에서, Desktop은 full image Agent에서 사용합니다. `clawpod/agent-lite`에는 Chromium, GUI desktop, VNC/noVNC가 없으므로 GUI 작업이 필요하면 [생성 전](./create-agent.mdx) 관리자에게 Desktop 지원 환경을 확인하세요. 일반 생성 화면에서 full/lite 이미지를 직접 선택하는 절차는 제공하지 않습니다.
 
 Agent 상세 화면에는 실행 중인 Agent의 Desktop, Dashboard, Conversations가 표시될 수 있습니다. 이 기능은 Agent의 실행 환경과 대화 데이터를 보여 주므로, 업무상 필요한 대상에만 접근하세요.
 
@@ -20,7 +20,7 @@ Gateway token은 Portal proxy가 서버에서 Agent에 전달하므로 사용자
 ## Desktop
 
 1. 실행 중인 full image Agent 상세에서 <strong><span data-ui-label="agentDetail.tabs.desktop">원격 에이전트 PC 제어</span></strong> 섹션을 엽니다.
-2. 상태가 <strong><span data-ui-label="vncDesktop.passwordNotSet">비밀번호: 미설정</span></strong>이면 <strong><span data-ui-label="vncDesktop.setPassword">비밀번호 설정</span></strong>을 선택하고 비밀번호를 입력한 뒤 <strong><span data-ui-label="common.save">저장</span></strong>을 선택합니다.
+2. PC 화면의 비밀번호 상태 아이콘을 선택해 메뉴를 엽니다. 상태가 <strong><span data-ui-label="vncDesktop.passwordNotSet">비밀번호: 미설정</span></strong>이면 <strong><span data-ui-label="vncDesktop.setPassword">비밀번호 설정</span></strong>을 선택하고 비밀번호를 입력한 뒤 <strong><span data-ui-label="common.save">저장</span></strong>을 선택합니다.
 3. 상태가 <strong><span data-ui-label="vncDesktop.passwordSet">비밀번호: 설정됨</span></strong>이면 <strong><span data-ui-label="vncDesktop.change">변경</span></strong>으로 교체합니다. <strong><span data-ui-label="common.remove">제거</span></strong>는 현재 기존 password 제거가 확인되지 않았으므로 passwordless VNC로 돌아가는 방법으로 사용하지 마세요.
 4. 비밀번호 변경 뒤 Agent restart가 시작되며, viewer는 약 8초 뒤 새 연결을 불러옵니다.
 

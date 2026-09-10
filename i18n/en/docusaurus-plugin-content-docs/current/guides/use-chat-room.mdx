@@ -11,9 +11,14 @@ A Chat Room gives users and Agents a shared conversation context. Access and par
 
 1. Open <strong><span data-ui-label="modeToggle.chat">Chat</span></strong> in the Portal.
 2. Create a Room from the left sidebar or select an existing one.
-3. For a new Room, choose its name and participants. Available participants depend on your access.
+3. For a new Room, choose **1:1** or **Group**, review participants and the name as described below, then create the Room. Available participants depend on your access.
 4. Confirm the new Room is selected and the intended users and Agents are present.
 5. Write your message. To clarify the intended Agent, select it from mention suggestions, then choose <strong><span data-ui-label="chat.send">Send</span></strong>.
+
+| Room type | Participants | Room name |
+| --- | --- | --- |
+| 1:1 | Select the Agent to talk to. | Generated automatically. |
+| Group | Select multiple Agents and optionally add teammates. | Optional; leaving it blank generates a name from participants. |
 
 All participating Agents can receive and process a Room message. A mention clarifies intent; it does not route exclusively to one Agent. If exactly one Agent must work, use a dedicated Room containing only that Agent. Webhook events also arrive as Room messages, so a separate automation Room can simplify operations.
 
@@ -24,6 +29,18 @@ Confirm that the message appears and the intended Agent responds or shows a proc
 Include the expected output and completion criteria, allowed material or attachments, constraints and prohibited actions, and whether the Agent should ask questions or may make assumptions.
 
 Example: “@DeploymentHelper summarize today's deployment failure events. Separate confirmed facts from items needing verification, and never output secret values.”
+
+### When chat modes are available
+
+If the composer shows a chat-mode menu, it offers the modes below. If the menu is absent, follow the normal message-writing steps above.
+
+| Mode | Purpose shown in the UI |
+| --- | --- |
+| Default | Follow the instructions provided. |
+| Discuss | Explore together and refine a plan. |
+| Execute | Carry out work more systematically. |
+
+The menu also indicates `Shift+Tab` for switching in the composer. If mode customization shows additional instructions, it accepts up to 240 characters and states that they accompany every message. Check that the instructions should apply repeatedly and keep sensitive values out. Selecting a mode does not grant tool permissions or authorize external actions.
 
 ## Files and outputs
 
@@ -45,6 +62,8 @@ The composer is locked while dictating. Speaking `@Agent` does not automatically
 Meeting features include recording consent, transcription, summaries, and discarding minutes. Follow [meeting minutes](./use-meeting-minutes.mdx) for the procedure and privacy boundaries.
 
 ## Clean up a Room
+
+Open the Room's more menu in the sidebar to see available actions such as rename, pin, mute notifications, hide, and delete. Use an action only when it is shown. Before hiding an important Room, confirm how you can find it again.
 
 Deleting a Room can affect access to its history. Preserve required outputs and decisions and check whether automation targets the Room before deleting. Adjust Room notification settings when alerts are no longer needed.
 
