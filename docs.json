@@ -44,7 +44,6 @@
         "pages": [
           "guides/create-agent",
           "guides/manage-agent",
-          "guides/use-agent-templates",
           "guides/manage-credentials",
           "guides/handle-secrets",
           "guides/select-models",

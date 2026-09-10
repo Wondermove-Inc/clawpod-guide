@@ -44,12 +44,15 @@ fallback은 “항상 더 싼 model”이 아니라 **실제로 인증·호출 �
 
 ## 설정 절차
 
+새 Agent는 [Agent 생성](./create-agent.mdx) 화면에서 역할별 모델과 인증 정보를 선택합니다. 기존 Agent의 모델은 다음 순서로 변경합니다.
+
 1. 필요한 provider Credential을 [AI Key와 Credential 관리](./manage-credentials.mdx)에서 준비합니다.
-2. Agent 생성 또는 설정에서 main model을 선택합니다.
-3. 필요할 때 sub, fallback, heartbeat model을 각각 선택합니다.
-4. 모든 선택 model에 필요한 credential이 같은 tenant에 연결됐는지 확인합니다.
-5. 비민감 test Room에서 main 응답, fallback 조건, tool 사용 가능 여부를 작은 요청으로 확인합니다.
-6. 비용·오류·latency는 [Analytics](./use-analytics.mdx)에서 추적하고, 문제가 생기면 한 번에 여러 역할을 바꾸지 않습니다.
+2. **에이전트** 목록에서 대상 Agent의 상세를 열고 **AI 리소스 설정 → 수정**을 선택합니다.
+3. 메인·서브·폴백·하트비트의 제공자와 모델을 필요한 범위에서 변경합니다.
+4. 저장된 키 선택 또는 키 직접 입력 영역에서 각 제공자에 필요한 인증 정보를 설정합니다. 선택한 Credential이 같은 tenant에서 사용 가능한지 확인합니다.
+5. 진행 중인 작업에 미칠 영향을 확인한 뒤 **저장 후 재시작**을 선택합니다. 변경하지 않으려면 **취소**를 선택합니다.
+6. Agent가 다시 실행 가능한 상태인지 확인하고 비민감 test Room에서 작은 요청으로 모델 응답과 필요한 도구 동작을 확인합니다.
+7. 비용·오류·latency는 [Analytics](./use-analytics.mdx)에서 추적하고, 문제가 생기면 한 번에 여러 역할을 바꾸지 않습니다.
 
 ## Local LLM 사용 시 전제조건
 
