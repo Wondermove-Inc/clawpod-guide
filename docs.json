@@ -47,7 +47,6 @@
           "guides/manage-credentials",
           "guides/handle-secrets",
           "guides/select-models",
-          "guides/manage-skills",
           "guides/configure-agent-environment",
           "guides/configure-agent-workspace-files",
           "capabilities/memory-and-configuration",

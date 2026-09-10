@@ -41,7 +41,6 @@ Public user and Agent documentation.
 - [Manage AI keys and credentials](./guides/manage-credentials.mdx)
 - [Handle secrets and sensitive values](./guides/handle-secrets.mdx)
 - [Choose providers and models](./guides/select-models.mdx)
-- [Use the Skill Marketplace](./guides/manage-skills.mdx)
 - [Set environment variables during Agent creation](./guides/configure-agent-environment.mdx)
 - [SOUL.md, AGENTS.md, and workspace files](./guides/configure-agent-workspace-files.mdx)
 - [Memory and Agent configuration](./capabilities/memory-and-configuration.mdx)

@@ -1,16 +1,15 @@
 ---
 title: 연동 기능
-description: AI 연결, Skill과 Webhook을 업무에 맞게 연결하고 관리합니다.
+description: AI 연결과 Webhook을 업무에 맞게 연결하고 관리합니다.
 ---
 
 # 연동 기능
 
-ClawPod에서 AI 연결을 준비하고, Skill로 업무 도구를 추가하거나, 외부 이벤트를 Webhook으로 전달할 수 있습니다.
+ClawPod에서 AI 연결을 준비하고 외부 이벤트를 Webhook으로 전달할 수 있습니다.
 
 | 필요한 연결 | 설정 가이드 | 정상 결과 확인 |
 | --- | --- | --- |
 | Agent가 사용할 AI 서비스 또는 Local LLM | [AI 키 관리](../guides/manage-credentials.mdx), [모델 선택](../guides/select-models.mdx) | 대상 Agent에서 작은 요청이 응답하는지 확인 |
-| 추가 업무 Skill | [Skill Marketplace](../guides/manage-skills.mdx) | 설치 상태 확인 후 필요한 계정·권한으로 작은 작업 실행 |
 | 외부 이벤트 전달 | [Webhook](../guides/send-webhook-to-agent.mdx) | Event 기록과 대상 Agent 또는 Room 확인 |
 | 이미지 생성·음성 전사 | [이미지와 음성 작업](./channels-and-media.mdx) | AI 연결과 도구 준비 상태, 실제 결과물 확인 |
 
@@ -20,6 +19,6 @@ ClawPod에서 AI 연결을 준비하고, Skill로 업무 도구를 추가하거�
 
 ## 연결 후 관리하기
 
-설정 저장이나 설치 요청 접수와 실제 사용 가능 상태는 다릅니다. 각 가이드의 정상 결과를 확인하고 비민감 데이터로 시험하세요. 실패하면 연결 상태와 오류를 확인한 뒤 다시 시도합니다.
+설정 저장이나 요청 접수와 실제 사용 가능 상태는 다릅니다. 각 가이드의 정상 결과를 확인하고 비민감 데이터로 시험하세요. 실패하면 연결 상태와 오류를 확인한 뒤 다시 시도합니다.
 
-더 이상 필요하지 않으면 해당 가이드에 따라 AI 연결을 해제하거나 Skill을 제거하고 Webhook Rule을 중지합니다. ClawPod에서 연결을 삭제해도 외부 서비스의 API key 자체가 폐기되는 것은 아닙니다.
+더 이상 필요하지 않으면 해당 가이드에 따라 AI 연결을 해제하거나 Webhook Rule을 중지합니다. ClawPod에서 연결을 삭제해도 외부 서비스의 API key 자체가 폐기되는 것은 아닙니다.
