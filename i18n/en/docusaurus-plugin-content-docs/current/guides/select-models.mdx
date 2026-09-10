@@ -13,7 +13,7 @@ Agent creation and settings support **main**, **sub**, **fallback**, and **heart
 | --- | --- | --- |
 | Anthropic | API key or setup token | Standard selector; Agent binding accepts API keys only |
 | OpenAI | API key | Standard selector |
-| OpenAI Codex | `auth.json` | Standard selector; subscription candidates depend on catalog status |
+| OpenAI Codex | ChatGPT sign-in or `auth.json` | Standard selector; subscription candidates depend on catalog status |
 | Google Gemini | API key | Standard selector |
 | OpenRouter | API key | Catalog models can appear in the standard selector |
 | Local LLM (Ollama) | Server URL and model | Models can be assigned to roles after a connection test; no API key support |
@@ -21,7 +21,7 @@ Agent creation and settings support **main**, **sub**, **fallback**, and **heart
 
 The Credential dialog has six service choices: Anthropic, OpenAI, OpenAI Codex, Google, OpenRouter, and Local LLM. Local LLM distinguishes Ollama from OpenAI-compatible servers, giving seven runtime provider identifiers. The hosted selector uses the first five hosted providers.
 
-See [provider keys and Codex authentication](./manage-credentials.mdx#obtain-provider-api-keys). `auth.json` is a separate JSON login credential, not a replacement string for an OpenAI API key. Use the provided Portal settings and each service's terms.
+See [provider API keys](./manage-credentials.mdx#obtain-provider-api-keys) or [Codex ChatGPT sign-in](./manage-credentials.mdx#connect-openai-codex-with-chatgpt-sign-in). Sign in through the Portal or register an existing `auth.json`. Follow each service's terms.
 
 ## Available models
 

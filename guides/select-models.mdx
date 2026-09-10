@@ -13,7 +13,7 @@ Agent는 하나의 model만 쓰도록 고정할 필요가 없습니다. Portal�
 | --- | --- | --- |
 | Anthropic | API key 또는 setup token | 일반 selector의 provider. Agent binding은 API key만 허용됩니다. |
 | OpenAI | API key | 일반 selector의 provider |
-| OpenAI Codex | `auth.json` | 일반 selector의 provider. subscription 기반 candidate는 catalog 상태에 따라 표시됩니다. |
+| OpenAI Codex | ChatGPT 로그인 또는 `auth.json` | 일반 selector의 provider. subscription 기반 candidate는 catalog 상태에 따라 표시됩니다. |
 | Google Gemini | API key | 일반 selector의 provider |
 | OpenRouter | API key | 일반 selector에서 catalog의 model을 통합해 표시할 수 있습니다. |
 | Local LLM (Ollama) | server URL, 선택 model | local server 연결·test 뒤 선택 model을 역할에 자동 배정할 수 있습니다. API key는 지원하지 않습니다. |
@@ -21,7 +21,7 @@ Agent는 하나의 model만 쓰도록 고정할 필요가 없습니다. Portal�
 
 Portal의 credential dialog는 Anthropic, OpenAI, OpenAI Codex, Google, OpenRouter, Local LLM의 여섯 service 선택지를 제공합니다. Local LLM 안에서 Ollama와 OpenAI-compatible server를 구분하므로, runtime provider identifier는 표처럼 일곱 가지가 됩니다. Portal의 hosted provider selector는 앞의 다섯 hosted provider를 기준으로 동작합니다.
 
-API key 발급 위치와 Codex CLI로 `auth.json`을 만드는 절차는 [AI Key와 Credential 관리](./manage-credentials.mdx#provider-api-key-발급하기)를 따르세요. `auth.json`은 OpenAI API key의 대체 문자열이 아니라 Codex 로그인으로 생기는 별도 JSON credential입니다.
+API key 발급은 [Credential 관리](./manage-credentials.mdx#provider-api-key-발급하기)를, OpenAI Codex 연결은 [ChatGPT 로그인 안내](./manage-credentials.mdx#openai-codex-로그인으로-연결하기)를 따르세요. Portal에서 로그인하거나 기존 `auth.json`을 직접 등록할 수 있습니다.
 
 연결 방법은 Portal에서 제공하는 설정과 각 서비스의 사용 조건을 따릅니다.
 
