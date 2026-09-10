@@ -7,6 +7,7 @@
         "group": "시작하기",
         "pages": [
           "index",
+          "help/portal-feature-map",
           "guides/start-account",
           "guides/accept-organization-invite",
           "guides/complete-onboarding",
@@ -31,13 +32,11 @@
         "pages": [
           "guides/use-chat-room",
           "guides/use-chat-archive",
-          "guides/use-ai-chat",
           "guides/file-formats-and-artifacts",
           "guides/use-browser-and-cli",
           "guides/use-agent-desktop",
           "guides/use-tasks-and-milestones",
-          "guides/use-meeting-minutes",
-          "guides/manage-workspace-documents"
+          "guides/use-meeting-minutes"
         ]
       },
       {
@@ -70,14 +69,20 @@
         ]
       },
       {
-        "group": "계정과 조직 관리",
+        "group": "계정과 알림",
+        "pages": [
+          "guides/manage-account-and-organization",
+          "guides/secure-your-account",
+          "guides/manage-notifications"
+        ]
+      },
+      {
+        "group": "테넌트 관리자",
         "pages": [
           "capabilities/governance-and-settings",
-          "guides/manage-account-and-organization",
           "guides/manage-organization",
           "guides/manage-iam",
-          "guides/secure-your-account",
-          "guides/manage-notifications",
+          "guides/manage-announcements",
           "guides/use-audit-log",
           "guides/use-analytics",
           "guides/use-dashboard-and-costs",
@@ -88,8 +93,7 @@
       {
         "group": "도움말",
         "pages": [
-          "help/index",
-          "help/portal-feature-map"
+          "help/index"
         ]
       },
       {

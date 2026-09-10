@@ -66,3 +66,7 @@ Set repository Pages Source to GitHub Actions. Organization restrictions may req
 The Korean site is `https://wondermove-inc.github.io/clawpod-guide/`; English is under `/en/`. Confirm deployment in Actions. For domain changes, update `url`, `baseUrl`, Pages/DNS settings, and recheck links.
 
 Each language has local search, `guide-index.json`, `llms.txt`, and raw Markdown. No external search account is needed. The original Korean index and document paths used by the Agent MCP remain unchanged.
+
+## Menu and workflow verification
+
+Before documenting a Portal entry point, record the tested environment, account role, visible navigation, and actual click destination in a private verification report. A route file, translation key, or successful documentation build is not proof that a customer can access a feature. Distinguish tenant administration from platform operations. Keep internal hostnames, account data, and screenshots containing customer content out of this public repository. Update both languages and search indexes when retiring an entry point; preserve previous document URLs with accurate guidance.

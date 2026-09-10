@@ -1,26 +1,20 @@
 ---
 title: "Manage notifications"
-description: "Set your in-app and browser push preferences and read notification history."
+description: "Review notification history, delivery preferences, and panel actions."
 ---
 
 # Manage notifications
 
-<strong><span data-ui-label="notifications.page.title">Notifications</span></strong> shows notifications and your delivery preferences. These settings do not change other users' preferences or Agent execution policy.
+## Open preferences
 
-## Delivery
+Open **your account name at the bottom left → Settings → Notifications**, or use the top notification button and **View all notifications**.
 
-1. Open <strong><span data-ui-label="notifications.page.title">Notifications</span></strong>.
-2. Toggle <strong><span data-ui-label="notifications.settings.inAppNotifications">In-App Notifications</span></strong>.
-3. In a supported browser, enable <strong><span data-ui-label="notifications.settings.pushNotifications">Push Notifications</span></strong> and approve the permission prompt.
+Choose the in-app and browser push preferences offered by the screen. Push requires permission in the current browser and site; another device or browser may require its own permission. If push is unavailable, check browser and operating-system notification settings.
 
-Push depends on the browser and current origin's permission. Allow it separately on other devices or browsers. The toggle cannot be enabled if permission is denied or the environment is unsupported. Check operating-system notification blocks and browser site permissions too.
+## Types and history
 
-## Types
+Available notification types depend on your role. Enable or disable only those shown to you. Ensure important alerts remain covered before disabling them.
 
-Administrators may see message, Agent error/lifecycle, security, system, Skill, and usage types. Tenant administrators may see member-related types; ordinary members may see only messages. Change only the types shown for your account.
+Use type and severity filters in the full list, open the linked item when needed, and mark individual or all notifications read. The full list does not offer deletion. The popup opened by the top notification button has a separate **Delete notification** action for each item.
 
-Ensure alternative monitoring before disabling critical Agent or security alerts. Preferences do not delete original Agent, Task, or webhook events and execution records.
-
-## History
-
-Apply available type and severity filters, open an item to verify its linked target, and mark individual or all notifications read. The current Portal notification list has no delete button. Marking read does not change original Room, Task, Agent, or webhook data.
+Notification actions do not delete the original Room, Task, Agent, or webhook data. Opening a Room may also update related read status.

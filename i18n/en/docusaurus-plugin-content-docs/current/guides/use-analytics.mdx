@@ -1,20 +1,25 @@
 ---
-title: "Review Agent operations with Analytics"
-description: "Interpret Overview, Costs, and Monitoring within the correct scope."
+title: "Review analytics and LLM costs"
+description: "Use the Analytics menus in Admin mode to review activity and model costs."
 ---
 
-# Review Agent operations with Analytics
+# Review analytics and LLM costs
 
-Analytics shows activity, cost, and performance for accessible Agents and organizations. Metrics inform operations but cannot establish a conversation or incident's cause on their own.
+## Open analytics
 
-The sidebar offers **Overview**, **Costs**, and **Monitoring**. Period selectors include ranges such as 24 hours, seven days, 30 days, and 90 days. Compare the same period and organization scope across views.
+Select **Admin** at the top, then open the following entries under **Analytics**. Visible menus and data depend on your role and permissions.
 
-## Review sequence
+| Menu | What it shows |
+| --- | --- |
+| Overview | Active Agents, processed messages, total cost and tokens, LLM calls, conversations, and organization metrics |
+| Costs | Total cost, model/organization/Agent costs, and daily spending |
 
-1. Check request volume, conversations, errors, and anomalies in Overview.
-2. Compare period, model, and usage changes with cost increases in Costs.
-3. For Monitoring warnings, inspect System health, Agent logs, and related webhook Events together.
+Choose the period in each view. Compare the same period and organization scope. LLM usage costs are separate from subscription payments; use [plan management](./manage-billing.mdx) for the latter.
 
-User usage, conversations, and costs are operational data. Access only what your role and task require. Check screenshots and exports for personal/customer data before sharing.
+## Investigate changes
 
-For poor performance or rising cost, inspect period, Agent, organization, and recent configuration changes before changing models, credentials, or permissions. Act in a small scope first.
+1. Review activity and error rates in Overview.
+2. Compare cost changes with model, Agent, and usage changes in Costs.
+3. If the cause remains unclear, review Agent details, logs, and related webhook Events.
+
+Metrics alone do not establish a failure's cause or authorize configuration changes. Platform operations menus such as Monitoring and System are outside this customer workflow.

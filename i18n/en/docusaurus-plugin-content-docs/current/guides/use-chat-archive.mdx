@@ -1,25 +1,21 @@
 ---
-title: "Use Chat Archive"
-description: "Find accessible Room history and manage Rooms within your permissions."
+title: "Find previous conversations"
+description: "Use room search and message search to find accessible history."
 ---
 
-# Use Chat Archive
+# Find previous conversations
 
-Chat Archive is a view of accessible Chat Room history, not a separate export store. The list follows `core:chat:List` permissions and tenant, organization, and internal-visibility rules.
+## Find a Room
 
-## Find and read history
+1. Select **Chat** at the top.
+2. Enter the Room name in the sidebar's room search.
+3. If the recent list does not include it and **View all** is shown, expand the list.
+4. Select an accessible Room to read its history.
 
-1. Open **Chat Archive** in the Portal.
-2. Search by Room name to narrow the list.
-3. Select a Room to open its message history.
-4. Scroll up for older messages. New messages arrive through WebSocket; an immediate refresh interval during disconnection is not guaranteed.
+This workflow does not require a separate Chat Archive menu. Do not guess addresses or IDs for Rooms you cannot see.
 
-Opening a Room updates its read status. Access only Rooms available in your list; do not guess or share other Room addresses or IDs.
+## Find a message
 
-## Create and delete Rooms
+Open **Message search** and enter a term. Search applies to loaded messages, so scroll up to load older history first. See the [Chat Room guide](./use-chat-room.mdx).
 
-Use **+** at the top right to create a direct or group Room. Use **Select** to choose multiple existing Rooms for deletion.
-
-Delete only Rooms you can manage and check the impact on other participants. Open and download required conversations' artifacts before deletion. Chat Archive does not export an entire conversation.
-
-To send messages or change participants, follow the [Chat Room guide](./use-chat-room.mdx).
+Opening a Room may update its read status. You do not need to delete a Room or change its participants to read history.

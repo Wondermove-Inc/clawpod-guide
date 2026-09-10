@@ -147,3 +147,7 @@ npm run build
 영어 검색 인덱스와 README는 생성 파일입니다. `--check`로 최신 여부를 검사합니다. 메뉴 번역은 `i18n/en/docusaurus-plugin-content-docs/current.json`과 `i18n/en/docusaurus-theme-classic/`에서 관리합니다. 개발 중 영어 미리보기는 `npm run start -- --locale en`으로 실행합니다.
 
 한국어는 `/clawpod-guide/`, 영어는 `/clawpod-guide/en/`에 배포됩니다. 각 언어에 검색 인덱스와 원본 Markdown, `llms.txt`를 별도로 제공하며 기존 Agent MCP의 한국어 문서 경로와 인덱스 구조는 유지합니다.
+
+## Menu and workflow verification
+
+Before documenting a Portal entry point, record the tested environment, account role, visible navigation, and actual click destination in a private verification report. A route file, translation key, or successful documentation build is not proof that a customer can access a feature. Distinguish tenant administration from platform operations. Keep internal hostnames, account data, and screenshots containing customer content out of this public repository. Update both languages and search indexes when retiring an entry point; preserve previous document URLs with accurate guidance.

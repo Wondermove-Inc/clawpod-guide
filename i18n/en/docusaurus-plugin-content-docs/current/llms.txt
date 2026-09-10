@@ -18,3 +18,5 @@ Consumer and Agent-facing product documentation for ClawPod.
 - [Webhooks](./guides/send-webhook-to-agent.mdx)
 
 For the complete table of contents, read [README.md](./README.md). For documentation maintenance rules, read [DOCUMENTATION.md](./DOCUMENTATION.md).
+
+- [Portal menus and role boundaries](./help/portal-feature-map.mdx): start from visible menus; never infer customer availability from a surviving route or an old guide.
