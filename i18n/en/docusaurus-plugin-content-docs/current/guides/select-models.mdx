@@ -7,6 +7,8 @@ description: "Configure main, sub, fallback, and heartbeat models with matching 
 
 Agent creation and settings support **main**, **sub**, **fallback**, and **heartbeat** models. Choices must match actual credentials, the model catalog, and the runtime release.
 
+**The current recommendation is to use the same provider and model for main and heartbeat.** Check both settings when creating an Agent or changing its models.
+
 ## Managed providers
 
 | Provider | Credential | Model selection |
@@ -32,7 +34,7 @@ Use the current Portal list rather than a fixed list in documentation. Service a
 | main | Primary responses and final decisions | Balance quality, tool compatibility, and cost |
 | sub | Research, drafts, and supporting work | Can be lighter than main; do not delegate sensitive judgments |
 | fallback | Alternative when main fails | Must have working authentication and access, including another provider's credential if needed |
-| heartbeat | Periodic check-in turns | Choose for short checks; this does not enable a Cloud self-service scheduler |
+| heartbeat | Periodic check-in turns | Use the same provider and model as main; this does not enable a Cloud self-service scheduler |
 
 Fallback is a usable alternate route, not simply a cheaper model. If it uses another provider, connect both credentials and verify each in a test Room.
 
@@ -42,7 +44,7 @@ For a new Agent, select models and credentials during [Agent creation](./create-
 
 1. Prepare [provider credentials](./manage-credentials.mdx).
 2. Open the target Agent's details from the Agent list and edit its AI resource settings.
-3. Change providers and models for main, sub, fallback, and heartbeat as needed.
+3. Change providers and models for main, sub, fallback, and heartbeat as needed. **We recommend matching heartbeat to the main provider and model.**
 4. Choose a saved key or use the direct key entry field for each provider. Verify the selected credentials are available in the same tenant.
 5. Check the impact on ongoing work, then choose the action to **save and restart**. Choose cancel to leave without changes.
 6. Wait until the Agent is available again, then verify model responses and required tools with a small, non-sensitive test request.
@@ -50,6 +52,6 @@ For a new Agent, select models and credentials during [Agent creation](./create-
 
 ## Local LLM prerequisites
 
-Register an Ollama or OpenAI-compatible server and pass the connection test. If parameter-size information is available, the Portal can assign a larger model to main and a smaller one to heartbeat. Review these assignments for access scope, performance, privacy, and fallback.
+Register an Ollama or OpenAI-compatible server and pass the connection test. If models are assigned automatically, review main and heartbeat before saving and match their provider and model according to the current recommendation. Also check access scope, performance, privacy, and fallback.
 
 A successful connection test still requires a real response from the target Agent. Verify server access and model readiness. For other integrations, first confirm a supported Portal setup path; do not guess settings or paste secrets into conversation.

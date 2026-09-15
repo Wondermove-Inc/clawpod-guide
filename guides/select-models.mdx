@@ -5,7 +5,9 @@ description: ClawPod Agent의 main·sub·fallback·heartbeat model을 credential
 
 # Provider와 model 선택
 
-Agent는 하나의 model만 쓰도록 고정할 필요가 없습니다. Portal의 Agent 생성·설정 흐름은 **main**, **sub**, **fallback**, **heartbeat** 역할별 model을 선택할 수 있습니다. 이 선택은 Agent가 실제로 호출할 provider credential, model catalog, runtime release와 함께 맞아야 합니다.
+Portal의 Agent 생성·설정 흐름은 **main**, **sub**, **fallback**, **heartbeat** 역할별 model을 선택할 수 있습니다. 이 선택은 Agent가 실제로 호출할 provider credential, model catalog, runtime release와 함께 맞아야 합니다.
+
+**현재 권장 설정은 메인(main)과 하트비트(heartbeat)에 같은 제공자의 동일한 모델을 선택하는 것입니다.** 새 Agent를 만들거나 기존 모델을 변경할 때 두 설정을 함께 확인하세요.
 
 ## Cloud에서 관리하는 provider
 
@@ -38,7 +40,7 @@ API key 발급은 [Credential 관리](./manage-credentials.mdx#provider-api-key-
 | main | 최종 판단과 주요 응답 | 업무 품질·tool compatibility·비용을 함께 검토합니다. |
 | sub | 조사, 초안, 보조 작업 | main보다 가벼운 model을 쓸 수 있지만 민감 판단을 위임하지 않습니다. |
 | fallback | main 호출 실패 시 대체 | main과 다른 provider를 쓰면 그 provider credential도 연결해야 합니다. |
-| heartbeat | 정기 점검 turn | 짧은 점검에 맞는 model을 선택하고, heartbeat 자체가 Cloud self-service scheduler라는 뜻은 아닙니다. |
+| heartbeat | 정기 점검 turn | 메인과 같은 제공자의 동일한 모델을 권장합니다. heartbeat 자체가 Cloud self-service scheduler라는 뜻은 아닙니다. |
 
 fallback은 “항상 더 싼 model”이 아니라 **실제로 인증·호출 가능한 대체 경로**여야 합니다. main과 fallback이 서로 다른 provider라면, 두 credential을 모두 연결하고 test Room에서 각각 작동을 확인하세요.
 
@@ -48,7 +50,7 @@ fallback은 “항상 더 싼 model”이 아니라 **실제로 인증·호출 �
 
 1. 필요한 provider Credential을 [AI Key와 Credential 관리](./manage-credentials.mdx)에서 준비합니다.
 2. **에이전트** 목록에서 대상 Agent의 상세를 열고 **AI 리소스 설정 → 수정**을 선택합니다.
-3. 메인·서브·폴백·하트비트의 제공자와 모델을 필요한 범위에서 변경합니다.
+3. 메인·서브·폴백·하트비트의 제공자와 모델을 필요한 범위에서 변경합니다. **하트비트는 메인과 같은 제공자·모델로 설정하는 것을 권장합니다.**
 4. 저장된 키 선택 또는 키 직접 입력 영역에서 각 제공자에 필요한 인증 정보를 설정합니다. 선택한 Credential이 같은 tenant에서 사용 가능한지 확인합니다.
 5. 진행 중인 작업에 미칠 영향을 확인한 뒤 **저장 후 재시작**을 선택합니다. 변경하지 않으려면 **취소**를 선택합니다.
 6. Agent가 다시 실행 가능한 상태인지 확인하고 비민감 test Room에서 작은 요청으로 모델 응답과 필요한 도구 동작을 확인합니다.
@@ -56,7 +58,7 @@ fallback은 “항상 더 싼 model”이 아니라 **실제로 인증·호출 �
 
 ## Local LLM 사용 시 전제조건
 
-Local LLM은 Ollama 또는 OpenAI-compatible server를 등록하고 연결 test를 통과해야 합니다. 선택 model의 parameter size 정보가 있으면 Portal은 큰 model을 main, 작은 model을 heartbeat처럼 역할에 자동 배정할 수 있습니다. 자동 배정 결과도 그대로 승인하지 말고, server 접근 범위·성능·privacy·fallback을 확인하세요.
+Local LLM은 Ollama 또는 OpenAI-compatible server를 등록하고 연결 test를 통과해야 합니다. 역할별 모델이 자동 배정되더라도 저장 전에 메인과 하트비트를 확인하고, 현재 권장사항에 따라 같은 제공자·모델로 맞추세요. server 접근 범위·성능·privacy·fallback도 확인합니다.
 
 연결 테스트 성공 뒤에도 대상 Agent에서 실제 모델 응답을 확인하세요. 서버 접근 권한과 선택한 모델의 준비 상태가 맞아야 합니다.
 
