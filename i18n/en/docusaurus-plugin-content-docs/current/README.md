@@ -56,6 +56,7 @@ Public user and Agent documentation.
 
 - [Send email with Resend](./guides/use-resend-email.mdx)
 - [Connect and use Google Workspace](./guides/use-google-workspace.mdx)
+- [Talk to your Agent in Slack](./guides/use-slack.mdx)
 
 ## Event integrations
 
