@@ -60,6 +60,13 @@
         ]
       },
       {
+        "group": "외부 서비스 연결",
+        "pages": [
+          "guides/use-resend-email",
+          "guides/use-google-workspace"
+        ]
+      },
+      {
         "group": "이벤트 연동",
         "pages": [
           "capabilities/automation-and-webhooks",

@@ -42,5 +42,9 @@
   "sidebar.guideSidebar.category.테넌트 관리자": {
     "message": "Tenant administrators",
     "description": "The label for category '테넌트 관리자' in sidebar 'guideSidebar'"
+  },
+  "sidebar.guideSidebar.category.외부 서비스 연결": {
+    "message": "External service connections",
+    "description": "The label for category '외부 서비스 연결' in sidebar 'guideSidebar'"
   }
 }

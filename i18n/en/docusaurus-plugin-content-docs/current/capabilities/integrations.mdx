@@ -1,19 +1,21 @@
 ---
 title: "Connections and integrations"
-description: "Set up AI credentials and webhooks, then verify each connection."
+description: "Connect AI services, Resend, Google Workspace, and webhooks."
 ---
 
 # Connections and integrations
 
-ClawPod connections include AI credentials and webhooks.
+ClawPod connections include AI credentials and webhooks. To connect Resend or Google Workspace, ask your Agent to install the corresponding skill from the capability registry and guide you through account setup.
 
 | Connection | Setup and verification |
 | --- | --- |
 | AI provider | [Credentials](../guides/manage-credentials.mdx) and [models](../guides/select-models.mdx); test a small Agent response |
 | Webhook | [Webhooks](../guides/send-webhook-to-agent.mdx); verify the event and target |
 | Image or audio tool | [Media tools](./channels-and-media.mdx); verify readiness and the actual result |
+| Resend email | [Connect Resend](../guides/use-resend-email.mdx); verify the key, sender domain, and test submission |
+| Google mail, calendars, files, and documents | [Connect Google Workspace](../guides/use-google-workspace.mdx); verify authorization, granted permissions, and service access |
 
-Before connecting, check the organization, target Agent, permissions, and data-transfer scope. Enter keys in the designated settings, not Chat, documentation, or Skill packages.
+Before connecting, check the organization, target Agent, permissions, and data-transfer scope. Follow each service guide for authentication. Use [handling secrets](../guides/handle-secrets.mdx) to register API keys for Agent work; do not copy values into ordinary documents, shared conversations, or Skill packages.
 
 Saving a setting or accepting a request does not prove readiness. Test with non-sensitive data and inspect status and errors on failure.
 

@@ -52,6 +52,11 @@ Public user and Agent documentation.
 - [BOOTSTRAP.md, IDENTITY.md, USER.md, and HEARTBEAT.md](./workspace-files/bootstrap-and-identity.mdx)
 - [HEARTBEAT.md and periodic checks](./guides/configure-heartbeat.mdx)
 
+## External service connections
+
+- [Send email with Resend](./guides/use-resend-email.mdx)
+- [Connect and use Google Workspace](./guides/use-google-workspace.mdx)
+
 ## Event integrations
 
 - [Automation and webhooks](./capabilities/automation-and-webhooks.mdx)
