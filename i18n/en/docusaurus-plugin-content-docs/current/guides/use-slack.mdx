@@ -1,0 +1,72 @@
+---
+title: Talk to your Agent in Slack
+description: Ask your Agent to connect Slack, complete sign-in and channel setup, and start a conversation with a mention.
+---
+
+# Talk to your Agent in Slack
+
+Connect a ClawPod Agent to a channel in your Slack workspace to request work by mentioning the bot. Start by asking the Agent to connect Slack; this flow does not require a separate skill installation request. Have the Agent first check its available Slack connection features and browser access.
+
+## Before you start
+
+- A ClawPod Agent with [access to its browser](./use-agent-desktop.mdx)
+- A Slack account and permission to install an app in the target workspace
+- A channel and a name for the bot
+
+Your organization may require Slack administrator approval for app installation. Sign in through the Agent's dedicated browser rather than sharing your personal browser profile or password manager.
+
+## Ask your Agent to connect
+
+Open a private 1:1 conversation with the target Agent in ClawPod. Replace the bracketed values and send:
+
+```text
+Connect yourself to [channel name] in the Slack workspace [workspace name].
+Use [bot name] as the bot's name.
+
+Open the sign-in page in your browser; I will complete sign-in and MFA.
+Prepare the Slack app and connection using Socket Mode,
+and tell me when my confirmation is needed, including app installation.
+If the channel does not exist, ask whether it should be public or private before creating it.
+Invite the bot to the target channel and add its channel ID to the connection allowlist.
+Keep tokens in protected connection settings, without displaying them in Chat or reports.
+Finally, send a test message to the target channel,
+and check with me that you respond when I mention the bot in Slack.
+```
+
+## Sign in and complete setup
+
+1. Complete sign-in, MFA, and any other identity checks in the Slack page opened by the Agent. See [using the Agent desktop](./use-agent-desktop.mdx).
+2. Check the target workspace and bot name. The Agent prepares the Slack app and the settings required for a Socket Mode connection.
+3. Review the permissions requested during app installation and complete any required approval. If administrator approval is requested, that step remains pending until approval is granted.
+4. The Agent stores the Bot Token and App-Level Token securely and applies them to the Slack connection settings. Ask it to check the actual connection, rather than treating token storage as completed setup.
+5. Check that the bot has joined the target channel and that its channel ID is registered in the Agent's connection allowlist. A private channel may require an invitation from an existing member with access.
+
+If you need to invite the bot yourself, open the target Slack channel, enter `/invite`, and select the bot. If the channel does not exist, decide whether it should be public or private before creating it.
+
+Do not copy tokens into Chat, ordinary documents, or reports. See [handling secrets](./handle-secrets.mdx) for credential guidance. Registering a secret and configuring the Slack connection to use it are separate steps.
+
+## Start a conversation with a mention
+
+Mention `@bot-name` in the connected Slack channel to start a conversation. Select the bot from Slack's autocomplete list before sending your message.
+
+> @bot-name Please confirm that you are connected.
+
+Typing the bot's name as ordinary text is not the same as mentioning it. Check that Slack displays your selection as a bot mention.
+
+Verify both directions before considering the connection complete:
+
+- **Agent → Slack:** The requested test message appears in the target channel.
+- **Slack → Agent:** The Agent responds to your mention in that channel or a thread.
+
+Installing the app or obtaining tokens does not confirm two-way conversation. Ask the Agent to summarize completed steps, test results, and any remaining work.
+
+## Troubleshoot or disconnect
+
+| Situation | What to check |
+| --- | --- |
+| Installation requests administrator approval | Check the app name and requested permissions, and follow your organization's approval process. App creation and installation permissions can differ. |
+| `channel_not_found` | Ask the Agent to check that the channel exists, the bot has joined and has access, and the channel ID is correct. |
+| The test message appears, but mentions receive no reply | Check that you used a real bot mention. Ask the Agent to inspect the channel allowlist, incoming-event settings, connection status, and whether configuration changes have taken effect. |
+| The Slack connection itself fails | Ask the Agent to check Socket Mode and whether both tokens are usable. Do not include token values in error reports. |
+
+To stop the connection, ask the Agent to disconnect the specified workspace or channel. Removing the Slack app entirely or revoking its tokens also requires action in Slack. First check whether another connection uses the same app.

@@ -61,6 +61,7 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 
 - [Resend로 이메일 보내기](./guides/use-resend-email.mdx)
 - [Google Workspace 연결하고 사용하기](./guides/use-google-workspace.mdx)
+- [Slack에서 Agent와 대화하기](./guides/use-slack.mdx)
 
 ### 이벤트 연동
 
