@@ -57,6 +57,11 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 - [BOOTSTRAP.md, IDENTITY.md, USER.md, HEARTBEAT.md](./workspace-files/bootstrap-and-identity.mdx)
 - [HEARTBEAT.md와 주기 점검](./guides/configure-heartbeat.mdx)
 
+### 외부 서비스 연결
+
+- [Resend로 이메일 보내기](./guides/use-resend-email.mdx)
+- [Google Workspace 연결하고 사용하기](./guides/use-google-workspace.mdx)
+
 ### 이벤트 연동
 
 - [자동화와 Webhook](./capabilities/automation-and-webhooks.mdx)

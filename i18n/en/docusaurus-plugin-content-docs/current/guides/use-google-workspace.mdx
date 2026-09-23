@@ -1,0 +1,52 @@
+---
+title: Connect and use Google Workspace
+description: Install the google-workspace skill and connect your Google account to work with Gmail, Calendar, Drive, Docs, Sheets, and Slides.
+---
+
+# Connect and use Google Workspace
+
+Ask your Agent to connect your Google account, then request work with mail, calendars, files, and documents. Available operations depend on the connected account's access and your organization's policies.
+
+## Start in Chat
+
+Open a private 1:1 conversation with the Agent you want to use and ask:
+
+> Install the `google-workspace` skill from the capability registry and guide me through connecting my Google account.
+
+The capability registry is a public repository of skills and execution tools for Agents. Your Agent checks whether installation is available in its current environment and prepares the required packages. If it cannot find the repository, include the [official capability registry](https://github.com/Wondermove-Inc/clawpod-capabilities) URL.
+
+Installation is not a completed connection until account authorization and service access have been checked. If you have connected multiple accounts, specify the account or alias to use for this task.
+
+## Connect your Google account
+
+1. The Agent explains which account and permissions it will use, how credentials are stored, and how to disconnect. The default connection requests broad access to Gmail and mail settings, Calendar, Drive, Docs, Sheets, Slides, and account identity. If you need narrower access, say so before connecting.
+2. Follow the instructions to sign in, complete any MFA, choose your account, and consent in the Agent's browser. See [using the Agent desktop](./use-agent-desktop.mdx) for accessing that screen. Do not send passwords, verification codes, or tokens in Chat.
+3. The Agent stores the authorization in protected storage and checks the connected account, granted permissions, and Gmail, Calendar, and Drive access. Document editing also requires the appropriate permissions and enabled APIs.
+
+**Signing in to Google does not necessarily finish every setup step.** OAuth project configuration, service API activation, organization administrator approval, or Google review may be needed. Follow the Agent's explanation of remaining setup and actions that require you or your administrator. A pending review or administrator approval is not a completed connection.
+
+Each Agent obtains its own Google credentials. Do not copy another Agent's authentication files. Google authentication is managed through this connection flow, rather than by sending credentials in Chat for secret registration as with a Resend API key.
+
+## Request work after connecting
+
+| Service | Example request |
+| --- | --- |
+| Gmail | “Summarize today's incoming emails that need a reply.” |
+| Calendar | “Check tomorrow's schedule and tell me when I am free.” |
+| Drive | “Find this project's report among the files I can access.” |
+| Docs | “Read this Google document and summarize the key points.” |
+| Sheets | “Read the specified range in this spreadsheet and summarize the totals.” |
+| Slides | “Summarize the key points of each slide in this presentation.” |
+
+You can also request email sending, calendar event creation or updates, file sharing, and edits to documents, spreadsheets, and slides. Specify the account, file links, recipients or sharing targets, and intended changes. Connecting an account does not itself request every send, share, or deletion.
+
+> Append the meeting summary to this Google document. Keep its sharing permissions unchanged.
+
+## Troubleshoot or disconnect
+
+- **Signed in but an operation fails:** Ask the Agent to check the selected account, file access, enabled service APIs, and organization policy.
+- **Insufficient permissions:** Ask to reconnect with the needed permissions. Accounts connected before editor support was added may need additional consent for Docs, Sheets, and Slides.
+- **Expired or revoked connection:** Ask to reconnect on the affected Agent. An OAuth app in a temporary testing state may need additional setup for long-term use.
+- **Disconnect:** Specify the account and ask the Agent to log out and delete its stored credentials. Revoke access in your Google account's connected apps as well. Uninstalling the skill and revoking Google access are separate actions.
+
+See [handling secrets](./handle-secrets.mdx) for general credential-handling guidance.

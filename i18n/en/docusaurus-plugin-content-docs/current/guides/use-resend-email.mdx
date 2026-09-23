@@ -1,0 +1,46 @@
+---
+title: Send email with Resend
+description: Install the resend-email skill from the capability registry, connect a verified sender, and request email delivery.
+---
+
+# Send email with Resend
+
+Ask your Agent to connect Resend for guidance through skill installation and setup. Once connected, you can request text or HTML email, attachments, and individual messages to multiple recipients. Use [Google Workspace](./use-google-workspace.mdx) to read or organize an inbox.
+
+## Start in Chat
+
+Open a private 1:1 conversation with the Agent you want to use and ask:
+
+> Install the `resend-email` skill from the capability registry and guide me through connecting it to send email.
+
+The capability registry is a public repository of skills and execution tools for Agents. Your Agent checks whether installation is available in its current environment and prepares the required packages. If it cannot find the repository, include the [official capability registry](https://github.com/Wondermove-Inc/clawpod-capabilities) URL.
+
+**Installing the skill does not complete the Resend connection.** Continue through the connection checks below.
+
+## Connect and test a sender
+
+1. Prepare an API key for the Resend account you will use and the intended sender email address.
+2. Follow the Agent's instructions to store the key in that Agent's secret store. Follow [handling secrets](./handle-secrets.mdx) for sharing and storage. If the key is already registered, provide its name or reference ID instead of repeating the value.
+3. The Agent verifies the key and checks the sender domain's verification status. If the domain is not verified, complete the required DNS setup in Resend. The skill's readiness check does not change DNS.
+4. After verification, provide the one test-recipient email address requested by the Agent. It submits a fixed test email and reports the acceptance result.
+
+Check that the result confirms **Resend accepted the submission**, then check the recipient's inbox for actual arrival. Acceptance alone does not confirm inbox delivery.
+
+## Request an email
+
+Specify the recipients, sender address, content, and attachments.
+
+> Send this report as an attachment to the recipient I specified, using the connected Resend sender. Use “Weekly report” as the subject.
+
+If you want to review the content yourself before sending, request a draft only:
+
+> Write an email introducing this report. Do not send it yet.
+
+For multiple recipients, ask to send a separate message to each address in your list. If only some submissions fail, ask the Agent to check and retry those failures without resending successful ones.
+
+## Troubleshoot or disconnect
+
+- **Key verification fails:** Check the key's validity and required permissions in Resend, then ask the Agent to replace the stored secret and verify again.
+- **Sender domain is unverified:** Complete domain verification in Resend and check again.
+- **Accepted but missing from the inbox:** Check the inbox, spam folder, and Resend delivery status. Do not immediately resend the same message repeatedly.
+- **Disconnect:** Ask the Agent to delete the secret used by this connection. To revoke the key itself, revoke it in Resend as well. Uninstalling the skill does not revoke the provider's key.
