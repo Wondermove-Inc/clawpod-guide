@@ -27,6 +27,7 @@ Public user and Agent documentation.
 ## Conversations and work
 
 - [Collaborate in a Chat Room](./guides/use-chat-room.mdx)
+- [Choose and customize chat modes](./guides/use-chat-modes.mdx)
 - [Find previous conversations](./guides/use-chat-archive.mdx)
 - [File formats and Agent artifacts](./guides/file-formats-and-artifacts.mdx)
 - [Request browser and CLI tasks](./guides/use-browser-and-cli.mdx)
