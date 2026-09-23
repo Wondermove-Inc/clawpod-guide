@@ -16,25 +16,23 @@ Your organization may require Slack administrator approval for app installation.
 
 ## Ask your Agent to connect
 
-Open a private 1:1 conversation with the target Agent in ClawPod and start with a short request:
+Open a private 1:1 conversation with the target Agent in ClawPod and ask:
 
-> I want to connect you to Slack using Socket Mode. Open the Slack sign-in page in your internal browser; I will sign in. Ask me for any information you need.
+> I want to add Slack as a channel. Connect it using Socket Mode and open the Slack sign-in page in your internal browser. I will sign in. Ask me for any information you need.
 
 You do not need to decide the workspace, channel, and bot name in advance. Answer the Agent's questions to choose where to connect. For example, say “Use the existing project channel in our company workspace.” If the channel does not exist, decide together whether to create it and whether it should be public or private.
 
-Follow the Agent's guidance for technical setup such as the app and tokens. You do not need to paste token values into Chat. The order of questions may vary depending on the current sign-in and connection state.
+If the signed-in Slack account has the required permissions, you can ask the Agent to create the channel, create and install the app, invite the bot, and configure the connection. Describe the result you want, such as creating a new project channel and completing the connection. Complete sign-in, MFA, and any required approvals, and answer the Agent's questions as setup proceeds.
 
 ## Sign in and complete setup
 
 1. Complete sign-in, MFA, and any other identity checks in the Slack page opened by the Agent. See [using the Agent desktop](./use-agent-desktop.mdx).
-2. Check the target workspace and bot name. The Agent prepares the Slack app and the settings required for a Socket Mode connection.
-3. Review the permissions requested during app installation and complete any required approval. If administrator approval is requested, that step remains pending until approval is granted.
-4. The Agent stores the Bot Token and App-Level Token securely and applies them to the Slack connection settings. Ask it to check the actual connection, rather than treating token storage as completed setup.
-5. Check that the bot has joined the target channel and that its channel ID is registered in the Agent's connection allowlist. A private channel may require an invitation from an existing member with access.
+2. Answer the Agent's questions about the workspace, channel, and bot name. If you need a new channel, specify its name and whether it should be public or private, then ask the Agent to create it.
+3. Ask the Agent to handle app creation and installation, bot invitation, and connection setup. It carries out the steps permitted by the signed-in account.
+4. Follow the instructions when your confirmation or administrator approval is needed. Steps requiring administrator approval or an invitation from another channel member remain pending until completed.
+5. Ask the Agent to check the connection and any remaining work, then verify the conversation using the steps below.
 
-If you need to invite the bot yourself, open the target Slack channel, enter `/invite`, and select the bot. If the channel does not exist, decide whether it should be public or private before creating it.
-
-Do not copy tokens into Chat, ordinary documents, or reports. See [handling secrets](./handle-secrets.mdx) for credential guidance. Registering a secret and configuring the Slack connection to use it are separate steps.
+See [handling secrets](./handle-secrets.mdx) for credential-storage guidance.
 
 ## Start a conversation with a mention
 
