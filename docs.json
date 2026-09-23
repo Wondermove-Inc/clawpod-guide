@@ -31,6 +31,7 @@
         "group": "대화와 업무",
         "pages": [
           "guides/use-chat-room",
+          "guides/use-chat-modes",
           "guides/use-chat-archive",
           "guides/file-formats-and-artifacts",
           "guides/use-browser-and-cli",

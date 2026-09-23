@@ -11,27 +11,18 @@ Connect a ClawPod Agent to a channel in your Slack workspace to request work by 
 
 - A ClawPod Agent with [access to its browser](./use-agent-desktop.mdx)
 - A Slack account and permission to install an app in the target workspace
-- A channel and a name for the bot
 
 Your organization may require Slack administrator approval for app installation. Sign in through the Agent's dedicated browser rather than sharing your personal browser profile or password manager.
 
 ## Ask your Agent to connect
 
-Open a private 1:1 conversation with the target Agent in ClawPod. Replace the bracketed values and send:
+Open a private 1:1 conversation with the target Agent in ClawPod and start with a short request:
 
-```text
-Connect yourself to [channel name] in the Slack workspace [workspace name].
-Use [bot name] as the bot's name.
+> I want to connect you to Slack using Socket Mode. Open the Slack sign-in page in your internal browser; I will sign in. Ask me for any information you need.
 
-Open the sign-in page in your browser; I will complete sign-in and MFA.
-Prepare the Slack app and connection using Socket Mode,
-and tell me when my confirmation is needed, including app installation.
-If the channel does not exist, ask whether it should be public or private before creating it.
-Invite the bot to the target channel and add its channel ID to the connection allowlist.
-Keep tokens in protected connection settings, without displaying them in Chat or reports.
-Finally, send a test message to the target channel,
-and check with me that you respond when I mention the bot in Slack.
-```
+You do not need to decide the workspace, channel, and bot name in advance. Answer the Agent's questions to choose where to connect. For example, say “Use the existing project channel in our company workspace.” If the channel does not exist, decide together whether to create it and whether it should be public or private.
+
+Follow the Agent's guidance for technical setup such as the app and tokens. You do not need to paste token values into Chat. The order of questions may vary depending on the current sign-in and connection state.
 
 ## Sign in and complete setup
 
@@ -52,6 +43,8 @@ Mention `@bot-name` in the connected Slack channel to start a conversation. Sele
 > @bot-name Please confirm that you are connected.
 
 Typing the bot's name as ordinary text is not the same as mentioning it. Check that Slack displays your selection as a bot mention.
+
+After setup, ask the Agent to send a test message to the connected channel, then mention the bot in Slack.
 
 Verify both directions before considering the connection complete:
 

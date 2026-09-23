@@ -1,0 +1,96 @@
+---
+title: Choose and customize chat modes
+description: Learn when to use Default, Discuss, or Execute and how to customize planning, task tracking, review, follow-up, and approvals.
+---
+
+# Choose and customize chat modes
+
+Chat modes tell the same Agent how to approach your current request. They are available when the [Chat Room](./use-chat-room.mdx) composer displays the chat-mode menu.
+
+## Which mode should I use?
+
+| Mode | When to use it | Example request |
+| --- | --- | --- |
+| Default | Questions, summaries, changes, and other direct requests | “Summarize this document” or “Change this document's title.” |
+| Discuss | Investigate evidence, clarify requirements, compare options, and form a plan | “Review how we should organize these reports first.” |
+| Execute | Carry out defined work systematically and verify the result | “Organize the reports using our agreed criteria and check for omissions.” |
+
+**Default mode can make actual changes.** You do not have to select Execute to request an edit. Execute adds a systematic approach to task tracking, review, and follow-up.
+
+Discuss focuses on research and planning, with changes limited to planning artifacts. Switch to Default or Execute and send a request when you are ready to implement the plan.
+
+## Select a mode and send a message
+
+1. Choose Default, Discuss, or Execute from the composer's chat-mode menu. You can also switch with `Shift+Tab` in the composer.
+2. Open customization if you want to adjust the selected mode. Leave settings on **Auto** if you are unsure.
+3. Enter your request and send the message.
+
+**Changing the mode alone does not start work.** The selected mode and settings accompany your next message. Selecting a mode alone should not be treated as stopping or restarting work already in progress.
+
+Settings are saved per user and Room in the current browser. Check them before sending rather than assuming another browser or Room has the same settings.
+
+## Move from discussion to execution
+
+Start in **Discuss** mode:
+
+> I want to organize these reports. Review the available material and propose classification criteria and a work plan.
+
+Answer any questions and agree on a plan. Then switch to **Execute** and send:
+
+> Classify the reports using the criteria we agreed on, check for missing or duplicate items, and summarize the results in this Room.
+
+For a simple task, you can make a direct request in Default. Not every request needs separate discussion and execution stages.
+
+## Customize a mode
+
+### All modes: additional instructions
+
+Each mode accepts up to **240 characters** of additional instructions. They accompany every message sent in that mode, so use them for instructions that should apply repeatedly.
+
+> Write the results in English and include the changed items and verification results.
+
+Put one-off requests in the message itself. Do not enter passwords or API keys in additional instructions.
+
+### Discuss: discussion depth
+
+| Setting | Behavior |
+| --- | --- |
+| Auto | The Agent chooses the depth that fits the conversation. |
+| Lite | Ask only essential questions and plan quickly. |
+| Deep | Ask about key decisions and compare alternatives. |
+| Full | Explore broadly together, one question at a time. |
+
+### Execute: task tracking
+
+| Setting | Behavior |
+| --- | --- |
+| Auto | The Agent chooses a suitable way to record and track the work. A separate task record may be unnecessary. |
+| Tasks | Record work in a shared project and manage assignees and progress. See [tasks and milestones](./use-tasks-and-milestones.mdx). |
+| Workboard | Create cards in the Agent's workboard to track execution. |
+
+The Agent chooses whether to work as a single task, sequentially, or in parallel as appropriate. Selecting a tracking tool is not the same as selecting parallel execution.
+
+### Execute: review
+
+- **Auto:** Decide whether independent review is needed based on the work and its risk.
+- **Required:** Require an independent Agent to review the result.
+
+If review cannot be performed, check the remaining requirement and reason rather than treating it as complete.
+
+### Execute: progress checks
+
+**Auto** chooses an appropriate time to revisit waiting work. Select **5, 10, or 30 minutes** to request a follow-up check after that interval.
+
+This does not schedule every task to run repeatedly at that frequency. Selecting the setting is not a completed follow-up; check actual progress and results in the Agent's report.
+
+### Execute: approvals
+
+| Setting | Meaning |
+| --- | --- |
+| Auto | Follow the user's instructions and applicable skill or workflow approval rules. |
+| Within approved scope | Proceed within explicit approval, including risky actions whose action and impact are covered. |
+| Ask before risky actions | Confirm before risky actions even within an already approved scope. |
+
+Selecting a mode or approval setting does not expand tool or organization permissions or authorize unrequested external actions. Clearly specify the target and intended changes in your message.
+
+Execute aims to complete and verify the requested work. It cannot guarantee completion when required tools or permissions are unavailable or external approval is pending. Review verified results and remaining work in the current Room.

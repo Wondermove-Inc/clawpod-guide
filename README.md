@@ -32,6 +32,7 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 ### 대화와 업무
 
 - [Chat Room에서 Agent와 협업하기](./guides/use-chat-room.mdx)
+- [채팅 모드 선택과 맞춤 설정](./guides/use-chat-modes.mdx)
 - [이전 대화 찾기](./guides/use-chat-archive.mdx)
 - [파일 형식과 Agent artifact](./guides/file-formats-and-artifacts.mdx)
 - [Agent에게 Browser와 CLI 작업 요청하기](./guides/use-browser-and-cli.mdx)
