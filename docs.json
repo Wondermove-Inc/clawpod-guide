@@ -65,7 +65,8 @@
         "pages": [
           "guides/use-resend-email",
           "guides/use-google-workspace",
-          "guides/use-slack"
+          "guides/use-slack",
+          "guides/use-webchat"
         ]
       },
       {
