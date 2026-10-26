@@ -11,34 +11,42 @@ Before starting, obtain Source and Rule creation permission, choose the receivin
 
 ## Create a Playbook
 
-1. Open <strong><span data-ui-label="nav.webhooks">Webhooks</span></strong> → <strong><span data-ui-label="webhooks.tabs.playbooks">Playbooks</span></strong> → <strong><span data-ui-label="webhooks.playbooks.create">Create Playbook</span></strong>.
+1. Open <strong><span data-ui-label="nav.webhooks">Webhooks</span></strong> → <strong><span data-ui-label="webhooks.playbooks.title">Playbooks</span></strong> → <strong><span data-ui-label="webhooks.playbooks.create">Create Playbook</span></strong>.
 2. Enter <strong><span data-ui-label="webhooks.playbooks.name">Name</span></strong> and <strong><span data-ui-label="webhooks.playbooks.content">Content</span></strong>. Use <strong><span data-ui-label="webhooks.playbooks.preview">Preview</span></strong> or <strong><span data-ui-label="webhooks.playbooks.split">Split</span></strong> to inspect Markdown if needed.
-3. Select <strong><span data-ui-label="webhooks.playbooks.save">Save</span></strong> and confirm the new list entry.
+3. Select <strong><span data-ui-label="webhooks.playbooks.createSubmit">Create playbook</span></strong> and confirm the new list entry.
 
 Playbooks can be attached to both Sources and Rules and are added to event messages.
 
 Example: “On a deployment failure event, summarize the impact. Do not guess unconfirmed causes; list the checks still needed.”
 
-## Create a Source
+## Create an integration
 
-1. Open <strong><span data-ui-label="nav.webhooks">Webhooks</span></strong> → <strong><span data-ui-label="webhooks.tabs.sources">Sources</span></strong> → <strong><span data-ui-label="webhooks.sources.create">Create Source</span></strong>, choose a source type, and continue.
-2. Enter <strong><span data-ui-label="webhooks.sources.name">Name</span></strong> and the target organization.
-3. Configure a Source Playbook, rate limit, secret generation, and signature method as needed.
-4. Select <strong><span data-ui-label="webhooks.wizard.finish">Create Source</span></strong>.
-5. In the final integration guide, separately copy the webhook URL and signing secret if shown into the external service's settings.
+1. In **Webhooks**, choose **New integration**, then **Set it up yourself**.
+2. Select the external service, name, and receiving organization. Configure signature verification, a secret, rate limit, and Playbook as needed.
+3. If you want to create the first Rule together, choose its conditions and Agent or Room targets.
+4. Create the integration, then copy the receiving URL and any displayed signing secret into the external service settings.
+5. Check both integration and Rule results. If the Rule fails after the integration is created, retry the Rule from the displayed result instead of creating another integration.
+
+You can also choose the Agent-assisted setup option and an Agent Room, explain which events you want to receive, and review the resulting proposal before applying it.
 
 Plaintext secrets may appear only during creation, regeneration, or rotation. Store them according to organization policy, never in documents or Chat.
 
 ## Choose targets with a Rule
 
-1. Open <strong><span data-ui-label="nav.webhooks">Webhooks</span></strong> → <strong><span data-ui-label="webhooks.tabs.rules">Rules</span></strong> → <strong><span data-ui-label="webhooks.rules.create">Create Rule</span></strong>.
-2. Choose <strong><span data-ui-label="webhooks.rules.name">Name</span></strong>, <strong><span data-ui-label="webhooks.rules.source">Source</span></strong>, and <strong><span data-ui-label="webhooks.rules.targetType">Target Type</span></strong>, and add event conditions.
+1. Open an integration in **Webhooks**, then choose **Create Rule** in its **Rules** section.
+2. Choose <strong><span data-ui-label="webhooks.rules.name">Name</span></strong>, <strong><span data-ui-label="webhooks.integrations.title">Integrations</span></strong>, and <strong><span data-ui-label="webhooks.rules.targetType">Target Type</span></strong>, and add event conditions.
 3. Select one or more Agents or Rooms in <strong><span data-ui-label="webhooks.rules.target">Target</span></strong>.
 4. For multiple targets of the same type, choose broadcast or round-robin.
 5. Configure a Rule Playbook, cooldown, and hourly limit if needed.
 6. Select <strong><span data-ui-label="webhooks.rules.create">Create Rule</span></strong> at the bottom and confirm the Rule appears.
 
 Source and targets must be in the same tenant. The operator manages organization separation by selecting the correct Agents and Rooms.
+
+### Prefer idle Agents
+
+Agent-targeted round-robin rules offer an idle-first preference. Available idle Agents are preferred; when all are busy, events rotate across eligible targets. This differs from broadcasting to Rooms.
+
+If activity lookup fails, routing can fall back to ordinary round-robin. This preference does not guarantee a waiting queue or exclusive reservation; check event records and actual responses.
 
 ## Test and verify
 

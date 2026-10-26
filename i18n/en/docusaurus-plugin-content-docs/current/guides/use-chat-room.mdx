@@ -59,6 +59,8 @@ Review generated outputs separately from the conversation and keep important fil
 
 The composer is locked while dictating. Speaking `@Agent` does not automatically open mention suggestions; check the selected mention after stopping. For microphone, network, or voice-session errors, fix permissions or connectivity before restarting instead of repeatedly sending.
 
+You can also send the current text while dictation continues. Speech recognized after sending goes into the next message draft. Review the current wording before sending; after a failure, check the unsent text before retrying.
+
 ## Meetings
 
 Meeting features include recording consent, transcription, summaries, and discarding minutes. Follow [meeting minutes](./use-meeting-minutes.mdx) for the procedure and privacy boundaries.
@@ -71,8 +73,8 @@ Deleting a Room can affect access to its history. Preserve required outputs and 
 
 ## Find messages
 
-Open <strong><span data-ui-label="chatSearch.openButtonLabel">Search messages</span></strong> or press `Cmd+F` / `Ctrl+F` in a Room, then enter a query. Search covers only loaded messages; scroll up to load older history first. Opening search may close the Artifact panel.
+Open <strong><span data-ui-label="chatV2.tools.items.search">Find</span></strong> or press `Cmd+F` / `Ctrl+F` in a Room, then enter a query. Search queries conversation history stored on the server, so you do not need to load older messages first. Select a result to jump to that message and load more results when available. Do not interpret search failures or permission errors as no matches.
 
 ## Chat workspace
 
-Use **Open workspace** at the top of a Room to view its PC control, ClawPod control, workboard, Artifacts, and meeting-note tools. Available tools and Agent counts vary by Room. The workboard is separate from organization Tasks in Admin mode; the panel is not a browser for all Agent files.
+Use the Room tool list to open **Computer**, **ClawPod**, **Work board**, **Results**, **Meetings**, **Secrets**, and **Skills**. On smaller screens, use the tool list in the header. Available tools and Agent counts vary by Room. The workboard is separate from organization Tasks in Admin mode; the panel is not a browser for all Agent files.

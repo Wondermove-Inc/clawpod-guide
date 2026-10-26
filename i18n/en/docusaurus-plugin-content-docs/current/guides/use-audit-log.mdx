@@ -11,7 +11,7 @@ Audit Log records important permission, Agent, and configuration changes. Read a
 
 1. Open **Audit Log**.
 2. Filter by date, event type, Agent, and severity.
-3. Open an entry to inspect before/after differences and related information.
+3. Open an entry to inspect event-specific details and outcomes.
 
 Narrow time, organization, and Agent scope first. Broad exports may include other users' operational information.
 
@@ -29,3 +29,9 @@ Treat exports as access-controlled operational data. Do not upload them to Chat 
 Check who performed which action, affected resources and organizations, sensitive before/after values, and whether follow-up requires access revocation, credential rotation, or Agent restart.
 
 Audit Log assists investigation; it does not automatically roll back changes. Verify current settings and affected users/Agents before reversing anything.
+
+## Interpret filters and results
+
+Narrow by dates/timezone, event type, user or Agent, and severity. Check the actor, target, action, and outcome together. Details vary by event; not every record contains before/after values. Deleted targets may still have identifying information in retained records.
+
+Pagination and export retain the same query snapshot. Refresh to see newer records and recheck export scope after changing filters. List, detail, and export permissions can differ. If a limit or permission error appears, narrow the range or contact your administrator.

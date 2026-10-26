@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, extname, join, relative, resolve } from 'node:path';
 import vm from 'node:vm';
@@ -49,7 +49,11 @@ function loadTypeScriptModule(path) {
   const localRequire = (specifier) => {
     if (!specifier.startsWith('.')) return portalRequire(specifier);
     const candidate = resolve(dirname(resolvedPath), specifier);
-    const target = extname(candidate) ? candidate : `${candidate}.ts`;
+    const target = extname(candidate)
+      ? candidate
+      : existsSync(`${candidate}.ts`)
+        ? `${candidate}.ts`
+        : join(candidate, 'index.ts');
     return loadTypeScriptModule(target);
   };
   vm.runInNewContext(compiled, { exports: module.exports, module, require: localRequire }, { filename: resolvedPath });

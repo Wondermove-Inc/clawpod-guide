@@ -1,10 +1,44 @@
 ---
-title: "About the Skill Marketplace"
-description: "Skill Marketplace guidance during the feature redesign."
+title: Find skills and manage Agent installations
+description: Find official and private skills, install them on Agents, and manage inventory, reinstalls, removals, and bulk operations.
 ---
 
-# About the Skill Marketplace
+# Find skills and manage Agent installations
 
-Skill Marketplace guidance is temporarily withdrawn while the feature is redesigned. This page does not provide installation or removal steps.
+Open **Store → Skill Library** in Admin to find skills and add them to Agents. Catalog access, Agent read/update access, and private skill management require their respective permissions. Being able to view a skill does not necessarily allow installation.
 
-See [Skills and tools](../capabilities/skills-and-tools.mdx) for how to check tools available to your current Agent.
+## Find and install a skill
+
+1. Search the library by name and open a skill. Distinguish official skills from your tenant's private skills.
+2. Read its description and available versions. Select a version when more than one is offered.
+3. Choose the skills and target Agents. You can select multiple skills and Agents for bulk installation.
+4. Choose whether to skip or reinstall targets that already have the same skill, then start installation.
+5. Review per-target results and the Agent inventory. An accepted request does not mean every installation has finished.
+
+Check restrictions or errors for built-in skills and same-name skills from other sources. Do not overwrite them just because the names match. Skills that require external authentication still need service setup after installation. See [Resend](./use-resend-email.mdx) and [Google Workspace](./use-google-workspace.mdx).
+
+## Inventory, reinstalling, and removing
+
+The **Skills** area in Agent details shows that Agent's inventory. The Room skills panel also shows accessible participant Agents and allows adding, reinstalling, or removing skills when permitted.
+
+- Checking, stale information, and connection errors are different from “not installed.” Refresh status and resolve errors first.
+- Confirm the target Agent, package, and version before reinstalling.
+- Removal applies to the selected Agent. The UI restricts items that cannot be removed, such as built-in skills.
+- Removing a skill does not disconnect the external service account or revoke an API key.
+
+## Track bulk installations
+
+Once accepted by the server, bulk installation continues even if you close the browser tab. Reopen installation history in the same user's and tenant's browser context to inspect each target. Clearing browser history data used by this feature may prevent recovery through that history.
+
+Distinguish successful, skipped, and failed targets. Retry eligible failures from the results view rather than starting the same installation again just because you closed the tab.
+
+## Manage private skills
+
+Authorized administrators can upload tenant-private skills and manage their versions.
+
+1. Choose a `.zip` or `.tar.gz` package in the private skill upload dialog.
+2. Enter its name, version, and description, and check package validation results.
+3. Use the existing skill's add-version action for a new version. Changing the default version does not imply that all existing Agent installations update automatically.
+4. Archive skills you no longer want to distribute and restore them from the archived list when needed. Check Agent removal separately from archival.
+
+Do not include API keys or passwords in packages. Skill instructions do not grant tool or account permissions. Check [available tools](../capabilities/skills-and-tools.mdx) and connection readiness too.

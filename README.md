@@ -15,7 +15,6 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 - [Portal 메뉴와 가이드 찾기](./help/portal-feature-map.mdx)
 - [가입, 로그인, 계정 복구](./guides/start-account.mdx)
 - [조직 초대 수락하기](./guides/accept-organization-invite.mdx)
-- [새 workspace 온보딩 완료하기](./guides/complete-onboarding.mdx)
 - [첫 Agent 만들기](./start/first-agent.mdx)
 - [Agent란 무엇인가요?](./concepts/agent.mdx)
 
@@ -44,6 +43,7 @@ Agent라면 작업·설명 전에 [AGENTS.md](./AGENTS.md)를 먼저 읽어 현�
 
 - [Agent 만들기와 생성 전 검토](./guides/create-agent.mdx)
 - [Agent 상태와 설정 관리하기](./guides/manage-agent.mdx)
+- [스킬 찾기와 Agent 설치 관리](./guides/manage-skills.mdx)
 - [AI Key와 Credential 관리](./guides/manage-credentials.mdx)
 - [Secret과 민감한 값 다루기](./guides/handle-secrets.mdx)
 - [Provider와 model 선택](./guides/select-models.mdx)
