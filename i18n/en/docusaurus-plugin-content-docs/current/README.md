@@ -10,7 +10,6 @@ Public user and Agent documentation.
 - [Find Portal menus and guides](./help/portal-feature-map.mdx)
 - [Create an account and sign in](./guides/start-account.mdx)
 - [Accept an organization invitation](./guides/accept-organization-invite.mdx)
-- [Complete workspace onboarding](./guides/complete-onboarding.mdx)
 - [Create your first Agent](./start/first-agent.mdx)
 - [What is an Agent?](./concepts/agent.mdx)
 
@@ -39,6 +38,7 @@ Public user and Agent documentation.
 
 - [Create an Agent and review its configuration](./guides/create-agent.mdx)
 - [Manage Agent status and settings](./guides/manage-agent.mdx)
+- [Find skills and manage Agent installations](./guides/manage-skills.mdx)
 - [Manage AI keys and credentials](./guides/manage-credentials.mdx)
 - [Handle secrets and sensitive values](./guides/handle-secrets.mdx)
 - [Choose providers and models](./guides/select-models.mdx)

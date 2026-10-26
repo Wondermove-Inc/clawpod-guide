@@ -10,7 +10,6 @@
           "help/portal-feature-map",
           "guides/start-account",
           "guides/accept-organization-invite",
-          "guides/complete-onboarding",
           "start/first-agent",
           "concepts/agent"
         ]
@@ -45,6 +44,7 @@
         "pages": [
           "guides/create-agent",
           "guides/manage-agent",
+          "guides/manage-skills",
           "guides/manage-credentials",
           "guides/handle-secrets",
           "guides/select-models",

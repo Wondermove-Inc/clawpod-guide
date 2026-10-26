@@ -11,7 +11,7 @@ Agent 상세 화면에는 실행 중인 Agent의 Desktop, Dashboard, Conversatio
 
 ## OpenClaw Dashboard
 
-1. Agent 상세에서 <strong><span data-ui-label="agentDetail.tabs.dashboard">ClawPod 연결</span></strong> 섹션을 엽니다.
+1. Agent 상세에서 <strong><span data-ui-label="adminV2.agents.detail.sections.clawpod.title">ClawPod 연결</span></strong> 섹션을 엽니다.
 2. Dashboard를 iframe에서 보거나 <strong><span data-ui-label="desktopTab.openInNewTab">새 탭에서 열기</span></strong>로 분리해 엽니다.
 3. 필요하면 fullscreen을 사용합니다.
 
@@ -19,13 +19,17 @@ Gateway token은 Portal proxy가 서버에서 Agent에 전달하므로 사용자
 
 ## Desktop
 
-1. 실행 중인 full image Agent 상세에서 <strong><span data-ui-label="agentDetail.tabs.desktop">원격 에이전트 PC 제어</span></strong> 섹션을 엽니다.
+1. 실행 중인 full image Agent 상세에서 <strong><span data-ui-label="adminV2.agents.detail.sections.computer.title">원격 PC</span></strong> 섹션을 엽니다.
 2. PC 화면의 비밀번호 상태 아이콘을 선택해 메뉴를 엽니다. 상태가 <strong><span data-ui-label="vncDesktop.passwordNotSet">비밀번호: 미설정</span></strong>이면 <strong><span data-ui-label="vncDesktop.setPassword">비밀번호 설정</span></strong>을 선택하고 비밀번호를 입력한 뒤 <strong><span data-ui-label="common.save">저장</span></strong>을 선택합니다.
-3. 상태가 <strong><span data-ui-label="vncDesktop.passwordSet">비밀번호: 설정됨</span></strong>이면 <strong><span data-ui-label="vncDesktop.change">변경</span></strong>으로 교체합니다. <strong><span data-ui-label="common.remove">제거</span></strong>는 현재 기존 password 제거가 확인되지 않았으므로 passwordless VNC로 돌아가는 방법으로 사용하지 마세요.
+3. 상태가 <strong><span data-ui-label="vncDesktop.passwordSet">비밀번호: 설정됨</span></strong>이면 <strong><span data-ui-label="vncDesktop.change">변경</span></strong>으로 교체합니다. 제거 권한이 있고 <strong><span data-ui-label="common.remove">제거</span></strong>가 표시되면 확인 후 비밀번호 제거를 요청할 수 있습니다. 결과와 재연결 상태를 확인하세요.
 4. 비밀번호 변경 뒤 Agent restart가 시작되며, viewer는 약 8초 뒤 새 연결을 불러옵니다.
 
 VNC password는 Portal에서 Agent별로 관리되며, 조회 화면은 password 값 대신 설정 여부만 표시합니다. password를 Chat·SOUL.md·AGENTS.md에 기록하지 마세요. noVNC/websockify가 실행되지 않았거나 Pod에 연결할 수 없으면 viewer는 연결 오류를 표시합니다. 원격 Desktop에는 Agent의 파일·browser·로그인이 보일 수 있으므로 화면 공유와 녹화에는 민감한 정보를 포함하지 마세요.
 
 ## Conversations
 
-<strong><span data-ui-label="agentDetail.tabs.conversations">채팅 모니터링</span></strong>은 이 Agent가 참여한 Room을 user 참여 Room과 agent-only Room으로 나눠 보여 줍니다. Room을 고르면 최근 100개 메시지가 읽기 전용으로 표시되고 10초 주기로 갱신됩니다. 여기서는 메시지를 보내거나 Room을 편집하지 않습니다.
+<strong><span data-ui-label="adminV2.agents.detail.sections.conversations.title">채팅 모니터링</span></strong>은 이 Agent가 참여한 Room을 user 참여 Room과 agent-only Room으로 나눠 보여 줍니다. Room을 고르면 최근 100개 메시지가 읽기 전용으로 표시되고 10초 주기로 갱신됩니다. 여기서는 메시지를 보내거나 Room을 편집하지 않습니다.
+
+## 채팅방에서 접근하기
+
+채팅방의 PC·ClawPod·워크보드 도구에서도 대상 Agent를 선택할 수 있습니다. 현재 대화하는 Agent에 대한 접근과 전체 Agent 관리 권한은 다르며, PC 보기와 조작 권한도 구분됩니다. 도구가 표시돼도 연결·권한 확인이 끝나기 전에는 사용 가능하다고 판단하지 마세요.
