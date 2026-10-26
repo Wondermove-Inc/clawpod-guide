@@ -41,17 +41,25 @@ Playbook은 source와 rule에 각각 연결할 수 있으며, event 메시지에
 1. **웹훅**에서 대상 연동을 열고, **규칙** 영역의 **규칙 생성**을 선택합니다.
 2. <strong><span data-ui-label="webhooks.rules.name">이름</span></strong>, <strong><span data-ui-label="webhooks.integrations.title">연동</span></strong>, <strong><span data-ui-label="webhooks.rules.targetType">대상 유형</span></strong>을 고르고 필요한 event 조건을 추가합니다.
 3. <strong><span data-ui-label="webhooks.rules.target">대상</span></strong>으로 Agent 또는 Room을 하나 이상 선택합니다.
-4. 같은 유형의 대상을 둘 이상 고르면 전체 전달(broadcast) 또는 round-robin 방식을 선택합니다.
+4. 같은 유형의 대상을 둘 이상 고르면 배분 방식을 선택합니다. Agent는 **브로드캐스트·라운드 로빈·유휴 우선 배분** 중 하나를, Room은 **브로드캐스트·라운드 로빈** 중 하나를 선택합니다.
 5. 필요하면 rule 수준 Playbook, cooldown, 시간당 제한을 설정합니다.
 6. 하단 <strong><span data-ui-label="webhooks.rules.create">규칙 생성</span></strong>을 선택하고 웹훅 목록에 새 규칙이 보이는지 확인합니다.
 
 Source와 대상 Agent·Room은 같은 tenant 안에 있어야 합니다. 조직 단위 분리는 rule을 만드는 운영자가 대상 Agent·Room을 정확히 선택해 관리합니다.
 
-### 유휴 우선 배분
+### 배분 방식 선택
 
-Agent 대상의 round-robin 규칙에서는 **유휴 우선 배분**을 선택할 수 있습니다. 쉬고 있는 Agent가 있으면 그 대상을 우선 선택하고, 모두 작업 중이면 전달 가능한 대상에 순서대로 배분합니다. Room 대상의 전체 전달 기능과는 구분하세요.
+Agent 대상을 둘 이상 선택하면 다음 세 가지 옵션 중 하나를 고릅니다.
 
-활동 상태 조회에 실패하면 일반 round-robin으로 처리될 수 있습니다. 유휴 우선은 대기열이나 독점 예약을 보장하는 설정이 아니므로 이벤트 기록과 실제 응답을 확인하세요.
+| 옵션 | 동작 |
+| --- | --- |
+| 브로드캐스트 | 선택한 모든 대상에 이벤트를 전달합니다. |
+| 라운드 로빈 | 대상에 순서대로 이벤트를 배분합니다. |
+| 유휴 우선 배분 (Idle First) | 쉬고 있는 Agent를 우선 선택합니다. 모두 작업 중이면 전달 가능한 대상에 순서대로 배분합니다. |
+
+Room 대상에는 브로드캐스트와 라운드 로빈이 제공됩니다.
+
+유휴 우선 배분에서 활동 상태 조회에 실패하면 일반 라운드 로빈으로 처리될 수 있습니다. 작업 중인 Agent가 끝날 때까지 이벤트를 대기시키는 기능은 아니므로 이벤트 기록과 실제 응답을 확인하세요.
 
 ## 4. 테스트와 확인
 
