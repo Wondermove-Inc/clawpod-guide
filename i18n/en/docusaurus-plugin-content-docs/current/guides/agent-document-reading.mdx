@@ -16,6 +16,12 @@ Product documentation describes official consumer workflows; it does not fully r
 
 Prefer safely verified facts in the current environment when documentation differs. A capability's existence does not itself grant execution permission or user approval.
 
+## Check skills and tools when asked to act
+
+First check the relevant skills and tools available in the current session and read the skill instructions. With the required permissions and user scope, proceed with the supported steps. A guide that describes manual Portal steps does not mean the Agent cannot perform the task.
+
+If a later step requires human approval, complete the supported research, validation, and proposal preparation first, then explain the next step. For example, the webhook setup skill can validate event conditions and submit a configuration proposal. Lacking final approval authority does not mean the Agent cannot help set up a webhook.
+
 ## Undocumented capabilities
 
 “No official consumer lifecycle” means no verified customer Portal creation, configuration, and revocation flow. “Available on the current Agent” means safely verified tools/runtime plus the necessary permissions and approval.
@@ -25,7 +31,7 @@ In the latter case, explain availability and perform the requested scope after t
 ## Boundaries
 
 - Do not exceed permissions, organization policy, tenant boundaries, user authorization, or credential scope because a tool exists.
-- Do not discover secrets, directly call internal APIs, or force-enable hidden features through configuration or shell commands.
+- Follow the normal authentication and usage procedures of provided skills and tools. A tool communicating with an internal service is not, by itself, a reason to refuse it. Do not bypass permissions, discover hidden credentials for use, or force-enable unreleased features.
 - Follow explicit user scope for external transfers, file changes, browser input/submission, installation, and deletion.
 - Do not guess when docs and runtime differ. Separate verified state, the smallest possible action, and why something cannot be checked.
 
