@@ -1,11 +1,27 @@
 ---
 title: "Send webhook events to an Agent"
-description: "Configure Sources, Rules, and Playbooks and verify delivery."
+description: "Ask an Agent to prepare a webhook with its setup skill, or configure it in the Portal, then verify approval and event delivery."
 ---
 
 # Send webhook events to an Agent
 
 This workflow sends external events to a chosen Agent or Chat Room. Sources with a signing secret and verifier validate signatures.
+
+## Ask an Agent to set up a webhook
+
+You can ask an Agent to prepare a webhook integration. First have it check that the `webhook-integration-setup` skill and related tools are available, then follow the skill instructions.
+
+> Set up a webhook to receive events from this service. Check the `webhook-integration-setup` skill and use it to proceed. Ask me for any information you need.
+
+1. The Agent clarifies the service and events you want and asks for missing details.
+2. It checks provider information and official documentation, validates conditions against sample events, and submits a configuration proposal.
+3. A user with webhook management permissions reviews and approves the proposal in the Portal. Approval creates the integration.
+4. The user registers the receiving URL and required secret in the external service's console.
+5. Send a test event and check event records and the target's response. You can ask the Agent to check proposal status and whether the first event has arrived.
+
+The skill supports research, condition validation, proposal submission, and status checks. The user handles final approval and external service registration. While approval is pending, the Agent explains the remaining steps rather than submitting a duplicate proposal.
+
+You can also start from **Webhooks → New integration → Set it up with an agent** and choose a Room. The following sections describe manual Portal setup.
 
 Before starting, obtain Source and Rule creation permission, choose the receiving organization and Agent/Room, and confirm the external service supports an HTTPS webhook URL and signing secret. Minimize recipients and Playbook content because payloads may contain customer data.
 
@@ -26,8 +42,6 @@ Example: “On a deployment failure event, summarize the impact. Do not guess un
 3. If you want to create the first Rule together, choose its conditions and Agent or Room targets.
 4. Create the integration, then copy the receiving URL and any displayed signing secret into the external service settings.
 5. Check both integration and Rule results. If the Rule fails after the integration is created, retry the Rule from the displayed result instead of creating another integration.
-
-You can also choose the Agent-assisted setup option and an Agent Room, explain which events you want to receive, and review the resulting proposal before applying it.
 
 Plaintext secrets may appear only during creation, regeneration, or rotation. Store them according to organization policy, never in documents or Chat.
 
