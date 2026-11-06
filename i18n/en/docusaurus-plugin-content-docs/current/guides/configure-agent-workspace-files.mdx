@@ -18,7 +18,7 @@ Find formats and templates in the [workspace file reference](../workspace-files/
 
 | File | Purpose | Management |
 | --- | --- | --- |
-| `SOUL.md` | Role, tone, behavior boundaries | <strong><span data-ui-label="nav.agents">Agent</span></strong> → target Agent → <strong><span data-ui-label="agentDetail.config.title">Configuration</span></strong> |
+| `SOUL.md` | Role, tone, behavior boundaries | Ask the Agent to edit and save directly, or use <strong><span data-ui-label="nav.agents">Agent</span></strong> → target Agent → **Persona and instructions** |
 | `AGENTS.md` | Repeated workflows and operating rules | No direct Portal editor; request a scoped, authorized Agent change |
 | `TOOLS.md` | Tool conventions | No direct Portal editor; request a scoped, authorized Agent change |
 | `IDENTITY.md`, `USER.md` | Introduction and collaboration preferences | Agent file permissions and organization policy |
@@ -26,16 +26,26 @@ Find formats and templates in the [workspace file reference](../workspace-files/
 | `BOOTSTRAP.md` | One-time workspace introduction | Follow the [bootstrap reference](../workspace-files/bootstrap-and-identity.mdx) after setup |
 | `HEARTBEAT.md` | Short periodic checks | First verify heartbeat actually runs on the Agent |
 
-## Edit SOUL.md
+## Ask the Agent to edit directly
+
+You can ask the Agent to read, edit, and save `SOUL.md` directly. Have it check available file tools and write permissions, then update the requested scope. If you only want a draft, say so explicitly.
+
+> Update `SOUL.md` to respond in Korean by default and present results as summary → evidence → next steps. Preserve existing security and permission rules, save the file, and tell me what changed.
+
+After editing, ask it to reread the file and confirm the saved changes. Check the tone and output format in a new conversation; an in-progress response is not retroactively changed.
+
+In environments that support direct editing, ordinary restarts preserve the workspace `SOUL.md`. A subsequent Portal save replaces the entire file with the saved content, so check the Agent's latest changes first. If a read-only error occurs, check the target Agent's environment and write permissions.
+
+## Edit SOUL.md in the Portal
 
 1. Open the target in <strong><span data-ui-label="nav.agents">Agent</span></strong>.
-2. Expand <strong><span data-ui-label="agentDetail.config.title">Configuration</span></strong> and read the `SOUL.md` preview.
+2. Expand **Persona and instructions** and read the `SOUL.md` preview.
 3. Select <strong><span data-ui-label="common.edit">Edit</span></strong> and update only the needed role, allowed scope, prohibitions, and output format.
 4. Select <strong><span data-ui-label="common.save">Save</span></strong> and check the success message.
 5. Reopen the preview and confirm Security Policy and Sub-Agent Delegation sections remain or have been added.
-6. Check Agent status and a small read-only request in a new Room. Inspect warnings and `restartFailed`; saving does not prove restart completion.
+6. Reread the saved file and test in a new conversation. Check any delivery-pending or warning state before treating the update as applied.
 
-Default security and delegation instructions may be preserved or supplemented on save.
+Default security and delegation instructions may be preserved or supplemented on save. Saving only SOUL.md needs no restart in environments that support direct editing. Check pending updates or restart guidance in older environments when shown.
 
 ### When additional editing tools are available
 
@@ -45,7 +55,7 @@ The configuration card may also show AI editing and expand controls. If they are
 
 New Agents may receive default operating instructions. These are workspace documents that authorized file tools can read and update. Review defaults and change only what is necessary.
 
-`SOUL.md` is supplied by runtime configuration for persona and security boundaries. `AGENTS.md` and `TOOLS.md` are workspace documents after first boot. Only `SOUL.md` editing is currently exposed in Portal Config.
+`SOUL.md` is a workspace instruction file the Agent can edit directly; it can also be saved through the Portal. `AGENTS.md` and `TOOLS.md` are workspace documents after first boot. Only `SOUL.md` editing is currently exposed in Portal Config.
 
 Do not ask an Agent to overwrite every instruction. Establish purpose, target file, rules to preserve, secret exclusions, and reviewer, then obtain the organization's supported workspace-change procedure.
 
@@ -64,7 +74,7 @@ Never store secrets, passwords, API keys, OAuth tokens, or unnecessary customer 
 
 ## Scoped requests and verification
 
-> Propose only the output-format section of `SOUL.md`. Preserve existing security instructions and show the draft first.
+> Update `SOUL.md` to respond in Korean by default and present results as summary → evidence → next steps. Preserve existing security and permission rules, save the file, and tell me what changed.
 
 > Record a lasting team preference as one line in `MEMORY.md`. Exclude credentials, personal identifiers, and customer originals.
 

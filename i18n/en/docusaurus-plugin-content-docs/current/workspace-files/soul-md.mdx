@@ -5,9 +5,19 @@ description: "Define an Agent role, response style, boundaries, and output crite
 
 # Write SOUL.md
 
-`SOUL.md` describes who the Agent is and how it should judge and respond. Edit it through <strong><span data-ui-label="nav.agents">Agent</span></strong> → target Agent → expand <strong><span data-ui-label="agentDetail.config.title">Configuration</span></strong> → preview → <strong><span data-ui-label="common.edit">Edit</span></strong>. Exact session-context injection timing belongs to the OpenClaw runtime, not a separate Portal setting.
+`SOUL.md` describes the Agent’s role, tone, and judgment. You can ask the Agent to edit and save it directly, or use **Agents → target Agent → Persona and instructions → Edit** in the Portal.
 
 Include the role and tasks, language and tone, treatment of uncertainty, consistent output structure, and approval requirements for messages, file changes, and external services.
+
+## Ask the Agent to edit directly
+
+You can ask the Agent to read, edit, and save `SOUL.md` directly. Have it check available file tools and write permissions, then update the requested scope. If you only want a draft, say so explicitly.
+
+> Update `SOUL.md` to respond in Korean by default and present results as summary → evidence → next steps. Preserve existing security and permission rules, save the file, and tell me what changed.
+
+After editing, ask it to reread the file and confirm the saved changes. Check the tone and output format in a new conversation; an in-progress response is not retroactively changed.
+
+In environments that support direct editing, ordinary restarts preserve the workspace `SOUL.md`. A subsequent Portal save replaces the entire file with the saved content, so check the Agent's latest changes first. If a read-only error occurs, check the target Agent's environment and write permissions.
 
 ## Suggested format
 
@@ -40,15 +50,15 @@ Summarize deployment events and Agent status to help the owner choose a next ste
 
 Frontmatter can identify the role; the body carries the main behavioral instructions.
 
-## Save and verify
+## Edit in the Portal and verify
 
-1. Expand <strong><span data-ui-label="agentDetail.config.title">Configuration</span></strong> and read the preview.
+1. Expand **Persona and instructions** and read the preview.
 2. Use <strong><span data-ui-label="common.edit">Edit</span></strong> to change only the required sections. The Portal editing limit is **100,000 characters**.
 3. Select <strong><span data-ui-label="common.save">Save</span></strong> and inspect the success message.
 4. Reopen the preview and check that Security Policy and Sub-Agent Delegation remain or have been added.
-5. Verify Agent status and a small read request in a new Room. Check warnings and `restartFailed`.
+5. Reread the saved file and verify behavior in a new conversation. If delivery is pending or a warning appears, check the Agent state and delivery result.
 
-Saving may preserve or add security/delegation instructions and require a restart. Saving alone is not proof of runtime application. Removing security sections or permitting secret disclosure is not a supported setup method.
+Saving may preserve or add security/delegation instructions. In environments that support direct editing, saving only SOUL.md does not require a restart. Stopped Agents or failed deliveries may leave an update pending; older environments may still require a restart. Saving alone is not proof of runtime application. Removing security sections or permitting secret disclosure is not a supported setup method.
 
 ## Draft with external AI
 

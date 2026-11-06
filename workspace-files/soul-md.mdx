@@ -5,7 +5,17 @@ description: Agent의 역할, 말투, 행동 경계와 결과 기준을 SOUL.md�
 
 # SOUL.md 작성하기
 
-`SOUL.md`는 Agent가 누구인지와 어떻게 판단·응답해야 하는지를 정하는 문서입니다. ClawPod에서는 <strong><span data-ui-label="nav.agents">에이전트</span> → 대상 Agent → <span data-ui-label="agentDetail.config.title">설정</span> 카드 펼치기 → 미리보기 → <span data-ui-label="common.edit">수정</span></strong>에서 편집·저장할 수 있습니다. session prompt context에 들어가는 정확한 시점은 OpenClaw runtime 동작이며 Portal이 별도로 설정하지 않습니다.
+`SOUL.md`는 Agent의 역할, 말투와 판단 기준을 정하는 문서입니다. Agent에게 직접 수정·저장을 요청하거나, Portal의 **에이전트 → 대상 Agent → 성격과 지침 → 수정**에서 편집할 수 있습니다.
+
+## 에이전트에게 직접 수정 요청하기
+
+에이전트에게 `SOUL.md`를 직접 읽고 수정·저장하도록 요청할 수 있습니다. 현재 제공된 파일 도구와 쓰기 권한을 확인한 뒤, 요청한 범위의 내용을 수정하도록 하세요. 초안만 받고 싶다면 요청에 그 조건을 따로 적습니다.
+
+> `SOUL.md`를 수정해서 기본 응답은 한국어로 하고, 결과를 요약 → 근거 → 다음 단계 순서로 작성하도록 해줘. 기존 보안·권한 지침은 유지하고, 저장 후 바뀐 부분을 알려줘.
+
+수정 후에는 파일을 다시 읽어 저장된 내용과 변경 부분을 확인하도록 요청하세요. 새 대화에서 말투와 결과 형식도 확인합니다. 진행 중인 응답이 소급 변경되는 것은 아닙니다.
+
+직접 수정이 가능한 환경에서는 일반 재시작 뒤에도 작업 공간의 `SOUL.md`를 유지합니다. 다만 Portal에서 다시 저장하면 저장한 내용으로 파일 전체가 교체되므로, Agent가 수정한 최신 내용을 먼저 확인하세요. 읽기 전용 오류가 발생하면 대상 Agent의 환경과 쓰기 권한을 확인합니다.
 
 ## 무엇을 넣으면 좋은가요?
 
@@ -46,15 +56,15 @@ role: "배포 운영 도우미"
 
 frontmatter는 역할을 빠르게 식별하는 데 쓸 수 있지만, Agent 동작의 핵심은 본문 지침입니다.
 
-## 저장과 반영
+## Portal에서 수정하고 반영 확인하기
 
-1. Agent 상세에서 <strong><span data-ui-label="agentDetail.config.title">설정</span></strong> 카드를 펼치고 `SOUL.md` 미리보기를 읽습니다.
+1. Agent 상세에서 **성격과 지침** 카드를 펼치고 `SOUL.md` 미리보기를 읽습니다.
 2. <strong><span data-ui-label="common.edit">수정</span></strong>으로 필요한 부분만 수정합니다. Portal 편집 한도는 100,000자입니다.
 3. <strong><span data-ui-label="common.save">저장</span></strong>을 누르고 저장 성공 메시지를 확인합니다.
 4. 미리보기를 다시 열어 Security Policy와 Sub-Agent Delegation 섹션이 유지되거나 추가됐는지 확인합니다.
-5. Agent 상태와 새 Room의 작은 읽기 요청으로 반영을 확인합니다. 성공 메시지만으로 restart 완료를 단정하지 말고 warning이나 `restartFailed`가 없는지 확인합니다.
+5. 저장된 파일을 다시 읽고 새 대화에서 동작을 확인합니다. 적용 대기나 경고가 표시되면 Agent 상태와 전달 결과를 확인하세요.
 
-`SOUL.md` 저장 시 Security Policy와 Sub-Agent Delegation 지침이 유지·추가되고 Agent 재시작이 필요할 수 있습니다. warning 또는 restart 실패가 있을 수 있으므로, 저장 성공만으로 runtime 반영 완료를 단정하지 마세요. 보안 섹션을 지우거나 secret 공개를 허용하는 지침으로 바꾸는 것은 지원되는 설정 방법이 아닙니다.
+`SOUL.md` 저장 시 Security Policy와 Sub-Agent Delegation 지침이 유지·추가될 수 있습니다. 직접 수정이 가능한 환경에서는 SOUL.md만 저장할 때 재시작이 필요하지 않습니다. Agent가 중지돼 있거나 전달에 실패하면 적용 대기가 남을 수 있고, 이전 환경에서는 재시작이 필요할 수 있습니다. 저장 성공만으로 실제 반영 완료를 단정하지 마세요. 보안 섹션을 지우거나 secret 공개를 허용하는 지침으로 바꾸는 것은 지원되는 설정 방법이 아닙니다.
 
 ## AI로 초안 다듬기
 
