@@ -1,0 +1,82 @@
+---
+title: Use ClawPod from an external AI tool
+description: Connect an external AI tool to ClawPod through MCP to manage Agents, request work, and check results in conversation.
+---
+
+# Use ClawPod from an external AI tool
+
+Connect ClawPod MCP to an external AI tool to find and create Agents, configure models or skills, and delegate work through conversation. This page introduces the main features before you connect and explains how to set up the connection.
+
+Once connected, the AI tool can discover ClawPod's available tools and usage instructions. Describe what you want to do, and it can check the information needed and guide you through the work. Available actions depend on your account permissions and the environment you connect to.
+
+## What you can do
+
+| Feature | Example request |
+| --- | --- |
+| Check Agents and their status | “Show my Agents and their current status.” |
+| Create an Agent | “Create an Agent to handle customer questions. Ask me for any information you need.” |
+| Review and change models | “Check this Agent's models. I want to change them to reduce costs.” |
+| Find and install skills | “Find skills available for this Agent, then install the one I select.” |
+| Delegate work | “Ask the reporting Agent to summarize this week's work.” |
+| Read conversations and results | “Check the reply and artifacts from the task I assigned earlier.” |
+| Review organizations and members | “Show the organizations and members I can access.” |
+
+Specify the organization or Agent name when there are multiple possible targets. Follow the AI tool's questions to choose details such as a new Agent's role, name, and model.
+
+## Before you connect
+
+- A ClawPod account and the service address for the environment containing your organization and Agents
+- An AI tool that supports remote MCP and ClawPod's OAuth authentication flow
+- MCP availability in that ClawPod environment
+
+Authentication support and settings differ between AI tools. Supporting remote MCP alone does not guarantee that a tool supports the required authentication flow.
+
+## Find the connection URL
+
+Append `/mcp` to your ClawPod service origin. Remove paths for individual screens, such as a chat page.
+
+```text
+https://<your-ClawPod-domain>/mcp
+```
+
+Use the environment containing the organization and Agents you want to work with. If you use multiple environments, confirm which one to connect to first. Use the ClawPod service address, not the documentation website address.
+
+## Connect your AI tool
+
+1. Open the external AI tool's MCP or external tools settings and add a remote server. Menu names vary by tool.
+2. Enter the MCP URL you identified above. If the tool asks for a transport, select **Streamable HTTP**. Use **OAuth** authentication.
+3. Sign in on the ClawPod page opened during connection.
+4. On the connection consent page, review the account and connection request, then allow the connection.
+5. Return to the external AI tool and ask:
+
+> Check whether ClawPod is connected and show the Agents I can access.
+
+If the expected Agents are missing, check the connected environment and signed-in account. Allowing the connection does not grant new access to organizations or Agents.
+
+## Request work and check results
+
+Specify the target and desired outcome. The AI tool calls the relevant ClawPod tools and uses their responses to guide you. Provide any additional information or complete user actions when prompted.
+
+> Ask the reporting Agent to summarize this week's work, then check its final reply and artifacts when it finishes.
+
+**Delivering a request is different from completing the work.** An Agent may still be working after the message is delivered. Ask the AI tool to check the final reply and artifacts. If the external AI tool stops running, you can ask for another progress check in the same conversation.
+
+Changing models restarts the Agent and can interrupt running conversations. See [Choose Agent models](./select-models.mdx) for model selection guidance.
+
+## Work that needs files
+
+For requests that need new files, you may be directed to upload them in a ClawPod chat. Open the specified chat, upload the files, and continue the existing request. Do not assume that files attached to the external AI tool are automatically transferred to ClawPod.
+
+To download an attachment from a ClawPod chat, open the provided ClawPod chat link and download it there.
+
+## Troubleshooting
+
+| Situation | What to check |
+| --- | --- |
+| Connection URL cannot be found | Check that you used the ClawPod service address ending in `/mcp` and that MCP is available in that environment. |
+| Sign-in or consent cannot be completed | Check the AI tool's remote MCP and OAuth support and the error shown. |
+| Expected organizations or Agents are missing | Check the environment, signed-in account, and access to the target. |
+| Required permissions or configuration are missing | Follow the user actions provided by the AI tool or ask your organization administrator. |
+| A request was sent but no result has arrived | Ask for the conversation's progress and the Agent's status before sending the same request again. |
+
+This connection works with ClawPod Agents and their work. For searching and reading documentation, see [Use the ClawPod guide tool](./use-clawpod-guide-tool.mdx).

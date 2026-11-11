@@ -55,6 +55,7 @@ Public user and Agent documentation.
 
 ## External service connections
 
+- [Use ClawPod from an external AI tool](./guides/use-clawpod-mcp.mdx)
 - [Send email with Resend](./guides/use-resend-email.mdx)
 - [Connect and use Google Workspace](./guides/use-google-workspace.mdx)
 - [Talk to your Agent in Slack](./guides/use-slack.mdx)
