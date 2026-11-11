@@ -41,6 +41,14 @@ https://<your-ClawPod-domain>/mcp
 
 Use the environment containing the organization and Agents you want to work with. If you use multiple environments, confirm which one to connect to first. Use the ClawPod service address, not the documentation website address.
 
+### When an Agent prepares connection instructions
+
+Before asking the user for an address, check the ClawPod service address available in the current environment. Sources can include a ClawPod page open in an accessible browser, existing MCP connection settings, or a ClawPod chat link returned by a tool. Use the information and tools currently available; do not assume every environment provides the same information.
+
+Remove individual screen paths, query parameters, and fragments from the verified URL. Keep its scheme, domain, and any required port, then append `/mcp`. If existing MCP settings contain the endpoint for the target environment, verify and use that address. Do not substitute the Agent's internal runtime address or the documentation website address for the service address.
+
+Once the target environment's address is identified, provide connection instructions with the actual URL filled in. Do not leave placeholders or ask again solely because the user did not type the address. Ask the user only when you cannot determine the address or when the intended environment is ambiguous. Distinguish identifying an address from completing MCP connection and authentication.
+
 ## Connect your AI tool
 
 1. Open the external AI tool's MCP or external tools settings and add a remote server. Menu names vary by tool.
