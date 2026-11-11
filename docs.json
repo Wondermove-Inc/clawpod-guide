@@ -63,6 +63,7 @@
       {
         "group": "외부 서비스 연결",
         "pages": [
+          "guides/use-clawpod-mcp",
           "guides/use-resend-email",
           "guides/use-google-workspace",
           "guides/use-slack",
