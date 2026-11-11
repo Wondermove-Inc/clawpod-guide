@@ -43,21 +43,15 @@ Use the environment containing the organization and Agents you want to work with
 
 ### When an Agent prepares connection instructions
 
-Before asking the user for an address, check the ClawPod service address available in the current environment. Sources can include a ClawPod page open in an accessible browser, existing MCP connection settings, or a ClawPod chat link returned by a tool. Use the information and tools currently available; do not assume every environment provides the same information.
+**When preparing connection instructions for the user's environment, ask for the ClawPod service address first if you do not know it, and wait for the answer.** Do not first write a generic setup guide or instructions containing placeholders and ask for the address at the end.
 
-Remove individual screen paths, query parameters, and fragments from the verified URL. Keep its scheme, domain, and any required port, then append `/mcp`. If existing MCP settings contain the endpoint for the target environment, verify and use that address. Do not substitute the Agent's internal runtime address or the documentation website address for the service address.
+> What address do you normally use to access ClawPod? You can send the address of the ClawPod page you currently have open.
 
-Once the target environment's address is identified, provide connection instructions with the actual URL filled in. Do not leave placeholders or ask again solely because the user did not type the address. Ask the user only when you cannot determine the address or when the intended environment is ambiguous. Distinguish identifying an address from completing MCP connection and authentication.
+If the target environment's address is already clear from the conversation or current connection information, use it without asking again. If it is missing or the intended environment is ambiguous, ask the question above first. You do not need to explore internal services or query OAuth metadata before asking. If the user only requests a general explanation, you can describe the features and steps without an actual address.
 
-#### When the public connection URL is not immediately visible
+Once the user provides the address, remove individual screen paths, query parameters, and fragments, keep the scheme, domain, and any required port, and append `/mcp`. Provide the resulting actual connection URL. Do not substitute an internal runtime address or the documentation website address. If the AI tool has not been specified, you can also ask which tool the user wants to connect.
 
-If the browser and existing settings do not reveal the address, check the authentication challenge from an MCP server already identified in the current environment's configuration or service information. Do not guess internal hostnames or ports, or reuse values from another environment.
-
-1. Send an unauthenticated read request to that accessible MCP endpoint. If its `401` response includes `resource_metadata` in the `WWW-Authenticate` header, you can use the response to discover the public address.
-2. Fetch the public HTTPS URL given by `resource_metadata`. The response's `resource` is the MCP connection URL; `authorization_servers` lists authentication servers. Do not assume they use the same domain.
-3. Check that the advertised MCP URL belongs to the intended environment and matches the public endpoint's authentication challenge before using it in connection instructions. Use internal addresses only for discovery, not as external connection URLs.
-
-This check requires no password or token. Do not sign in, change permissions, or print entire secret configurations to identify an address. Only if this route is unavailable or the intended environment remains ambiguous, explain what you checked and what is missing, then ask the user for the service address.
+Distinguish identifying the address from completing MCP connection and authentication.
 
 ## Connect your AI tool
 
