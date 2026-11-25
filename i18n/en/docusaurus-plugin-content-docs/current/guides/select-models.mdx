@@ -50,6 +50,20 @@ For a new Agent, select models and credentials during [Agent creation](./create-
 6. Wait until the Agent is available again, then verify model responses and required tools with a small, non-sensitive test request.
 7. Track cost, errors, and latency in [Analytics](./use-analytics.mdx). Avoid changing several roles at once when diagnosing problems.
 
+## Configure image generation models
+
+Image generation is configured separately from the main, sub, fallback, and heartbeat conversation models. In Agent creation or the existing Agent's AI resource settings editor, turn on **Image generation** and select a primary image model and, optionally, a fallback. Image generation is off by default for new Agents.
+
+1. Prepare the provider's credentials in [AI key management](./manage-credentials.mdx).
+2. Enable **Image generation** and choose a primary model offered in the current selector. A fallback is optional.
+3. Check that credentials required by the selected image models are connected. If no usable connection is available, add one in AI key management first.
+4. Complete Agent creation, or save and restart an existing Agent. Check the impact on running work before restarting.
+5. Ask the Agent for a small image generation task and inspect the result.
+
+Image generation is not limited to OpenAI. Choose from the providers and models currently offered and follow their connection requirements. Selecting a conversation model alone does not configure image generation.
+
+> Create a square image for our product introduction. Ask for any details you need and show me the result when it is ready.
+
 ## Local LLM prerequisites
 
 Register an Ollama or OpenAI-compatible server and pass the connection test. If models are assigned automatically, review main and heartbeat before saving and match their provider and model according to the current recommendation. Also check access scope, performance, privacy, and fallback.

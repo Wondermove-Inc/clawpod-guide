@@ -1,21 +1,52 @@
 ---
-title: "Automation and webhooks"
-description: "Deliver external events to Agents or Rooms and verify processing."
+title: Automation and webhooks
+description: Automate Agent work with webhook, schedule, or message triggers and check execution and reports.
 ---
 
 # Automation and webhooks
 
-Use webhooks to send external-service events to an Agent or Chat Room. Configure the source, destination, and processing instructions, then verify a test event.
+Use **Automations** to start Agent work from external events, schedules, or chat messages. Available creation and editing actions depend on your permissions and the target Agents and chats.
 
-| Component | Role | Check |
+## Automation types
+
+| Type | Trigger | What to configure |
 | --- | --- | --- |
-| Source | Event origin | Organization, source type, and signing secret |
-| Rule | Receiving Agents or Rooms | Same-tenant targets, conditions, and delivery limits |
-| Playbook | Instructions sent to the Agent | Expected result and permitted actions/data |
-| Event | Receipt and delivery record | Success/failure and the target's actual response |
+| Webhook | An event from an external service | Connection, event conditions, recipients, and playbook |
+| Schedule | A specified time or repeating schedule | Daily, weekly, hourly, or a custom cron expression; displayed time zone; Agent; report chat; work instructions |
+| Message | A matching message in a watched chat | Watched chat; contains, equals, or starts-with text condition; Agent; report chat; work instructions |
 
-Follow [webhook setup](../guides/send-webhook-to-agent.mdx). Test with non-sensitive data and confirm the Event record and target Room. Receipt alone does not guarantee completed Agent work or automatic retries. On failure, inspect the Event, destination, and Agent status. Check for already executed work before resending.
+## Ask an Agent to create one
 
-Disable the Source or Rule to stop new processing. Before deletion, review connected services and required settings. Update the sending service too when rotating secrets.
+In a conversation, describe the trigger, work, and where to report the result. You can also choose **Automations → Create automation → Create with an agent** and select a chat.
 
-[HEARTBEAT.md](../guides/configure-heartbeat.mdx) provides instructions for Agents using periodic checks; [Tasks and Milestones](../guides/use-tasks-and-milestones.mdx) track work and deadlines. Writing a file or due date does not schedule execution at a specific time.
+> Every Monday at 9 AM, summarize this week's work and report it here. Confirm the time zone and ask for any other details you need.
+
+> Create an automation that checks the situation and reports here when a message containing “deployment failed” arrives in this chat.
+
+The Agent checks the information needed and configures or proposes the automation using available tools and permissions. For webhook proposal approval and external service registration, follow [the webhook guide](../guides/send-webhook-to-agent.mdx). Check the actual enabled state and remaining setup steps rather than assuming your request activated it.
+
+## Create one directly
+
+1. Open **Automations → Create automation → Create manually**.
+2. Choose **Webhook**, **Schedule**, or **Message**. Types unavailable under your permissions cannot be selected.
+3. Enter a name and trigger. For a schedule, check the displayed time zone; for messages, select the watched chat and text condition.
+4. Set the work instructions, Agent, and report chat, or the webhook recipients. Use the available Agent and chat choices.
+5. After creation, check its enabled state in the list. It may remain off if setup is incomplete or the Agent did not answer its readiness check. Continue the setup check as instructed.
+
+For webhooks, register the receiving URL and any required secret with the sending service, then send a test event. Saving the configuration alone does not confirm event delivery.
+
+## Review and edit
+
+Open an item in the list to inspect its trigger, instructions, and report destination. With permission, you can enable, disable, or delete it. **Ask the Agent in chat to change a schedule automation.** For message and webhook automations, use the editing controls available on their detail screens.
+
+If a playbook is shared, saving it can affect other automations. Choose between changing only this automation and applying the change to all affected automations in the confirmation screen. Changing only this one requires permission to create a playbook copy.
+
+## Check execution results
+
+Review states such as queued, running, completed, execution failed, or report failed, and check the actual reply in the report chat. **Execution failure and report failure are different.** Check whether work already ran before repeating it. Also distinguish skipped runs due to pause or unmatched conditions from access problems.
+
+Disable or delete automations you no longer need. Deletion cannot be undone, so review the configuration and any results you need first.
+
+## Heartbeat and Tasks
+
+[HEARTBEAT.md](../guides/configure-heartbeat.mdx) contains periodic check instructions; [Tasks and Milestones](../guides/use-tasks-and-milestones.mdx) track work and due dates. To run work at a specific time, configure and enable a schedule automation. Writing a file or a due date alone does not schedule execution.
