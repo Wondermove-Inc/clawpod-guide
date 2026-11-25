@@ -45,7 +45,7 @@ Task·Milestone은 파일당 최대 **50 MiB**이며 Chat의 확장된 형식 �
 | Chat artifact | Markdown 또는 HTML download UI | Agent가 artifact 형태로 응답한 경우에만 제공합니다. |
 | Meeting 결과 | text 또는 Markdown download UI | 회의 기능과 artifact 생성 조건이 충족될 때만 제공합니다. |
 | Workspace 파일 | Agent의 file/CLI 도구가 실제 ready일 때 생성 가능 | 형식은 요청한 도구·image·policy에 따라 달라지며, 모든 확장자를 보장하지 않습니다. |
-| 생성 이미지 | OpenAI key와 image-generation runtime이 준비된 경우 | output MIME type·저장 위치·비용은 실행 결과에서 확인합니다. |
+| 생성 이미지 | 이미지 생성 모델·인증 정보와 필요한 도구가 준비된 경우 | output MIME type·저장 위치·비용은 실행 결과에서 확인합니다. |
 
 PDF, DOCX, XLSX, PPTX, ZIP 같은 결과물을 Agent에게 요청할 수는 있지만, 해당 형식의 생성 도구가 selected image·Skill·runtime에 실제 있는지 먼저 확인해야 합니다. 단순히 Chat이 그 파일을 받아준다는 사실은 Agent가 만들 수 있다는 보장이 아닙니다.
 

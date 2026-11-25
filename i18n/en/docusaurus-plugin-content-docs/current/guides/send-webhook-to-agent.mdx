@@ -38,23 +38,21 @@ Example: “On a deployment failure event, summarize the impact. Do not guess un
 ## Create an integration
 
 1. In **Webhooks**, choose **New integration**, then **Set it up yourself**.
-2. Select the external service, name, and receiving organization. Configure signature verification, a secret, rate limit, and Playbook as needed.
-3. If you want to create the first Rule together, choose its conditions and Agent or Room targets.
-4. Create the integration, then copy the receiving URL and any displayed signing secret into the external service settings.
-5. Check both integration and Rule results. If the Rule fails after the integration is created, retry the Rule from the displayed result instead of creating another integration.
+2. Review the service, name, and receiving organization, and configure signature verification, a secret, and rate limits as needed.
+3. After creating the connection, register its receiving URL and required signing values with the external service.
+4. Continue to automation creation from the result, or open **Automations** and create a webhook automation using this connection. Creating the connection and configuring event processing are separate steps.
 
 Plaintext secrets may appear only during creation, regeneration, or rotation. Store them according to organization policy, never in documents or Chat.
 
-## Choose targets with a Rule
+## Choose targets with a webhook automation
 
-1. Open an integration in **Webhooks**, then choose **Create Rule** in its **Rules** section.
-2. Choose <strong><span data-ui-label="webhooks.rules.name">Name</span></strong>, <strong><span data-ui-label="webhooks.integrations.title">Integrations</span></strong>, and <strong><span data-ui-label="webhooks.rules.targetType">Target Type</span></strong>, and add event conditions.
-3. Select one or more Agents or Rooms in <strong><span data-ui-label="webhooks.rules.target">Target</span></strong>.
-4. For multiple targets of the same type, choose a distribution method. Agents offer **Broadcast**, **Round Robin**, or **Idle First**; Rooms offer **Broadcast** or **Round Robin**.
-5. Configure a Rule Playbook, cooldown, and hourly limit if needed.
-6. Select <strong><span data-ui-label="webhooks.rules.create">Create Rule</span></strong> at the bottom and confirm the Rule appears.
+1. Open **Automations → Create automation → Create manually → Webhook**. Continuing from a connection's creation result can preselect that connection.
+2. Set the name, connection, event conditions, and recipients. Select one or more Agents or Rooms.
+3. For multiple targets of the same type, choose a distribution method. Agents offer **Broadcast**, **Round Robin**, or **Idle First**; Rooms offer **Broadcast** or **Round Robin**.
+4. Set a playbook describing the work and any required delivery limits, then save.
+5. Check the new automation and its enabled state in the list. The connection's detail screen also links to its automations.
 
-Source and targets must be in the same tenant. The operator manages organization separation by selecting the correct Agents and Rooms.
+The Source and target Agents or Rooms must belong to the same tenant. Check access and select the intended targets. See [automation guidance](../capabilities/automation-and-webhooks.mdx) for schedules, message triggers, and status checks.
 
 ### Choose a distribution method
 
